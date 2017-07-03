@@ -63,7 +63,6 @@ class RideLaterVC: UIViewController ,GMSMapViewDelegate , GMSAutocompleteViewCon
         self.navigationController?.popViewController(animated: true)
     }
     
-    
     @IBAction func tapPickDate(_ sender: UIButton)
     {
         let datePickerView:UIDatePicker = UIDatePicker()
@@ -206,34 +205,39 @@ class RideLaterVC: UIViewController ,GMSMapViewDelegate , GMSAutocompleteViewCon
         dic.setValue(String (format: "%f", pickUpCordinate.latitude), forKey: "lat")
         dic.setValue(String (format: "%f", pickUpCordinate.longitude), forKey: "long")
         dic.setValue(random, forKey: "random")
-        dic.setValue("2341234234345234", forKey: "device_id")
+        dic.setValue(AppDelegateVariable.appDelegate.deviceTokenStr, forKey: "device_id")
         
         // http://taxiappsourcecode.com/api/index.php?
         RappleActivityIndicatorView.startAnimatingWithLabel("Processing...", attributes: RappleAppleAttributes)
         
-        let parameterString = String(format : "index.php?booking_request_schedule")
+        var parameterString = String(format : "index.php?booking_request_schedule")
         
-        Utility.sharedInstance.postDataInJson(header: parameterString,  withParameter:dic ,inVC: self) { (dataDictionary, msg, status) in
+        for (key, value) in dic
+        {
+            parameterString = String (format: "%@&%@=%@", parameterString,key as! CVarArg,value as! CVarArg)
+            
+            // println("\(key) -> \(value)")
+        }
+        
+        Utility.sharedInstance.postDataInDataForm(header: parameterString, inVC: self) { (dataDictionary, msg, status) in
+            
+            RappleActivityIndicatorView.stopAnimation()
+            
             
             if status == true
             {
-                var userDict = (dataDictionary.object(forKey: "result") as! NSDictionary).mutableCopy() as! NSMutableDictionary
-                userDict = AppDelegateVariable.appDelegate.convertAllDictionaryValueToNil(userDict)
-                
-                USER_DEFAULT.set("1", forKey: "isLogin")
-                USER_DEFAULT.set(userDict, forKey: "userData")
-                
-                
-                //print("Location:  \(userInfo)")
-                /// NotificationCenter.default.post(name: Notification.Name(rawValue: "UserDidLoginNotification"), object: nil, userInfo: (userInfo as AnyObject) as? [AnyHashable : Any])
-                // AppDelegateVariable.appDelegate.loginInMainView()
+             iToast.makeText(" Request Submitted")
+            
             }
             else
+                
             {
                 Utility.sharedInstance.showAlert(kAPPName, msg: msg as String, controller: self)
             }
         }
- 
+
+        
+      
     }
     
     

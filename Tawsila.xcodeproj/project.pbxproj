@@ -74,6 +74,10 @@
 		92487E691F018A6A00B22743 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 92487E681F018A6A00B22743 /* GoogleService-Info.plist */; };
 		92564FC01EEF09F300C59A4E /* ViewDetailCar.xib in Resources */ = {isa = PBXBuildFile; fileRef = 92564FBF1EEF09F300C59A4E /* ViewDetailCar.xib */; };
 		92564FC21EEF0AE300C59A4E /* ViewDetailCar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92564FC11EEF0AE300C59A4E /* ViewDetailCar.swift */; };
+		9281CE261F08008E00A1C228 /* star.png in Resources */ = {isa = PBXBuildFile; fileRef = 9281CE221F08008E00A1C228 /* star.png */; };
+		9281CE271F08008E00A1C228 /* starFill.png in Resources */ = {isa = PBXBuildFile; fileRef = 9281CE231F08008E00A1C228 /* starFill.png */; };
+		9281CE281F08008E00A1C228 /* StarRatingControl.m in Sources */ = {isa = PBXBuildFile; fileRef = 9281CE251F08008E00A1C228 /* StarRatingControl.m */; };
+		9281CE2C1F0818B500A1C228 /* iToast.m in Sources */ = {isa = PBXBuildFile; fileRef = 9281CE2B1F0818B500A1C228 /* iToast.m */; };
 		929D98F11EEEB26100A8E598 /* LICENSE.txt in Resources */ = {isa = PBXBuildFile; fileRef = 929D98E31EEEB26100A8E598 /* LICENSE.txt */; };
 		929D98F21EEEB26100A8E598 /* Roboto-Black.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 929D98E41EEEB26100A8E598 /* Roboto-Black.ttf */; };
 		929D98F31EEEB26100A8E598 /* Roboto-BlackItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 929D98E51EEEB26100A8E598 /* Roboto-BlackItalic.ttf */; };
@@ -198,6 +202,12 @@
 		92487E6A1F023B6000B22743 /* Tawsila.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Tawsila.entitlements; sourceTree = "<group>"; };
 		92564FBF1EEF09F300C59A4E /* ViewDetailCar.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = ViewDetailCar.xib; path = "Tawsila/Custom View/ViewDetailCar.xib"; sourceTree = SOURCE_ROOT; };
 		92564FC11EEF0AE300C59A4E /* ViewDetailCar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ViewDetailCar.swift; path = "Tawsila/Custom View/ViewDetailCar.swift"; sourceTree = SOURCE_ROOT; };
+		9281CE221F08008E00A1C228 /* star.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = star.png; sourceTree = "<group>"; };
+		9281CE231F08008E00A1C228 /* starFill.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = starFill.png; sourceTree = "<group>"; };
+		9281CE241F08008E00A1C228 /* StarRatingControl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StarRatingControl.h; sourceTree = "<group>"; };
+		9281CE251F08008E00A1C228 /* StarRatingControl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StarRatingControl.m; sourceTree = "<group>"; };
+		9281CE2A1F0818B500A1C228 /* iToast.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = iToast.h; sourceTree = "<group>"; };
+		9281CE2B1F0818B500A1C228 /* iToast.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = iToast.m; sourceTree = "<group>"; };
 		929D98E31EEEB26100A8E598 /* LICENSE.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE.txt; sourceTree = "<group>"; };
 		929D98E41EEEB26100A8E598 /* Roboto-Black.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Black.ttf"; sourceTree = "<group>"; };
 		929D98E51EEEB26100A8E598 /* Roboto-BlackItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-BlackItalic.ttf"; sourceTree = "<group>"; };
@@ -585,10 +595,32 @@
 			name = PicupRideVC;
 			sourceTree = "<group>";
 		};
+		9281CE211F08008E00A1C228 /* StarRating */ = {
+			isa = PBXGroup;
+			children = (
+				9281CE221F08008E00A1C228 /* star.png */,
+				9281CE231F08008E00A1C228 /* starFill.png */,
+				9281CE241F08008E00A1C228 /* StarRatingControl.h */,
+				9281CE251F08008E00A1C228 /* StarRatingControl.m */,
+			);
+			path = StarRating;
+			sourceTree = "<group>";
+		};
+		9281CE291F0818B500A1C228 /* iToast */ = {
+			isa = PBXGroup;
+			children = (
+				9281CE2A1F0818B500A1C228 /* iToast.h */,
+				9281CE2B1F0818B500A1C228 /* iToast.m */,
+			);
+			path = iToast;
+			sourceTree = "<group>";
+		};
 		929D98E11EEEB26100A8E598 /* Sources */ = {
 			isa = PBXGroup;
 			children = (
 				811951601EFCC27200C0720B /* ACFloatingTextfield.swift */,
+				9281CE291F0818B500A1C228 /* iToast */,
+				9281CE211F08008E00A1C228 /* StarRating */,
 				929D98E21EEEB26100A8E598 /* Roboto */,
 			);
 			path = Sources;
@@ -734,7 +766,7 @@
 				TargetAttributes = {
 					5BB10C981EEBEA8400F93FBE = {
 						CreatedOnToolsVersion = 8.2.1;
-						DevelopmentTeam = GH42HPV99Q;
+						DevelopmentTeam = K8ZWDWPB4Y;
 						ProvisioningStyle = Automatic;
 						SystemCapabilities = {
 							com.apple.BackgroundModes = {
@@ -806,7 +838,9 @@
 				81D179F81EF84A3F00976349 /* bookingViewController.xib in Resources */,
 				045CF6FF1EEC7A9F0052DBC6 /* LaunchScreen.storyboard in Resources */,
 				81E76BE21EEF73E500256FD4 /* ChangePasswordViewController.xib in Resources */,
+				9281CE271F08008E00A1C228 /* starFill.png in Resources */,
 				929D98F31EEEB26100A8E598 /* Roboto-BlackItalic.ttf in Resources */,
+				9281CE261F08008E00A1C228 /* star.png in Resources */,
 				929D98F81EEEB26100A8E598 /* Roboto-LightItalic.ttf in Resources */,
 				81F2EC131EF19AC70065D2BD /* rightMenuViewController.xib in Resources */,
 				929D98FD1EEEB26100A8E598 /* Roboto-ThinItalic.ttf in Resources */,
@@ -1007,6 +1041,7 @@
 				81F2EC121EF19AC70065D2BD /* rightMenuViewController.swift in Sources */,
 				5BB10C9F1EEBEA8500F93FBE /* ViewController.swift in Sources */,
 				81E76BE11EEF73E500256FD4 /* ChangePasswordViewController.swift in Sources */,
+				9281CE281F08008E00A1C228 /* StarRatingControl.m in Sources */,
 				81F2EC171EF19B070065D2BD /* rightMenuCell.swift in Sources */,
 				81E76BEC1EEF7F5F00256FD4 /* SettingViewController.swift in Sources */,
 				0439CA7E1EEC50B1008E4F78 /* Utility.swift in Sources */,
@@ -1020,6 +1055,7 @@
 				5BB10CD21EEBEB4E00F93FBE /* SignInOrCreateNewAccount.swift in Sources */,
 				81F2EBFF1EF18AA60065D2BD /* SlideNavigationContorllerAnimatorFade.m in Sources */,
 				81CB2E721EED1BD700D400FC /* CreateNewAccount.swift in Sources */,
+				9281CE2C1F0818B500A1C228 /* iToast.m in Sources */,
 				81F2EC081EF18D0D0065D2BD /* LeftMenuViewController.swift in Sources */,
 				92564FC21EEF0AE300C59A4E /* ViewDetailCar.swift in Sources */,
 				81F2EC0D1EF190BE0065D2BD /* leftMenuCell.swift in Sources */,
@@ -1169,12 +1205,12 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_ENTITLEMENTS = Tawsila/Tawsila.entitlements;
-				DEVELOPMENT_TEAM = GH42HPV99Q;
+				DEVELOPMENT_TEAM = K8ZWDWPB4Y;
 				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = Tawsila/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.nutrition.testOne;
+				PRODUCT_BUNDLE_IDENTIFIER = com.scientificwebs.tawsila;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "Tawsila/Tawsila-Bridging-Header.h";
 				SWIFT_VERSION = 3.0;
@@ -1189,12 +1225,12 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_ENTITLEMENTS = Tawsila/Tawsila.entitlements;
-				DEVELOPMENT_TEAM = GH42HPV99Q;
+				DEVELOPMENT_TEAM = K8ZWDWPB4Y;
 				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = Tawsila/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.nutrition.testOne;
+				PRODUCT_BUNDLE_IDENTIFIER = com.scientificwebs.tawsila;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "Tawsila/Tawsila-Bridging-Header.h";
 				SWIFT_VERSION = 3.0;

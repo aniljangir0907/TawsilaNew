@@ -1,19 +1,20 @@
 PODS:
   - Alamofire (4.5.0)
+  - CardIO (5.4.1)
   - Crashlytics (3.8.4):
     - Fabric (~> 1.6.3)
   - Fabric (1.6.11)
-  - Firebase/Core (4.0.2):
-    - FirebaseAnalytics (= 4.0.1)
-    - FirebaseCore (= 4.0.2)
-  - Firebase/Messaging (4.0.2):
+  - Firebase/Core (4.0.3):
+    - FirebaseAnalytics (= 4.0.2)
+    - FirebaseCore (= 4.0.3)
+  - Firebase/Messaging (4.0.3):
     - Firebase/Core
     - FirebaseMessaging (= 2.0.0)
-  - FirebaseAnalytics (4.0.1):
+  - FirebaseAnalytics (4.0.2):
     - FirebaseCore (~> 4.0)
     - FirebaseInstanceID (~> 2.0)
     - GoogleToolboxForMac/NSData+zlib (~> 2.1)
-  - FirebaseCore (4.0.2):
+  - FirebaseCore (4.0.3):
     - GoogleToolboxForMac/NSData+zlib (~> 2.1)
   - FirebaseInstanceID (2.0.0):
     - FirebaseCore (~> 4.0)
@@ -35,6 +36,12 @@ PODS:
     - GoogleToolboxForMac/Defines (= 2.1.1)
   - GoogleToolboxForMac/NSData+zlib (2.1.1):
     - GoogleToolboxForMac/Defines (= 2.1.1)
+  - PayPal-iOS-SDK (2.17.0):
+    - PayPal-iOS-SDK/CardIO (= 2.17.0)
+    - PayPal-iOS-SDK/Core (= 2.17.0)
+  - PayPal-iOS-SDK/CardIO (2.17.0):
+    - CardIO (~> 5.4.1)
+  - PayPal-iOS-SDK/Core (2.17.0)
   - Protobuf (3.3.0)
   - RappleProgressHUD (2.3.0)
   - SDWebImage (3.8.2):
@@ -49,25 +56,28 @@ DEPENDENCIES:
   - Firebase/Messaging
   - GoogleMaps
   - GooglePlaces
+  - PayPal-iOS-SDK
   - RappleProgressHUD
   - SDWebImage (~> 3.8)
 
 SPEC CHECKSUMS:
   Alamofire: f28cdffd29de33a7bfa022cbd63ae95a27fae140
+  CardIO: 56983b39b62f495fc6dae9ad7cf875143df06443
   Crashlytics: 79e236942ca1e7fc641df1feb9a275360a78ab6a
   Fabric: 5911403591946b8228ab1c51d98f1d7137e863c6
-  Firebase: c7ad0731eab26d18a3fc547dd048b0f7cd9c63ae
-  FirebaseAnalytics: 4d7040fefc3cd8b291cde35f12cf063d7963f15d
-  FirebaseCore: 1a8bf6c795ad07d2918278657954ffd2552e9c17
+  Firebase: 9e33fdfbca37cab635c693883caa90a4475b842b
+  FirebaseAnalytics: ad41720e3e67fc63fbe3d2948d3e26932a8de311
+  FirebaseCore: c709067051de07bdaffdc4e735cd7299a23c463a
   FirebaseInstanceID: 9fbf536668f4d3f0880e7438456dabd1376e294b
   FirebaseMessaging: 227406c05b0dc9290702d2e9f18ab5528f0c2cf2
   GoogleMaps: c66a71058b9b1294bcdd5463a68e357fa50c079f
   GooglePlaces: 4a7b22debfa1af65017b82943431822607e45201
   GoogleToolboxForMac: 8e329f1b599f2512c6b10676d45736bcc2cbbeb0
+  PayPal-iOS-SDK: 849321f6214a7187ee4cc684f63fe509df4c4a36
   Protobuf: d582fecf68201eac3d79ed61369ef45734394b9c
   RappleProgressHUD: d29a931f7e867e9d9c3b88831f62e8366976eb41
   SDWebImage: 098e97e6176540799c27e804c96653ee0833d13c
 
-PODFILE CHECKSUM: 154d0a30f778318b0e0ec00e2a7f599a3daf0245
+PODFILE CHECKSUM: 4b0ae42f59c335e76e67123b6628a767de24f328
 
 COCOAPODS: 1.2.1

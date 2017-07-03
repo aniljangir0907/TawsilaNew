@@ -1,4 +1,5 @@
 
+
 //
 //  AppDelegate.swift
 //  Tawsila
@@ -16,6 +17,7 @@ import UserNotifications
 import Fabric
 import Crashlytics
 import Firebase
+
 
 @objc protocol notificationDelegate {
 
@@ -38,13 +40,22 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
     var navController : UINavigationController?
     var strLanguage: String!
     
+    //  USED FOR BOOKING
+    
     var id_booking = ""
+    var is_loadCar = Int()
 
+    var codrdinateDestiantion = CLLocationCoordinate2D()
+    var codrdinatePick = CLLocationCoordinate2D()
+
+    
     // var delegate:notificationDelegate?
 
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool
     {
+        
+          PayPalMobile.initializeWithClientIds(forEnvironments: [PayPalEnvironmentProduction: "",PayPalEnvironmentSandbox: "AeL5jKXnKjdAyqqbTrdiIoVunaleNkMCvG4Oea5BKnbukNQoBSh4c9wIIOwhWrrtm3DDzY6Le1li8OMs"])
       
         // checekApplication selected language (Vikram Singh)//20-jun-2017
         strLanguage = checkAppLanguage()
@@ -54,15 +65,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
 
         FirebaseApp.configure()
         Messaging.messaging().delegate = self
-        let token = Messaging.messaging().fcmToken
-        print("FCM token: \(token ?? "")")
-        deviceTokenStr = token!
-        USER_DEFAULT.set(token, forKey: "FCM_TOKEN")
+        
+//        let token = Messaging.messaging().fcmToken
+//        print("FCM token: \(token ?? "")")
+//        deviceTokenStr = token!
+//        USER_DEFAULT.set(token, forKey: "FCM_TOKEN")
        
         GMSServices.provideAPIKey("AIzaSyAHgc0o2XkUDVwnw7F0ru8b7JpWlPL5aOc")
         GMSPlacesClient.provideAPIKey("AIzaSyAHgc0o2XkUDVwnw7F0ru8b7JpWlPL5aOc")
-
-        self.sliderMenuControllser()
         
         let center = UNUserNotificationCenter.current()
         
@@ -71,7 +81,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
         }
         application.registerForRemoteNotifications()
         
-        if #available(iOS 10, *) {
+        if #available(iOS 10, *)
+        {
             UNUserNotificationCenter.current().delegate = self
             UNUserNotificationCenter.current().requestAuthorization(options: [.badge, .sound, .alert], completionHandler: {(granted, error) in
                 if (granted)
@@ -104,17 +115,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
         locationManager.desiredAccuracy = kCLLocationAccuracyBest
         locationManager.requestWhenInUseAuthorization()
         locationManager.startUpdatingLocation()
+      
+        
         if launchOptions?[UIApplicationLaunchOptionsKey.remoteNotification] != nil {
-            
-            
+        
             // Do what you want to happen when a remote notification is tapped.
-            
-            
         }
         else
-        
         {
-        self.sliderMenuControllser()
+           // self.sliderMenuControllser()
         }
         
      //   self.checkNewVerisonAvailabel(viewController:)
@@ -197,6 +206,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
         deviceTokenStr = token!
         
         USER_DEFAULT.set(token, forKey: "FCM_TOKEN")
+
+        //        let token = Messaging.messaging().fcmToken
+        //        print("FCM token: \(token ?? "")")
+        //        deviceTokenStr = token!
+        //        USER_DEFAULT.set(token, forKey: "FCM_TOKEN")
+
+        
         
     }
     
@@ -237,8 +253,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
         let application = UIApplication.shared
         
         self.delegate?.gotNotification(title: notification.request.content.title);
-        
-        
         
         if(application.applicationState == .active) {
             

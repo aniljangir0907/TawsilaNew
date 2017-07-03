@@ -65,6 +65,7 @@ class HomeViewControlle: UIViewController ,GMSMapViewDelegate ,SlideNavigationCo
     var tagBookNow : Int!
     var arrCars : NSArray!
     
+    var tempTag: Int!
     var tagCarType: Int!
     var is_LoadCars = Bool()
     var onetime: Int = 0
@@ -77,13 +78,21 @@ class HomeViewControlle: UIViewController ,GMSMapViewDelegate ,SlideNavigationCo
     
     var timerForGetCars = Timer();
     
+    var initialRate = String()
+    var standredRate = String()
+    var icon = UIImage()
+    
+    
+    
     override func viewDidLoad()
     {
         super.viewDidLoad()
         
+        tempTag = 0
         tagBookNow = 0
         tagCarType = 0
         is_LoadCars = true
+        AppDelegateVariable.appDelegate.is_loadCar = 0
         dictMarker = NSMutableDictionary()
         
         setBorderWidth()
@@ -112,15 +121,13 @@ class HomeViewControlle: UIViewController ,GMSMapViewDelegate ,SlideNavigationCo
         RappleActivityIndicatorView.startAnimatingWithLabel("Processing...", attributes: RappleAppleAttributes)
         self.getCarsAPI()
         
-//        self.showWaitingView()
-//        self.gotoNextView()
+        // self.gotoNextView()
         
         let center = UNUserNotificationCenter.current()
         center.delegate = self
         center.requestAuthorization(options:[.badge, .alert, .sound]) { (granted, error) in
             // Enable or disable features based on authorization.
         }
-        
     }
     
     
@@ -162,6 +169,12 @@ class HomeViewControlle: UIViewController ,GMSMapViewDelegate ,SlideNavigationCo
     override func viewWillAppear(_ animated: Bool) {
         
         setShowAndHideViews(viewEnglish, vArb: viewArabic)
+        
+        if AppDelegateVariable.appDelegate.id_booking == "false" {
+            AppDelegateVariable.appDelegate.id_booking = "NO";
+            self.tapCacelBooking("");
+        }
+        
     }
     
     // MARK: - Load Cars and Car Locaions
@@ -170,24 +183,21 @@ class HomeViewControlle: UIViewController ,GMSMapViewDelegate ,SlideNavigationCo
     func getCarsAPI()
     {
         
-        let string:String = String (format: "http://taxiappsourcecode.com/api/index.php?option=get_cars")
-        
-        Alamofire.request(string, method: .get, parameters: nil, encoding: JSONEncoding.default, headers: nil).responseJSON { (response:DataResponse<Any>) in
-            
-            let array : NSArray = ((response.result.value as AnyObject).object(forKey:"result") as! NSArray)
-            self.arrCars = array
-            RappleActivityIndicatorView.stopAnimation()
-            
-            // self .perform( #selector(self.getCarsAPI), with: 1, afterDelay: 3)
+        Utility.sharedInstance.postDataInDataForm(header: "get_cars", inVC: self) { (dataDictionary, msg, status) in
             
             if(self.onetime == 0)
             {
+                let array : NSArray = (dataDictionary.object(forKey:"result") as! NSArray)
+                self.arrCars = array
                 self.onetime = 1
-                // self.perform( #selector(self.getCarsLocations), with: 1, afterDelay: 0)
-                self.loadCars(arrayCars: array)
-
+                self.perform( #selector(self.getCarsLocations), with: 1, afterDelay: 0)
+                self.loadCars(arrayCars:array)
             }
         }
+        
+        
+        
+        
     }
     
     func getCarsLocations()
@@ -201,7 +211,6 @@ class HomeViewControlle: UIViewController ,GMSMapViewDelegate ,SlideNavigationCo
         dic.setValue(String (format: "%f", (mapView.myLocation?.coordinate.latitude)!), forKey: "lat")
         dic.setValue(String (format: "%f", (mapView.myLocation?.coordinate.longitude)!), forKey: "long")
         
-        
         for (key, value) in dic
         {
             parameterString = String (format: "%@&%@=%@", parameterString,key as! CVarArg,value as! CVarArg)
@@ -210,15 +219,42 @@ class HomeViewControlle: UIViewController ,GMSMapViewDelegate ,SlideNavigationCo
         
         Utility.sharedInstance.postDataInDataForm(header: parameterString, inVC: self) { (dataDictionary, msg, status) in
             
-            if (self.is_LoadCars == true)
+            if (AppDelegateVariable.appDelegate.is_loadCar == 0)
             {
                 self .perform( #selector(self.getCarsLocations), with: 1, afterDelay: 1)
             }
-            
             if status == true
             {
+                var icon = UIImage()
+                
+                if self.tagCarType == 0
+                {
+                    icon = #imageLiteral(resourceName: "car_luxury")
+                }
+                else if self.tagCarType == 1
+                {
+                    icon = #imageLiteral(resourceName: "car_texy")
+                }
+                else if self.tagCarType == 3
+                {
+                    icon =  #imageLiteral(resourceName: "car_mini")
+                }
+                else
+                {
+                    icon = #imageLiteral(resourceName: "car_other")
+                }
+                
+                if self.tagCarType != self.tempTag
+                {
+                    self.mapView.clear()
+                    self.tempTag = self.tagCarType
+                }
+                
                 
                 let dataArray:NSArray = (dataDictionary as NSDictionary).object(forKey: "result") as! NSArray
+                
+                self.initialRate = ((dataArray.object(at: 0) as! NSDictionary) .object(forKey: "intailrate") as! String)
+                self.standredRate = ((dataArray.object(at: 0) as! NSDictionary) .object(forKey: "standardrate") as! String)
                 
                 for  i in 0 ... (dataArray.count - 1)
                 {
@@ -256,7 +292,7 @@ class HomeViewControlle: UIViewController ,GMSMapViewDelegate ,SlideNavigationCo
                         // marker.t
                         marker.position = cordinate
                         marker.map = self.mapView
-                        marker.icon = #imageLiteral(resourceName: "car_other")
+                        marker.icon = icon
                         
                         self.dictMarker .setObject(marker, forKey: id_driver as NSCopying)
                         self.getHeadingForDirection(fromCoordinate: marker.position, toCoordinate: (self.mapView.myLocation?.coordinate)!, marker: marker)
@@ -267,7 +303,7 @@ class HomeViewControlle: UIViewController ,GMSMapViewDelegate ,SlideNavigationCo
             else
                 
             {
-                // self.mapView.clear()
+                self.mapView.clear()
                 // Utility.sharedInstance.showAlert(kAPPName, msg: msg as String, controller: self)
             }
         }
@@ -389,6 +425,7 @@ class HomeViewControlle: UIViewController ,GMSMapViewDelegate ,SlideNavigationCo
         tempView.backgroundColor = NavigationBackgraoungColor
         tempView.layer.borderColor = NavigationBackgraoungColor.cgColor
         
+        
     }
     
     // MARK: SlideNavigationController Delegate
@@ -405,7 +442,8 @@ class HomeViewControlle: UIViewController ,GMSMapViewDelegate ,SlideNavigationCo
     @IBAction func tapBookNow(_ sender: Any) {
         
         self.tagBookNow = 1;
-        is_LoadCars = false
+        
+        AppDelegateVariable.appDelegate.is_loadCar = 1;
         
         if  AppDelegateVariable.appDelegate.strLanguage == "en" {
             
@@ -444,9 +482,12 @@ class HomeViewControlle: UIViewController ,GMSMapViewDelegate ,SlideNavigationCo
     
     @IBAction func tapCacelBooking(_ sender: Any)
     {
-        self.is_LoadCars = true
+        AppDelegateVariable.appDelegate.is_loadCar = 0;
+        self .perform( #selector(self.getCarsLocations), with: 1, afterDelay: 0)
         
         self.tagBookNow = 0;
+        viewEstimate.isHidden = true
+        
         
         if AppDelegateVariable.appDelegate.strLanguage == "en" {
             viewDestinationAddress.isHidden = true
@@ -497,11 +538,14 @@ class HomeViewControlle: UIViewController ,GMSMapViewDelegate ,SlideNavigationCo
     @IBAction func tapRideLater(_ sender: Any) {
         
         let obj : RideLaterVC = RideLaterVC(nibName: "RideLaterVC", bundle: nil)
-        //  obj.pickUpAddress = lblPickAddress.text!
+        obj.pickUpAddress = lblPickAddress.text!
         obj.pickUpCordinate = pickUpCordinate
         navigationController?.pushViewController(obj, animated: true)
         
     }
+    
+    
+    
     
     
     // MARK:
@@ -562,7 +606,7 @@ class HomeViewControlle: UIViewController ,GMSMapViewDelegate ,SlideNavigationCo
                                 }
                                 if self.tagBookNow == 1
                                 {
-                                    self.lblDestinationAddress.text = addressString
+                                    //self.lblDestinationAddress.text = addressString
                                 }
                             }else {
                                 if self.tagBookNow == 0
@@ -571,7 +615,7 @@ class HomeViewControlle: UIViewController ,GMSMapViewDelegate ,SlideNavigationCo
                                 }
                                 if self.tagBookNow == 1
                                 {
-                                    self.lblDestinationAddressAr.text = addressString
+                                    // self.lblDestinationAddressAr.text = addressString
                                 }
                             }
                         }
@@ -596,67 +640,27 @@ class HomeViewControlle: UIViewController ,GMSMapViewDelegate ,SlideNavigationCo
     
     @IBAction func tapConfirmBooking(_ sender: Any)
     {
-        
         is_LoadCars = false
-        if self.tagBookNow == 1
-        {
-            /* if  AppDelegateVariable.appDelegate.strLanguage == "en" {
-             
-             viewEstimate.isHidden = false
-             imgMidPin.isHidden = true
-             
-             let marker_pick = GMSMarker()
-             marker_pick.position = pickUpCordinate
-             marker_pick.title = lblPickAddress.text
-             marker_pick.map = mapView
-             marker_pick.icon = #imageLiteral(resourceName: "markerLocation")
-             
-             let marker_dest = GMSMarker()
-             marker_dest.position = destinationCordinate
-             marker_dest.title = lblPickAddress.text
-             marker_dest.map = mapView
-             marker_dest.icon = #imageLiteral(resourceName: "markerDesitnation")
-             
-             getPolylineRoute(from: pickUpCordinate, to: destinationCordinate)
-             
-             self.tagBookNow = 2
-             }
-             else{
-             
-             viewEstimateAr.isHidden = false
-             imgMidPinAr.isHidden = true
-             
-             let marker_pick = GMSMarker()
-             marker_pick.position = pickUpCordinate
-             marker_pick.title = lblPickAddressAr.text
-             marker_pick.map = mapView
-             marker_pick.icon = #imageLiteral(resourceName: "markerLocation")
-             
-             let marker_dest = GMSMarker()
-             marker_dest.position = destinationCordinate
-             marker_dest.title = lblPickAddressAr.text
-             marker_dest.map = mapView
-             marker_dest.icon = #imageLiteral(resourceName: "markerDesitnation")
-             
-             getPolylineRoute(from: pickUpCordinate, to: destinationCordinate)
-             
-             self.tagBookNow = 2
-             }*/
-        }
         
         if self.tagBookNow == 2
         {
+            
+            let device_token : String = USER_DEFAULT .object(forKey: "FCM_TOKEN") as! String
+
+            
+            AppDelegateVariable.appDelegate.codrdinateDestiantion = destinationCordinate
+            AppDelegateVariable.appDelegate.codrdinatePick = pickUpCordinate
             
             let random : String = "32873423323"
             let dic = NSMutableDictionary()
             
             dic.setValue(USER_NAME, forKey: "username")
             dic.setValue("PTPT", forKey: "purpose")
-            dic.setValue("28/06/2017", forKey: "pickup_date")
+            dic.setValue("2/07/2017", forKey: "pickup_date")
             dic.setValue("05:05:77 am", forKey: "pickup_time")
             dic.setValue((self.arrCars.object(at: tagCarType) as! NSDictionary ) .object(forKey: "car_type") as! String, forKey: "taxi_type")
             dic.setValue("05:05:77 am", forKey: "departure_time")
-            dic.setValue("28/06/2017", forKey: "departure_date")
+            dic.setValue("28/07/2017", forKey: "departure_date")
             dic.setValue("15", forKey: "distance")
             dic.setValue("100", forKey: "amount")
             dic.setValue("jaipur", forKey: "address")
@@ -667,7 +671,7 @@ class HomeViewControlle: UIViewController ,GMSMapViewDelegate ,SlideNavigationCo
             dic.setValue(String (format: "%f", (mapView.myLocation?.coordinate.longitude)!), forKey: "long")
             dic.setValue(random, forKey: "random")
             
-            dic.setValue(AppDelegateVariable.appDelegate.deviceTokenStr, forKey: "device_id")
+            dic.setValue(device_token, forKey: "device_id")
             
             if AppDelegateVariable.appDelegate.strLanguage == "en"{
                 
@@ -717,17 +721,17 @@ class HomeViewControlle: UIViewController ,GMSMapViewDelegate ,SlideNavigationCo
             Utility.sharedInstance.postDataInDataForm(header: parameterString, inVC: self) { (dataDictionary, msg, status) in
                 
                 RappleActivityIndicatorView.stopAnimation()
-
+                
                 
                 if status == true
                 {
-                    // self.showWaitingView()
+                    self.showWaitingView()
+                    let id_boking : String =  (String(format: "%@", dataDictionary.object(forKey: "booking_id") as! CVarArg)) as String
+                    AppDelegateVariable.appDelegate.id_booking = id_boking
                     
-                    AppDelegateVariable.appDelegate.id_booking = (String(format: "%@", dataDictionary.object(forKey: "booking_id") as! CVarArg)) as String
                     // self .perform( #selector(self.showWaitingView), with: 1, afterDelay: 0)
                 }
                 else
-                    
                 {
                     self.tapCacelBooking("")
                     Utility.sharedInstance.showAlert(kAPPName, msg: msg as String, controller: self)
@@ -740,8 +744,9 @@ class HomeViewControlle: UIViewController ,GMSMapViewDelegate ,SlideNavigationCo
         
         // viewWaiting.removeFromSuperview()
         let obj : PickUPRideVC = PickUPRideVC(nibName: "PickUPRideVC", bundle: nil)
-        obj.id_booking = self.id_booking;
-        self.navigationController?.pushViewController(obj, animated: true)
+        // obj.id_booking = self.id_booking;
+        self.present(obj, animated: true, completion: nil)
+        //        self.navigationController?.pushViewController(obj, animated: true)
     }
     
     // MARK: - Drow Route Method
@@ -762,30 +767,40 @@ class HomeViewControlle: UIViewController ,GMSMapViewDelegate ,SlideNavigationCo
                 {
                     let routes = (response.result.value as AnyObject).object(forKey: "routes")  as? [Any]
                     
-                    let overview_polyline : NSDictionary = (routes?[0] as? NSDictionary)!
-                    
-                    let dic : NSDictionary = overview_polyline as Any as! NSDictionary
-                    
-                    let value : NSDictionary = dic.object(forKey: "overview_polyline") as! NSDictionary
-                    
-                    let polyString : String = value.object(forKey: "points") as! String
-                    
-                    self.showPath(polyStr: polyString)
-                    
-                    let estTime =  (((((dic.object(forKey: "legs") as! NSArray) .object(at: 0) ) as AnyObject)
-                        .object(forKey: "duration") ) as! NSDictionary) .object(forKey: "text") as? String
-                    
-                    let estDistance : String =  ((((((dic.object(forKey: "legs") as! NSArray) .object(at: 0) ) as AnyObject)
-                        .object(forKey: "distance") ) as! NSDictionary) .object(forKey: "text") as? String)!
-                    
-                    let doubleValue : Double = NSString(string: estDistance).doubleValue // 3.1
-                    
-                    self.lblEstimatedFare.text =  String (format: "%.1f SAR", doubleValue*10)
-                    self.lblEstimatedTime.text = estTime
-                    
+                    if (routes?.count)! > 0
+                    {
+                        
+                        
+                        let overview_polyline : NSDictionary = (routes?[0] as? NSDictionary)!
+                        
+                        let dic : NSDictionary = overview_polyline as Any as! NSDictionary
+                        
+                        let value : NSDictionary = dic.object(forKey: "overview_polyline") as! NSDictionary
+                        
+                        let polyString : String = value.object(forKey: "points") as! String
+                        
+                        self.showPath(polyStr: polyString)
+                        
+                        let estTime =  (((((dic.object(forKey: "legs") as! NSArray) .object(at: 0) ) as AnyObject)
+                            .object(forKey: "duration") ) as! NSDictionary) .object(forKey: "text") as? String
+                        
+                        let estDistance : String =  ((((((dic.object(forKey: "legs") as! NSArray) .object(at: 0) ) as AnyObject)
+                            .object(forKey: "distance") ) as! NSDictionary) .object(forKey: "text") as? String)!
+                        
+                        let doubleValue : Double = NSString(string: estDistance).doubleValue // 3.1
+                        
+                        self.lblEstimatedFare.text =  String (format: "%.1f SAR", (self.initialRate as NSString).floatValue + (self.standredRate as NSString).floatValue * Float32(doubleValue) )
+                        self.lblEstimatedTime.text = estTime
+                        
+                        
+                    }
+                    else
+                    {
+                        Utility.sharedInstance.showAlert(kAPPName, msg: "Route Not Found" as String, controller: self)
+                    }
                 }
-                
-            } catch
+            }
+            catch
             {
                 print("error in JSONSerialization")
             }
@@ -855,29 +870,28 @@ class HomeViewControlle: UIViewController ,GMSMapViewDelegate ,SlideNavigationCo
         }
         else
         {
+          
             lblDestinationAddress.text = place.formattedAddress
-            tagBookNow = 2;
             destinationCordinate = place.coordinate
             
-            viewEstimate.isHidden = false
-            imgMidPin.isHidden = true
+            self.viewEstimate.isHidden = false
+            self.imgMidPin.isHidden = true
             
             let marker_pick = GMSMarker()
-            marker_pick.position = pickUpCordinate
-            marker_pick.title = lblPickAddressAr.text
-            marker_pick.map = mapView
+            marker_pick.position = self.pickUpCordinate
+            marker_pick.title = self.lblPickAddressAr.text
+            marker_pick.map = self.mapView
             marker_pick.icon = #imageLiteral(resourceName: "markerLocation")
             
             let marker_dest = GMSMarker()
-            marker_dest.position = destinationCordinate
-            marker_dest.title = lblPickAddressAr.text
-            marker_dest.map = mapView
+            marker_dest.position = self.destinationCordinate
+            marker_dest.title = self.lblPickAddressAr.text
+            marker_dest.map = self.mapView
             marker_dest.icon = #imageLiteral(resourceName: "markerDesitnation")
-            
-            getPolylineRoute(from: pickUpCordinate, to: destinationCordinate)
-            
             self.tagBookNow = 2
             
+            getPolylineRoute(from: pickUpCordinate, to: destinationCordinate)
+
         }
         dismiss(animated: true, completion: nil)
         
@@ -890,7 +904,7 @@ class HomeViewControlle: UIViewController ,GMSMapViewDelegate ,SlideNavigationCo
     
     // User canceled the operation.
     func wasCancelled(_ viewController: GMSAutocompleteViewController) {
-        viewDestinationAddress.isHidden = false
+        
         dismiss(animated: true, completion: nil)
     }
     
@@ -939,10 +953,13 @@ class HomeViewControlle: UIViewController ,GMSMapViewDelegate ,SlideNavigationCo
         let tLat: Float = Float((toLoc.latitude).degreesToRadians)
         let tLng: Float = Float((toLoc.longitude).degreesToRadians)
         let degree: Float = (atan2(sin(tLng - fLng) * cos(tLat), cos(fLat) * sin(tLat) - sin(fLat) * cos(tLat) * cos(tLng - fLng))).radiansToDegrees
-        if degree >= 0 {
+        
+        if degree >= 0
+        {
             marker.rotation = CLLocationDegrees(degree)
         }
-        else {
+        else
+        {
             marker.rotation = CLLocationDegrees(degree + 360)
         }
         
@@ -960,12 +977,12 @@ class HomeViewControlle: UIViewController ,GMSMapViewDelegate ,SlideNavigationCo
         
         print("hello")
         
-//        if title == "accept_booking" {
-//           
-//           
-//            self.performSelector(onMainThread: #selector(self.gotoNextView), with: "", waitUntilDone:true)
-//            //self.gotoNextView()
-//        }
+        if title == "accept_booking" {
+            
+            self.performSelector(onMainThread: #selector(self.gotoNextView), with: "", waitUntilDone:true)
+            self.gotoNextView()
+        }
+        
     }
     
     func userNotificationCenter(_ center: UNUserNotificationCenter, willPresent notification: UNNotification, withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void)
@@ -976,19 +993,17 @@ class HomeViewControlle: UIViewController ,GMSMapViewDelegate ,SlideNavigationCo
         
         // self.delegate?.gotNotification(title: notification.request.content.title);
         
-        let title : String = notification.request.content.title;
+        let title : String = notification.request.content.title
         
-        
-        
-        if title == "accept_booking" {
+        if title == "accept_booking"
+        {
             
             let obj : PickUPRideVC = PickUPRideVC(nibName: "PickUPRideVC", bundle: nil)
-            obj.id_booking = self.id_booking;
-            //  self.getTopViewController()?.present(obj, animated: true, completion: nil)
-            self.getTopViewController()?.navigationController?.pushViewController(obj, animated: true)
-
-            //  self.performSelector(onMainThread: #selector(self.gotoNextView), with: "", waitUntilDone:true)
-            //  self.gotoNextView()
+            self.getTopViewController()?.present(obj, animated: true, completion: nil)
+            
+            // self.getTopViewController()?.navigationController?.pushViewController(obj, animated: true)
+            // self.performSelector(onMainThread: #selector(self.gotoNextView), with: "", waitUntilDone:true)
+            // self.gotoNextView()
         }
         
         if(application.applicationState == .active) {
@@ -1005,7 +1020,7 @@ class HomeViewControlle: UIViewController ,GMSMapViewDelegate ,SlideNavigationCo
             
         }
     }
-
+    
     
     public func getTopViewController() -> UIViewController?{
         if var topController = UIApplication.shared.keyWindow?.rootViewController
@@ -1017,8 +1032,6 @@ class HomeViewControlle: UIViewController ,GMSMapViewDelegate ,SlideNavigationCo
             return topController
         }
         return nil}
-    
-    
 }
 
 extension Int

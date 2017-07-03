@@ -14,6 +14,7 @@ target 'Tawsila' do
   pod 'Crashlytics'
   pod 'Firebase/Core'	
   pod 'Firebase/Messaging'
+  pod 'PayPal-iOS-SDK'
   
   # Pods for Tawsila
 

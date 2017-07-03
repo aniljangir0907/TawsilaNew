@@ -125,15 +125,20 @@ class SignInViewController: UIViewController {
             }
         }
         
+        let device_token : String = USER_DEFAULT .object(forKey: "FCM_TOKEN") as! String
+        
+      
+        
         RappleActivityIndicatorView.startAnimatingWithLabel("Processing...", attributes: RappleAppleAttributes)
         
         
         var parameterString :String
         if AppDelegateVariable.appDelegate.strLanguage == "en"{
-            parameterString = String(format : "login&email=%@&password=%@&usertype=%@&device_id=%@",self.txtEmail.text! as String,self.txtPass.text! as String,userType,AppDelegateVariable.appDelegate.deviceTokenStr)
+            parameterString = String(format : "login&email=%@&password=%@&usertype=%@&device_id=%@",self.txtEmail.text! as String,self.txtPass.text! as String,userType,device_token)
         }
         else{
-            parameterString = String(format : "login&email=%@&password=%@&usertype=%@&device_id=%@",self.txtEmailAr.text! as String,self.txtPassAr.text! as String,userType,AppDelegateVariable.appDelegate.deviceTokenStr)
+            parameterString = String(format : "login&email=%@&password=%@&usertype=%@&device_id=%@",self.txtEmailAr.text! as String,self.txtPassAr.text! as String,userType,device_token
+            )
         }
         
         Utility.sharedInstance.postDataInDataForm(header: parameterString, inVC: self) { (dataDictionary, msg, status) in
@@ -151,24 +156,14 @@ class SignInViewController: UIViewController {
                 USER_DEFAULT.set("1", forKey: "isLogin")
                 USER_DEFAULT.set(userDict, forKey: "userData")
                 
-                
                 AppDelegateVariable.appDelegate.sliderMenuControllser()
-              
-                //print("Location:  \(userInfo)")
-               /// NotificationCenter.default.post(name: Notification.Name(rawValue: "UserDidLoginNotification"), object: nil, userInfo: (userInfo as AnyObject) as? [AnyHashable : Any])
-               // AppDelegateVariable.appDelegate.loginInMainView()
-                
-                
             }
             else
                 
             {
                 Utility.sharedInstance.showAlert(kAPPName, msg: msg as String, controller: self)
             }
-            
         }
-        
-        
     }
 //        let obj : HomeViewControlle = HomeViewControlle(nibName: "HomeViewControlle", bundle: nil)
 //        navigationController?.pushViewController(obj, animated: true)

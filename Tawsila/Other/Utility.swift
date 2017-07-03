@@ -51,7 +51,6 @@ class Utility
 		return label.frame.height
 	}
     
-    
     //----- SANJAY USE THIS FOR API
     
     func postDataInDataForm(header: String,  inVC vc: UIViewController,  completion: @escaping (_ responce : NSDictionary,_ message : String, _ status : Bool) -> ()) {
@@ -70,10 +69,8 @@ class Utility
                 
                 if let JSON = response.result.value {
                     
-                    
                     let responce = JSON as! NSDictionary
-                    
-                    
+                                        
                     let sucess = responce.object(forKey: "type") as! String
                     
                     let message = responce.object(forKey: "msg") as! String
