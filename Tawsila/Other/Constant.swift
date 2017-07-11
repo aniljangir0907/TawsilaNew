@@ -9,10 +9,6 @@ import Foundation
 import Alamofire
 
 
-
-
-
-
 let BSE_URL   = "http://taxiappsourcecode.com/api/index.php?option="
 //let BSE_URL_IMG   = "http://ec2-54-218-74-164.us-west-2.compute.amazonaws.com"
 

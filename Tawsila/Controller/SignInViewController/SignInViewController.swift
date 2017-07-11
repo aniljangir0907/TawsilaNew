@@ -1,6 +1,4 @@
-//
-//  SignInViewController.swift
-//  Tawsila
+
 //
 //  Created by Dinesh Mahar on 10/06/17.
 //  Copyright © 2017 scientificweb. All rights reserved.
@@ -26,13 +24,13 @@ class SignInViewController: UIViewController {
     var userType : String = "user"
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        USER_DEFAULT.set("user", forKey: "userType")  // 30-06-2017 Vikram singh
         // Do any additional setup after loading the view.
     }
     override func viewWillAppear(_ animated: Bool) {
         setShowAndHideViews(viewEng, vArb: viewAr)
         
-        AppDelegateVariable.appDelegate.strLanguage = "en"
+       // AppDelegateVariable.appDelegate.strLanguage = "en"
         
     }
 
@@ -50,7 +48,7 @@ class SignInViewController: UIViewController {
             imgDAr .image = UIImage.init(named: "selectRadio")
             imgRAr.image = UIImage.init(named: "unselectRadio")
         }
-       
+        USER_DEFAULT.set(userType, forKey: "userType") //30-June-2017 vikram singh
     }
     @IBAction func actionRider(_ sender: Any) {
         userType = "user"
@@ -61,7 +59,7 @@ class SignInViewController: UIViewController {
             imgDAr.image = UIImage.init(named: "unselectRadio")
             imgRAr.image = UIImage.init(named: "selectRadio")
         }
-       
+        USER_DEFAULT.set(userType, forKey: "userType") //30-June-2017 vikram singh
     }
     
     @IBAction func actionForgotPassword(_ sender: Any) {
@@ -124,11 +122,10 @@ class SignInViewController: UIViewController {
   //              return
             }
         }
+
         
-        let device_token : String = USER_DEFAULT .object(forKey: "FCM_TOKEN") as! String
-        
-      
-        
+        let device_token : String =  USER_DEFAULT.object(forKey: "FCM_TOKEN") as! String
+            
         RappleActivityIndicatorView.startAnimatingWithLabel("Processing...", attributes: RappleAppleAttributes)
         
         
@@ -140,6 +137,7 @@ class SignInViewController: UIViewController {
             parameterString = String(format : "login&email=%@&password=%@&usertype=%@&device_id=%@",self.txtEmailAr.text! as String,self.txtPassAr.text! as String,userType,device_token
             )
         }
+
         
         Utility.sharedInstance.postDataInDataForm(header: parameterString, inVC: self) { (dataDictionary, msg, status) in
             
@@ -149,18 +147,35 @@ class SignInViewController: UIViewController {
                 userDict = AppDelegateVariable.appDelegate.convertAllDictionaryValueToNil(userDict) 
                 
                 let user_id : String = userDict .object(forKey: "id") as! String
-                let user_name : String = userDict .object(forKey: "username") as! String
+                var user_name : String!
+                
+                if self.userType == "driver"
+                {
+                    user_name  = userDict .object(forKey: "user_name") as! String
+                    USER_DEFAULT.set(userDict.object(forKey: "is_offline"), forKey: "driverstatus")
+                }
+                else
+                {
+                    user_name  = userDict .object(forKey: "username") as! String
+                }
+
                 
                 USER_DEFAULT.set(user_id, forKey: "user_id")
                 USER_DEFAULT.set(user_name, forKey: "user_name")
                 USER_DEFAULT.set("1", forKey: "isLogin")
                 USER_DEFAULT.set(userDict, forKey: "userData")
                 
+                
                 AppDelegateVariable.appDelegate.sliderMenuControllser()
+              
+               // print("Location:  \(userInfo)")
+               //  NotificationCenter.default.post(name: Notification.Name(rawValue: "UserDidLoginNotification"), object: nil, userInfo: (userInfo as AnyObject) as? [AnyHashable : Any])
+               // AppDelegateVariable.appDelegate.loginInMainView()
+                
             }
             else
-                
             {
+            
                 Utility.sharedInstance.showAlert(kAPPName, msg: msg as String, controller: self)
             }
         }

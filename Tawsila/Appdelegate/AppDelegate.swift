@@ -1,35 +1,26 @@
-
-
-//
-//  AppDelegate.swift
-//  Tawsila
-//
-//  Created by Dinesh Mahar on 10/06/17.
-//  Copyright © 2017 scientificweb. All rights reserved.
-//Anil
-
-import UIKit
-import CoreData
-import GoogleMaps
-import GooglePlaces
-import CoreLocation
-import UserNotifications
-import Fabric
-import Crashlytics
-import Firebase
-
-
-@objc protocol notificationDelegate {
-
+ // // 
+ 
+ import UIKit
+ import CoreData
+ import GoogleMaps
+ import GooglePlaces
+ import CoreLocation
+ import UserNotifications
+ import Fabric
+ import Crashlytics
+ import Firebase
+ 
+ @objc protocol notificationDelegate {
+    
     func gotNotification(title : String)
-}
-
-@UIApplicationMain
-
-class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate, UNUserNotificationCenterDelegate ,MessagingDelegate {
+ }
+ 
+ @UIApplicationMain
+ 
+ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate, UNUserNotificationCenterDelegate ,MessagingDelegate {
     
     var delegate : notificationDelegate?
-
+    
     var lat: Double!
     var long: Double!
     var latitude : String!
@@ -44,33 +35,33 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
     
     var id_booking = ""
     var is_loadCar = Int()
-
+    
     var codrdinateDestiantion = CLLocationCoordinate2D()
     var codrdinatePick = CLLocationCoordinate2D()
-
+    
     
     // var delegate:notificationDelegate?
-
+    
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool
     {
         
-          PayPalMobile.initializeWithClientIds(forEnvironments: [PayPalEnvironmentProduction: "",PayPalEnvironmentSandbox: "AeL5jKXnKjdAyqqbTrdiIoVunaleNkMCvG4Oea5BKnbukNQoBSh4c9wIIOwhWrrtm3DDzY6Le1li8OMs"])
-      
+        PayPalMobile.initializeWithClientIds(forEnvironments: [PayPalEnvironmentProduction: "",PayPalEnvironmentSandbox: "AeL5jKXnKjdAyqqbTrdiIoVunaleNkMCvG4Oea5BKnbukNQoBSh4c9wIIOwhWrrtm3DDzY6Le1li8OMs"])
+        
         // checekApplication selected language (Vikram Singh)//20-jun-2017
         strLanguage = checkAppLanguage()
         
-       // Fabric.sharedSDK().debug = true
+        // Fabric.sharedSDK().debug = true
         //Fabric.with([Crashlytics.self()])
-
+        
         FirebaseApp.configure()
         Messaging.messaging().delegate = self
         
-//        let token = Messaging.messaging().fcmToken
-//        print("FCM token: \(token ?? "")")
-//        deviceTokenStr = token!
-//        USER_DEFAULT.set(token, forKey: "FCM_TOKEN")
-       
+        //        let token = Messaging.messaging().fcmToken
+        //        print("FCM token: \(token ?? "")")
+        //        deviceTokenStr = token!
+        //        USER_DEFAULT.set(token, forKey: "FCM_TOKEN")
+        
         GMSServices.provideAPIKey("AIzaSyAHgc0o2XkUDVwnw7F0ru8b7JpWlPL5aOc")
         GMSPlacesClient.provideAPIKey("AIzaSyAHgc0o2XkUDVwnw7F0ru8b7JpWlPL5aOc")
         
@@ -94,18 +85,18 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
                 }
             })
         }
-
-        // iOS 9 support
+            
+            // iOS 9 support
         else if #available(iOS 9, *) {
             UIApplication.shared.registerUserNotificationSettings(UIUserNotificationSettings(types: [.badge, .sound, .alert], categories: nil))
             UIApplication.shared.registerForRemoteNotifications()
         }
-        // iOS 8 support
+            // iOS 8 support
         else if #available(iOS 8, *) {
             UIApplication.shared.registerUserNotificationSettings(UIUserNotificationSettings(types: [.badge, .sound, .alert], categories: nil))
             UIApplication.shared.registerForRemoteNotifications()
         }
-        // iOS 7 support
+            // iOS 7 support
         else {
             application.registerForRemoteNotifications(matching: [.badge, .sound, .alert])
         }
@@ -115,74 +106,74 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
         locationManager.desiredAccuracy = kCLLocationAccuracyBest
         locationManager.requestWhenInUseAuthorization()
         locationManager.startUpdatingLocation()
-      
+        
         
         if launchOptions?[UIApplicationLaunchOptionsKey.remoteNotification] != nil {
-        
+            
             // Do what you want to happen when a remote notification is tapped.
         }
         else
         {
-           // self.sliderMenuControllser()
+            // self.sliderMenuControllser()
         }
         
-     //   self.checkNewVerisonAvailabel(viewController:)
+        //   self.checkNewVerisonAvailabel(viewController:)
         
-     //---- FONT FAMILY
-//        let fontFamilyNames = UIFont.familyNames
-//        for familyName in fontFamilyNames {
-//            print("------------------------------")
-//            print("Font Family Name = [\(familyName)]")
-//            let names = UIFont.fontNames(forFamilyName: familyName )
-//            print("Font Names = [\(names)]")
-//        }
-
+        //---- FONT FAMILY
+        //        let fontFamilyNames = UIFont.familyNames
+        //        for familyName in fontFamilyNames {
+        //            print("------------------------------")
+        //            print("Font Family Name = [\(familyName)]")
+        //            let names = UIFont.fontNames(forFamilyName: familyName )
+        //            print("Font Names = [\(names)]")
+        //        }
+        
         self.sliderMenuControllser()
         
         return true
     }
-
+    
     func applicationWillResignActive(_ application: UIApplication) {
-      
+        
     }
-
+    
     func applicationDidEnterBackground(_ application: UIApplication) {
         // Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later.
         // If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
         self.application(application, didFinishLaunchingWithOptions: nil)
     }
-
+    
     func applicationWillEnterForeground(_ application: UIApplication) {
         // Called as part of the transition from the background to the active state; here you can undo many of the changes made on entering the background.
-            strLanguage = UserDefaults.standard.value(forKey: "LanguageSelected") as! String
+        strLanguage = UserDefaults.standard.value(forKey: "LanguageSelected") as! String
     }
-
+    
     func applicationDidBecomeActive(_ application: UIApplication) {
         // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
-      
+        
     }
-
+    
     func applicationWillTerminate(_ application: UIApplication) {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
         // Saves changes in the application's managed object context before the application terminates.
         self.saveContext()
     }
-
+    
     // MARK: - Core Data stack
-
+    
     lazy var persistentContainer: NSPersistentContainer = {
         /*
          The persistent container for the application. This implementation
          creates and returns a container, having loaded the store for the
          application to it. This property is optional since there are legitimate
          error conditions that could cause the creation of the store to fail.
-        */
+         */
         let container = NSPersistentContainer(name: "Tawsila")
         container.loadPersistentStores(completionHandler: { (storeDescription, error) in
             if let error = error as NSError? {
                 // Replace this implementation with code to handle the error appropriately.
                 // fatalError() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development.
-                 
+                
                 /*
                  Typical reasons for an error here include:
                  * The parent directory does not exist, cannot be created, or disallows writing.
@@ -200,26 +191,27 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
     // MARK: - NOTIFICATIONCENTER
     
     func messaging(_ messaging: Messaging, didRefreshRegistrationToken fcmToken: String) {
+        
         print("Firebase registration token: \(fcmToken)")
         let token = Messaging.messaging().fcmToken
         print("FCM token: \(token ?? "")")
         deviceTokenStr = token!
         
         USER_DEFAULT.set(token, forKey: "FCM_TOKEN")
-
+        
         //        let token = Messaging.messaging().fcmToken
         //        print("FCM token: \(token ?? "")")
         //        deviceTokenStr = token!
         //        USER_DEFAULT.set(token, forKey: "FCM_TOKEN")
-
+        
         
         
     }
     
     func application(_ application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
         
-       // deviceTokenStr = deviceToken.reduce("", {$0 + String(format: "%02X", $1)})
-       // print(deviceTokenStr)
+        // deviceTokenStr = deviceToken.reduce("", {$0 + String(format: "%02X", $1)})
+        // print(deviceTokenStr)
     }
     func application(_ application: UIApplication, didFailToRegisterForRemoteNotificationsWithError error: Error) {
         
@@ -229,9 +221,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
     
     func userNotificationCenter(_ center: UNUserNotificationCenter, didReceive response: UNNotificationResponse, withCompletionHandler completionHandler: @escaping () -> Void) {
         let application = UIApplication.shared
-
-      if(application.applicationState == .active)
-      {
+        
+        if(application.applicationState == .active)
+        {
             
             //app is currently active, can update badges count here
             
@@ -243,7 +235,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
             
             //app is transitioning from background to foreground (user taps notification), do what you need when user taps here
         }
-
+        
     }
     
     func userNotificationCenter(_ center: UNUserNotificationCenter, willPresent notification: UNNotification, withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void)
@@ -274,9 +266,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
         print(userInfo)
         print("PREVED")
     }
-
+    
     // MARK: - Core Data Saving support
-
+    
     func saveContext () {
         let context = persistentContainer.viewContext
         if context.hasChanges {
@@ -305,7 +297,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
     
     // check validation on User Name field
     func isValidUserName(_ testStr: String)->Bool{
-    
+        
         let userNameRegEx = "[A-Za-z]{3,30}"
         if let userNameTest = NSPredicate(format: "SELF MATCHES %@", userNameRegEx) as NSPredicate?{
             return userNameTest.evaluate(with:testStr)
@@ -315,7 +307,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
     
     // check validation on mobile field
     func isValidMobileNumber(_ testStr: String)->Bool{
-       let mobNumerRegEx = "[0-9]{10}"
+        let mobNumerRegEx = "[0-9]{10}"
         if let mobileTest = NSPredicate(format: "SELF MATCHES %@", mobNumerRegEx) as NSPredicate?{
             return mobileTest.evaluate(with:testStr)
         }
@@ -332,16 +324,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
         }
         return false
     }
-
-    
     
     
     func sliderMenuControllser()
     {
         self.window = UIWindow(frame:  UIScreen.main.bounds)
         self.window?.backgroundColor=UIColor(white: 255.0, alpha: 1.0)
-      
+        
         let userId  = USER_DEFAULT.object(forKey: "isLogin") as? String
+        let userType = USER_DEFAULT.object(forKey: "userType") as? String //30-June-2017 vikram singh
+        
         if userId == "0" || userId == nil
         {
             let homeVC : SignInOrCreateNewAccount = SignInOrCreateNewAccount(nibName : "SignInOrCreateNewAccount" , bundle : nil)
@@ -349,15 +341,19 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
         }
         else
         {
-          
-            let homeVC : HomeViewControlle = HomeViewControlle(nibName : "HomeViewControlle" , bundle : nil)
-            self.navController = SlideNavigationController(rootViewController: homeVC)
-            
+            if userType == "driver" {    //30-June-2017 vikram singh
+                let homeVC : DriverHomeScreen = DriverHomeScreen(nibName : "DriverHomeScreen" , bundle : nil)
+                self.navController = SlideNavigationController(rootViewController: homeVC)
+            }
+            else{
+                let homeVC : HomeViewControlle = HomeViewControlle(nibName : "HomeViewControlle" , bundle : nil)
+                self.navController = SlideNavigationController(rootViewController: homeVC)
+            }
         }
         
         self.navController?.isNavigationBarHidden  = true
         UINavigationBar.appearance().isTranslucent = false
-     
+        
         let leftVC : LeftMenuViewController = LeftMenuViewController(nibName : "LeftMenuViewController" , bundle : nil)
         SlideNavigationController.sharedInstance().leftMenu=leftVC
         
@@ -366,64 +362,71 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
         
         self.window?.rootViewController = self.navController
         self.window?.makeKeyAndVisible()
-    
+        
     }
+    // Restart Application When language change // 30-06-2017 vikram singh
+    func restartApp() {
+        strLanguage = checkAppLanguage()
+        self.sliderMenuControllser()
+    }
+    
+    
     //MARK: --------------- LOGOUT A USER ---------------
     
     func logoutAUser()
     {
         
-//        do {
-//            
-//            var request = URLRequest(url: URL(string: String(format : "%@logout&username=%@&unique_id=%@",BSE_URL,((UserDefaults.standard.object(forKey: "userData") as? NSDictionary)!.object(forKey: "email") as? String)!,self.UUID()))!)
-//            let session = URLSession.shared
-//            request.httpMethod = "GET"
-//            
-//            let task = session.dataTask(with: request) { data, response, error in
-//                guard let data = data, error == nil else {                                                 // check for fundamental networking error
-//                    OperationQueue.main.addOperation {
-//                    }
-//                    print("error=\(error)")
-//                    return
-//                }
-//                
-//                if let httpStatus = response as? HTTPURLResponse, httpStatus.statusCode != 200 {           // check for http errors
-//                    print("statusCode should be 200, but is \(httpStatus.statusCode)")
-//                    print("response = \(response)")
-//                }
-//                
-//                let responseString = String(data: data, encoding: .utf8)
-//                print("responseString = \(responseString)")
-//                
-//                
-//                
-//            }
-//            task.resume()
-//            
-//        } catch let error {
-//            print("got an error creating the request: \(error)")
-//        }
+        //        do {
+        //
+        //            var request = URLRequest(url: URL(string: String(format : "%@logout&username=%@&unique_id=%@",BSE_URL,((UserDefaults.standard.object(forKey: "userData") as? NSDictionary)!.object(forKey: "email") as? String)!,self.UUID()))!)
+        //            let session = URLSession.shared
+        //            request.httpMethod = "GET"
+        //
+        //            let task = session.dataTask(with: request) { data, response, error in
+        //                guard let data = data, error == nil else {                                                 // check for fundamental networking error
+        //                    OperationQueue.main.addOperation {
+        //                    }
+        //                    print("error=\(error)")
+        //                    return
+        //                }
+        //
+        //                if let httpStatus = response as? HTTPURLResponse, httpStatus.statusCode != 200 {           // check for http errors
+        //                    print("statusCode should be 200, but is \(httpStatus.statusCode)")
+        //                    print("response = \(response)")
+        //                }
+        //
+        //                let responseString = String(data: data, encoding: .utf8)
+        //                print("responseString = \(responseString)")
+        //
+        //
+        //
+        //            }
+        //            task.resume()
+        //
+        //        } catch let error {
+        //            print("got an error creating the request: \(error)")
+        //        }
         
     }
     
     //MARK: --------------- GET UDID ---------------
-  //  func UUID() -> String {
-        
-//        let bundleName = Bundle.main.infoDictionary!["CFBundleName"] as! String
-//        let accountName = "incoding"
-//        
-//        var applicationUUID = SSKeychain.password(forService: bundleName, account: accountName)
-//        
-//        if applicationUUID == nil {
-//            
-//            applicationUUID = UIDevice.current.identifierForVendor?.uuidString
-//            
-//            SSKeychain.setPassword(applicationUUID, forService: bundleName, account: accountName)
-//            // Save applicationUUID in keychain without synchronization
-//        }
-//        
-//        return applicationUUID!
-//}
+    //  func UUID() -> String {
+    
+    //        let bundleName = Bundle.main.infoDictionary!["CFBundleName"] as! String
+    //        let accountName = "incoding"
+    //
+    //        var applicationUUID = SSKeychain.password(forService: bundleName, account: accountName)
+    //
+    //        if applicationUUID == nil {
+    //
+    //            applicationUUID = UIDevice.current.identifierForVendor?.uuidString
+    //
+    //            SSKeychain.setPassword(applicationUUID, forService: bundleName, account: accountName)
+    //            // Save applicationUUID in keychain without synchronization
+    //        }
+    //
+    //        return applicationUUID!
+    //}
     
     
     
@@ -497,13 +500,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
     }
     
     
-
+    
     
     //MARK: --------------- Check APP VERSION ---------------
     func checkNewVerisonAvailabel(viewController : UIViewController)
     {
         do {
-             var request = URLRequest(url: URL(string: String(format : "%@get_app_version",BSE_URL))!)
+            var request = URLRequest(url: URL(string: String(format : "%@get_app_version",BSE_URL))!)
             let session = URLSession.shared
             request.httpMethod = "POST"
             
@@ -530,15 +533,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
                         OperationQueue.main.addOperation {
                             let dict = parseJSON["result"] as! NSDictionary
                             let availabelVerDict = dict.object(forKey: "results") as! NSDictionary
-                            
                             let dict1 = availabelVerDict.object(forKey: "") as! NSDictionary
-                            
                             let availabelVer = dict1.object(forKey: "app_version") as! NSString
-                            
                             
                             Utility.sharedInstance.showAlert(kAPPName, msg: availabelVer as String, controller: viewController)
                             let nsObject: AnyObject! = Bundle.main.infoDictionary!["CFBundleShortVersionString"] as AnyObject
-                            
                             
                             let versionC = nsObject as! NSString
                             if (availabelVer).floatValue > (versionC).floatValue
@@ -548,7 +547,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
                                 let alertController = UIAlertController(title: vMSG, message: vMSGDesc, preferredStyle: .alert)
                                 
                                 let sendButton = UIAlertAction(title: "Download", style: .default, handler: { (action) -> Void in
-                                  //  open(scheme: "https://www.google.com/")
+                                    //  open(scheme: "https://www.google.com/")
                                 })
                                 
                                 
@@ -561,7 +560,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
                                 
                                 alertController.addAction(cancelButton)
                                 
-                                self.window?.rootViewController?.present(alertController, animated: true, completion: nil)
+                               // self.window?.rootViewController?.present(alertController, animated: true, completion: nil)
                             }
                         }
                         
@@ -626,7 +625,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
         
         return dict
     }
-   
+    
     //MARK:-------------------------Check App Langauge---------------------------------------
     func checkAppLanguage() -> String {
         // Get selectedLanguage for UserDefault  Vikram Singh depawat
@@ -640,5 +639,4 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
         }
         return lang
     }
-}
-
+ }

@@ -42,7 +42,7 @@ class PickUPRideVC: UIViewController , GMSMapViewDelegate , UNUserNotificationCe
     var driverMaker = GMSMarker()
     var marker_pick = GMSMarker()
     var bounds = GMSCoordinateBounds()
-
+    
     var addressDrop : String!
     
     var is_fill = Bool()
@@ -80,7 +80,7 @@ class PickUPRideVC: UIViewController , GMSMapViewDelegate , UNUserNotificationCe
         id_booking = AppDelegateVariable.appDelegate.id_booking as String
         
         cordinatePick = AppDelegateVariable.appDelegate.codrdinatePick
-
+        
         //  Map View
         
         let camera = GMSCameraPosition.camera(withLatitude: cordinatePick.latitude, longitude: cordinatePick.longitude, zoom: 10.0)
@@ -133,25 +133,42 @@ class PickUPRideVC: UIViewController , GMSMapViewDelegate , UNUserNotificationCe
         payPalConfig.merchantUserAgreementURL = URL(string: "https://www.paypal.com/webapps/mpp/ua/useragreement-full")
         payPalConfig.languageOrLocale = Locale.preferredLanguages[0]
         payPalConfig.payPalShippingAddressOption = .payPal;
-
+        
         //  self.environment = PayPalEnvironmentSandbox
-    
+        
         //  apper
         
         PayPalMobile.preconnect(withEnvironment: environment)
-     
+        
         //self.total_amout = "20"
         //self.perform(#selector(pay), with: "", afterDelay: 0)
-
+        
+        if AppDelegateVariable.appDelegate.strLanguage == "ar"
+        {
+            
+            let array : Array
+                = ["مكالمة","إلغاء","شارك","ركوب الحية","أكثر من","كيف كانت رحلتك؟"];
+            
+            for i in 0 ... 5
+            {
+                let lbl : UILabel = self.view .viewWithTag(200+i) as! UILabel;
+                lbl.text = array[i]
+            }
+            
+            lbltitle.text = "ركوب لاقط"
+            lbltitle.textAlignment  = NSTextAlignment.right
+            
+            tapButtonOK .setTitle("حسنا", for: .normal);
+        }
     }
     
     override func viewWillAppear(_ animated: Bool) {
         
         PayPalMobile.preconnect(withEnvironment: environment)
-  
+        
     }
     
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
@@ -249,10 +266,10 @@ class PickUPRideVC: UIViewController , GMSMapViewDelegate , UNUserNotificationCe
                     self.lbl_dropAddress.text =  self.addressDrop
                     
                     self.lbl_Amount.text = (String(format: "%@ SAR", (((dataDictionary.object(forKey: "result") as! NSArray) .object(at: 0) as! NSDictionary ) .object(forKey: "amount")) as! CVarArg)) as String
-
+                    
                     self.total_amout =  (String(format: "%@", (((dataDictionary.object(forKey: "result") as! NSArray) .object(at: 0) as! NSDictionary ) .object(forKey: "amount")) as! CVarArg)) as String
                     
-                    UIView.animate(withDuration: 0.2, animations: { 
+                    UIView.animate(withDuration: 0.2, animations: {
                         self.viewBIll.frame = CGRect(x: 0, y: 64, width: Constant.ScreenSize.SCREEN_WIDTH, height: Constant.ScreenSize.SCREEN_HEIGHT-64)
                     })
                 }
@@ -483,7 +500,7 @@ class PickUPRideVC: UIViewController , GMSMapViewDelegate , UNUserNotificationCe
                     
                     let dropAddress : String =  (((((dic.object(forKey: "legs") as! NSArray) .object(at: 0) ) as AnyObject)
                         .object(forKey: "start_address")) as? String)!
-                   
+                    
                     self.addressDrop = dropAddress
                     
                     if (self.is_path == true)
@@ -493,21 +510,21 @@ class PickUPRideVC: UIViewController , GMSMapViewDelegate , UNUserNotificationCe
                         self.is_path = false
                         self.showPath(polyStr: polyString)
                         
-                       
-
+                        
+                        
                     }
                     
                     if (self.is_Ride_Start == true)
                     {
                         self.perform(#selector(self.startRide), with: "", afterDelay: 1)
-
+                        
                         self.getHeadingForDirection(fromCoordinate: self.driverMaker.position, toCoordinate: (self.mapView.myLocation?.coordinate)!, marker: self.driverMaker)
                         
                         self.driverMaker.position = (self.mapView.myLocation?.coordinate)!
                         self.driverMaker.map = self.mapView
                         
                     }
-                
+                    
                 }
             }
             catch
@@ -519,9 +536,9 @@ class PickUPRideVC: UIViewController , GMSMapViewDelegate , UNUserNotificationCe
     
     func startRide()
     {
-   
+        
         self.getPolylineRoute(from:(self.mapView.myLocation?.coordinate)!, to: cordinateDestination)
-
+        
     }
     
     
@@ -547,19 +564,19 @@ class PickUPRideVC: UIViewController , GMSMapViewDelegate , UNUserNotificationCe
         mapView.animate(with: GMSCameraUpdate.fit(bounds, withPadding: 100))
     }
     
-
     
     
-         func getTopViewController() -> UIViewController?{
-            if var topController = UIApplication.shared.keyWindow?.rootViewController
+    
+    func getTopViewController() -> UIViewController?{
+        if var topController = UIApplication.shared.keyWindow?.rootViewController
+        {
+            while (topController.presentedViewController != nil)
             {
-                while (topController.presentedViewController != nil)
-                {
-                    topController = topController.presentedViewController!
-                }
-                return topController
+                topController = topController.presentedViewController!
             }
-            return nil
+            return topController
+        }
+        return nil
     }
     
     
@@ -630,34 +647,40 @@ class PickUPRideVC: UIViewController , GMSMapViewDelegate , UNUserNotificationCe
         
         if (title == "arrived_driver")
         {
-           
+            
         }
-       
+        
         if (title == "start_ride")
         {
-           self.is_path = true
-           self.is_Ride_Start = true
-           self.getPolylineRoute(from: cordinatePick, to: cordinateDestination)
+            self.is_path = true
+            self.is_Ride_Start = true
+            self.getPolylineRoute(from: cordinatePick, to: cordinateDestination)
         }
-       
+        
         if (title == "end_ride")
         {
-           self.is_complete = true
-           self.is_Ride_Start = false
-           self.getBockingDetail()
-           lbltitle.text = "Your Bill"
+            self.is_complete = true
+            self.is_Ride_Start = false
+            self.getBockingDetail()
+            lbltitle.text = "Your Bill"
+            
+            if AppDelegateVariable.appDelegate.strLanguage == "ar"
+            {
+                lbltitle.text = "فاتورتك";
+            }
         }
     }
     
     @IBAction func tapButtonOk(_ sender: Any)
     {
-      //  http://taxiappsourcecode.com/api/index.php?option=add_booking_review
+        //  http://taxiappsourcecode.com/api/index.php?option=add_booking_review
         
-      //  booking_id=, review_by= Driver/Rider, rider_id=scientificwebs, driver_id, rating= 1 to 5 [ 1 or 2 or 3 or 4 or 5 ], review_text
+        //  booking_id=, review_by= Driver/Rider, rider_id=scientificwebs, driver_id, rating= 1 to 5 [ 1 or 2 or 3 or 4 or 5 ], review_text
         
         if (rating.rating > 0)
         {
-            self.perform(#selector(pay), with: "", afterDelay: 0)
+            self.sendFeedBack()
+//          self.perform(#selector(pay), with: "", afterDelay: 0)
         }
         else
         {
@@ -689,7 +712,7 @@ class PickUPRideVC: UIViewController , GMSMapViewDelegate , UNUserNotificationCe
             
             if status == true
             {
-                iToast.makeText(" Review Completed ").show()
+                //iToast.makeText(" Review Completed ").show()
                 
                 AppDelegateVariable.appDelegate.id_booking = "false";
                 
@@ -705,7 +728,7 @@ class PickUPRideVC: UIViewController , GMSMapViewDelegate , UNUserNotificationCe
     }
     
     // MARK: Other Usable Methods
-
+    
     func pay()
     {
         
@@ -752,7 +775,7 @@ class PickUPRideVC: UIViewController , GMSMapViewDelegate , UNUserNotificationCe
         paymentViewController.dismiss(animated: true, completion: nil)
         
         Utility.sharedInstance.showAlert(kAPPName, msg: "Payment Unsucess", controller: self)
-
+        
     }
     
     func payPalPaymentViewController(_ paymentViewController: PayPalPaymentViewController, didComplete completedPayment: PayPalPayment) {
@@ -772,8 +795,6 @@ class PickUPRideVC: UIViewController , GMSMapViewDelegate , UNUserNotificationCe
             //self.subscribeTheItemsPurchase(transIds: (dict_details.value(forKey: "response") as AnyObject).value(forKey: "id") as! String)
         })
     }
-    
-    
     
 }
 

@@ -17,11 +17,14 @@ class ViewDetailCar: UIView {
     @IBOutlet var cat_type: UILabel!
     @IBOutlet var viewMid: UIView!
     
+   
     override func draw(_ rect: CGRect) {
    
         viewMid.layer.cornerRadius = 5;
     }
    
+    
+    
     @IBAction func tapCross(_ sender: Any) {
         
         self.removeFromSuperview()

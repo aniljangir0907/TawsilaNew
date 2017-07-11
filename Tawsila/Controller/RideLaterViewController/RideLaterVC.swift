@@ -4,7 +4,7 @@
 //
 //  Created by Sanjay on 11/06/17.
 //  Copyright © 2017 scientificweb. All rights reserved.
-// // // //
+//
 
 import UIKit
 import GoogleMaps
@@ -31,12 +31,14 @@ class RideLaterVC: UIViewController ,GMSMapViewDelegate , GMSAutocompleteViewCon
     @IBOutlet var btnSchduleRide: UIButton!
     
     var pickUpAddress = String ()
-    
+    var car_type = String()
+
     @IBOutlet var lblDestination: UILabel!
     @IBOutlet var lblLocatoin: UILabel!
     
     var pickUpCordinate : CLLocationCoordinate2D!
     var destinationCordinate : CLLocationCoordinate2D!
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -62,6 +64,7 @@ class RideLaterVC: UIViewController ,GMSMapViewDelegate , GMSAutocompleteViewCon
     @IBAction func tapBack(_ sender: Any) {
         self.navigationController?.popViewController(animated: true)
     }
+    
     
     @IBAction func tapPickDate(_ sender: UIButton)
     {
@@ -123,7 +126,6 @@ class RideLaterVC: UIViewController ,GMSMapViewDelegate , GMSAutocompleteViewCon
             let dateFormatter = DateFormatter()
             dateFormatter.dateFormat = "dd/mm/yyyy"
             pickDate.text = dateFormatter.string(from:sender.date as Date)
-            
         }
         else
         {
@@ -133,7 +135,6 @@ class RideLaterVC: UIViewController ,GMSMapViewDelegate , GMSAutocompleteViewCon
         }
         
         // dateTextField.text = dateFormatter.string(from: sender.date)
-        
     }
     
     func donePicker()
@@ -156,7 +157,8 @@ class RideLaterVC: UIViewController ,GMSMapViewDelegate , GMSAutocompleteViewCon
     @IBAction func tapPickTime(_ sender: Any) {
     }
     
-    @IBAction func tapLocation(_ sender: Any){
+    @IBAction func tapLocation(_ sender: Any)
+    {
         acController = GMSAutocompleteViewController()
         present(acController, animated: true, completion: nil)
         acController.delegate = self
@@ -172,9 +174,41 @@ class RideLaterVC: UIViewController ,GMSMapViewDelegate , GMSAutocompleteViewCon
         
     }
     
-    
-    
     @IBAction func tapScheduleRide(_ sender: Any)
+    {
+        if pickDate.text == "Pick Date" {
+            
+            Utility.sharedInstance.showAlert(kAPPName, msg: "Select Date First" as String, controller: self)
+
+            return;
+        }
+        
+        if pickTime.text == "Pick Time" {
+            
+            Utility.sharedInstance.showAlert(kAPPName, msg: "Select Time First" as String, controller: self)
+            
+            return;
+        }
+        
+        if lblDestination.text == "Select Destination" {
+            
+            Utility.sharedInstance.showAlert(kAPPName, msg: "Select Destination Locatoin First" as String, controller: self)
+            
+            return;
+        }
+        
+        if lblLocatoin.text == "Pickup Location" {
+            
+            Utility.sharedInstance.showAlert(kAPPName, msg: "Select Pickup Location First" as String, controller: self)
+            
+            return;
+        }
+        
+        
+       self.FireAPI()
+    }
+    
+    func FireAPI()
     {
         
         let random : String = "24324323"
@@ -189,57 +223,63 @@ class RideLaterVC: UIViewController ,GMSMapViewDelegate , GMSAutocompleteViewCon
         dic.setValue("", forKey: "area")
         dic.setValue("", forKey: "landmark")
         dic.setValue(lblLocatoin.text, forKey: "pickup_address")
-        dic.setValue("sedan", forKey: "taxi_type")
-        dic.setValue("", forKey: "departure_time")
-        dic.setValue("", forKey: "departure_date")
-        dic.setValue("", forKey: "flight_number")
-        dic.setValue("", forKey: "package")
-        dic.setValue("", forKey: "promo_code")
+        dic.setValue(self.car_type, forKey: "taxi_type")
+        // dic.setValue("", forKey: "departure_time")
+        // dic.setValue("", forKey: "departure_date")
+        // dic.setValue("", forKey: "flight_number")
+        // dic.setValue("", forKey: "package")
+        // dic.setValue("", forKey: "promo_code")
         dic.setValue("15", forKey: "distance")
         dic.setValue("150", forKey: "amount")
         dic.setValue("jaipur", forKey: "address")
-        dic.setValue("", forKey: "transfer")
+        // dic.setValue("", forKey: "transfer")
         dic.setValue("cash", forKey: "payment_media")
-        dic.setValue("15", forKey: "km")
-        dic.setValue("", forKey: "timetype")
+        dic.setValue("150", forKey: "km")
+        // dic.setValue("", forKey: "timetype")
         dic.setValue(String (format: "%f", pickUpCordinate.latitude), forKey: "lat")
         dic.setValue(String (format: "%f", pickUpCordinate.longitude), forKey: "long")
         dic.setValue(random, forKey: "random")
-        dic.setValue(AppDelegateVariable.appDelegate.deviceTokenStr, forKey: "device_id")
+        dic.setValue(FCM_TOKEN, forKey: "device_id")
         
         // http://taxiappsourcecode.com/api/index.php?
         RappleActivityIndicatorView.startAnimatingWithLabel("Processing...", attributes: RappleAppleAttributes)
         
-        var parameterString = String(format : "index.php?booking_request_schedule")
+        var parameterString = String(format : "booking_request_schedule")
         
         for (key, value) in dic
         {
             parameterString = String (format: "%@&%@=%@", parameterString,key as! CVarArg,value as! CVarArg)
-            
-            // println("\(key) -> \(value)")
         }
         
-        Utility.sharedInstance.postDataInDataForm(header: parameterString, inVC: self) { (dataDictionary, msg, status) in
+        
+        Utility.sharedInstance.postDataInJson(header: parameterString,  withParameter:dic ,inVC: self) { (dataDictionary, msg, status) in
             
-            RappleActivityIndicatorView.stopAnimation()
-            
+            if msg == "Booking scheduled"
+            {
+                self.pickTime.text = "Pick Time"
+                self.pickDate.text = "Pick Date"
+                self.lblLocatoin.text = "Pickup Location"
+                self.lblDestination.text = "Select Destination"
+            }
             
             if status == true
             {
-             iToast.makeText(" Request Submitted")
-            
+                var userDict = (dataDictionary.object(forKey: "result") as! NSDictionary).mutableCopy() as! NSMutableDictionary
+                userDict = AppDelegateVariable.appDelegate.convertAllDictionaryValueToNil(userDict)
+                
+                self.pickTime.text = "Pick Time"
+                self.pickDate.text = "Pick Date"
+                self.lblLocatoin.text = "Pickup Location"
+                self.lblDestination.text = "Select Destination"
             }
             else
-                
             {
                 Utility.sharedInstance.showAlert(kAPPName, msg: msg as String, controller: self)
             }
         }
-
         
-      
+
     }
-    
     
     func viewController(_ viewController: GMSAutocompleteViewController, didAutocompleteWith place: GMSPlace)
     {

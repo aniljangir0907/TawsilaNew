@@ -32,7 +32,7 @@ class SignInOrCreateNewAccount: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationController?.navigationBar.isHidden = true
-        AppDelegateVariable.appDelegate.checkNewVerisonAvailabel(viewController: self)
+        // AppDelegateVariable.appDelegate.checkNewVerisonAvailabel(viewController: self)
       
     }
     override func viewWillAppear(_ animated: Bool) {

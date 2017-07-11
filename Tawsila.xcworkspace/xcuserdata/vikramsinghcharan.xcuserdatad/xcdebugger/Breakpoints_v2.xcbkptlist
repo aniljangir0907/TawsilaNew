@@ -15,7 +15,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "213"
             endingLineNumber = "213"
-            landmarkName = "actionBackButton(_:)"
+            landmarkName = "backNavigationButton()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -31,7 +31,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "222"
             endingLineNumber = "222"
-            landmarkName = "setPushViewTransition(_:)"
+            landmarkName = "actionBackButton(_:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -42,13 +42,45 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Tawsila/Appdelegate/AppDelegate.swift"
-            timestampString = "519924460.753252"
+            timestampString = "520716377.329962"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "541"
-            endingLineNumber = "541"
-            landmarkName = "checkAppLanguage()"
+            startingLineNumber = "552"
+            endingLineNumber = "552"
+            landmarkName = "checkNewVerisonAvailabel(viewController:)"
             landmarkType = "7">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Tawsila.AppDelegate.(checkNewVerisonAvailabel (viewController : __ObjC.UIViewController) -&gt; ()).(closure #1).(closure #2)"
+                  moduleName = "Tawsila"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/vikramsinghcharan/Documents/GitHub/TawsilaNew/Tawsila/Appdelegate/AppDelegate.swift"
+                  timestampString = "520721860.001631"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "552"
+                  endingLineNumber = "552"
+                  offsetFromSymbolStart = "5792">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Tawsila.AppDelegate.(checkNewVerisonAvailabel (viewController : __ObjC.UIViewController) -&gt; ()).(closure #1).(closure #2).(closure #2)"
+                  moduleName = "Tawsila"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/vikramsinghcharan/Documents/GitHub/TawsilaNew/Tawsila/Appdelegate/AppDelegate.swift"
+                  timestampString = "520721860.005128"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "554"
+                  endingLineNumber = "554"
+                  offsetFromSymbolStart = "12">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -63,7 +95,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "239"
             endingLineNumber = "239"
-            landmarkName = "setRightToLeftViewTransition(_:)"
+            landmarkName = "setPushViewTransition(_:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -135,8 +167,8 @@
                   symbolName = "Tawsila.AppDelegate.__deallocating_deinit"
                   moduleName = "Tawsila"
                   usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/vikramsinghcharan/Documents/GitHub/Tawsila/Tawsila/Appdelegate/AppDelegate.swift"
-                  timestampString = "519975822.85187"
+                  urlString = "file:///Users/vikramsinghcharan/Documents/GitHub/TawsilaNew/Tawsila/Appdelegate/AppDelegate.swift"
+                  timestampString = "520721860.038025"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "0"
@@ -150,13 +182,13 @@
                   symbolName = "Tawsila.AppDelegate.init () -&gt; Tawsila.AppDelegate"
                   moduleName = "Tawsila"
                   usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/vikramsinghcharan/Documents/GitHub/Tawsila/Tawsila/Appdelegate/AppDelegate.swift"
-                  timestampString = "519975822.854284"
+                  urlString = "file:///Users/vikramsinghcharan/Documents/GitHub/TawsilaNew/Tawsila/Appdelegate/AppDelegate.swift"
+                  timestampString = "520721860.040746"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "21"
-                  endingLineNumber = "21"
-                  offsetFromSymbolStart = "34">
+                  startingLineNumber = "29"
+                  endingLineNumber = "29"
+                  offsetFromSymbolStart = "27">
                </Location>
                <Location
                   shouldBeEnabled = "Yes"
@@ -165,8 +197,8 @@
                   symbolName = "Tawsila.AppDelegate.__allocating_init () -&gt; Tawsila.AppDelegate"
                   moduleName = "Tawsila"
                   usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/vikramsinghcharan/Documents/GitHub/Tawsila/Tawsila/Appdelegate/AppDelegate.swift"
-                  timestampString = "519975822.856832"
+                  urlString = "file:///Users/vikramsinghcharan/Documents/GitHub/TawsilaNew/Tawsila/Appdelegate/AppDelegate.swift"
+                  timestampString = "520721860.044593"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "0"
@@ -180,15 +212,79 @@
                   symbolName = "main"
                   moduleName = "Tawsila"
                   usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/vikramsinghcharan/Documents/GitHub/Tawsila/Tawsila/Appdelegate/AppDelegate.swift"
-                  timestampString = "519975822.859408"
+                  urlString = "file:///Users/vikramsinghcharan/Documents/GitHub/TawsilaNew/Tawsila/Appdelegate/AppDelegate.swift"
+                  timestampString = "520721860.048203"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "19"
-                  endingLineNumber = "19"
+                  startingLineNumber = "27"
+                  endingLineNumber = "27"
                   offsetFromSymbolStart = "4">
                </Location>
             </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Tawsila/Appdelegate/AppDelegate.swift"
+            timestampString = "520714650.864503"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "58"
+            endingLineNumber = "58"
+            landmarkName = "application(_:didFinishLaunchingWithOptions:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Tawsila.AppDelegate.application (__ObjC.UIApplication, didFinishLaunchingWithOptions : Swift.Optional&lt;Swift.Dictionary&lt;__C.UIApplicationLaunchOptionsKey, Any&gt;&gt;) -&gt; Swift.Bool"
+                  moduleName = "Tawsila"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/vikramsinghcharan/Documents/GitHub/TawsilaNew/Tawsila/Appdelegate/AppDelegate.swift"
+                  timestampString = "520721860.059294"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "58"
+                  endingLineNumber = "58"
+                  offsetFromSymbolStart = "725">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Tawsila.AppDelegate.(application (__ObjC.UIApplication, didFinishLaunchingWithOptions : Swift.Optional&lt;Swift.Dictionary&lt;__C.UIApplicationLaunchOptionsKey, Any&gt;&gt;) -&gt; Swift.Bool).(implicit closure #1)"
+                  moduleName = "Tawsila"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/vikramsinghcharan/Documents/GitHub/TawsilaNew/Tawsila/Appdelegate/AppDelegate.swift"
+                  timestampString = "520721860.063137"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "58"
+                  endingLineNumber = "58"
+                  offsetFromSymbolStart = "12">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Tawsila/Controller/MyRides/MyRidesVC.swift"
+            timestampString = "520719649.581105"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "90"
+            endingLineNumber = "90"
+            landmarkName = "tableView(_:cellForRowAt:)"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

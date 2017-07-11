@@ -15,7 +15,9 @@ target 'Tawsila' do
   pod 'Firebase/Core'	
   pod 'Firebase/Messaging'
   pod 'PayPal-iOS-SDK'
+  pod 'SwiftySound'
   
+
   # Pods for Tawsila
 
   target 'TawsilaTests' do

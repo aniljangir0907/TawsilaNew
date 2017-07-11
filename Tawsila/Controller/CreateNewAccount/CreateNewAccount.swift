@@ -93,8 +93,8 @@ class CreateNewAccount: UIViewController {
                 return
             }
             if (AppDelegateVariable.appDelegate.isValidMobileNumber(txtMobile.text!)==false){
-                Utility.sharedInstance.showAlert("Alert", msg: "Please enter 10 digit mobile number.", controller: self)
-                return
+               // Utility.sharedInstance.showAlert("Alert", msg: "Please enter 10 digit mobile number.", controller: self)
+               // return
             }
         }
         else{
@@ -127,8 +127,9 @@ class CreateNewAccount: UIViewController {
                 return
             }
             if (AppDelegateVariable.appDelegate.isValidMobileNumber(txtMobileAr.text!)==false){
-                Utility.sharedInstance.showAlert("إنذار", msg: "Please enter 10 digit mobile number.", controller: self)
-                return
+                
+                //Utility.sharedInstance.showAlert("إنذار", msg: "Please enter 10 digit mobile number.", controller: self)
+                //return
             }
         }
     }
@@ -187,8 +188,14 @@ class CreateNewAccount: UIViewController {
                 var userDict = ((dataDictionary.object(forKey: "result") as! NSArray).object(at: 0) as! NSDictionary).mutableCopy() as! NSMutableDictionary
                 userDict = AppDelegateVariable.appDelegate.convertAllDictionaryValueToNil(userDict)
                 
+                let user_id : String = userDict .object(forKey: "id") as! String
+
                 USER_DEFAULT.set("1", forKey: "isLogin")
                 USER_DEFAULT.set(userDict, forKey: "userData")
+                
+                USER_DEFAULT.set(user_id, forKey: "user_id")
+                USER_DEFAULT.set(self.txtUserFullName.text, forKey: "user_name")
+         
 //                let verification = ConfirmationScreen()
 //                self.setPushViewTransition(verification)
                 

@@ -10,26 +10,47 @@ import UIKit
 
 class TransctionViewController: UIViewController {
 
+    @IBOutlet weak var viewEnglish: UIView!
     @IBOutlet weak var viewmain: UIView!
     @IBOutlet weak var lblStatus: UILabel!
     @IBOutlet weak var lblAmount: UILabel!
     @IBOutlet weak var lblPaymentID: UILabel!
+    @IBOutlet weak var viewArabic: UIView!
+    @IBOutlet weak var viewmainAr: UIView!
+    @IBOutlet weak var lblStatusAr: UILabel!
+    @IBOutlet weak var lblAmountAr: UILabel!
+    @IBOutlet weak var lblPaymentIDAr: UILabel!
+    var payAmount = String()
+    var payId = String()
+    //var payAmount = String()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
         // Do any additional setup after loading the view.
     }
 
+    override func viewWillAppear(_ animated: Bool) {
+        setShowAndHideViews(viewEnglish, vArb: viewArabic)
+        if AppDelegateVariable.appDelegate.strLanguage == "en" {
+            lblAmount.text = payAmount
+            lblPaymentID.text = payId
+        }
+        else{
+            lblAmountAr.text = payAmount
+            lblPaymentIDAr.text = payId
+        }
+    }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
     
-
     @IBAction func actionBack(_ sender: Any) {
+    actionBackButton(sender)
     }
     
     @IBAction func actionOk(_ sender: Any) {
+          actionBackButton(sender)
     }
     /*
     // MARK: - Navigation

@@ -121,12 +121,13 @@ class HomeViewControlle: UIViewController ,GMSMapViewDelegate ,SlideNavigationCo
         RappleActivityIndicatorView.startAnimatingWithLabel("Processing...", attributes: RappleAppleAttributes)
         self.getCarsAPI()
         
-        // self.gotoNextView()
+        //self.gotoNextView()
         
         let center = UNUserNotificationCenter.current()
         center.delegate = self
         center.requestAuthorization(options:[.badge, .alert, .sound]) { (granted, error) in
-            // Enable or disable features based on authorization.
+        
+        // Enable or disable features based on authorization.
         }
     }
     
@@ -150,6 +151,7 @@ class HomeViewControlle: UIViewController ,GMSMapViewDelegate ,SlideNavigationCo
             viewEstimate.isHidden = true
         }
         else{
+            
             viewPickAddressAr.layer.borderColor = UIColor.lightGray.cgColor
             viewPickAddressAr.layer.borderWidth = 1
             
@@ -166,6 +168,7 @@ class HomeViewControlle: UIViewController ,GMSMapViewDelegate ,SlideNavigationCo
             viewEstimateAr.isHidden = true
         }
     }
+
     override func viewWillAppear(_ animated: Bool) {
         
         setShowAndHideViews(viewEnglish, vArb: viewArabic)
@@ -175,14 +178,21 @@ class HomeViewControlle: UIViewController ,GMSMapViewDelegate ,SlideNavigationCo
             self.tapCacelBooking("");
         }
         
+        AppDelegateVariable.appDelegate.is_loadCar = 0
+        self.getCarsAPI()
+    }
+
+    override func viewDidDisappear(_ animated: Bool)
+    {
+        super .viewWillDisappear(true)
+        AppDelegateVariable.appDelegate.is_loadCar = 1
     }
     
-    // MARK: - Load Cars and Car Locaions
     // MARK:
+    // MARK: - Load Cars and Car Locaions
     
     func getCarsAPI()
     {
-        
         Utility.sharedInstance.postDataInDataForm(header: "get_cars", inVC: self) { (dataDictionary, msg, status) in
             
             if(self.onetime == 0)
@@ -190,14 +200,10 @@ class HomeViewControlle: UIViewController ,GMSMapViewDelegate ,SlideNavigationCo
                 let array : NSArray = (dataDictionary.object(forKey:"result") as! NSArray)
                 self.arrCars = array
                 self.onetime = 1
-                self.perform( #selector(self.getCarsLocations), with: 1, afterDelay: 0)
                 self.loadCars(arrayCars:array)
+                self.perform( #selector(self.getCarsLocations), with: 1, afterDelay: 0)
             }
         }
-        
-        
-        
-        
     }
     
     func getCarsLocations()
@@ -215,6 +221,7 @@ class HomeViewControlle: UIViewController ,GMSMapViewDelegate ,SlideNavigationCo
         {
             parameterString = String (format: "%@&%@=%@", parameterString,key as! CVarArg,value as! CVarArg)
         }
+        
         print(parameterString)
         
         Utility.sharedInstance.postDataInDataForm(header: parameterString, inVC: self) { (dataDictionary, msg, status) in
@@ -237,28 +244,24 @@ class HomeViewControlle: UIViewController ,GMSMapViewDelegate ,SlideNavigationCo
                 }
                 else if self.tagCarType == 3
                 {
-                    icon =  #imageLiteral(resourceName: "car_mini")
+                    icon =  #imageLiteral(resourceName: "car_mini_icon")
                 }
                 else
                 {
                     icon = #imageLiteral(resourceName: "car_other")
                 }
-                
                 if self.tagCarType != self.tempTag
                 {
                     self.mapView.clear()
                     self.tempTag = self.tagCarType
                 }
-                
-                
+
                 let dataArray:NSArray = (dataDictionary as NSDictionary).object(forKey: "result") as! NSArray
-                
                 self.initialRate = ((dataArray.object(at: 0) as! NSDictionary) .object(forKey: "intailrate") as! String)
                 self.standredRate = ((dataArray.object(at: 0) as! NSDictionary) .object(forKey: "standardrate") as! String)
                 
                 for  i in 0 ... (dataArray.count - 1)
                 {
-                    
                     let lat = ((dataArray.object(at: i) as! NSDictionary) .object(forKey: "latitude") as! String)
                     let lon = ((dataArray.object(at: i) as! NSDictionary) .object(forKey: "longitude") as! String)
                     var cordinate = CLLocationCoordinate2D ()
@@ -283,7 +286,6 @@ class HomeViewControlle: UIViewController ,GMSMapViewDelegate ,SlideNavigationCo
                             marker.position = cordinate
                             marker.map = self.mapView
                             self.dictMarker .setObject(marker, forKey: id_driver as NSCopying)
-                            
                         }
                     }
                     else
@@ -298,7 +300,6 @@ class HomeViewControlle: UIViewController ,GMSMapViewDelegate ,SlideNavigationCo
                         self.getHeadingForDirection(fromCoordinate: marker.position, toCoordinate: (self.mapView.myLocation?.coordinate)!, marker: marker)
                     }
                 }
-                
             }
             else
                 
@@ -307,7 +308,6 @@ class HomeViewControlle: UIViewController ,GMSMapViewDelegate ,SlideNavigationCo
                 // Utility.sharedInstance.showAlert(kAPPName, msg: msg as String, controller: self)
             }
         }
-        
     }
     
     // MARK:
@@ -318,8 +318,6 @@ class HomeViewControlle: UIViewController ,GMSMapViewDelegate ,SlideNavigationCo
         let wd = 80
         
         for i in 0 ... (self.arrCars.count - 1) {
-            
-            
             
             let dict : NSDictionary = self.arrCars .object(at: i) as! NSDictionary
             
@@ -487,7 +485,7 @@ class HomeViewControlle: UIViewController ,GMSMapViewDelegate ,SlideNavigationCo
         
         self.tagBookNow = 0;
         viewEstimate.isHidden = true
-        
+        lblDestinationAddress.text = "Select Destination"
         
         if AppDelegateVariable.appDelegate.strLanguage == "en" {
             viewDestinationAddress.isHidden = true
@@ -540,12 +538,10 @@ class HomeViewControlle: UIViewController ,GMSMapViewDelegate ,SlideNavigationCo
         let obj : RideLaterVC = RideLaterVC(nibName: "RideLaterVC", bundle: nil)
         obj.pickUpAddress = lblPickAddress.text!
         obj.pickUpCordinate = pickUpCordinate
+        obj.car_type = (self.arrCars.object(at: tagCarType) as! NSDictionary ) .object(forKey: "car_type") as! String
         navigationController?.pushViewController(obj, animated: true)
         
     }
-    
-    
-    
     
     
     // MARK:
@@ -644,9 +640,7 @@ class HomeViewControlle: UIViewController ,GMSMapViewDelegate ,SlideNavigationCo
         
         if self.tagBookNow == 2
         {
-            
             let device_token : String = USER_DEFAULT .object(forKey: "FCM_TOKEN") as! String
-
             
             AppDelegateVariable.appDelegate.codrdinateDestiantion = destinationCordinate
             AppDelegateVariable.appDelegate.codrdinatePick = pickUpCordinate
@@ -728,7 +722,6 @@ class HomeViewControlle: UIViewController ,GMSMapViewDelegate ,SlideNavigationCo
                     self.showWaitingView()
                     let id_boking : String =  (String(format: "%@", dataDictionary.object(forKey: "booking_id") as! CVarArg)) as String
                     AppDelegateVariable.appDelegate.id_booking = id_boking
-                    
                     // self .perform( #selector(self.showWaitingView), with: 1, afterDelay: 0)
                 }
                 else
@@ -770,7 +763,6 @@ class HomeViewControlle: UIViewController ,GMSMapViewDelegate ,SlideNavigationCo
                     if (routes?.count)! > 0
                     {
                         
-                        
                         let overview_polyline : NSDictionary = (routes?[0] as? NSDictionary)!
                         
                         let dic : NSDictionary = overview_polyline as Any as! NSDictionary
@@ -792,7 +784,6 @@ class HomeViewControlle: UIViewController ,GMSMapViewDelegate ,SlideNavigationCo
                         self.lblEstimatedFare.text =  String (format: "%.1f SAR", (self.initialRate as NSString).floatValue + (self.standredRate as NSString).floatValue * Float32(doubleValue) )
                         self.lblEstimatedTime.text = estTime
                         
-                        
                     }
                     else
                     {
@@ -804,7 +795,6 @@ class HomeViewControlle: UIViewController ,GMSMapViewDelegate ,SlideNavigationCo
             {
                 print("error in JSONSerialization")
             }
-            
         }
     }
     
@@ -832,35 +822,30 @@ class HomeViewControlle: UIViewController ,GMSMapViewDelegate ,SlideNavigationCo
         
         mapView.animate(with: GMSCameraUpdate.fit(bounds, withPadding: 100))
         self.tagBookNow = 2
-        
+
     }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
     
-    
-    
     // MARK:
     // MARK: - Tap Search
     
     @IBAction func tapSearch(_ sender: Any) {
         
-        if tagBookNow != 2 {
-            
+        
             acController = GMSAutocompleteViewController()
             acController.delegate = self
             present(acController, animated: true, completion: nil)
-        }
+
     }
     
+    // MARK:
     // MARK: - Tap Search
     
     func viewController(_ viewController: GMSAutocompleteViewController, didAutocompleteWith place: GMSPlace)
     {
-        // print("Place name: \(place.name)")
-        // print("Place address: \(place.formattedAddress)")
-        // print("Place attributions: \(place.attributions)")
         let camera = GMSCameraPosition.camera(withLatitude: place.coordinate.latitude, longitude: place.coordinate.longitude, zoom: 10.0)
         mapView.camera = camera
         
@@ -870,7 +855,8 @@ class HomeViewControlle: UIViewController ,GMSMapViewDelegate ,SlideNavigationCo
         }
         else
         {
-          
+            self.mapView.clear()
+            
             lblDestinationAddress.text = place.formattedAddress
             destinationCordinate = place.coordinate
             
@@ -891,10 +877,9 @@ class HomeViewControlle: UIViewController ,GMSMapViewDelegate ,SlideNavigationCo
             self.tagBookNow = 2
             
             getPolylineRoute(from: pickUpCordinate, to: destinationCordinate)
-
+            
         }
         dismiss(animated: true, completion: nil)
-        
     }
     
     func viewController(_ viewController: GMSAutocompleteViewController, didFailAutocompleteWithError error: Error) {
@@ -944,7 +929,6 @@ class HomeViewControlle: UIViewController ,GMSMapViewDelegate ,SlideNavigationCo
     func hideView() {
         viewWaiting.removeFromSuperview()
     }
-    
     
     func getHeadingForDirection(fromCoordinate fromLoc: CLLocationCoordinate2D, toCoordinate toLoc: CLLocationCoordinate2D , marker : GMSMarker)
     {
@@ -997,7 +981,6 @@ class HomeViewControlle: UIViewController ,GMSMapViewDelegate ,SlideNavigationCo
         
         if title == "accept_booking"
         {
-            
             let obj : PickUPRideVC = PickUPRideVC(nibName: "PickUPRideVC", bundle: nil)
             self.getTopViewController()?.present(obj, animated: true, completion: nil)
             
@@ -1023,6 +1006,7 @@ class HomeViewControlle: UIViewController ,GMSMapViewDelegate ,SlideNavigationCo
     
     
     public func getTopViewController() -> UIViewController?{
+     
         if var topController = UIApplication.shared.keyWindow?.rootViewController
         {
             while (topController.presentedViewController != nil)
@@ -1031,7 +1015,8 @@ class HomeViewControlle: UIViewController ,GMSMapViewDelegate ,SlideNavigationCo
             }
             return topController
         }
-        return nil}
+        return nil
+    }
 }
 
 extension Int
