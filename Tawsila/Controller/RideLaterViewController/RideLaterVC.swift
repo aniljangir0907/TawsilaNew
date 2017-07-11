@@ -211,36 +211,43 @@ class RideLaterVC: UIViewController ,GMSMapViewDelegate , GMSAutocompleteViewCon
     func FireAPI()
     {
         
+      //  username => Mandatory, purpose => Mandatory [PTPT,AT,HR,OT], pickup_area => Mandatory, pickup_date => Mandatory, drop_area => Mandatory, pickup_time => Mandatory, area, landmark,
+      //  pickup_address => Mandatory, taxi_type => Mandatory, departure_time, departure_date, return_date, flight_number, package, promo_code, distance => Mandatory, amount => Mandatory, address, transfer, payment_media => Mandatory, km, timetype, lat => Mandatory, long => Mandatory, random => 78945662, device_id=> Mandatory
+        
+        
         let random : String = "24324323"
         let dic = NSMutableDictionary()
         
-        dic.setValue("scientificwebs", forKey: "username")
+        dic.setValue(USER_NAME, forKey: "username")
         dic.setValue("PTPT", forKey: "purpose")
         dic.setValue(lblLocatoin.text, forKey: "pickup_area")
         dic.setValue(pickDate.text, forKey: "pickup_date")
         dic.setValue(pickTime.text, forKey: "pickup_time")
         dic.setValue(lblDestination.text, forKey: "drop_area")
-        dic.setValue("", forKey: "area")
-        dic.setValue("", forKey: "landmark")
+       
         dic.setValue(lblLocatoin.text, forKey: "pickup_address")
         dic.setValue(self.car_type, forKey: "taxi_type")
-        // dic.setValue("", forKey: "departure_time")
-        // dic.setValue("", forKey: "departure_date")
-        // dic.setValue("", forKey: "flight_number")
-        // dic.setValue("", forKey: "package")
-        // dic.setValue("", forKey: "promo_code")
+      
         dic.setValue("15", forKey: "distance")
         dic.setValue("150", forKey: "amount")
         dic.setValue("jaipur", forKey: "address")
-        // dic.setValue("", forKey: "transfer")
         dic.setValue("cash", forKey: "payment_media")
         dic.setValue("150", forKey: "km")
-        // dic.setValue("", forKey: "timetype")
         dic.setValue(String (format: "%f", pickUpCordinate.latitude), forKey: "lat")
         dic.setValue(String (format: "%f", pickUpCordinate.longitude), forKey: "long")
         dic.setValue(random, forKey: "random")
         dic.setValue(FCM_TOKEN, forKey: "device_id")
         
+        // dic.setValue("", forKey: "area")
+        // dic.setValue("", forKey: "landmark")
+        // dic.setValue("", forKey: "departure_time")
+        // dic.setValue("", forKey: "departure_date")
+        // dic.setValue("", forKey: "flight_number")
+        // dic.setValue("", forKey: "package")
+        // dic.setValue("", forKey: "promo_code")
+        // dic.setValue("", forKey: "transfer")
+        // dic.setValue("", forKey: "timetype")
+
         // http://taxiappsourcecode.com/api/index.php?
         RappleActivityIndicatorView.startAnimatingWithLabel("Processing...", attributes: RappleAppleAttributes)
         
@@ -250,7 +257,6 @@ class RideLaterVC: UIViewController ,GMSMapViewDelegate , GMSAutocompleteViewCon
         {
             parameterString = String (format: "%@&%@=%@", parameterString,key as! CVarArg,value as! CVarArg)
         }
-        
         
         Utility.sharedInstance.postDataInJson(header: parameterString,  withParameter:dic ,inVC: self) { (dataDictionary, msg, status) in
             
