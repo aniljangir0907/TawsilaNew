@@ -51,6 +51,8 @@
 		81A366CD1F0980E100A08544 /* SettingViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 81A366CC1F0980E100A08544 /* SettingViewController.xib */; };
 		81A366D01F09822600A08544 /* bookingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81A366CE1F09822600A08544 /* bookingViewController.swift */; };
 		81A366D11F09822600A08544 /* bookingViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 81A366CF1F09822600A08544 /* bookingViewController.xib */; };
+		81B0423F1F17EF2C00911BC9 /* GetFreeRides.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81B0423D1F17EF2B00911BC9 /* GetFreeRides.swift */; };
+		81B042401F17EF2C00911BC9 /* GetFreeRides.xib in Resources */ = {isa = PBXBuildFile; fileRef = 81B0423E1F17EF2B00911BC9 /* GetFreeRides.xib */; };
 		81CB2E721EED1BD700D400FC /* CreateNewAccount.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81CB2E701EED1BD700D400FC /* CreateNewAccount.swift */; };
 		81CB2E731EED1BD700D400FC /* CreateNewAccount.xib in Resources */ = {isa = PBXBuildFile; fileRef = 81CB2E711EED1BD700D400FC /* CreateNewAccount.xib */; };
 		81D179F21EF84A3200976349 /* forgotPassword.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81D179F01EF84A3200976349 /* forgotPassword.swift */; };
@@ -190,6 +192,8 @@
 		81A366CC1F0980E100A08544 /* SettingViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SettingViewController.xib; sourceTree = "<group>"; };
 		81A366CE1F09822600A08544 /* bookingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = bookingViewController.swift; sourceTree = "<group>"; };
 		81A366CF1F09822600A08544 /* bookingViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = bookingViewController.xib; sourceTree = "<group>"; };
+		81B0423D1F17EF2B00911BC9 /* GetFreeRides.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GetFreeRides.swift; sourceTree = "<group>"; };
+		81B0423E1F17EF2B00911BC9 /* GetFreeRides.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GetFreeRides.xib; sourceTree = "<group>"; };
 		81CB2E701EED1BD700D400FC /* CreateNewAccount.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CreateNewAccount.swift; path = Tawsila/Controller/CreateNewAccount/CreateNewAccount.swift; sourceTree = SOURCE_ROOT; };
 		81CB2E711EED1BD700D400FC /* CreateNewAccount.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = CreateNewAccount.xib; path = Tawsila/Controller/CreateNewAccount/CreateNewAccount.xib; sourceTree = SOURCE_ROOT; };
 		81D179F01EF84A3200976349 /* forgotPassword.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = forgotPassword.swift; sourceTree = "<group>"; };
@@ -415,7 +419,7 @@
 		5BB10CCE1EEBEAE900F93FBE /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				81A366C21F097DBE00A08544 /* Get Free Rides */,
+				81B0423C1F17EF2B00911BC9 /* Get Free Rides */,
 				81A3669E1F097DB400A08544 /* DriverScreens */,
 				81A366991F097D9E00A08544 /* Contact Us */,
 				814C6FBC1EF048C300985702 /* UITableViewCell */,
@@ -582,13 +586,6 @@
 			path = "PickUp Passenger";
 			sourceTree = "<group>";
 		};
-		81A366C21F097DBE00A08544 /* Get Free Rides */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = "Get Free Rides";
-			sourceTree = "<group>";
-		};
 		81A366C71F097E2D00A08544 /* MyRideCell */ = {
 			isa = PBXGroup;
 			children = (
@@ -596,6 +593,16 @@
 				81A366C91F097E2D00A08544 /* MyRidesTableViewCell.xib */,
 			);
 			path = MyRideCell;
+			sourceTree = "<group>";
+		};
+		81B0423C1F17EF2B00911BC9 /* Get Free Rides */ = {
+			isa = PBXGroup;
+			children = (
+				81B0423D1F17EF2B00911BC9 /* GetFreeRides.swift */,
+				81B0423E1F17EF2B00911BC9 /* GetFreeRides.xib */,
+			);
+			name = "Get Free Rides";
+			path = "../../../../Tawsila/Tawsila/Controller/Get Free Rides";
 			sourceTree = "<group>";
 		};
 		81CB2E6F1EED1B7F00D400FC /* CreateNewAccount */ = {
@@ -1034,6 +1041,7 @@
 				929D98F51EEEB26100A8E598 /* Roboto-BoldItalic.ttf in Resources */,
 				81F2EC091EF18D0D0065D2BD /* LeftMenuViewController.xib in Resources */,
 				81A366CD1F0980E100A08544 /* SettingViewController.xib in Resources */,
+				81B042401F17EF2C00911BC9 /* GetFreeRides.xib in Resources */,
 				814C6FBB1EF048A600985702 /* MyRidesVC.xib in Resources */,
 				929D98FA1EEEB26100A8E598 /* Roboto-MediumItalic.ttf in Resources */,
 				92DEEE7A1EEE8C8B001B5DCA /* HomeViewControlle.xib in Resources */,
@@ -1227,6 +1235,7 @@
 				92D150871F0F361200AAC6A4 /* ContactUs.swift in Sources */,
 				81E76BEC1EEF7F5F00256FD4 /* SettingViewController.swift in Sources */,
 				0439CA7E1EEC50B1008E4F78 /* Utility.swift in Sources */,
+				81B0423F1F17EF2C00911BC9 /* GetFreeRides.swift in Sources */,
 				81A366BA1F097DB400A08544 /* CancelView.swift in Sources */,
 				81A366B41F097DB400A08544 /* AcceptAndDeclineView.swift in Sources */,
 				81F2EC031EF18AA60065D2BD /* SlideNavigationContorllerAnimatorSlideAndFade.m in Sources */,
