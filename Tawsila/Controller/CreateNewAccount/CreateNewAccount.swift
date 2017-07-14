@@ -190,11 +190,11 @@ class CreateNewAccount: UIViewController {
                 
                 let user_id : String = userDict .object(forKey: "id") as! String
 
-                USER_DEFAULT.set("1", forKey: "isLogin")
-                USER_DEFAULT.set(userDict, forKey: "userData")
-                
-                USER_DEFAULT.set(user_id, forKey: "user_id")
-                USER_DEFAULT.set(self.txtUserFullName.text, forKey: "user_name")
+//                USER_DEFAULT.set("1", forKey: "isLogin")
+//                USER_DEFAULT.set(userDict, forKey: "userData")
+//                
+//                USER_DEFAULT.set(user_id, forKey: "user_id")
+//                USER_DEFAULT.set(self.txtUserFullName.text, forKey: "user_name")
          
 //                let verification = ConfirmationScreen()
 //                self.setPushViewTransition(verification)

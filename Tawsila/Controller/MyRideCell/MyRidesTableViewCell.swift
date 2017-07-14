@@ -72,8 +72,8 @@ class MyRidesTableViewCell: UITableViewCell {
                 lblPrcie.isHidden = false
             }
             else if (dic.value(forKey: "status")  as! String == "Scheduled") {
-                imgShowStatus.image = UIImage.init(named: "completed")
-                imgUserProfile.isHidden = false
+                imgShowStatus.image = UIImage.init(named: "scheduled_icon")
+                imgUserProfile.isHidden = true
                 lblPrcie.isHidden = false
             }
             

@@ -1017,6 +1017,15 @@ class HomeViewControlle: UIViewController ,GMSMapViewDelegate ,SlideNavigationCo
         }
         return nil
     }
+    
+    @IBAction func actionShareApp(_ sender:UIButton) {
+        let moveApp: ShareAppViewController = ShareAppViewController(nibName: "ShareAppViewController", bundle: nil)
+        moveApp.view.backgroundColor = UIColor.black.withAlphaComponent(0.5)
+        moveApp.viewBackGround.backgroundColor = UIColor.clear
+        moveApp.modalPresentationStyle = UIModalPresentationStyle.overCurrentContext
+        
+        self.present(moveApp, animated: true, completion: nil)
+    }
 }
 
 extension Int
