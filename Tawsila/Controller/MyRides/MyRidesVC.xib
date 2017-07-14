@@ -47,118 +47,6 @@
                     <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nou-Jd-Edf" userLabel="ViewEnglish">
-                    <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                    <subviews>
-                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="veD-JJ-48P">
-                            <rect key="frame" x="0.0" y="0.0" width="375" height="64"/>
-                            <subviews>
-                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Zn2-VE-U1m">
-                                    <rect key="frame" x="0.0" y="20" width="50" height="44"/>
-                                    <constraints>
-                                        <constraint firstAttribute="width" constant="50" id="qT9-nd-b1h"/>
-                                    </constraints>
-                                    <state key="normal" image="menu"/>
-                                    <connections>
-                                        <action selector="actionLeftMenu:" destination="-1" eventType="touchUpInside" id="wEd-YO-Dpj"/>
-                                    </connections>
-                                </button>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="My Rides" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xbh-F2-ALl">
-                                    <rect key="frame" x="127.5" y="20" width="120" height="44"/>
-                                    <constraints>
-                                        <constraint firstAttribute="height" constant="44" id="V9v-8x-2Rh"/>
-                                        <constraint firstAttribute="width" constant="120" id="vL2-8u-dMC"/>
-                                    </constraints>
-                                    <fontDescription key="fontDescription" name="Roboto-Bold" family="Roboto" pointSize="22"/>
-                                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                    <nil key="highlightedColor"/>
-                                </label>
-                            </subviews>
-                            <color key="backgroundColor" red="0.71372549019999998" green="0.60392156860000001" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                            <constraints>
-                                <constraint firstItem="Zn2-VE-U1m" firstAttribute="top" secondItem="veD-JJ-48P" secondAttribute="top" constant="20" id="OCD-WT-FyE"/>
-                                <constraint firstAttribute="height" constant="64" id="PKE-Lc-iGm"/>
-                                <constraint firstAttribute="bottom" secondItem="xbh-F2-ALl" secondAttribute="bottom" id="S0I-QL-xyK"/>
-                                <constraint firstAttribute="bottom" secondItem="Zn2-VE-U1m" secondAttribute="bottom" id="Ug5-d8-yXn"/>
-                                <constraint firstItem="xbh-F2-ALl" firstAttribute="centerX" secondItem="veD-JJ-48P" secondAttribute="centerX" id="ZSQ-Jc-wQX"/>
-                                <constraint firstItem="Zn2-VE-U1m" firstAttribute="leading" secondItem="veD-JJ-48P" secondAttribute="leading" id="qmv-nQ-536"/>
-                            </constraints>
-                        </view>
-                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7I0-Jk-vAJ">
-                            <rect key="frame" x="0.0" y="64" width="375" height="40"/>
-                            <subviews>
-                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uHH-jR-YJy">
-                                    <rect key="frame" x="0.0" y="0.0" width="125" height="40"/>
-                                    <fontDescription key="fontDescription" name="Roboto-Medium" family="Roboto" pointSize="17"/>
-                                    <state key="normal" title="CURRENT">
-                                        <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                    </state>
-                                    <connections>
-                                        <action selector="actionCurrent:" destination="-1" eventType="touchUpInside" id="2v1-Cs-zce"/>
-                                    </connections>
-                                </button>
-                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2Sv-b2-Ock">
-                                    <rect key="frame" x="125" y="0.0" width="125" height="40"/>
-                                    <fontDescription key="fontDescription" name="Roboto-Medium" family="Roboto" pointSize="17"/>
-                                    <state key="normal" title="COMPLETED">
-                                        <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                    </state>
-                                    <connections>
-                                        <action selector="actionCompelted:" destination="-1" eventType="touchUpInside" id="m1m-AB-s0R"/>
-                                    </connections>
-                                </button>
-                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ygs-t1-1p2">
-                                    <rect key="frame" x="250" y="0.0" width="125" height="40"/>
-                                    <fontDescription key="fontDescription" name="Roboto-Medium" family="Roboto" pointSize="17"/>
-                                    <state key="normal" title="SCHEDULED">
-                                        <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                    </state>
-                                    <connections>
-                                        <action selector="actionScheduled:" destination="-1" eventType="touchUpInside" id="sSf-fz-nga"/>
-                                    </connections>
-                                </button>
-                            </subviews>
-                            <color key="backgroundColor" red="0.71372549019999998" green="0.60392156860000001" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                            <constraints>
-                                <constraint firstAttribute="height" constant="40" id="2Mp-Zg-HPV"/>
-                                <constraint firstAttribute="bottom" secondItem="uHH-jR-YJy" secondAttribute="bottom" id="III-qT-a7x"/>
-                                <constraint firstItem="2Sv-b2-Ock" firstAttribute="width" secondItem="uHH-jR-YJy" secondAttribute="width" id="PpV-aJ-w8U"/>
-                                <constraint firstAttribute="bottom" secondItem="2Sv-b2-Ock" secondAttribute="bottom" id="REF-hs-TS3"/>
-                                <constraint firstItem="ygs-t1-1p2" firstAttribute="top" secondItem="7I0-Jk-vAJ" secondAttribute="top" id="Xlf-PM-bQE"/>
-                                <constraint firstItem="ygs-t1-1p2" firstAttribute="leading" secondItem="2Sv-b2-Ock" secondAttribute="trailing" id="Zmh-xG-uR5"/>
-                                <constraint firstItem="ygs-t1-1p2" firstAttribute="width" secondItem="uHH-jR-YJy" secondAttribute="width" id="mQ3-HW-1zg"/>
-                                <constraint firstAttribute="trailing" secondItem="ygs-t1-1p2" secondAttribute="trailing" id="nLU-fR-Ler"/>
-                                <constraint firstItem="uHH-jR-YJy" firstAttribute="top" secondItem="7I0-Jk-vAJ" secondAttribute="top" id="oDf-A7-k5m"/>
-                                <constraint firstItem="2Sv-b2-Ock" firstAttribute="top" secondItem="7I0-Jk-vAJ" secondAttribute="top" id="qAt-1j-zhk"/>
-                                <constraint firstAttribute="bottom" secondItem="ygs-t1-1p2" secondAttribute="bottom" id="uqX-1N-J9G"/>
-                                <constraint firstItem="2Sv-b2-Ock" firstAttribute="leading" secondItem="uHH-jR-YJy" secondAttribute="trailing" id="wRY-jr-Hby"/>
-                                <constraint firstItem="uHH-jR-YJy" firstAttribute="leading" secondItem="7I0-Jk-vAJ" secondAttribute="leading" id="y8V-3I-sRy"/>
-                            </constraints>
-                        </view>
-                        <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="none" rowHeight="181" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="QoB-N9-ye0">
-                            <rect key="frame" x="0.0" y="110" width="375" height="557"/>
-                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                            <color key="tintColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                            <connections>
-                                <outlet property="dataSource" destination="-1" id="g5f-ac-ZKp"/>
-                                <outlet property="delegate" destination="-1" id="LPe-zb-dUJ"/>
-                            </connections>
-                        </tableView>
-                    </subviews>
-                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                    <constraints>
-                        <constraint firstItem="7I0-Jk-vAJ" firstAttribute="leading" secondItem="nou-Jd-Edf" secondAttribute="leading" id="2kh-Va-DSZ"/>
-                        <constraint firstItem="7I0-Jk-vAJ" firstAttribute="top" secondItem="veD-JJ-48P" secondAttribute="bottom" id="60a-fK-Wem"/>
-                        <constraint firstAttribute="trailing" secondItem="veD-JJ-48P" secondAttribute="trailing" id="AdI-OG-tF4"/>
-                        <constraint firstItem="QoB-N9-ye0" firstAttribute="leading" secondItem="nou-Jd-Edf" secondAttribute="leading" id="Ga5-81-PhA"/>
-                        <constraint firstAttribute="bottom" secondItem="QoB-N9-ye0" secondAttribute="bottom" id="KAG-BF-KYU"/>
-                        <constraint firstAttribute="trailing" secondItem="QoB-N9-ye0" secondAttribute="trailing" id="Nz1-vv-5ve"/>
-                        <constraint firstItem="QoB-N9-ye0" firstAttribute="top" secondItem="7I0-Jk-vAJ" secondAttribute="bottom" constant="6" id="aoZ-mm-9vQ"/>
-                        <constraint firstItem="veD-JJ-48P" firstAttribute="leading" secondItem="nou-Jd-Edf" secondAttribute="leading" id="c1f-zr-xqY"/>
-                        <constraint firstAttribute="trailing" secondItem="7I0-Jk-vAJ" secondAttribute="trailing" id="gLn-t6-5Ik"/>
-                        <constraint firstItem="veD-JJ-48P" firstAttribute="top" secondItem="nou-Jd-Edf" secondAttribute="top" id="xri-Il-I5T"/>
-                    </constraints>
-                </view>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gss-wX-rbw" userLabel="ViewArabic">
                     <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                     <subviews>
@@ -269,6 +157,118 @@
                         <constraint firstItem="mqf-BY-PTd" firstAttribute="top" secondItem="gss-wX-rbw" secondAttribute="top" id="RIi-RE-Iqo"/>
                         <constraint firstItem="v4f-66-8DF" firstAttribute="leading" secondItem="gss-wX-rbw" secondAttribute="leading" id="Y6Y-pG-qSm"/>
                         <constraint firstItem="mqf-BY-PTd" firstAttribute="leading" secondItem="gss-wX-rbw" secondAttribute="leading" id="ytS-ma-eMu"/>
+                    </constraints>
+                </view>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nou-Jd-Edf" userLabel="ViewEnglish">
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                    <subviews>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="veD-JJ-48P">
+                            <rect key="frame" x="0.0" y="0.0" width="375" height="64"/>
+                            <subviews>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Zn2-VE-U1m">
+                                    <rect key="frame" x="0.0" y="20" width="50" height="44"/>
+                                    <constraints>
+                                        <constraint firstAttribute="width" constant="50" id="qT9-nd-b1h"/>
+                                    </constraints>
+                                    <state key="normal" image="menu"/>
+                                    <connections>
+                                        <action selector="actionLeftMenu:" destination="-1" eventType="touchUpInside" id="wEd-YO-Dpj"/>
+                                    </connections>
+                                </button>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="My Rides" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xbh-F2-ALl">
+                                    <rect key="frame" x="127.5" y="20" width="120" height="44"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" constant="44" id="V9v-8x-2Rh"/>
+                                        <constraint firstAttribute="width" constant="120" id="vL2-8u-dMC"/>
+                                    </constraints>
+                                    <fontDescription key="fontDescription" name="Roboto-Bold" family="Roboto" pointSize="22"/>
+                                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                            </subviews>
+                            <color key="backgroundColor" red="0.71372549019999998" green="0.60392156860000001" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                            <constraints>
+                                <constraint firstItem="Zn2-VE-U1m" firstAttribute="top" secondItem="veD-JJ-48P" secondAttribute="top" constant="20" id="OCD-WT-FyE"/>
+                                <constraint firstAttribute="height" constant="64" id="PKE-Lc-iGm"/>
+                                <constraint firstAttribute="bottom" secondItem="xbh-F2-ALl" secondAttribute="bottom" id="S0I-QL-xyK"/>
+                                <constraint firstAttribute="bottom" secondItem="Zn2-VE-U1m" secondAttribute="bottom" id="Ug5-d8-yXn"/>
+                                <constraint firstItem="xbh-F2-ALl" firstAttribute="centerX" secondItem="veD-JJ-48P" secondAttribute="centerX" id="ZSQ-Jc-wQX"/>
+                                <constraint firstItem="Zn2-VE-U1m" firstAttribute="leading" secondItem="veD-JJ-48P" secondAttribute="leading" id="qmv-nQ-536"/>
+                            </constraints>
+                        </view>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7I0-Jk-vAJ">
+                            <rect key="frame" x="0.0" y="64" width="375" height="40"/>
+                            <subviews>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uHH-jR-YJy">
+                                    <rect key="frame" x="0.0" y="0.0" width="125" height="40"/>
+                                    <fontDescription key="fontDescription" name="Roboto-Medium" family="Roboto" pointSize="17"/>
+                                    <state key="normal" title="CURRENT">
+                                        <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    </state>
+                                    <connections>
+                                        <action selector="actionCurrent:" destination="-1" eventType="touchUpInside" id="2v1-Cs-zce"/>
+                                    </connections>
+                                </button>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2Sv-b2-Ock">
+                                    <rect key="frame" x="125" y="0.0" width="125" height="40"/>
+                                    <fontDescription key="fontDescription" name="Roboto-Medium" family="Roboto" pointSize="17"/>
+                                    <state key="normal" title="COMPLETED">
+                                        <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    </state>
+                                    <connections>
+                                        <action selector="actionCompelted:" destination="-1" eventType="touchUpInside" id="m1m-AB-s0R"/>
+                                    </connections>
+                                </button>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ygs-t1-1p2">
+                                    <rect key="frame" x="250" y="0.0" width="125" height="40"/>
+                                    <fontDescription key="fontDescription" name="Roboto-Medium" family="Roboto" pointSize="17"/>
+                                    <state key="normal" title="SCHEDULED">
+                                        <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    </state>
+                                    <connections>
+                                        <action selector="actionScheduled:" destination="-1" eventType="touchUpInside" id="sSf-fz-nga"/>
+                                    </connections>
+                                </button>
+                            </subviews>
+                            <color key="backgroundColor" red="0.71372549019999998" green="0.60392156860000001" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="40" id="2Mp-Zg-HPV"/>
+                                <constraint firstAttribute="bottom" secondItem="uHH-jR-YJy" secondAttribute="bottom" id="III-qT-a7x"/>
+                                <constraint firstItem="2Sv-b2-Ock" firstAttribute="width" secondItem="uHH-jR-YJy" secondAttribute="width" id="PpV-aJ-w8U"/>
+                                <constraint firstAttribute="bottom" secondItem="2Sv-b2-Ock" secondAttribute="bottom" id="REF-hs-TS3"/>
+                                <constraint firstItem="ygs-t1-1p2" firstAttribute="top" secondItem="7I0-Jk-vAJ" secondAttribute="top" id="Xlf-PM-bQE"/>
+                                <constraint firstItem="ygs-t1-1p2" firstAttribute="leading" secondItem="2Sv-b2-Ock" secondAttribute="trailing" id="Zmh-xG-uR5"/>
+                                <constraint firstItem="ygs-t1-1p2" firstAttribute="width" secondItem="uHH-jR-YJy" secondAttribute="width" id="mQ3-HW-1zg"/>
+                                <constraint firstAttribute="trailing" secondItem="ygs-t1-1p2" secondAttribute="trailing" id="nLU-fR-Ler"/>
+                                <constraint firstItem="uHH-jR-YJy" firstAttribute="top" secondItem="7I0-Jk-vAJ" secondAttribute="top" id="oDf-A7-k5m"/>
+                                <constraint firstItem="2Sv-b2-Ock" firstAttribute="top" secondItem="7I0-Jk-vAJ" secondAttribute="top" id="qAt-1j-zhk"/>
+                                <constraint firstAttribute="bottom" secondItem="ygs-t1-1p2" secondAttribute="bottom" id="uqX-1N-J9G"/>
+                                <constraint firstItem="2Sv-b2-Ock" firstAttribute="leading" secondItem="uHH-jR-YJy" secondAttribute="trailing" id="wRY-jr-Hby"/>
+                                <constraint firstItem="uHH-jR-YJy" firstAttribute="leading" secondItem="7I0-Jk-vAJ" secondAttribute="leading" id="y8V-3I-sRy"/>
+                            </constraints>
+                        </view>
+                        <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="none" rowHeight="181" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="QoB-N9-ye0">
+                            <rect key="frame" x="0.0" y="110" width="375" height="557"/>
+                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                            <color key="tintColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                            <connections>
+                                <outlet property="dataSource" destination="-1" id="g5f-ac-ZKp"/>
+                                <outlet property="delegate" destination="-1" id="LPe-zb-dUJ"/>
+                            </connections>
+                        </tableView>
+                    </subviews>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstItem="7I0-Jk-vAJ" firstAttribute="leading" secondItem="nou-Jd-Edf" secondAttribute="leading" id="2kh-Va-DSZ"/>
+                        <constraint firstItem="7I0-Jk-vAJ" firstAttribute="top" secondItem="veD-JJ-48P" secondAttribute="bottom" id="60a-fK-Wem"/>
+                        <constraint firstAttribute="trailing" secondItem="veD-JJ-48P" secondAttribute="trailing" id="AdI-OG-tF4"/>
+                        <constraint firstItem="QoB-N9-ye0" firstAttribute="leading" secondItem="nou-Jd-Edf" secondAttribute="leading" id="Ga5-81-PhA"/>
+                        <constraint firstAttribute="bottom" secondItem="QoB-N9-ye0" secondAttribute="bottom" id="KAG-BF-KYU"/>
+                        <constraint firstAttribute="trailing" secondItem="QoB-N9-ye0" secondAttribute="trailing" id="Nz1-vv-5ve"/>
+                        <constraint firstItem="QoB-N9-ye0" firstAttribute="top" secondItem="7I0-Jk-vAJ" secondAttribute="bottom" constant="6" id="aoZ-mm-9vQ"/>
+                        <constraint firstItem="veD-JJ-48P" firstAttribute="leading" secondItem="nou-Jd-Edf" secondAttribute="leading" id="c1f-zr-xqY"/>
+                        <constraint firstAttribute="trailing" secondItem="7I0-Jk-vAJ" secondAttribute="trailing" id="gLn-t6-5Ik"/>
+                        <constraint firstItem="veD-JJ-48P" firstAttribute="top" secondItem="nou-Jd-Edf" secondAttribute="top" id="xri-Il-I5T"/>
                     </constraints>
                 </view>
             </subviews>

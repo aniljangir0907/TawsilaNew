@@ -56,7 +56,7 @@ class MyRidesTableViewCell: UITableViewCell {
             lblCarModel.text = "\(dic.value(forKey: "taxi_type")  as!  String)"+"     "+"CRN- \(dic.value(forKey: "id")  as!  String)"
 
             
-            if (dic.value(forKey: "status")  as! String == "Processing") {
+            if ((dic.value(forKey: "status")  as! String == "Processing")||(dic.value(forKey: "status")  as! String == "Booking")) {
                 imgShowStatus.image = UIImage.init(named: "ontheway")
                 imgUserProfile.isHidden = false
                 lblPrcie.isHidden = false
@@ -66,7 +66,7 @@ class MyRidesTableViewCell: UITableViewCell {
                 imgUserProfile.isHidden = true
                 lblPrcie.isHidden = true
             }
-            else if (dic.value(forKey: "status")  as! String == "Complete") {
+            else if (dic.value(forKey: "status")  as! String == "Completed") {
                 imgShowStatus.image = UIImage.init(named: "completed")
                 imgUserProfile.isHidden = false
                 lblPrcie.isHidden = false

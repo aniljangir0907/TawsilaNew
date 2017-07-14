@@ -75,7 +75,7 @@ class MyRidesVC: UIViewController , UITableViewDelegate, UITableViewDataSource {
                    //        Completed,Cancelled ,Booking,Processing
                         if (((dict.value(forKey: "status") as! String) == "Processing") || ((dict.value(forKey: "status") as! String) == "Booking")){
                             self.arrayCurrentData.add(dict)
-                        }else if (((dict.value(forKey: "status") as! String) == "Cancelled") || ((dict.value(forKey: "status") as! String) == "Complete")) {
+                        }else if (((dict.value(forKey: "status") as! String) == "Cancelled") || ((dict.value(forKey: "status") as! String) == "Completed")) {
                             self.arrayCompletedData.add(dict)
                         }
                         else if ((dict.value(forKey: "status") as! String) == "Scheduled") {
@@ -104,7 +104,7 @@ class MyRidesVC: UIViewController , UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if status == "current" {
             return arrayCurrentData.count
-        }else if status == "Complete"{
+        }else if status == "Completed"{
             return arrayCompletedData.count
         }else if status == "Scheduled"{
             return arrayScheduledData.count
@@ -120,18 +120,18 @@ class MyRidesVC: UIViewController , UITableViewDelegate, UITableViewDataSource {
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "cellMyRides", for: indexPath) as! MyRidesTableViewCell
          setShowAndHideViews(cell.viewEnglish, vArb: cell.viewAraic)
-        var dic : NSDictionary!
-       
+        var dic : NSDictionary?
+       print("Status : - ",status)
         if status == "current" {
-            dic  = arrayCurrentData[indexPath.row] as! NSDictionary
-        }else if status == "Complete"{
-            dic  = arrayCompletedData[indexPath.row] as! NSDictionary
-        }else if status == "Scheduled"{
-            dic  = arrayScheduledData[indexPath.row] as! NSDictionary
+            dic  = arrayCurrentData[indexPath.row] as? NSDictionary
+        }else if status == "Completed"{
+            dic  = arrayCompletedData[indexPath.row] as? NSDictionary
+        }else if status == "Scheduled" {
+            dic  = arrayScheduledData[indexPath.row] as? NSDictionary
         }
-        print(dic)
+        print(dic!)
         
-        cell.setDataInCell(dic)
+        cell.setDataInCell(dic!)
         return cell
     }
     
@@ -141,11 +141,10 @@ class MyRidesVC: UIViewController , UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
-        if status == "Complete" {
-//            let obje: bookingViewController = bookingViewController(nibName: "bookingViewController", bundle: nil)
-//            obje.dataDictionary = arrayCompletedData[indexPath.row] as! NSDictionary
-//            setPushViewTransition(obje)
-            
+        if status == "Completed" || status == "Scheduled" {
+            let obje: bookingViewController = bookingViewController(nibName: "bookingViewController", bundle: nil)
+            obje.dataDictionary = arrayCompletedData[indexPath.row] as! NSDictionary
+            setPushViewTransition(obje)
         }
     }
     
@@ -183,7 +182,7 @@ class MyRidesVC: UIViewController , UITableViewDelegate, UITableViewDataSource {
     }
     
     @IBAction func actionCompelted(_ sender: Any) {
-        status = "Complete"
+        status = "Completed"
         if AppDelegateVariable.appDelegate.strLanguage == "en" {
             if arrayCompletedData.count == 0  {
                 tblMyRides.isHidden = true
@@ -207,7 +206,7 @@ class MyRidesVC: UIViewController , UITableViewDelegate, UITableViewDataSource {
     }
     
     @IBAction func actionScheduled(_ sender: Any) {
-        status = "scheduled"
+        status = "Scheduled"
         if AppDelegateVariable.appDelegate.strLanguage == "en" {
             if arrayScheduledData.count == 0  {
                 tblMyRides.isHidden = true
