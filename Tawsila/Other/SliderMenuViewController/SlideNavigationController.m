@@ -210,6 +210,7 @@ static SlideNavigationController *singletonInstance;
         else {
             if (self.isPopViewController == true) {
                 // viewController.view.backgroundColor = [UIColor clearColor];
+                self.isPopViewController = false;
                 [super presentViewController:viewController animated:true completion:nil];
             }
             else{

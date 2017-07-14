@@ -43,7 +43,9 @@ class ConfirmationScreen: UIViewController, UITextFieldDelegate {
     
     //MARK:- UIButton's Action
     @IBAction func actionContinue(_ sender: Any) {
-        AppDelegateVariable.appDelegate.sliderMenuControllser()
+       // AppDelegateVariable.appDelegate.sliderMenuControllser()
+        let loginView: SignInViewController = SignInViewController(nibName: "SignInViewController", bundle: nil)
+        setPushViewTransition(loginView)
     }
     
     @IBAction func actionDidNotGetCode(_ sender: Any) {
