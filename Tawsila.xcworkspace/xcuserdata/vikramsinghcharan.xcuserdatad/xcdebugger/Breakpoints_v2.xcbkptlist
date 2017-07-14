@@ -9,13 +9,13 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Tawsila/Other/Constant.swift"
-            timestampString = "519906397.479209"
+            filePath = "Tawsila/Controller/RideLaterViewController/RideLaterVC.swift"
+            timestampString = "521693945.039889"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "213"
-            endingLineNumber = "213"
-            landmarkName = "backNavigationButton()"
+            startingLineNumber = "184"
+            endingLineNumber = "184"
+            landmarkName = "tapScheduleRide(_:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -25,13 +25,13 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Tawsila/Other/Constant.swift"
-            timestampString = "519906400.161937"
+            filePath = "Tawsila/Controller/RideLaterViewController/RideLaterVC.swift"
+            timestampString = "521693948.891451"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "222"
-            endingLineNumber = "222"
-            landmarkName = "actionBackButton(_:)"
+            startingLineNumber = "100"
+            endingLineNumber = "100"
+            landmarkName = "tapPickDate(_:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -41,251 +41,13 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Tawsila/Appdelegate/AppDelegate.swift"
-            timestampString = "520716377.329962"
+            filePath = "Tawsila/Controller/RideLaterViewController/RideLaterVC.swift"
+            timestampString = "521693951.637718"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "552"
-            endingLineNumber = "552"
-            landmarkName = "unknown"
-            landmarkType = "0">
-            <Locations>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "Tawsila.AppDelegate.(checkNewVerisonAvailabel (viewController : __ObjC.UIViewController) -&gt; ()).(closure #1).(closure #2)"
-                  moduleName = "Tawsila"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/vikramsinghcharan/Documents/GitHub/TawsilaNew/Tawsila/Appdelegate/AppDelegate.swift"
-                  timestampString = "520721860.001631"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "552"
-                  endingLineNumber = "552"
-                  offsetFromSymbolStart = "5792">
-               </Location>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "Tawsila.AppDelegate.(checkNewVerisonAvailabel (viewController : __ObjC.UIViewController) -&gt; ()).(closure #1).(closure #2).(closure #2)"
-                  moduleName = "Tawsila"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/vikramsinghcharan/Documents/GitHub/TawsilaNew/Tawsila/Appdelegate/AppDelegate.swift"
-                  timestampString = "520721860.005128"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "554"
-                  endingLineNumber = "554"
-                  offsetFromSymbolStart = "12">
-               </Location>
-            </Locations>
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Tawsila/Other/Constant.swift"
-            timestampString = "519906575.54602"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "239"
-            endingLineNumber = "239"
-            landmarkName = "setPushViewTransition(_:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Tawsila/Controller/CreateNewAccount/CreateNewAccount.swift"
-            timestampString = "519920882.551571"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "189"
-            endingLineNumber = "189"
-            landmarkName = "actionSignUp(_:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Tawsila/Controller/MyRides/MyRidesVC.swift"
-            timestampString = "519966870.075316"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "61"
-            endingLineNumber = "61"
-            landmarkName = "getAllMyRide()"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Tawsila/Controller/MyRides/MyRidesVC.swift"
-            timestampString = "519966870.075316"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "53"
-            endingLineNumber = "53"
-            landmarkName = "getAllMyRide()"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Tawsila/Appdelegate/AppDelegate.swift"
-            timestampString = "519975778.81298"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "16"
-            endingLineNumber = "16"
-            landmarkName = "unknown"
-            landmarkType = "0">
-            <Locations>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "Tawsila.AppDelegate.__deallocating_deinit"
-                  moduleName = "Tawsila"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/vikramsinghcharan/Documents/GitHub/TawsilaNew/Tawsila/Appdelegate/AppDelegate.swift"
-                  timestampString = "520721860.038025"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "0"
-                  endingLineNumber = "0"
-                  offsetFromSymbolStart = "4">
-               </Location>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "Tawsila.AppDelegate.init () -&gt; Tawsila.AppDelegate"
-                  moduleName = "Tawsila"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/vikramsinghcharan/Documents/GitHub/TawsilaNew/Tawsila/Appdelegate/AppDelegate.swift"
-                  timestampString = "520721860.040746"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "29"
-                  endingLineNumber = "29"
-                  offsetFromSymbolStart = "27">
-               </Location>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "Tawsila.AppDelegate.__allocating_init () -&gt; Tawsila.AppDelegate"
-                  moduleName = "Tawsila"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/vikramsinghcharan/Documents/GitHub/TawsilaNew/Tawsila/Appdelegate/AppDelegate.swift"
-                  timestampString = "520721860.044593"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "0"
-                  endingLineNumber = "0"
-                  offsetFromSymbolStart = "4">
-               </Location>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "main"
-                  moduleName = "Tawsila"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/vikramsinghcharan/Documents/GitHub/TawsilaNew/Tawsila/Appdelegate/AppDelegate.swift"
-                  timestampString = "520721860.048203"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "27"
-                  endingLineNumber = "27"
-                  offsetFromSymbolStart = "4">
-               </Location>
-            </Locations>
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Tawsila/Appdelegate/AppDelegate.swift"
-            timestampString = "520714650.864503"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "58"
-            endingLineNumber = "58"
-            landmarkName = "unknown"
-            landmarkType = "0">
-            <Locations>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "Tawsila.AppDelegate.application (__ObjC.UIApplication, didFinishLaunchingWithOptions : Swift.Optional&lt;Swift.Dictionary&lt;__C.UIApplicationLaunchOptionsKey, Any&gt;&gt;) -&gt; Swift.Bool"
-                  moduleName = "Tawsila"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/vikramsinghcharan/Documents/GitHub/TawsilaNew/Tawsila/Appdelegate/AppDelegate.swift"
-                  timestampString = "520721860.059294"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "58"
-                  endingLineNumber = "58"
-                  offsetFromSymbolStart = "725">
-               </Location>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "Tawsila.AppDelegate.(application (__ObjC.UIApplication, didFinishLaunchingWithOptions : Swift.Optional&lt;Swift.Dictionary&lt;__C.UIApplicationLaunchOptionsKey, Any&gt;&gt;) -&gt; Swift.Bool).(implicit closure #1)"
-                  moduleName = "Tawsila"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/vikramsinghcharan/Documents/GitHub/TawsilaNew/Tawsila/Appdelegate/AppDelegate.swift"
-                  timestampString = "520721860.063137"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "58"
-                  endingLineNumber = "58"
-                  offsetFromSymbolStart = "12">
-               </Location>
-            </Locations>
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Tawsila/Controller/MyRides/MyRidesVC.swift"
-            timestampString = "520719649.581105"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "90"
-            endingLineNumber = "90"
-            landmarkName = "tableView(_:cellForRowAt:)"
+            startingLineNumber = "132"
+            endingLineNumber = "132"
+            landmarkName = "datePickerValueChanged(sender:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

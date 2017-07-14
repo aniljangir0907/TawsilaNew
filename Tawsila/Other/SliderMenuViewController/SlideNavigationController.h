@@ -37,8 +37,8 @@
 @end
 
 typedef  enum{
-	MenuLeft = 1,
-	MenuRight = 2
+    MenuLeft = 1,
+    MenuRight = 2
 }Menu;
 
 @protocol SlideNavigationContorllerAnimator;
@@ -50,6 +50,7 @@ extern NSString  *const SlideNavigationControllerDidReveal;
 
 @property (nonatomic, assign) BOOL avoidSwitchingToSameClassViewController;
 @property (nonatomic, assign) BOOL enableSwipeGesture;
+@property (nonatomic, assign) BOOL isPopViewController;
 @property (nonatomic, assign) BOOL enableShadow;
 @property (nonatomic, strong) UIViewController *rightMenu;
 @property (nonatomic, strong) UIViewController *leftMenu;
@@ -77,4 +78,4 @@ extern NSString  *const SlideNavigationControllerDidReveal;
 
 // Copyright belongs to original author
 // http://code4app.net (en) http://code4app.com (cn)
-// From the most professional code share website: Code4App.net 
+// From the most professional code share website: Code4App.net

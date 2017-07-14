@@ -15,7 +15,7 @@ class rightMenuViewController: UIViewController, UITableViewDelegate, UITableVie
     @IBOutlet weak var tblView: UITableView!
     @IBOutlet var lblUserDetail: UILabel!
     
-    var arrLeftMenu =  [["image" : "home", "key" : "منزل"], ["image" : "myride", "key" : "بلدي ركوب الخيل"], ["image" : "wallet", "key" : "محفظة نقود"], ["image" : "freeRide", "key" : "الحصول على ركوب الخيل الحرة"], ["image" : "settings", "key" : "إعدادات"], ["image" : "contactUs", "key" : "اتصل بنا"],  ["image" : "help", "key" : "مساعدة"]]
+    var arrLeftMenu =  [["image" : "home", "key" : "منزل"], ["image" : "myride", "key" : "بلدي ركوب الخيل"], ["image" : "wallet", "key" : "محفظة نقود"], ["image" : "Share_icon", "key" : "مشاركة التطبيق"], ["image" : "settings", "key" : "إعدادات"], ["image" : "contactUs", "key" : "اتصل بنا"],  ["image" : "help", "key" : "مساعدة"]]
     
     var arrLeftMenuDriver = [["image" : "myride", "key" : "جميع ركوب الخيل"], ["image" : "signout", "key" : "خروج"], ["image" : "settings", "key" : "إعدادات"]] //30-June-2017 vikram singh
     
@@ -140,15 +140,27 @@ class rightMenuViewController: UIViewController, UITableViewDelegate, UITableVie
                 let obj : WalletViewController = WalletViewController(nibName: "WalletViewController", bundle: nil)
                 SlideNavigationController.sharedInstance().popToRootAndSwitch(to: obj, withCompletion: nil)
             case 3:
-                // moveViewController = UIViewController.init(nibName: "MyRidesVC", bundle: nil)  as!
-                print("Get free rides")
+                let moveViewController : ShareAppViewController = ShareAppViewController(nibName: "ShareAppViewController", bundle: nil)
+                SlideNavigationController.sharedInstance().isPopViewController = true
+                SlideNavigationController.sharedInstance().popToRootAndSwitch(to: moveViewController, withCompletion: nil)
+                
+                //                SlideNavigationController.sharedInstance().popToRootAndSwitch(to: moveViewController, withSlideOutAnimation: nil, andCompletion: nil)
+                print("GetFreeRides")
+                break
             case 4:
                 let obj : SettingViewController = SettingViewController(nibName: "SettingViewController", bundle: nil)
                 SlideNavigationController.sharedInstance().popToRootAndSwitch(to: obj, withCompletion: nil)
             case 5:
-                //            moveViewController = UIViewController.init(nibName: "MyRidesVC", bundle: nil) as! MyRidesVc
+                let moveViewController : ContactUSController = ContactUSController(nibName: "ContactUSController", bundle: nil)
+                SlideNavigationController.sharedInstance().isPopViewController = true
+                SlideNavigationController.sharedInstance().popToRootAndSwitch(to: moveViewController, withSlideOutAnimation: true, andCompletion: nil)
                 print("Contact Sceen design.")
             case 6:
+                if #available(iOS 10, *) {
+                    UIApplication.shared.open(URL(string: "http://taxiappsourcecode.com/tawasilataxi/contact_us")!, options: [ : ], completionHandler: nil)
+                } else {
+                    UIApplication.shared.openURL(URL(string: "http://taxiappsourcecode.com/tawasilataxi/contact_us")!)
+                }
                 print("help Screen design")
             default:
                 print("ViewController not Found.")
@@ -157,7 +169,7 @@ class rightMenuViewController: UIViewController, UITableViewDelegate, UITableVie
         else{
             switch indexPath.row {
             case 0:
-                let obje: AllRides = AllRides(nibName: "AllRides", bundle: nil) 
+                let obje: AllRides = AllRides(nibName: "AllRides", bundle: nil) as! AllRides
                 SlideNavigationController.sharedInstance().popToRootAndSwitch(to: obje, withCompletion: nil)
             case 1:
                 USER_DEFAULT.set("0", forKey: "isLogin")

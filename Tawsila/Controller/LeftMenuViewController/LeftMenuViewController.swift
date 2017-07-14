@@ -7,29 +7,23 @@
 //
 
 import UIKit
-import RappleProgressHUD
 
 class LeftMenuViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     var userType: String! //30-June-2017 vikram singh
     var lblGoOnlineAndOffline: UILabel!//30-June-2017 vikram singh
     var switchOnLineOffline: UISwitch!//30-June-2017 vikram singh
-    
-    var currentVC = UIViewController()
-    
     @IBOutlet weak var tblView: UITableView!
     @IBOutlet var lblUserDetail: UILabel!
-    var arrLeftMenu =  [["image" : "home", "key" : "Home"], ["image" : "myride", "key" : "My rides"], ["image" : "wallet", "key" : "Wallet"], ["image" : "freeRide", "key" : "Get Free Rides"], ["image" : "settings", "key" : "Settings"], ["image" : "contactUs", "key" : "Contact us"],  ["image" : "help", "key" : "Help"]]
+    var arrLeftMenu =  [["image" : "home", "key" : "Home"], ["image" : "myride", "key" : "My rides"], ["image" : "wallet", "key" : "Wallet"], ["image" : "Share_icon", "key" : "Share app"], ["image" : "settings", "key" : "Settings"], ["image" : "contactUs", "key" : "Contact us"],  ["image" : "help", "key" : "Help"]]
     
     var arrLeftMenuDriver = [["image" : "myride", "key" : "All Rides"], ["image" : "signout", "key" : "Signout"], ["image" : "settings", "key" : "Settings"]]//30-June-2017 vikram singh
+    
     
     override func viewDidLoad() {
         
         print(USER_DEFAULT.object(forKey: "userData") as! NSDictionary)
         self.lblUserDetail.text = (USER_DEFAULT.object(forKey: "userData") as! NSDictionary).object(forKey: "username") as? String
         super.viewDidLoad()
-        
-        
-      //  currentVC =
         
     }
     
@@ -38,13 +32,16 @@ class LeftMenuViewController: UIViewController, UITableViewDelegate, UITableView
         userType = (USER_DEFAULT.object(forKey: "userType") as! String ) //30-June-2017 vikram singh
         if  userType == "driver" {//30-June-2017 vikram singh
             lblUserDetail.isHidden = true
-            
         }else{
             lblUserDetail.isHidden = false
         }
         self.tblView.tableFooterView = UIView()
     }
-    
+  
+    override func viewWillDisappear(_ animated: Bool) {
+           let moveViewController : ShareAppViewController = ShareAppViewController(nibName: "ShareAppViewController", bundle: nil)
+            moveViewController.dismiss(animated: true, completion: nil)
+    }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -67,7 +64,7 @@ class LeftMenuViewController: UIViewController, UITableViewDelegate, UITableView
         tableView.register(UINib(nibName: "leftMenuCell", bundle: nil), forCellReuseIdentifier: "cellLeftMenu")
         var cell : leftMenuCell = tableView.dequeueReusableCell(withIdentifier: "cellLeftMenu", for: indexPath) as! leftMenuCell
         
-        if cell == nil {
+        if cell == nil{
             cell = tableView.dequeueReusableCell(withIdentifier: "cellLeftMenu", for: indexPath) as! leftMenuCell
         }
         
@@ -102,7 +99,7 @@ class LeftMenuViewController: UIViewController, UITableViewDelegate, UITableView
                 cell.lblTitle.text = dic.value(forKey: "key") as! String?
             }
         }
-        else {
+        else{
             dic = arrLeftMenu[indexPath.row] as NSDictionary
             cell.imgIcon.image = UIImage.init(named:  dic.value(forKey: "image")! as! String)
             cell.lblTitle.text = dic.value(forKey: "key") as! String?
@@ -118,38 +115,37 @@ class LeftMenuViewController: UIViewController, UITableViewDelegate, UITableView
             switch indexPath.row {
             case 0:
                 let obj : HomeViewControlle = HomeViewControlle(nibName: "HomeViewControlle", bundle: nil)
-                currentVC = obj;
                 SlideNavigationController.sharedInstance().popToRootAndSwitch(to: obj, withCompletion: nil)
             case 1:
                 
                 let obj : MyRidesVC = MyRidesVC(nibName: "MyRidesVC", bundle: nil)
-                currentVC = obj;
-
+                
                 SlideNavigationController.sharedInstance().popToRootAndSwitch(to: obj, withCompletion: nil)
             case 2:
                 let obj : WalletViewController = WalletViewController(nibName: "WalletViewController", bundle: nil)
-                
-                currentVC = obj;
-
                 SlideNavigationController.sharedInstance().popToRootAndSwitch(to: obj, withCompletion: nil)
             case 3:
-                // let moveViewController : GetFreeRides = GetFreeRides(nibName: "GetFreeRides", bundle: nil)
-                // AppDelegateVariable.appDelegate.presentVC = 0
-                // AppDelegateVariable.appDelegate.isPresentVC = true
+                let moveViewController : ShareAppViewController = ShareAppViewController(nibName: "ShareAppViewController", bundle: nil)
+                SlideNavigationController.sharedInstance().isPopViewController = true
+                SlideNavigationController.sharedInstance().popToRootAndSwitch(to: moveViewController, withCompletion: nil)
+                
+//                SlideNavigationController.sharedInstance().popToRootAndSwitch(to: moveViewController, withSlideOutAnimation: nil, andCompletion: nil)
                 print("GetFreeRides")
                 break
             case 4:
                 let obj : SettingViewController = SettingViewController(nibName: "SettingViewController", bundle: nil)
                 SlideNavigationController.sharedInstance().popToRootAndSwitch(to: obj, withCompletion: nil)
             case 5:
-                let moveViewController : Contact_Us = Contact_Us(nibName: "ContactUs", bundle: nil) 
-                
-                currentVC.present(moveViewController, animated: true, completion: nil)
-                
-                // AppDelegateVariable.appDelegate.presentVC = 1
+                let moveViewController : ContactUSController = ContactUSController(nibName: "ContactUSController", bundle: nil)
+                SlideNavigationController.sharedInstance().isPopViewController = true
+                SlideNavigationController.sharedInstance().popToRootAndSwitch(to: moveViewController, withSlideOutAnimation: true, andCompletion: nil)
                 print("Contact Sceen design.")
             case 6:
-                UIApplication.shared.openURL(URL(string: "http://taxiappsourcecode.com/tawasilataxi/contact_us")!)
+                if #available(iOS 10, *) {
+                    UIApplication.shared.open(URL(string: "http://taxiappsourcecode.com/tawasilataxi/contact_us")!, options: [ : ], completionHandler: nil)
+                } else {
+                    UIApplication.shared.openURL(URL(string: "http://taxiappsourcecode.com/tawasilataxi/contact_us")!)
+                }
                 print("help Screen design")
             default:
                 print("ViewController not Found.")
@@ -161,30 +157,9 @@ class LeftMenuViewController: UIViewController, UITableViewDelegate, UITableView
                 let obje: AllRides = AllRides(nibName: "AllRides", bundle: nil) as! AllRides
                 SlideNavigationController.sharedInstance().popToRootAndSwitch(to: obje, withCompletion: nil)
             case 1:
-
+                USER_DEFAULT.set("0", forKey: "isLogin")
+                AppDelegateVariable.appDelegate.sliderMenuControllser()
                 
-                let alert = UIAlertController.init(title: "", message: "Are you sure you want to sign out?", preferredStyle: .alert)
-                let actionOK = UIAlertAction.init(title: "OK", style: .default) { (alert: UIAlertAction!) in
-                    
-                    self.FireAPI()
-                    
-                    // let obj : SignInOrCreateNewAccount = SignInOrCreateNewAccount(nibName: "SignInOrCreateNewAccount", bundle: nil)
-                    // USER_DEFAULT.set("0", forKey: "isLogin")
-                    // AppDelegateVariable.appDelegate.sliderMenuControllser()
-                    //            let appDelegate = UIApplication.shared.delegate as! AppDelegate
-                    //            appDelegate.navController = SlideNavigationController.init(rootViewController: obj)
-                    //            appDelegate.window?.rootViewController = appDelegate.navContorller
-                    //            appDelegate.window?.makeKeyAndVisible()
-                }
-                let actionCancel = UIAlertAction.init(title: "Cancel", style: .cancel, handler: nil)
-                
-                alert.addAction(actionOK)
-                alert.addAction(actionCancel)
-                self.present(alert, animated: true, completion: nil)
-                
-//                USER_DEFAULT.set("0", forKey: "isLogin")
-//                AppDelegateVariable.appDelegate.sliderMenuControllser()
-//                
             case 2:
                 print("Tawsila")
             default:
@@ -201,41 +176,5 @@ class LeftMenuViewController: UIViewController, UITableViewDelegate, UITableView
             lblGoOnlineAndOffline.text = "Go Offline"
         }
     }
-    
-    func FireAPI()
-    {
-        //  http://taxiappsourcecode.com/api/index.php?option=logout&id=7&usertype=driver
-        
-        let dic = NSMutableDictionary()
-        
-        dic.setValue(USER_ID, forKey: "id")
-        dic.setValue("driver", forKey: "usertype")
-        
-        RappleActivityIndicatorView.startAnimatingWithLabel("Processing...", attributes: RappleAppleAttributes)
-        
-        var parameterString = String(format : "logout")
-        
-        for (key, value) in dic
-        {
-            parameterString = String (format: "%@&%@=%@", parameterString,key as! CVarArg,value as! CVarArg)
-        }
-        
-        
-        Utility.sharedInstance.postDataInJson(header: parameterString,  withParameter:dic ,inVC: self) { (dataDictionary, msg, status) in
-            
-            if status == true
-            {
-                USER_DEFAULT.set("0", forKey: "isLogin")
-                AppDelegateVariable.appDelegate.sliderMenuControllser()
-                
-            }
-            else
-            {
-                Utility.sharedInstance.showAlert(kAPPName, msg: msg as String, controller: self)
-            }
-        }
-        
-        
-    }
-    
 }
+

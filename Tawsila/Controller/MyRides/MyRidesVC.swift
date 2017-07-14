@@ -78,6 +78,10 @@ class MyRidesVC: UIViewController , UITableViewDelegate, UITableViewDataSource {
                         }else if (((dict.value(forKey: "status") as! String) == "Cancelled") || ((dict.value(forKey: "status") as! String) == "Complete")) {
                             self.arrayCompletedData.add(dict)
                         }
+                        else if ((dict.value(forKey: "status") as! String) == "Scheduled") {
+                            self.arrayScheduledData.add(dict)
+                            
+                        }
                     }
                     if AppDelegateVariable.appDelegate.strLanguage == "en"{
                         self.tblMyRides.reloadData()
@@ -102,7 +106,7 @@ class MyRidesVC: UIViewController , UITableViewDelegate, UITableViewDataSource {
             return arrayCurrentData.count
         }else if status == "Complete"{
             return arrayCompletedData.count
-        }else if status == "schedule"{
+        }else if status == "Scheduled"{
             return arrayScheduledData.count
         }else{
         return arrayRideData.count
@@ -122,7 +126,7 @@ class MyRidesVC: UIViewController , UITableViewDelegate, UITableViewDataSource {
             dic  = arrayCurrentData[indexPath.row] as! NSDictionary
         }else if status == "Complete"{
             dic  = arrayCompletedData[indexPath.row] as! NSDictionary
-        }else if status == "schedule"{
+        }else if status == "Scheduled"{
             dic  = arrayScheduledData[indexPath.row] as! NSDictionary
         }
         print(dic)

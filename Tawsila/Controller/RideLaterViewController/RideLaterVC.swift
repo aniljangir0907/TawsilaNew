@@ -95,7 +95,6 @@ class RideLaterVC: UIViewController ,GMSMapViewDelegate , GMSAutocompleteViewCon
             pickTime .becomeFirstResponder()
             datePickerView.datePickerMode = UIDatePickerMode.time
             temp = 0;
-            
             let dateFormatter = DateFormatter()
             dateFormatter.dateFormat = "HH : mm"
             pickTime.text = dateFormatter.string(from:NSDate() as Date)
@@ -107,7 +106,6 @@ class RideLaterVC: UIViewController ,GMSMapViewDelegate , GMSAutocompleteViewCon
             dateFormatter.dateFormat = "dd/MM/yyyy"
             
             pickDate.text = dateFormatter.string(from:NSDate() as Date)
-            
             pickDate.inputView = datePickerView
             pickDate.inputAccessoryView = toolBar
             pickDate .becomeFirstResponder()
@@ -130,7 +128,7 @@ class RideLaterVC: UIViewController ,GMSMapViewDelegate , GMSAutocompleteViewCon
         else
         {
             let dateFormatter = DateFormatter()
-            dateFormatter.dateFormat = "HH : MM"
+            dateFormatter.dateFormat = "HH : mm"
             pickTime.text = dateFormatter.string(from:sender.date as Date)
         }
         

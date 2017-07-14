@@ -1,0 +1,30 @@
+{
+  "DVTSourceControlWorkspaceBlueprintPrimaryRemoteRepositoryKey" : "FE6BD3F23B9D851BBC1FA373AAE9F01B22692B87",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyRepositoryLocationsKey" : {
+
+  },
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyStatesKey" : {
+    "FE6BD3F23B9D851BBC1FA373AAE9F01B22692B87" : 9223372036854775807,
+    "8C2944684B87AE1262C555CF100878DA6E51DAD0" : 9223372036854775807
+  },
+  "DVTSourceControlWorkspaceBlueprintIdentifierKey" : "0FFC96BE-CF13-4C0B-8CB2-7F7CA396492B",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyPathsKey" : {
+    "FE6BD3F23B9D851BBC1FA373AAE9F01B22692B87" : "TawsilaNew\/",
+    "8C2944684B87AE1262C555CF100878DA6E51DAD0" : "..\/Tawsila"
+  },
+  "DVTSourceControlWorkspaceBlueprintNameKey" : "Tawsila",
+  "DVTSourceControlWorkspaceBlueprintVersion" : 204,
+  "DVTSourceControlWorkspaceBlueprintRelativePathToProjectKey" : "Tawsila.xcworkspace",
+  "DVTSourceControlWorkspaceBlueprintRemoteRepositoriesKey" : [
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/vikramsinghcharan\/Tawsila.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "8C2944684B87AE1262C555CF100878DA6E51DAD0"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/aniljangir0907\/TawsilaNew.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "FE6BD3F23B9D851BBC1FA373AAE9F01B22692B87"
+    }
+  ]
+}
