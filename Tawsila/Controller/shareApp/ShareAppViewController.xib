@@ -1,0 +1,163 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12120" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12088"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="Roboto-Regular.ttf">
+            <string>Roboto-Regular</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ShareAppViewController" customModule="Tawsila" customModuleProvider="target">
+            <connections>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+                <outlet property="viewArabic" destination="50H-bC-5zC" id="uMm-2r-zeR"/>
+                <outlet property="viewBackGround" destination="Nv1-0P-5gs" id="SuZ-XX-Gp5"/>
+                <outlet property="viewEnglish" destination="zY4-qh-Je8" id="GXr-dz-nzy"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Nv1-0P-5gs">
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                    <subviews>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="50H-bC-5zC" userLabel="ViewArabic">
+                            <rect key="frame" x="20" y="193" width="335" height="280"/>
+                            <subviews>
+                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="invitation_icon" translatesAutoresizingMaskIntoConstraints="NO" id="WwT-vF-rPH">
+                                    <rect key="frame" x="82.5" y="20" width="170" height="120"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" constant="120" id="3JP-IV-cTw"/>
+                                        <constraint firstAttribute="width" constant="170" id="aqY-Rc-ahR"/>
+                                    </constraints>
+                                </imageView>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="مشاركة هذا التطبيق لعائلتك والأصدقاء وكولوجيس، للحصول على تجربة ركوب أفضل وأكثر أمانا." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bxH-bg-kav">
+                                    <rect key="frame" x="8" y="152" width="319" height="64"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" constant="64" id="280-37-4pm"/>
+                                    </constraints>
+                                    <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="17"/>
+                                    <color key="textColor" white="0.33333333329999998" alpha="0.81940009120000001" colorSpace="calibratedWhite"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="S1x-P5-VAS" customClass="btnCustomeClass" customModule="Tawsila" customModuleProvider="target">
+                                    <rect key="frame" x="8" y="230" width="319" height="40"/>
+                                    <color key="backgroundColor" red="0.71372549019999998" green="0.60392156860000001" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" constant="40" id="SEI-HN-7DL"/>
+                                    </constraints>
+                                    <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="17"/>
+                                    <state key="normal" title="مشاركة التطبيق">
+                                        <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    </state>
+                                    <userDefinedRuntimeAttributes>
+                                        <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                            <real key="value" value="4"/>
+                                        </userDefinedRuntimeAttribute>
+                                    </userDefinedRuntimeAttributes>
+                                    <connections>
+                                        <action selector="actionInviteFriends:" destination="-1" eventType="touchUpInside" id="Xdf-RO-C9X"/>
+                                    </connections>
+                                </button>
+                            </subviews>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <constraints>
+                                <constraint firstAttribute="trailing" secondItem="S1x-P5-VAS" secondAttribute="trailing" constant="8" id="2kd-03-RFQ"/>
+                                <constraint firstItem="bxH-bg-kav" firstAttribute="leading" secondItem="50H-bC-5zC" secondAttribute="leading" constant="8" id="DmK-fM-Ed1"/>
+                                <constraint firstAttribute="bottom" secondItem="S1x-P5-VAS" secondAttribute="bottom" constant="10" id="FVh-Us-8Zb"/>
+                                <constraint firstItem="bxH-bg-kav" firstAttribute="top" secondItem="WwT-vF-rPH" secondAttribute="bottom" constant="12" id="XYC-X9-Goh"/>
+                                <constraint firstItem="WwT-vF-rPH" firstAttribute="top" secondItem="50H-bC-5zC" secondAttribute="top" constant="20" id="ZDv-w5-qZy"/>
+                                <constraint firstItem="WwT-vF-rPH" firstAttribute="centerX" secondItem="50H-bC-5zC" secondAttribute="centerX" id="dhN-wo-zZ9"/>
+                                <constraint firstAttribute="trailing" secondItem="bxH-bg-kav" secondAttribute="trailing" constant="8" id="fHh-zv-pfa"/>
+                                <constraint firstAttribute="height" constant="280" id="kr8-Yl-V9T"/>
+                                <constraint firstItem="S1x-P5-VAS" firstAttribute="leading" secondItem="50H-bC-5zC" secondAttribute="leading" constant="8" id="uHt-Lr-pdy"/>
+                            </constraints>
+                        </view>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zY4-qh-Je8" userLabel="ViewEnglish">
+                            <rect key="frame" x="20" y="193" width="335" height="280"/>
+                            <subviews>
+                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="invitation_icon" translatesAutoresizingMaskIntoConstraints="NO" id="0jW-iJ-OEA">
+                                    <rect key="frame" x="82.5" y="20" width="170" height="120"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" constant="120" id="ea0-Sq-3TC"/>
+                                        <constraint firstAttribute="width" constant="170" id="jQ8-bf-cnF"/>
+                                    </constraints>
+                                </imageView>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Share this application to your family, friends and collauges, For the better and safe experience of riding." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BHI-zk-aoR">
+                                    <rect key="frame" x="8" y="152" width="319" height="64"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" constant="64" id="f3D-H2-8Zq"/>
+                                    </constraints>
+                                    <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="17"/>
+                                    <color key="textColor" white="0.33333333329999998" alpha="0.81940009120000001" colorSpace="calibratedWhite"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CjW-TA-kxQ" customClass="btnCustomeClass" customModule="Tawsila" customModuleProvider="target">
+                                    <rect key="frame" x="8" y="230" width="319" height="40"/>
+                                    <color key="backgroundColor" red="0.71372549019999998" green="0.60392156860000001" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" constant="40" id="9mM-6N-0KM"/>
+                                    </constraints>
+                                    <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="17"/>
+                                    <state key="normal" title="Share app">
+                                        <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    </state>
+                                    <userDefinedRuntimeAttributes>
+                                        <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                            <real key="value" value="4"/>
+                                        </userDefinedRuntimeAttribute>
+                                    </userDefinedRuntimeAttributes>
+                                    <connections>
+                                        <action selector="actionInviteFriends:" destination="-1" eventType="touchUpInside" id="1Zq-rQ-uOp"/>
+                                    </connections>
+                                </button>
+                            </subviews>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <constraints>
+                                <constraint firstItem="CjW-TA-kxQ" firstAttribute="leading" secondItem="zY4-qh-Je8" secondAttribute="leading" constant="8" id="3py-ia-l0v"/>
+                                <constraint firstAttribute="bottom" secondItem="CjW-TA-kxQ" secondAttribute="bottom" constant="10" id="5Va-CG-Qpb"/>
+                                <constraint firstAttribute="trailing" secondItem="CjW-TA-kxQ" secondAttribute="trailing" constant="8" id="BUF-h9-XUM"/>
+                                <constraint firstItem="BHI-zk-aoR" firstAttribute="top" secondItem="0jW-iJ-OEA" secondAttribute="bottom" constant="12" id="Mer-Sb-hs9"/>
+                                <constraint firstAttribute="height" constant="280" id="Mqt-jZ-yAM"/>
+                                <constraint firstItem="0jW-iJ-OEA" firstAttribute="top" secondItem="zY4-qh-Je8" secondAttribute="top" constant="20" id="Ttw-FH-3Gd"/>
+                                <constraint firstItem="BHI-zk-aoR" firstAttribute="leading" secondItem="zY4-qh-Je8" secondAttribute="leading" constant="8" id="pJN-SL-wSL"/>
+                                <constraint firstAttribute="trailing" secondItem="BHI-zk-aoR" secondAttribute="trailing" constant="8" id="sw9-Kh-Gvv"/>
+                                <constraint firstItem="0jW-iJ-OEA" firstAttribute="centerX" secondItem="zY4-qh-Je8" secondAttribute="centerX" id="v7Z-de-ct5"/>
+                            </constraints>
+                        </view>
+                    </subviews>
+                    <color key="backgroundColor" white="0.0" alpha="0.5" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstItem="50H-bC-5zC" firstAttribute="centerX" secondItem="Nv1-0P-5gs" secondAttribute="centerX" id="5Kh-gc-zm4"/>
+                        <constraint firstItem="zY4-qh-Je8" firstAttribute="centerY" secondItem="Nv1-0P-5gs" secondAttribute="centerY" id="6sn-Ja-V7e"/>
+                        <constraint firstItem="zY4-qh-Je8" firstAttribute="centerX" secondItem="Nv1-0P-5gs" secondAttribute="centerX" id="B48-27-jz2"/>
+                        <constraint firstAttribute="trailing" secondItem="50H-bC-5zC" secondAttribute="trailing" constant="20" id="BCE-tQ-rKb"/>
+                        <constraint firstItem="zY4-qh-Je8" firstAttribute="leading" secondItem="Nv1-0P-5gs" secondAttribute="leading" constant="20" id="HWO-dF-8ik"/>
+                        <constraint firstItem="50H-bC-5zC" firstAttribute="centerY" secondItem="Nv1-0P-5gs" secondAttribute="centerY" id="dDR-AP-MWO"/>
+                        <constraint firstAttribute="trailing" secondItem="zY4-qh-Je8" secondAttribute="trailing" constant="20" id="q3Q-yY-CKI"/>
+                        <constraint firstItem="50H-bC-5zC" firstAttribute="leading" secondItem="Nv1-0P-5gs" secondAttribute="leading" constant="20" id="vM7-hL-DYY"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstAttribute="trailing" secondItem="Nv1-0P-5gs" secondAttribute="trailing" id="GCg-Yr-5fh"/>
+                <constraint firstAttribute="bottom" secondItem="Nv1-0P-5gs" secondAttribute="bottom" id="gdh-M0-K4g"/>
+                <constraint firstItem="Nv1-0P-5gs" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="tgm-GU-90d"/>
+                <constraint firstItem="Nv1-0P-5gs" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="wY2-UV-Iq4"/>
+            </constraints>
+        </view>
+    </objects>
+    <resources>
+        <image name="invitation_icon" width="200" height="150"/>
+    </resources>
+</document>

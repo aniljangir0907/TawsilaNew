@@ -30,12 +30,8 @@
 		811951611EFCC27200C0720B /* ACFloatingTextfield.swift in Sources */ = {isa = PBXBuildFile; fileRef = 811951601EFCC27200C0720B /* ACFloatingTextfield.swift */; };
 		814C6FBA1EF048A600985702 /* MyRidesVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 814C6FB81EF048A600985702 /* MyRidesVC.swift */; };
 		814C6FBB1EF048A600985702 /* MyRidesVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 814C6FB91EF048A600985702 /* MyRidesVC.xib */; };
-		817C32A41F18550D00FF041D /* ShareAppViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 817C32A21F18550D00FF041D /* ShareAppViewController.swift */; };
-		817C32A51F18550D00FF041D /* ShareAppViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 817C32A31F18550D00FF041D /* ShareAppViewController.xib */; };
 		81A366D01F09822600A08544 /* bookingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81A366CE1F09822600A08544 /* bookingViewController.swift */; };
 		81A366D11F09822600A08544 /* bookingViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 81A366CF1F09822600A08544 /* bookingViewController.xib */; };
-		81B042441F17F2AD00911BC9 /* ContactUSController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81B042421F17F2AC00911BC9 /* ContactUSController.swift */; };
-		81B042451F17F2AD00911BC9 /* ContactUSController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 81B042431F17F2AC00911BC9 /* ContactUSController.xib */; };
 		81C14EE61F17F48D00FDEFEC /* MyRidesTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81C14EE41F17F48D00FDEFEC /* MyRidesTableViewCell.swift */; };
 		81C14EE71F17F48D00FDEFEC /* MyRidesTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 81C14EE51F17F48D00FDEFEC /* MyRidesTableViewCell.xib */; };
 		81C14EEB1F17F4E900FDEFEC /* DLRadioButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 81C14EEA1F17F4E900FDEFEC /* DLRadioButton.m */; };
@@ -55,6 +51,10 @@
 		81C14F0F1F17F52700FDEFEC /* PickUpPassenger.xib in Resources */ = {isa = PBXBuildFile; fileRef = 81C14F011F17F52700FDEFEC /* PickUpPassenger.xib */; };
 		81C14F181F17F5EC00FDEFEC /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81C14F141F17F5EC00FDEFEC /* SettingViewController.swift */; };
 		81C14F191F17F5EC00FDEFEC /* SettingViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 81C14F151F17F5EC00FDEFEC /* SettingViewController.xib */; };
+		81C8E80D1F18880300DA5BBC /* ContactUSController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81C8E8081F18880300DA5BBC /* ContactUSController.swift */; };
+		81C8E80E1F18880300DA5BBC /* ContactUSController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 81C8E8091F18880300DA5BBC /* ContactUSController.xib */; };
+		81C8E80F1F18880300DA5BBC /* ShareAppViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81C8E80B1F18880300DA5BBC /* ShareAppViewController.swift */; };
+		81C8E8101F18880300DA5BBC /* ShareAppViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 81C8E80C1F18880300DA5BBC /* ShareAppViewController.xib */; };
 		81CB2E721EED1BD700D400FC /* CreateNewAccount.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81CB2E701EED1BD700D400FC /* CreateNewAccount.swift */; };
 		81CB2E731EED1BD700D400FC /* CreateNewAccount.xib in Resources */ = {isa = PBXBuildFile; fileRef = 81CB2E711EED1BD700D400FC /* CreateNewAccount.xib */; };
 		81D179F21EF84A3200976349 /* forgotPassword.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81D179F01EF84A3200976349 /* forgotPassword.swift */; };
@@ -170,12 +170,8 @@
 		811951601EFCC27200C0720B /* ACFloatingTextfield.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ACFloatingTextfield.swift; sourceTree = "<group>"; };
 		814C6FB81EF048A600985702 /* MyRidesVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MyRidesVC.swift; path = MyRides/MyRidesVC.swift; sourceTree = "<group>"; };
 		814C6FB91EF048A600985702 /* MyRidesVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = MyRidesVC.xib; path = MyRides/MyRidesVC.xib; sourceTree = "<group>"; };
-		817C32A21F18550D00FF041D /* ShareAppViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShareAppViewController.swift; sourceTree = "<group>"; };
-		817C32A31F18550D00FF041D /* ShareAppViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ShareAppViewController.xib; sourceTree = "<group>"; };
 		81A366CE1F09822600A08544 /* bookingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = bookingViewController.swift; sourceTree = "<group>"; };
 		81A366CF1F09822600A08544 /* bookingViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = bookingViewController.xib; sourceTree = "<group>"; };
-		81B042421F17F2AC00911BC9 /* ContactUSController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContactUSController.swift; sourceTree = "<group>"; };
-		81B042431F17F2AC00911BC9 /* ContactUSController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ContactUSController.xib; sourceTree = "<group>"; };
 		81C14EE41F17F48D00FDEFEC /* MyRidesTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyRidesTableViewCell.swift; sourceTree = "<group>"; };
 		81C14EE51F17F48D00FDEFEC /* MyRidesTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MyRidesTableViewCell.xib; sourceTree = "<group>"; };
 		81C14EE91F17F4E900FDEFEC /* DLRadioButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DLRadioButton.h; sourceTree = "<group>"; };
@@ -196,6 +192,10 @@
 		81C14F011F17F52700FDEFEC /* PickUpPassenger.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PickUpPassenger.xib; sourceTree = "<group>"; };
 		81C14F141F17F5EC00FDEFEC /* SettingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingViewController.swift; sourceTree = "<group>"; };
 		81C14F151F17F5EC00FDEFEC /* SettingViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SettingViewController.xib; sourceTree = "<group>"; };
+		81C8E8081F18880300DA5BBC /* ContactUSController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContactUSController.swift; sourceTree = "<group>"; };
+		81C8E8091F18880300DA5BBC /* ContactUSController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ContactUSController.xib; sourceTree = "<group>"; };
+		81C8E80B1F18880300DA5BBC /* ShareAppViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShareAppViewController.swift; sourceTree = "<group>"; };
+		81C8E80C1F18880300DA5BBC /* ShareAppViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ShareAppViewController.xib; sourceTree = "<group>"; };
 		81CB2E701EED1BD700D400FC /* CreateNewAccount.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CreateNewAccount.swift; path = Tawsila/Controller/CreateNewAccount/CreateNewAccount.swift; sourceTree = SOURCE_ROOT; };
 		81CB2E711EED1BD700D400FC /* CreateNewAccount.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = CreateNewAccount.xib; path = Tawsila/Controller/CreateNewAccount/CreateNewAccount.xib; sourceTree = SOURCE_ROOT; };
 		81D179F01EF84A3200976349 /* forgotPassword.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = forgotPassword.swift; sourceTree = "<group>"; };
@@ -420,9 +420,9 @@
 			isa = PBXGroup;
 			children = (
 				81C14EEC1F17F52700FDEFEC /* DriverScreens */,
-				81B042411F17F2AC00911BC9 /* Contact Us */,
-				81B0423C1F17EF2B00911BC9 /* ShareApp */,
 				814C6FBC1EF048C300985702 /* UITableViewCell */,
+				81C8E8071F18880300DA5BBC /* ContactUs */,
+				81C8E80A1F18880300DA5BBC /* shareApp */,
 				5BB10CCF1EEBEB3B00F93FBE /* SignInOrCreateNewAccount */,
 				5BB10CE11EEBFA0500F93FBE /* SignInViewController */,
 				81D179EF1EF84A3200976349 /* ForgotPassword */,
@@ -489,26 +489,6 @@
 				81C14EE31F17F48D00FDEFEC /* MyRideCell */,
 			);
 			name = UITableViewCell;
-			sourceTree = "<group>";
-		};
-		81B0423C1F17EF2B00911BC9 /* ShareApp */ = {
-			isa = PBXGroup;
-			children = (
-				817C32A21F18550D00FF041D /* ShareAppViewController.swift */,
-				817C32A31F18550D00FF041D /* ShareAppViewController.xib */,
-			);
-			name = ShareApp;
-			path = "../../../../Tawsila/Tawsila/Controller/Get Free Rides";
-			sourceTree = "<group>";
-		};
-		81B042411F17F2AC00911BC9 /* Contact Us */ = {
-			isa = PBXGroup;
-			children = (
-				81B042421F17F2AC00911BC9 /* ContactUSController.swift */,
-				81B042431F17F2AC00911BC9 /* ContactUSController.xib */,
-			);
-			name = "Contact Us";
-			path = "../../../../Tawsila/Tawsila/Controller/Contact Us";
 			sourceTree = "<group>";
 		};
 		81C14EE31F17F48D00FDEFEC /* MyRideCell */ = {
@@ -613,6 +593,24 @@
 				81C14F151F17F5EC00FDEFEC /* SettingViewController.xib */,
 			);
 			path = Settings;
+			sourceTree = "<group>";
+		};
+		81C8E8071F18880300DA5BBC /* ContactUs */ = {
+			isa = PBXGroup;
+			children = (
+				81C8E8081F18880300DA5BBC /* ContactUSController.swift */,
+				81C8E8091F18880300DA5BBC /* ContactUSController.xib */,
+			);
+			path = ContactUs;
+			sourceTree = "<group>";
+		};
+		81C8E80A1F18880300DA5BBC /* shareApp */ = {
+			isa = PBXGroup;
+			children = (
+				81C8E80B1F18880300DA5BBC /* ShareAppViewController.swift */,
+				81C8E80C1F18880300DA5BBC /* ShareAppViewController.xib */,
+			);
+			path = shareApp;
 			sourceTree = "<group>";
 		};
 		81CB2E6F1EED1B7F00D400FC /* CreateNewAccount */ = {
@@ -1003,6 +1001,7 @@
 				929D98F41EEEB26100A8E598 /* Roboto-Bold.ttf in Resources */,
 				81D179F31EF84A3200976349 /* forgotPassword.xib in Resources */,
 				929D98FB1EEEB26100A8E598 /* Roboto-Regular.ttf in Resources */,
+				81C8E80E1F18880300DA5BBC /* ContactUSController.xib in Resources */,
 				81C14EE71F17F48D00FDEFEC /* MyRidesTableViewCell.xib in Resources */,
 				970B2DAD1EF281AC0027F0C3 /* RideLaterVC.xib in Resources */,
 				92B006F71F0ACA1500B838D4 /* star.png in Resources */,
@@ -1012,7 +1011,6 @@
 				92B006F81F0ACA1500B838D4 /* starFill.png in Resources */,
 				81F2EC181EF19B070065D2BD /* rightMenuCell.xib in Resources */,
 				929D98F71EEEB26100A8E598 /* Roboto-Light.ttf in Resources */,
-				81B042451F17F2AD00911BC9 /* ContactUSController.xib in Resources */,
 				81D17A021EF84C3200976349 /* ConfirmationScreen.xib in Resources */,
 				929D98F21EEEB26100A8E598 /* Roboto-Black.ttf in Resources */,
 				9215162A1F0D4A1800E7E173 /* driver_arrived_sound.mp3 in Resources */,
@@ -1022,8 +1020,8 @@
 				929D98F61EEEB26100A8E598 /* Roboto-Italic.ttf in Resources */,
 				045CF6FF1EEC7A9F0052DBC6 /* LaunchScreen.storyboard in Resources */,
 				81E76BE21EEF73E500256FD4 /* ChangePasswordViewController.xib in Resources */,
+				81C8E8101F18880300DA5BBC /* ShareAppViewController.xib in Resources */,
 				929D98F31EEEB26100A8E598 /* Roboto-BlackItalic.ttf in Resources */,
-				817C32A51F18550D00FF041D /* ShareAppViewController.xib in Resources */,
 				921516261F0D435600E7E173 /* GoogleService-Info.plist in Resources */,
 				81C14F0B1F17F52700FDEFEC /* DriverHomeScreen.xib in Resources */,
 				9215162B1F0D4A1800E7E173 /* notify_ride.mp3 in Resources */,
@@ -1235,6 +1233,7 @@
 				5BB10C9F1EEBEA8500F93FBE /* ViewController.swift in Sources */,
 				81E76BE11EEF73E500256FD4 /* ChangePasswordViewController.swift in Sources */,
 				81F2EC171EF19B070065D2BD /* rightMenuCell.swift in Sources */,
+				81C8E80D1F18880300DA5BBC /* ContactUSController.swift in Sources */,
 				81C14F081F17F52700FDEFEC /* CancelView.swift in Sources */,
 				0439CA7E1EEC50B1008E4F78 /* Utility.swift in Sources */,
 				81F2EC031EF18AA60065D2BD /* SlideNavigationContorllerAnimatorSlideAndFade.m in Sources */,
@@ -1243,7 +1242,6 @@
 				81C14F0C1F17F52700FDEFEC /* PayBillDetails.swift in Sources */,
 				814C6FBA1EF048A600985702 /* MyRidesVC.swift in Sources */,
 				045CF6FA1EEC7A010052DBC6 /* AppDelegate.swift in Sources */,
-				81B042441F17F2AD00911BC9 /* ContactUSController.swift in Sources */,
 				81A366D01F09822600A08544 /* bookingViewController.swift in Sources */,
 				81E76BE51EEF73E500256FD4 /* WalletViewController.swift in Sources */,
 				81F2EC001EF18AA60065D2BD /* SlideNavigationContorllerAnimatorScale.m in Sources */,
@@ -1258,13 +1256,13 @@
 				81F2EC0D1EF190BE0065D2BD /* leftMenuCell.swift in Sources */,
 				81C14F181F17F5EC00FDEFEC /* SettingViewController.swift in Sources */,
 				5BB10CE41EEBFA1700F93FBE /* SignInViewController.swift in Sources */,
-				817C32A41F18550D00FF041D /* ShareAppViewController.swift in Sources */,
 				04FA4CDC1EF5260900CF7618 /* SSKeychain.m in Sources */,
 				81C14F0A1F17F52700FDEFEC /* DriverHomeScreen.swift in Sources */,
 				0439CA7D1EEC50B1008E4F78 /* UIScrollView+TPKeyboardAvoidingAdditions.m in Sources */,
 				811951611EFCC27200C0720B /* ACFloatingTextfield.swift in Sources */,
 				92034A951EFAF8790064DAFE /* PickUPRideVC.swift in Sources */,
 				04FA4CE01EF538C300CF7618 /* Reachability.swift in Sources */,
+				81C8E80F1F18880300DA5BBC /* ShareAppViewController.swift in Sources */,
 				5BB10CA51EEBEA8600F93FBE /* Tawsila.xcdatamodeld in Sources */,
 				81D17A011EF84C3200976349 /* ConfirmationScreen.swift in Sources */,
 				81C14EEB1F17F4E900FDEFEC /* DLRadioButton.m in Sources */,
