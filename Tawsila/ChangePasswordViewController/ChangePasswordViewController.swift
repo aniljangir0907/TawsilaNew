@@ -1,3 +1,10 @@
+//
+//  ChangePasswordViewController.swift
+//  Tawsila
+//
+//  Created by Vikram on 11/06/17.
+//  Copyright © 2017 scientificweb. All rights reserved.
+//
 
 import UIKit
 import RappleProgressHUD
@@ -87,7 +94,8 @@ class ChangePasswordViewController: UIViewController, UITextFieldDelegate
         return textField.resignFirstResponder()
     }
     
-    func textFieldShouldEndEditing(_ textField: UITextField) -> Bool {
+    func textFieldShouldEndEditing(_ textField: UITextField) -> Bool  {
+        
         if textField == txtNewPassword || textField == txtNewPasswordAr  {
             if  textField.text == txtCurrentPassword.text ||  textField.text == txtCurrentPasswordAr.text{
                 Utility.sharedInstance.showAlert("Alert", msg: "Your previous password and new password are same. Please change password.", controller: self)
