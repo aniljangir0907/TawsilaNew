@@ -40,6 +40,9 @@ class RideLaterVC: UIViewController ,GMSMapViewDelegate , GMSAutocompleteViewCon
     var destinationCordinate : CLLocationCoordinate2D!
     
     
+    @IBOutlet var viewEstimateFare: UIView!
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -53,6 +56,7 @@ class RideLaterVC: UIViewController ,GMSMapViewDelegate , GMSAutocompleteViewCon
         
         lblLocatoin.text = pickUpAddress
         
+        viewEstimateFare.isHidden = true
         
     }
     
