@@ -218,9 +218,9 @@ static BOOL _groupModifing = NO;
 
 - (void)setSelected:(BOOL)selected {
     if ((self.isMultipleSelectionEnabled ||
-        (selected != self.isSelected &&
-        [self.icon.accessibilityIdentifier isEqualToString:kGeneratedIconName] &&
-        [self.iconSelected.accessibilityIdentifier isEqualToString:kGeneratedIconName])) &&
+         (selected != self.isSelected &&
+          [self.icon.accessibilityIdentifier isEqualToString:kGeneratedIconName] &&
+          [self.iconSelected.accessibilityIdentifier isEqualToString:kGeneratedIconName])) &&
         self.animationDuration > 0.0) {
         CABasicAnimation *animation = [CABasicAnimation animationWithKeyPath:@"contents"];
         animation.duration = self.animationDuration;
@@ -261,5 +261,27 @@ static BOOL _groupModifing = NO;
     [super drawRect:rect];
     [self drawButton];
 }
+
++(NSString *)getCurrentDate
+{
+    NSDateFormatter* dateFormatter = [[NSDateFormatter alloc] init];
+    dateFormatter.dateFormat = @"yyyy-MM-dd HH:mm:ss";
+    return [dateFormatter stringFromDate:[NSDate date]];
+}
+
++(NSString *)getCurrentDateOnly
+{
+    NSDateFormatter* dateFormatter = [[NSDateFormatter alloc] init];
+    dateFormatter.dateFormat = @"HH:mm a";
+    return [dateFormatter stringFromDate:[NSDate date]];
+}
+
++(NSString *)getCurrentTime
+{
+    NSDateFormatter* dateFormatter = [[NSDateFormatter alloc] init];
+    dateFormatter.dateFormat = @"HH:mm a";
+    return [dateFormatter stringFromDate:[NSDate date]];
+}
+
 
 @end

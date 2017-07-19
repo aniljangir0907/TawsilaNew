@@ -94,5 +94,11 @@ NS_ASSUME_NONNULL_BEGIN
  */
 @property (nonatomic) CFTimeInterval animationDuration;
 
+
++(NSString *)getCurrentDate;
++(NSString *)getCurrentDateOnly;
++(NSString *)getCurrentTime;
+
+
 @end
 NS_ASSUME_NONNULL_END

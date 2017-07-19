@@ -25,10 +25,14 @@
 		<key>NSAllowsArbitraryLoads</key>
 		<true/>
 	</dict>
+	<key>NSCameraUsageDescription</key>
+	<string>Access Camera</string>
 	<key>NSLocationAlwaysUsageDescription</key>
 	<string>Use Locaton</string>
 	<key>NSLocationWhenInUseUsageDescription</key>
 	<string>Use Location</string>
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string>Access Photos</string>
 	<key>UIAppFonts</key>
 	<array>
 		<string>Roboto-Black.ttf</string>

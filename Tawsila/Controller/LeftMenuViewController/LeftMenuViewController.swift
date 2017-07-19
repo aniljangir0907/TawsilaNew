@@ -16,7 +16,7 @@ class LeftMenuViewController: UIViewController, UITableViewDelegate, UITableView
     @IBOutlet var lblUserDetail: UILabel!
     var arrLeftMenu =  [["image" : "home", "key" : "Home"], ["image" : "myride", "key" : "My rides"], ["image" : "wallet", "key" : "Wallet"], ["image" : "Share_icon", "key" : "Share app"], ["image" : "settings", "key" : "Settings"], ["image" : "contactUs", "key" : "Contact us"],  ["image" : "help", "key" : "Help"]]
     
-    var arrLeftMenuDriver = [["image" : "myride", "key" : "All Rides"], ["image" : "signout", "key" : "Signout"], ["image" : "settings", "key" : "Settings"]]//30-June-2017 vikram singh
+    var arrLeftMenuDriver = [["image" : "home", "key" : "Home"] ,["image" : "myride", "key" : "My Rides"], ["image" : "signout", "key" : "Signout"], ["image" : "settings", "key" : "Settings"]]//30-June-2017 vikram singh
     
     
     override func viewDidLoad() {
@@ -72,7 +72,7 @@ class LeftMenuViewController: UIViewController, UITableViewDelegate, UITableView
         
         if userType == "driver" {//30-June-2017 vikram singh
             
-            if  indexPath.row == 3 {
+            if  indexPath.row == 4 {
                 cell.imgIcon.isHidden = true
                 cell.lblTitle.isHidden = true
                 let driverStatus = USER_DEFAULT.object(forKey: "driverstatus") as! String
@@ -154,13 +154,17 @@ class LeftMenuViewController: UIViewController, UITableViewDelegate, UITableView
         else{
             switch indexPath.row {
             case 0:
-                let obje: AllRides = AllRides(nibName: "AllRides", bundle: nil) as! AllRides
+                let obje: DriverHomeScreen = DriverHomeScreen(nibName: "DriverHomeScreen", bundle: nil) as DriverHomeScreen
                 SlideNavigationController.sharedInstance().popToRootAndSwitch(to: obje, withCompletion: nil)
+                
             case 1:
+                let obje: AllRides = AllRides(nibName: "AllRides", bundle: nil) as AllRides
+                SlideNavigationController.sharedInstance().popToRootAndSwitch(to: obje, withCompletion: nil)
+            case 2:
                 USER_DEFAULT.set("0", forKey: "isLogin")
                 AppDelegateVariable.appDelegate.sliderMenuControllser()
                 
-            case 2:
+            case 3:
                 print("Tawsila")
             default:
                 print("ViewController not Found.")

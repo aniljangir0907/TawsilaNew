@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12120" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12121" systemVersion="16D30" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12088"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <customFonts key="customFonts">
@@ -23,6 +23,7 @@
                 <outlet property="btnCancelAr" destination="Se3-m4-rSS" id="QIu-h7-UEF"/>
                 <outlet property="buttonConfirmBooking" destination="E8c-pP-Jbc" id="JPw-r2-D60"/>
                 <outlet property="buttonConfirmBookingAr" destination="Msc-mJ-6bo" id="jiy-VU-5Fl"/>
+                <outlet property="icon_pay_media" destination="3Hc-Ni-08q" id="PXT-ox-pbJ"/>
                 <outlet property="imageDestDot" destination="sob-Xg-Jgj" id="KEa-7k-ICo"/>
                 <outlet property="imageDestDotAr" destination="N95-Qa-Dpl" id="n3c-2y-ARp"/>
                 <outlet property="imagePicDot" destination="DcS-6B-3AI" id="cLr-le-ogG"/>
@@ -37,6 +38,7 @@
                 <outlet property="lblEstimatedTimeAr" destination="xaY-OP-KcS" id="Ch5-7f-7Y6"/>
                 <outlet property="lblPickAddress" destination="1by-EO-A0U" id="Tmv-wc-NBw"/>
                 <outlet property="lblPickAddressAr" destination="X6R-Zh-iQo" id="BC7-LQ-Jtq"/>
+                <outlet property="lblpayMedia" destination="Y76-wt-sQK" id="uHH-8F-cUi"/>
                 <outlet property="scrollViewCars" destination="bNi-LM-BgP" id="KUQ-cg-cfY"/>
                 <outlet property="scrollViewCarsAr" destination="zQO-Kb-46W" id="dXa-ew-WWf"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="Ebg-iF-Q2S"/>
@@ -54,6 +56,7 @@
                 <outlet property="viewForMapAr" destination="ubP-bm-E8k" id="2oR-Ov-YUE"/>
                 <outlet property="viewPickAddress" destination="MWc-Vk-Dvz" id="0yX-JE-PJW"/>
                 <outlet property="viewPickAddressAr" destination="WWa-yv-beQ" id="cfQ-or-pZd"/>
+                <outlet property="viewSeletPayMethod" destination="oVm-77-lof" id="M0M-px-zif"/>
             </connections>
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
@@ -268,7 +271,7 @@
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         </view>
                         <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="q7j-tU-LKl">
-                            <rect key="frame" x="20" y="488" width="45" height="45"/>
+                            <rect key="frame" x="20" y="488" width="45" height="67"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" heightSizable="YES"/>
                             <state key="normal" image="share_home"/>
                             <connections>
@@ -394,8 +397,40 @@
                             </subviews>
                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                         </view>
+                        <view hidden="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="oVm-77-lof">
+                            <rect key="frame" x="8" y="578" width="359" height="40"/>
+                            <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
+                            <subviews>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Set up payment" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="8" translatesAutoresizingMaskIntoConstraints="NO" id="eev-bT-cZT">
+                                    <rect key="frame" x="0.0" y="1" width="183" height="38"/>
+                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxX="YES" heightSizable="YES"/>
+                                    <fontDescription key="fontDescription" name="Roboto-Medium" family="Roboto" pointSize="15"/>
+                                    <color key="textColor" red="0.96470588235294119" green="0.1803921568627451" blue="0.20784313725490194" alpha="1" colorSpace="calibratedRGB"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                                <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleAspectFit" fixedFrame="YES" image="wallet_Icon" translatesAutoresizingMaskIntoConstraints="NO" id="3Hc-Ni-08q">
+                                    <rect key="frame" x="191" y="6" width="32" height="28"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMinX="YES"/>
+                                </imageView>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Y76-wt-sQK">
+                                    <rect key="frame" x="231" y="10" width="120" height="21"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxY="YES"/>
+                                    <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="15"/>
+                                    <nil key="textColor"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cNE-s1-4WF">
+                                    <rect key="frame" x="203" y="-3" width="156" height="46"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <connections>
+                                        <action selector="tapPaymentMethod:" destination="-1" eventType="touchUpInside" id="Mpg-qN-gGD"/>
+                                    </connections>
+                                </button>
+                            </subviews>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        </view>
                         <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="nZl-4q-AkF">
-                            <rect key="frame" x="8" y="566" width="359" height="50"/>
+                            <rect key="frame" x="8" y="522" width="359" height="50"/>
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                             <subviews>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="x2M-jP-fvf">
@@ -484,12 +519,12 @@
                             </subviews>
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         </view>
-                        <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Kev-z0-xMG">
-                            <rect key="frame" x="20" y="488" width="45" height="45"/>
-                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" heightSizable="YES"/>
+                        <button hidden="YES" opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Kev-z0-xMG">
+                            <rect key="frame" x="8" y="438" width="45" height="67"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                             <state key="normal" image="share_home"/>
                             <connections>
-                                <action selector="actionShareApp:" destination="-1" eventType="touchUpInside" id="eVE-V6-qqT"/>
+                                <action selector="actionShareApp:" destination="-1" eventType="touchUpInside" id="AbP-kR-6Ce"/>
                             </connections>
                         </button>
                     </subviews>
@@ -497,7 +532,7 @@
                 </view>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-            <point key="canvasLocation" x="33.5" y="54.5"/>
+            <point key="canvasLocation" x="92.5" y="56.5"/>
         </view>
     </objects>
     <resources>
@@ -506,5 +541,6 @@
         <image name="markerStable" width="50" height="100"/>
         <image name="menu" width="26" height="14"/>
         <image name="share_home" width="32" height="32"/>
+        <image name="wallet_Icon" width="64" height="64"/>
     </resources>
 </document>

@@ -14,9 +14,15 @@ class ConfirmationScreen: UIViewController, UITextFieldDelegate {
     @IBOutlet var txtVerficationCodeAr: UITextField!
    @IBOutlet var viewArabic: UIView!
     @IBOutlet var viewEnglish: UIView!
+    
+    var vcode = String()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        
+        txtVerificationCode.text = vcode
+        
         // Do any additional setup after loading the view.
     }
      override func viewWillAppear(_ animated: Bool) {

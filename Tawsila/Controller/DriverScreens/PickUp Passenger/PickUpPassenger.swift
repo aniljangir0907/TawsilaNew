@@ -56,7 +56,10 @@ class PickUpPassenger: UIViewController, GMSMapViewDelegate, UNUserNotificationC
     var ammount = String()
     
     var reason = String()
+    var text_type = ""
     
+    var initialRate = String()
+    var standredRate = String()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -67,6 +70,13 @@ class PickUpPassenger: UIViewController, GMSMapViewDelegate, UNUserNotificationC
         locationManager.desiredAccuracy = kCLLocationAccuracyBest
         self .perform( #selector(self.updateLocation), with: 1, afterDelay: 0)
         
+        let userInfo : NSDictionary = USER_DEFAULT .object(forKey: "userData") as! NSDictionary
+        
+        text_type = userInfo.value(forKey: "car_type") as! String
+        
+        self.getCabData()
+        self.getBookingDetail()
+        self.getRiderDetail()
         // Do any additional setup after loading the view.
     }
     
@@ -80,6 +90,40 @@ class PickUpPassenger: UIViewController, GMSMapViewDelegate, UNUserNotificationC
     }
     
     
+    
+    func getBookingDetail()
+    {
+        let dic = NSMutableDictionary()
+        
+        dic.setValue(booking_id , forKey: "booking_id")
+        
+        RappleActivityIndicatorView.startAnimatingWithLabel("Processing...", attributes: RappleAppleAttributes)
+        var parameterString = String(format : "get_booking_details")
+        
+        for (key, value) in dic
+        {
+            parameterString = String (format: "%@&%@=%@", parameterString,key as! CVarArg,value as! CVarArg)
+        }
+        
+        Utility.sharedInstance.postDataInDataForm(header: parameterString, inVC: self) { (dataDictionary, msg, status) in
+            
+            if status == true
+            {
+                let dicResult : NSDictionary =  ((dataDictionary.object(forKey: "result") as! NSArray) .object(at: 0) as! NSDictionary )
+                
+                self.lblInitialAddress.text =  dicResult.value(forKey: "pickup_area") as? String
+                self.lblInitialAddressAr.text = dicResult.value(forKey: "pickup_area") as? String
+                
+                self.lblDestinationAddress.text = dicResult.value(forKey: "drop_area") as? String
+                self.lblDestinationAddressAr.text = dicResult.value(forKey: "drop_area") as? String
+             
+            }
+            else
+            {
+                Utility.sharedInstance.showAlert(kAPPName, msg: msg as String, controller: self)
+            }
+        }
+    }
     
     
     func updateLocation()
@@ -100,17 +144,12 @@ class PickUpPassenger: UIViewController, GMSMapViewDelegate, UNUserNotificationC
         }
     }
     
-    
-    
     @IBAction func actionAskForCancel(_ sender: Any) {
         
         let actionSheetController: UIAlertController = UIAlertController(title: "Choose Option", message: "", preferredStyle: .actionSheet)
         let cancelRide: UIAlertAction = UIAlertAction(title: "Cancel Ride", style: .default) { action -> Void in
 
-
             self .performSelector(onMainThread: #selector(self.cancelPopUp), with: "", waitUntilDone: false)
-            
-            
         }
         
         let cancelAction: UIAlertAction = UIAlertAction(title: "Cancel", style: .cancel) { action -> Void in
@@ -171,12 +210,15 @@ class PickUpPassenger: UIViewController, GMSMapViewDelegate, UNUserNotificationC
     }
     @IBAction func actionArrived(_ sender: Any) {
         
+        
+        
         if is_arrived == true
         {
            self.startRide()
         }
         else
         {
+            self.arrived()
             btnArrived .setTitle("Start Ride", for: .normal)
             is_arrived = true
         }
@@ -192,12 +234,12 @@ class PickUpPassenger: UIViewController, GMSMapViewDelegate, UNUserNotificationC
         
         let dic = NSMutableDictionary()
         
+        dic.setValue(rider_username, forKey: "username")
         dic.setValue(booking_id, forKey: "booking_id")
         dic.setValue(USER_ID, forKey: "driver_id")
-        dic.setValue(USER_ID, forKey: "rider_id")
         
         RappleActivityIndicatorView.startAnimatingWithLabel("Processing...", attributes: RappleAppleAttributes)
-        var parameterString = String(format : "accept_booking")
+        var parameterString = String(format : "reach_at_pickup_location")
         
         for (key, value) in dic
         {
@@ -217,14 +259,14 @@ class PickUpPassenger: UIViewController, GMSMapViewDelegate, UNUserNotificationC
         }
     }
     
+    
     func startRide() {
-        
+
         // http://taxiappsourcecode.com/api/index.php?option=start_ride]    parameter name -- [username=scientificwebs, booking_id=405, driver_id=14
         
         pickUpCordinate = locationManager.location?.coordinate
         
         let dic = NSMutableDictionary()
-        
         
         dic.setValue(rider_username, forKey: "username")
         dic.setValue(booking_id, forKey: "booking_id")
@@ -249,15 +291,14 @@ class PickUpPassenger: UIViewController, GMSMapViewDelegate, UNUserNotificationC
                 Utility.sharedInstance.showAlert(kAPPName, msg: msg as String, controller: self)
             }
         }
-        
     }
     
     func completeRide()
     {
-        
+
         let dic = NSMutableDictionary()
         
-        //  http://taxiappsourcecode.com/api/index.php?option=reach_at_pickup_location
+        // http://taxiappsourcecode.com/api/index.php?option=reach_at_pickup_location
         // booking_id=, driver_id=, amount, km, distance, pickup_area, drop_area
         
         dic.setValue(USER_ID, forKey: "booking_id")
@@ -265,9 +306,9 @@ class PickUpPassenger: UIViewController, GMSMapViewDelegate, UNUserNotificationC
         dic.setValue(pickArea, forKey: "pickup_area")
         dic.setValue(dropArea, forKey: "drop_area")
         dic.setValue(ammount, forKey: "amount")
-        dic.setValue("50", forKey: "km")
+        dic.setValue(self.distance, forKey: "km")
+        dic.setValue(self.distance, forKey: "distance")
 
-        
         RappleActivityIndicatorView.startAnimatingWithLabel("Processing...", attributes: RappleAppleAttributes)
         var parameterString = String(format : "complete_booking")
         
@@ -280,8 +321,15 @@ class PickUpPassenger: UIViewController, GMSMapViewDelegate, UNUserNotificationC
             
             if status == true
             {
-                
-                
+
+                let popUp = Bundle.main.loadNibNamed("PayBillDetails", owner: self, options: nil)![0] as? UIView as! PayBillDetails
+                popUp.frame = self.view.frame
+                popUp.lblAmount.text = self.ammount
+                popUp.lblAddress.text = self.pickArea
+                popUp.lblAddressDest.text = self.dropArea
+                popUp.car_type.text = self.text_type
+                self.view.addSubview(popUp)
+
             }
             else
             {
@@ -326,7 +374,6 @@ class PickUpPassenger: UIViewController, GMSMapViewDelegate, UNUserNotificationC
                 Utility.sharedInstance.showAlert(kAPPName, msg: msg as String, controller: self)
             }
         }
-        
     }
     
     
@@ -351,8 +398,6 @@ class PickUpPassenger: UIViewController, GMSMapViewDelegate, UNUserNotificationC
                     
                     if (routes?.count)! > 0
                     {
-                        
-                        
                         let overview_polyline : NSDictionary = (routes?[0] as? NSDictionary)!
                         
                         let dic : NSDictionary = overview_polyline as Any as! NSDictionary
@@ -371,19 +416,20 @@ class PickUpPassenger: UIViewController, GMSMapViewDelegate, UNUserNotificationC
                         
                         self.dropArea =  (((((dic.object(forKey: "legs") as! NSArray) .object(at: 0) ) as AnyObject).object(forKey: "end_address") ) as? String)!
 
-                        
                         self.distance = estDistance ;
                         
                         self.ammount = "100";
                         
+                        
+                        let srate :Float = (self.standredRate as NSString ).floatValue
+                        let sirate :Float = (self.initialRate as NSString ).floatValue
+
+                        let tfare : Float = srate + sirate * (estDistance as NSString).floatValue;
+
+                        self.ammount = NSString (format: "%d", Int(tfare) ) as String
+                        
                         self.completeRide();
-                        
-                        
-                        // let doubleValue : Double = NSString(string: estDistance).doubleValue // 3.1
-                        
-                        // self.lblEstimatedFare.text =  String (format: "%.1f SAR", (self.initialRate as NSString).floatValue + (self.standredRate as NSString).floatValue * Float32(doubleValue) )
-                        // self.lblEstimatedTime.text = estTime
-                        
+
                         
                     }
                     else
@@ -396,16 +442,75 @@ class PickUpPassenger: UIViewController, GMSMapViewDelegate, UNUserNotificationC
             {
                 print("error in JSONSerialization")
             }
-            
         }
     }
     
-   
+    func getCabData()
+    {
+        let dic = NSMutableDictionary()
+        
+        dic.setValue(text_type, forKey: "cartype")
+        
+        RappleActivityIndicatorView.startAnimatingWithLabel("Processing...", attributes: RappleAppleAttributes)
+        var parameterString = String(format : "get_cab_data")
+        
+        for (key, value) in dic
+        {
+            parameterString = String (format: "%@&%@=%@", parameterString,key as! CVarArg,value as! CVarArg)
+        }
+        
+        Utility.sharedInstance.postDataInDataForm(header: parameterString, inVC: self) { (dataDictionary, msg, status) in
+            
+            if status == true
+            {
+                let dicResult : NSDictionary =  ((dataDictionary.object(forKey: "result") as! NSArray) .object(at: 0) as! NSDictionary )
+                
+                self.initialRate = NSString (format:"%@",dicResult .value(forKey: "intailrate") as! CVarArg ) as String
+                self.standredRate = NSString (format:"%@",dicResult .value(forKey: "standardrate") as! CVarArg ) as String
+                
+                //  ":"49","":"145
+                //   self.text_type =
+            }
+            else
+            {
+                Utility.sharedInstance.showAlert(kAPPName, msg: msg as String, controller: self)
+            }
+        }
+    }
     
-    
+    func getRiderDetail()
+    {
+        let dic = NSMutableDictionary()
+        
+        dic.setValue("user", forKey: "usertype")
+        dic.setValue(self.rider_id, forKey: "id")
+        
+        RappleActivityIndicatorView.startAnimatingWithLabel("Processing...", attributes: RappleAppleAttributes)
+        var parameterString = String(format : "get_user_profile")
+        
+        for (key, value) in dic
+        {
+            parameterString = String (format: "%@&%@=%@", parameterString,key as! CVarArg,value as! CVarArg)
+        }
+        
+        Utility.sharedInstance.postDataInDataForm(header: parameterString, inVC: self) { (dataDictionary, msg, status) in
+            
+            if status == true
+            {
+                let dicResult : NSDictionary =  dataDictionary.object(forKey: "result") as! NSDictionary
+                self.lblUserName.text = dicResult .object(forKey: "username") as? String
+                self.lblMobileNumber.text = dicResult .object(forKey: "mobile") as? String
+            
+            }
+            else
+            {
+                Utility.sharedInstance.showAlert(kAPPName, msg: msg as String, controller: self)
+            }
+        }
+    }
+
     // MARK: - Notification Delegate
     // MARK:
-    
     
     func userNotificationCenter(_ center: UNUserNotificationCenter, willPresent notification: UNNotification, withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void)
     {
@@ -419,9 +524,9 @@ class PickUpPassenger: UIViewController, GMSMapViewDelegate, UNUserNotificationC
         
         if title == "cancel_by_rider"
         {
+            AppDelegateVariable.appDelegate.id_booking = "cancel";
             self.dismiss(animated: true, completion: nil)
         }
-        
         
         if(application.applicationState == .active) {
             
@@ -437,9 +542,4 @@ class PickUpPassenger: UIViewController, GMSMapViewDelegate, UNUserNotificationC
             
         }
     }
-    
-    
-    
-    //
-    //                            regarding notification -  their are two new apis for notification ,, api for other notification are same -- 1. this api will be called when driver will arrive at pickup location ---- http://taxiappsourcecode.com/api/index.php?option=reach_at_pickup_location          parameter name --[username=scientificwebs,booking_id=405,driver_id=14]                                                                              2. this api will be called when driver will start ride --- http://taxiappsourcecode.com/api/index.php?option=start_ride]    parameter name -- [username=scientificwebs, booking_id=405, driver_id=14
 }

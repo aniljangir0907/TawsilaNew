@@ -157,32 +157,25 @@ class bookingViewController: UIViewController {
                 }
                 else
                 {
-                    if  self.dataDictionary.value(forKey: "status") as! String == "Scheduled"   {
-                        if AppDelegateVariable.appDelegate.strLanguage == "en" {
-                            self.lblCarNumber.text = userDict.value(forKey: "car_no") as? String
-                            self.lblCarModel.text = " \(String(describing: userDict.value(forKey: "car_type") as? String)) Details will be shared 15 min before pickup time."
-                            self.lblUserName.isHidden = true
-                        } else{
-                            self.lblCarNumberAr.text = userDict.value(forKey: "car_no") as? String
-                            self.lblCarModelAr.text = " \(String(describing: userDict.value(forKey: "car_type") as? String)) Details will be shared 15 min before pickup time."
-                            self.lblUserNameAr.isHidden = true
-                        }
-                    }else{
-                    if AppDelegateVariable.appDelegate.strLanguage == "en"{
-                         self.lblUserName.isHidden = false
-                    self.lblCarNumber.text = userDict.value(forKey: "car_no") as? String
-                    self.lblCarModel.text = userDict.value(forKey: "car_type") as? String
-                    self.lblUserName.text = userDict.value(forKey: "name") as? String
-                    }
-                    else{
-                         self.lblUserName.isHidden = false
-                        self.lblCarNumberAr.text = userDict.value(forKey: "car_no") as? String
-                        self.lblCarModelAr.text = userDict.value(forKey: "car_type") as? String
-                        self.lblUserNameAr.text = userDict.value(forKey: "name") as? String
-                    }
-                   /// self.setDataOnViewController(dataDictionary)
-                    }
-                }
+
+//                    self.arrayRideData = userDict.mutableCopy()  as! NSMutableArray
+//                    // var dic : NSDictionary!
+//                    for  dic in self.arrayRideData {
+//                        let dict = dic as! NSDictionary
+//                        //        Completed,Cancelled ,Booking,Processing
+//                        if (((dict.value(forKey: "status") as! String) == "Processing") || ((dict.value(forKey: "status") as! String) == "Booking")){
+//                            self.arrayCurrentData.add(dict)
+//                        }else if (((dict.value(forKey: "status") as! String) == "Cancelled") || ((dict.value(forKey: "status") as! String) == "Completed")) {
+//                            self.arrayCompletedData.add(dict)
+//                        }
+//                    }
+//                    if AppDelegateVariable.appDelegate.strLanguage == "en"{
+//                        self.tblMyRides.reloadData()
+//                    }else {
+//                        self.tblMyRidesAr.reloadData()
+//                    }
+                    
+               }
             }
             else {
                 Utility.sharedInstance.showAlert(kAPPName, msg: msg as String, controller: self)

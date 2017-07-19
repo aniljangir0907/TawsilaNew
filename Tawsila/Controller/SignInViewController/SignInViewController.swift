@@ -79,6 +79,8 @@ class SignInViewController: UIViewController {
             return
         }
         
+        
+        
         if  AppDelegateVariable.appDelegate.strLanguage == "en" {
             if (Utility.sharedInstance.trim(txtEmail.text!)).characters.count == 0 {
                 Utility.sharedInstance.showAlert("Alert", msg: "Please enter your email.", controller: self)
@@ -117,27 +119,23 @@ class SignInViewController: UIViewController {
                 Utility.sharedInstance.showAlert("إنذار", msg: "الرجاء إدخال كلمة المرور.", controller: self)
                 return
             }
+          
             if (AppDelegateVariable.appDelegate.isValidPassword(txtPassAr.text!)==false) {
-    //            Utility.sharedInstance.showAlert("إنذار", msg: "الرجاء إدخال كلمة المرور على الأقل 6 حرف أبجدي رقمي." , controller: self)
-  //              return
+
             }
         }
-
         
         let device_token : String =  USER_DEFAULT.object(forKey: "FCM_TOKEN") as! String
-            
         RappleActivityIndicatorView.startAnimatingWithLabel("Processing...", attributes: RappleAppleAttributes)
-        
         
         var parameterString :String
         if AppDelegateVariable.appDelegate.strLanguage == "en"{
-            parameterString = String(format : "login&email=%@&password=%@&usertype=%@&device_id=%@",self.txtEmail.text! as String,self.txtPass.text! as String,userType,device_token)
+            parameterString = String(format : "login&email=%@&password=%@&usertype=%@&device_id=%@&device_type=IOS",self.txtEmail.text! as String,self.txtPass.text! as String,userType,device_token)
         }
         else{
-            parameterString = String(format : "login&email=%@&password=%@&usertype=%@&device_id=%@",self.txtEmailAr.text! as String,self.txtPassAr.text! as String,userType,device_token
+            parameterString = String(format : "login&email=%@&password=%@&usertype=%@&device_id=%@&device_type=IOS",self.txtEmailAr.text! as String,self.txtPassAr.text! as String,userType,device_token
             )
         }
-
         
         Utility.sharedInstance.postDataInDataForm(header: parameterString, inVC: self) { (dataDictionary, msg, status) in
             
@@ -149,7 +147,7 @@ class SignInViewController: UIViewController {
                 let user_id : String = userDict .object(forKey: "id") as! String
                 var user_name : String!
                 
-                if self.userType == "driver"
+                if (self.userType == "driver")
                 {
                     user_name  = userDict .object(forKey: "user_name") as! String
                     USER_DEFAULT.set(userDict.object(forKey: "is_offline"), forKey: "driverstatus")
@@ -159,19 +157,18 @@ class SignInViewController: UIViewController {
                     user_name  = userDict .object(forKey: "username") as! String
                 }
 
-                
                 USER_DEFAULT.set(user_id, forKey: "user_id")
                 USER_DEFAULT.set(user_name, forKey: "user_name")
                 USER_DEFAULT.set("1", forKey: "isLogin")
                 USER_DEFAULT.set(userDict, forKey: "userData")
-                
-                
+                USER_DEFAULT.set(self.txtPass.text, forKey: "password")
+
                 AppDelegateVariable.appDelegate.sliderMenuControllser()
               
-               // print("Location:  \(userInfo)")
-               //  NotificationCenter.default.post(name: Notification.Name(rawValue: "UserDidLoginNotification"), object: nil, userInfo: (userInfo as AnyObject) as? [AnyHashable : Any])
-               // AppDelegateVariable.appDelegate.loginInMainView()
-                
+                // USER_DEFAULT.set(userDict, forKey: "wallet_amount")
+                // print("Location:  \(userInfo)")
+                //  NotificationCenter.default.post(name: Notification.Name(rawValue: "UserDidLoginNotification"), object: nil, userInfo: (userInfo as AnyObject) as? [AnyHashable : Any])
+                // AppDelegateVariable.appDelegate.loginInMainView()
             }
             else
             {

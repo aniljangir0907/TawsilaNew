@@ -14,6 +14,7 @@ class PayBillDetails: UIView {
     @IBOutlet weak var viewPayBill: UIView!
     @IBOutlet weak var lblAddress: UILabel!
     @IBOutlet weak var btnGoToMyRide: UIButton!
+    @IBOutlet var lblAddressDest: UILabel!
     
     // View Arabic
     @IBOutlet weak var lblAmountAr: UILabel!
@@ -21,18 +22,12 @@ class PayBillDetails: UIView {
     @IBOutlet weak var lblAddressAr: UILabel!
     @IBOutlet weak var btnGoToMyRideAr: UIButton!
  
+    @IBOutlet var car_type: UILabel!
+    var selfBack = UIViewController()
     
-    override init(frame: CGRect) {
-        super.init(frame: frame)
-        addBehavior()
-    }
-    
-    convenience init() {
-        self.init(frame: CGRect.zero)
-    }
-    
-    required init(coder aDecoder: NSCoder) {
-        fatalError("This class does not support NSCoding")
+    override func draw(_ rect: CGRect) {
+           
+       // addBehavior()
     }
     
     func addBehavior() {
@@ -58,8 +53,12 @@ class PayBillDetails: UIView {
   
     
     @IBAction func actionGotoRideScreen(_ sender: Any) {
-//        let obj: AllRides = AllRides(nibName: "AllRides", bundle: nil) 
-//        setPushViewTransition(obj)
+
+        let obje: AllRides = AllRides(nibName: "AllRides", bundle: nil) as AllRides
+        SlideNavigationController.sharedInstance().popToRootAndSwitch(to: obje, withCompletion: nil)
+        
+//        let obj: AllRides = AllRides(nibName: "AllRides", bundle: nil)
+//   self.selfBack.navigationController?.pushViewController(obj, animated: true)
     }
 
 

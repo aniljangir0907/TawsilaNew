@@ -43,28 +43,60 @@ class DriverHomeScreen: UIViewController, GMSMapViewDelegate, SlideNavigationCon
     
     var  is_popup = Bool()
     
+    var is_location = Bool()
     
+    var is_update = Bool()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // -- Locaton Manager
         
         is_accepted = false
-        
+        is_location = false
         locationManager.requestWhenInUseAuthorization()
         locationManager.requestAlwaysAuthorization()
         locationManager.startUpdatingLocation()
         locationManager.desiredAccuracy = kCLLocationAccuracyBest
         self .perform( #selector(self.updateLocation), with: 1, afterDelay: 0)
         
+//        let popUp = Bundle.main.loadNibNamed("PayBillDetails", owner: self, options: nil)![0] as? UIView as! PayBillDetails
+//        popUp.frame = self.view.frame
+//        self.view.addSubview(popUp)
+        RappleActivityIndicatorView.startAnimatingWithLabel("Processing...", attributes: RappleAppleAttributes)
+
     }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        
+        super .viewDidAppear(true)
+        
+    }
+    
     override func viewWillAppear(_ animated: Bool) {
         setShowAndHideViews(viewEnglish, vArb: viewArabic)
+        
+
+        if AppDelegateVariable.appDelegate.id_booking == "cancel"
+        {
+            Utility.sharedInstance.showAlert(kAPPName, msg: "Ride cancelled by Rider", controller: self)
+            AppDelegateVariable.appDelegate.id_booking = "NO";
+
+        }
+        
+        if is_location == true
+        {
+            self.perform( #selector(self.perform_update_location), with: 1, afterDelay: 0)
+        }
+        else
+        {
+            // Utility.sharedInstance.showAlert(kAPPName, msg: "location not found", controller: self)
+        }
+      
     }
     // MARK: SlideNavigationController Delegate
     @IBAction func actionLeftMenu(_ sender: Any) {
@@ -93,8 +125,10 @@ class DriverHomeScreen: UIViewController, GMSMapViewDelegate, SlideNavigationCon
             viewMapAr.addSubview(mapView)
         }
         
-        self.perform( #selector(self.perform_update_location), with: 1, afterDelay: 0)
+        is_location = true
+        self.perform( #selector(self.perform_update_location), with: 1, afterDelay: 1)
         
+
     }
     
     func perform_update_location() {
@@ -102,8 +136,8 @@ class DriverHomeScreen: UIViewController, GMSMapViewDelegate, SlideNavigationCon
         let dic = NSMutableDictionary()
         
         dic.setValue(USER_ID, forKey: "user_id")
-        dic.setValue(String (format: "%f", (mapView.myLocation?.coordinate.latitude)!), forKey: "lat")
-        dic.setValue(String (format: "%f", (mapView.myLocation?.coordinate.longitude)!), forKey: "long")
+        dic.setValue(String (format: "%f", (locationManager.location!.coordinate.latitude)), forKey: "lat")
+        dic.setValue(String (format: "%f", (locationManager.location!.coordinate.longitude)), forKey: "long")
         
         ///RappleActivityIndicatorView.startAnimatingWithLabel("Processing...", attributes: RappleAppleAttributes)
         var parameterString = String(format : "save_driver_location")
@@ -138,14 +172,26 @@ class DriverHomeScreen: UIViewController, GMSMapViewDelegate, SlideNavigationCon
                             
                             self.rider_id = (self.array_Booking_List.object(at: 0) as! NSDictionary ).value(forKey: "rider_id") as! String
                             
-                            self.ridePopUp()
+                            if (self.booking_id == "517")
+                            {
+                                if self.array_Booking_List.count > 1
+                                {
+                                    self.booking_id = (self.array_Booking_List.object(at: 1) as! NSDictionary ).value(forKey: "booking_id") as! String
+                                    
+                                    self.rider_id = (self.array_Booking_List.object(at: 1) as! NSDictionary ).value(forKey: "rider_id") as! String
+                                    self.ridePopUp()
+                                }
+                            }
+                            else
+                            {
+                                self.ridePopUp()
+                            }
                         }
                     }
                 }
             }
             else
             {
-                
                 // Utility.sharedInstance.showAlert(kAPPName, msg: msg as String, controller: self)
             }
         }
@@ -297,15 +343,12 @@ class DriverHomeScreen: UIViewController, GMSMapViewDelegate, SlideNavigationCon
             if status == true
             {
                 
-                
             }
             else
             {
                 Utility.sharedInstance.showAlert(kAPPName, msg: msg as String, controller: self)
             }
         }
-        
-        
     }
     
     func tapCancel_Ride() {
@@ -329,7 +372,6 @@ class DriverHomeScreen: UIViewController, GMSMapViewDelegate, SlideNavigationCon
             
             if status == true
             {
-                
                 
             }
             else
@@ -376,11 +418,9 @@ class DriverHomeScreen: UIViewController, GMSMapViewDelegate, SlideNavigationCon
         }else if(application.applicationState == .inactive){
             
             //app is transitioning from background to foreground (user taps notification), do what you need when user taps here
-            
         }
     }
-    
-    
+
     public func getTopViewController() -> UIViewController?{
         if var topController = UIApplication.shared.keyWindow?.rootViewController
         {

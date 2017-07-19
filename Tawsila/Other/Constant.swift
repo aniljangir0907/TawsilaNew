@@ -8,7 +8,6 @@
 import Foundation
 import Alamofire
 
-
 let BSE_URL   = "http://taxiappsourcecode.com/api/index.php?option="
 //let BSE_URL_IMG   = "http://ec2-54-218-74-164.us-west-2.compute.amazonaws.com"
 
@@ -85,8 +84,6 @@ struct Constant {
         }
     }
     
-    
-   
     struct COLOR {
         static let Color_App = UIColor(red: 33/255.0, green: 134/255.0, blue: 226/255.0, alpha: 1.0)
         static let Color_BG_2 = UIColor(red: 133/255.0, green: 146/255.0, blue: 201/255.0, alpha: 1.0)
@@ -98,8 +95,6 @@ struct Constant {
         static let PopupTableHeader = UIColor(red: 240/255.0, green: 240/255.0, blue: 241/255.0, alpha: 1.0)
 		static let Unselected_Text_Color = UIColor(red: 194/255.0, green: 255/255.0, blue: 251/255.0, alpha: 1.0)
     }
-	
-
 	
 	struct ScreenNo22 {
 		static let FriendsProfile = 0

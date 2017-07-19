@@ -19,6 +19,7 @@ class WalletViewControllerCustomCellTableView: UITableViewCell
     @IBOutlet weak var imageIconPaymentRightAr: UIImageView!
     @IBOutlet weak var lblTitleCashAr: UILabel!
     
+    @IBOutlet var lblWalletAmount: UILabel!
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

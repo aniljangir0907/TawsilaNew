@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12120" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12121" systemVersion="16D30" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12088"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <customFonts key="customFonts">
@@ -568,8 +568,8 @@
                                         <constraint firstAttribute="height" constant="40" id="zCd-GQ-6Hg"/>
                                     </constraints>
                                 </imageView>
-                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" reversesTitleShadowWhenHighlighted="YES" lineBreakMode="middleTruncation" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="itk-h5-G4z" customClass="btnCustomeClass" customModule="Tawsila" customModuleProvider="target">
-                                    <rect key="frame" x="20" y="294" width="337" height="43"/>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" reversesTitleShadowWhenHighlighted="YES" lineBreakMode="middleTruncation" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="itk-h5-G4z" customClass="btnCustomeClass" customModule="Tawsila" customModuleProvider="target">
+                                    <rect key="frame" x="100" y="294" width="257" height="43"/>
                                     <constraints>
                                         <constraint firstAttribute="height" constant="43" id="H3j-Md-yBO"/>
                                     </constraints>
@@ -586,7 +586,7 @@
                                         </attributedString>
                                     </state>
                                     <connections>
-                                        <action selector="actionTermAndConditions:" destination="-1" eventType="touchUpInside" id="VQP-vj-XoH"/>
+                                        <action selector="tapTandC:" destination="-1" eventType="touchUpInside" id="PPn-Os-5in"/>
                                     </connections>
                                 </button>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pu8-lC-rDx" customClass="btnCustomeClass" customModule="Tawsila" customModuleProvider="target">
@@ -600,7 +600,14 @@
                                         <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     </state>
                                     <connections>
-                                        <action selector="actionSignUp:" destination="-1" eventType="touchUpInside" id="OwG-4c-ptB"/>
+                                        <action selector="checkValidation:" destination="-1" eventType="touchUpInside" id="PRB-B2-ucm"/>
+                                    </connections>
+                                </button>
+                                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TsS-aM-zTi">
+                                    <rect key="frame" x="0.0" y="286" width="92" height="64"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <connections>
+                                        <action selector="actionTermAndConditions:" destination="-1" eventType="touchUpInside" id="R7C-gw-Df5"/>
                                     </connections>
                                 </button>
                             </subviews>
@@ -618,7 +625,7 @@
                                 <constraint firstAttribute="trailing" secondItem="Xqo-g4-c0h" secondAttribute="trailing" id="KOs-72-jSV"/>
                                 <constraint firstAttribute="trailing" secondItem="EJ7-Le-UdE" secondAttribute="trailing" id="NDh-UL-C4h"/>
                                 <constraint firstAttribute="trailing" secondItem="HvU-3e-A2r" secondAttribute="trailing" id="Qb9-hc-918"/>
-                                <constraint firstItem="itk-h5-G4z" firstAttribute="leading" secondItem="59U-Gz-woX" secondAttribute="leading" constant="20" id="TCt-rd-eQr"/>
+                                <constraint firstItem="itk-h5-G4z" firstAttribute="leading" secondItem="59U-Gz-woX" secondAttribute="leading" constant="100" id="TCt-rd-eQr"/>
                                 <constraint firstItem="itk-h5-G4z" firstAttribute="top" secondItem="Opz-89-yO5" secondAttribute="bottom" constant="20" id="Zg9-MA-cyG"/>
                                 <constraint firstItem="EJ7-Le-UdE" firstAttribute="leading" secondItem="59U-Gz-woX" secondAttribute="leading" id="cPe-0j-9Yu"/>
                                 <constraint firstItem="ZQc-3Q-VDR" firstAttribute="leading" secondItem="59U-Gz-woX" secondAttribute="leading" constant="24" id="dXf-pV-xqI"/>
@@ -672,6 +679,6 @@
         <image name="passwordIamge" width="32" height="32"/>
         <image name="rightImage" width="22" height="22"/>
         <image name="unselectedCheckbox" width="25" height="25"/>
-        <image name="userProfile" width="64" height="64"/>
+        <image name="userProfile" width="32" height="32"/>
     </resources>
 </document>

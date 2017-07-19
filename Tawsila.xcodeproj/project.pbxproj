@@ -30,10 +30,30 @@
 		811951611EFCC27200C0720B /* ACFloatingTextfield.swift in Sources */ = {isa = PBXBuildFile; fileRef = 811951601EFCC27200C0720B /* ACFloatingTextfield.swift */; };
 		814C6FBA1EF048A600985702 /* MyRidesVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 814C6FB81EF048A600985702 /* MyRidesVC.swift */; };
 		814C6FBB1EF048A600985702 /* MyRidesVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 814C6FB91EF048A600985702 /* MyRidesVC.xib */; };
+		8164369B1F1F0B9E00B395E6 /* GetFreeRides.swift in Sources */ = {isa = PBXBuildFile; fileRef = 816436991F1F0B9E00B395E6 /* GetFreeRides.swift */; };
+		8164369C1F1F0B9E00B395E6 /* GetFreeRides.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8164369A1F1F0B9E00B395E6 /* GetFreeRides.xib */; };
+		816436A01F1F0BFB00B395E6 /* PickUPRideVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8164369E1F1F0BFB00B395E6 /* PickUPRideVC.swift */; };
+		816436A11F1F0BFB00B395E6 /* PickUPRideVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8164369F1F1F0BFB00B395E6 /* PickUPRideVC.xib */; };
+		818EAAEB1F1F1A8C0094E220 /* AddWallet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 818EAAE41F1F1A8C0094E220 /* AddWallet.swift */; };
+		818EAAEC1F1F1A8C0094E220 /* AddWallet.xib in Resources */ = {isa = PBXBuildFile; fileRef = 818EAAE51F1F1A8C0094E220 /* AddWallet.xib */; };
+		818EAAED1F1F1A8C0094E220 /* WalletViewControllerCustomCellTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 818EAAE71F1F1A8C0094E220 /* WalletViewControllerCustomCellTableView.swift */; };
+		818EAAEE1F1F1A8C0094E220 /* WalletViewControllerCustomCellTableView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 818EAAE81F1F1A8C0094E220 /* WalletViewControllerCustomCellTableView.xib */; };
+		818EAAEF1F1F1A8C0094E220 /* WalletViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 818EAAE91F1F1A8C0094E220 /* WalletViewController.swift */; };
+		818EAAF01F1F1A8C0094E220 /* WalletViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 818EAAEA1F1F1A8C0094E220 /* WalletViewController.xib */; };
+		818EAAF41F1F1A9E0094E220 /* TermsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 818EAAF21F1F1A9E0094E220 /* TermsVC.swift */; };
+		818EAAF51F1F1A9E0094E220 /* TermsVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 818EAAF31F1F1A9E0094E220 /* TermsVC.xib */; };
+		818EAAF91F1F1BEA0094E220 /* MyRidesTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 818EAAF71F1F1BEA0094E220 /* MyRidesTableViewCell.swift */; };
+		818EAAFA1F1F1BEA0094E220 /* MyRidesTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 818EAAF81F1F1BEA0094E220 /* MyRidesTableViewCell.xib */; };
+		818EAB011F1F1C7F0094E220 /* BalanceScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 818EAAFC1F1F1C7F0094E220 /* BalanceScreenViewController.swift */; };
+		818EAB021F1F1C7F0094E220 /* BalanceScreenViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 818EAAFD1F1F1C7F0094E220 /* BalanceScreenViewController.xib */; };
+		818EAB031F1F1C7F0094E220 /* TransctionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 818EAAFF1F1F1C7F0094E220 /* TransctionViewController.swift */; };
+		818EAB041F1F1C7F0094E220 /* TransctionViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 818EAB001F1F1C7F0094E220 /* TransctionViewController.xib */; };
+		818EAB071F1F1DC70094E220 /* scheduleView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 818EAB061F1F1DC70094E220 /* scheduleView.xib */; };
+		818EAB091F1F1DE60094E220 /* scheduleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 818EAB081F1F1DE60094E220 /* scheduleView.swift */; };
+		818EAB0C1F1F26AC0094E220 /* addMoney.xib in Resources */ = {isa = PBXBuildFile; fileRef = 818EAB0B1F1F26AC0094E220 /* addMoney.xib */; };
+		818EAB0E1F1F26C40094E220 /* addMoney.swift in Sources */ = {isa = PBXBuildFile; fileRef = 818EAB0D1F1F26C40094E220 /* addMoney.swift */; };
 		81A366D01F09822600A08544 /* bookingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81A366CE1F09822600A08544 /* bookingViewController.swift */; };
 		81A366D11F09822600A08544 /* bookingViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 81A366CF1F09822600A08544 /* bookingViewController.xib */; };
-		81C14EE61F17F48D00FDEFEC /* MyRidesTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81C14EE41F17F48D00FDEFEC /* MyRidesTableViewCell.swift */; };
-		81C14EE71F17F48D00FDEFEC /* MyRidesTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 81C14EE51F17F48D00FDEFEC /* MyRidesTableViewCell.xib */; };
 		81C14EEB1F17F4E900FDEFEC /* DLRadioButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 81C14EEA1F17F4E900FDEFEC /* DLRadioButton.m */; };
 		81C14F021F17F52700FDEFEC /* AcceptAndDeclineView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81C14EEE1F17F52700FDEFEC /* AcceptAndDeclineView.swift */; };
 		81C14F031F17F52700FDEFEC /* AcceptAndDeclineView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 81C14EEF1F17F52700FDEFEC /* AcceptAndDeclineView.xib */; };
@@ -64,10 +84,6 @@
 		81D70CBE1F184DDC0015C3D7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 81D70CBD1F184DDC0015C3D7 /* Assets.xcassets */; };
 		81E76BE11EEF73E500256FD4 /* ChangePasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81E76BD91EEF73E500256FD4 /* ChangePasswordViewController.swift */; };
 		81E76BE21EEF73E500256FD4 /* ChangePasswordViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 81E76BDA1EEF73E500256FD4 /* ChangePasswordViewController.xib */; };
-		81E76BE31EEF73E500256FD4 /* WalletViewControllerCustomCellTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81E76BDC1EEF73E500256FD4 /* WalletViewControllerCustomCellTableView.swift */; };
-		81E76BE41EEF73E500256FD4 /* WalletViewControllerCustomCellTableView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 81E76BDD1EEF73E500256FD4 /* WalletViewControllerCustomCellTableView.xib */; };
-		81E76BE51EEF73E500256FD4 /* WalletViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81E76BDF1EEF73E500256FD4 /* WalletViewController.swift */; };
-		81E76BE61EEF73E500256FD4 /* WalletViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 81E76BE01EEF73E500256FD4 /* WalletViewController.xib */; };
 		81E76BEF1EEF841800256FD4 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81E76BEE1EEF841800256FD4 /* Main.storyboard */; };
 		81F2EBFD1EF18AA60065D2BD /* menu-button.png in Resources */ = {isa = PBXBuildFile; fileRef = 81F2EBEE1EF18AA60065D2BD /* menu-button.png */; };
 		81F2EBFE1EF18AA60065D2BD /* menu-button@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 81F2EBEF1EF18AA60065D2BD /* menu-button@2x.png */; };
@@ -85,8 +101,6 @@
 		81F2EC131EF19AC70065D2BD /* rightMenuViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 81F2EC111EF19AC70065D2BD /* rightMenuViewController.xib */; };
 		81F2EC171EF19B070065D2BD /* rightMenuCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81F2EC151EF19B070065D2BD /* rightMenuCell.swift */; };
 		81F2EC181EF19B070065D2BD /* rightMenuCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 81F2EC161EF19B070065D2BD /* rightMenuCell.xib */; };
-		92034A951EFAF8790064DAFE /* PickUPRideVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92034A931EFAF8790064DAFE /* PickUPRideVC.swift */; };
-		92034A961EFAF8790064DAFE /* PickUPRideVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 92034A941EFAF8790064DAFE /* PickUPRideVC.xib */; };
 		921516261F0D435600E7E173 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 921516251F0D435600E7E173 /* GoogleService-Info.plist */; };
 		9215162A1F0D4A1800E7E173 /* driver_arrived_sound.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 921516281F0D4A1800E7E173 /* driver_arrived_sound.mp3 */; };
 		9215162B1F0D4A1800E7E173 /* notify_ride.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 921516291F0D4A1800E7E173 /* notify_ride.mp3 */; };
@@ -108,10 +122,6 @@
 		92B006F71F0ACA1500B838D4 /* star.png in Resources */ = {isa = PBXBuildFile; fileRef = 92B006F31F0ACA1500B838D4 /* star.png */; };
 		92B006F81F0ACA1500B838D4 /* starFill.png in Resources */ = {isa = PBXBuildFile; fileRef = 92B006F41F0ACA1500B838D4 /* starFill.png */; };
 		92B006F91F0ACA1500B838D4 /* StarRatingControl.m in Sources */ = {isa = PBXBuildFile; fileRef = 92B006F61F0ACA1500B838D4 /* StarRatingControl.m */; };
-		92D150811F0F358C00AAC6A4 /* BalanceScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92D1507C1F0F358C00AAC6A4 /* BalanceScreenViewController.swift */; };
-		92D150821F0F358C00AAC6A4 /* BalanceScreenViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 92D1507D1F0F358C00AAC6A4 /* BalanceScreenViewController.xib */; };
-		92D150831F0F358C00AAC6A4 /* TransctionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92D1507F1F0F358C00AAC6A4 /* TransctionViewController.swift */; };
-		92D150841F0F358C00AAC6A4 /* TransctionViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 92D150801F0F358C00AAC6A4 /* TransctionViewController.xib */; };
 		92DEEE7A1EEE8C8B001B5DCA /* HomeViewControlle.xib in Resources */ = {isa = PBXBuildFile; fileRef = 92DEEE751EEE8C8B001B5DCA /* HomeViewControlle.xib */; };
 		92DEEE7B1EEE8C8B001B5DCA /* RideLaterVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92DEEE771EEE8C8B001B5DCA /* RideLaterVC.swift */; };
 		92DEEE7E1EEE9181001B5DCA /* AddressBook.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 92DEEE7D1EEE9181001B5DCA /* AddressBook.framework */; };
@@ -170,10 +180,30 @@
 		811951601EFCC27200C0720B /* ACFloatingTextfield.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ACFloatingTextfield.swift; sourceTree = "<group>"; };
 		814C6FB81EF048A600985702 /* MyRidesVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MyRidesVC.swift; path = MyRides/MyRidesVC.swift; sourceTree = "<group>"; };
 		814C6FB91EF048A600985702 /* MyRidesVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = MyRidesVC.xib; path = MyRides/MyRidesVC.xib; sourceTree = "<group>"; };
+		816436991F1F0B9E00B395E6 /* GetFreeRides.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GetFreeRides.swift; sourceTree = "<group>"; };
+		8164369A1F1F0B9E00B395E6 /* GetFreeRides.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GetFreeRides.xib; sourceTree = "<group>"; };
+		8164369E1F1F0BFB00B395E6 /* PickUPRideVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PickUPRideVC.swift; sourceTree = "<group>"; };
+		8164369F1F1F0BFB00B395E6 /* PickUPRideVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PickUPRideVC.xib; sourceTree = "<group>"; };
+		818EAAE41F1F1A8C0094E220 /* AddWallet.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddWallet.swift; sourceTree = "<group>"; };
+		818EAAE51F1F1A8C0094E220 /* AddWallet.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AddWallet.xib; sourceTree = "<group>"; };
+		818EAAE71F1F1A8C0094E220 /* WalletViewControllerCustomCellTableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WalletViewControllerCustomCellTableView.swift; sourceTree = "<group>"; };
+		818EAAE81F1F1A8C0094E220 /* WalletViewControllerCustomCellTableView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WalletViewControllerCustomCellTableView.xib; sourceTree = "<group>"; };
+		818EAAE91F1F1A8C0094E220 /* WalletViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WalletViewController.swift; sourceTree = "<group>"; };
+		818EAAEA1F1F1A8C0094E220 /* WalletViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WalletViewController.xib; sourceTree = "<group>"; };
+		818EAAF21F1F1A9E0094E220 /* TermsVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TermsVC.swift; sourceTree = "<group>"; };
+		818EAAF31F1F1A9E0094E220 /* TermsVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TermsVC.xib; sourceTree = "<group>"; };
+		818EAAF71F1F1BEA0094E220 /* MyRidesTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyRidesTableViewCell.swift; sourceTree = "<group>"; };
+		818EAAF81F1F1BEA0094E220 /* MyRidesTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MyRidesTableViewCell.xib; sourceTree = "<group>"; };
+		818EAAFC1F1F1C7F0094E220 /* BalanceScreenViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BalanceScreenViewController.swift; sourceTree = "<group>"; };
+		818EAAFD1F1F1C7F0094E220 /* BalanceScreenViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BalanceScreenViewController.xib; sourceTree = "<group>"; };
+		818EAAFF1F1F1C7F0094E220 /* TransctionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TransctionViewController.swift; sourceTree = "<group>"; };
+		818EAB001F1F1C7F0094E220 /* TransctionViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TransctionViewController.xib; sourceTree = "<group>"; };
+		818EAB061F1F1DC70094E220 /* scheduleView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = scheduleView.xib; path = ScheduleView/scheduleView.xib; sourceTree = "<group>"; };
+		818EAB081F1F1DE60094E220 /* scheduleView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = scheduleView.swift; path = ScheduleView/scheduleView.swift; sourceTree = "<group>"; };
+		818EAB0B1F1F26AC0094E220 /* addMoney.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = addMoney.xib; path = AddMoney/addMoney.xib; sourceTree = "<group>"; };
+		818EAB0D1F1F26C40094E220 /* addMoney.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = addMoney.swift; path = AddMoney/addMoney.swift; sourceTree = "<group>"; };
 		81A366CE1F09822600A08544 /* bookingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = bookingViewController.swift; sourceTree = "<group>"; };
 		81A366CF1F09822600A08544 /* bookingViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = bookingViewController.xib; sourceTree = "<group>"; };
-		81C14EE41F17F48D00FDEFEC /* MyRidesTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyRidesTableViewCell.swift; sourceTree = "<group>"; };
-		81C14EE51F17F48D00FDEFEC /* MyRidesTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MyRidesTableViewCell.xib; sourceTree = "<group>"; };
 		81C14EE91F17F4E900FDEFEC /* DLRadioButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DLRadioButton.h; sourceTree = "<group>"; };
 		81C14EEA1F17F4E900FDEFEC /* DLRadioButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DLRadioButton.m; sourceTree = "<group>"; };
 		81C14EEE1F17F52700FDEFEC /* AcceptAndDeclineView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AcceptAndDeclineView.swift; sourceTree = "<group>"; };
@@ -205,10 +235,6 @@
 		81D70CBD1F184DDC0015C3D7 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		81E76BD91EEF73E500256FD4 /* ChangePasswordViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChangePasswordViewController.swift; sourceTree = "<group>"; };
 		81E76BDA1EEF73E500256FD4 /* ChangePasswordViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ChangePasswordViewController.xib; sourceTree = "<group>"; };
-		81E76BDC1EEF73E500256FD4 /* WalletViewControllerCustomCellTableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WalletViewControllerCustomCellTableView.swift; sourceTree = "<group>"; };
-		81E76BDD1EEF73E500256FD4 /* WalletViewControllerCustomCellTableView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WalletViewControllerCustomCellTableView.xib; sourceTree = "<group>"; };
-		81E76BDF1EEF73E500256FD4 /* WalletViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WalletViewController.swift; sourceTree = "<group>"; };
-		81E76BE01EEF73E500256FD4 /* WalletViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WalletViewController.xib; sourceTree = "<group>"; };
 		81E76BEE1EEF841800256FD4 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		81F2EBEE1EF18AA60065D2BD /* menu-button.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "menu-button.png"; sourceTree = "<group>"; };
 		81F2EBEF1EF18AA60065D2BD /* menu-button@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "menu-button@2x.png"; sourceTree = "<group>"; };
@@ -234,8 +260,6 @@
 		81F2EC151EF19B070065D2BD /* rightMenuCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = rightMenuCell.swift; path = rightMenu/cell/rightMenuCell.swift; sourceTree = "<group>"; };
 		81F2EC161EF19B070065D2BD /* rightMenuCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = rightMenuCell.xib; path = rightMenu/cell/rightMenuCell.xib; sourceTree = "<group>"; };
 		902A6B97238E8A10D5B05059 /* Pods_TawsilaUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TawsilaUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		92034A931EFAF8790064DAFE /* PickUPRideVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PickUPRideVC.swift; sourceTree = "<group>"; };
-		92034A941EFAF8790064DAFE /* PickUPRideVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PickUPRideVC.xib; sourceTree = "<group>"; };
 		921516251F0D435600E7E173 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = SOURCE_ROOT; };
 		921516281F0D4A1800E7E173 /* driver_arrived_sound.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = driver_arrived_sound.mp3; sourceTree = "<group>"; };
 		921516291F0D4A1800E7E173 /* notify_ride.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = notify_ride.mp3; sourceTree = "<group>"; };
@@ -259,10 +283,6 @@
 		92B006F41F0ACA1500B838D4 /* starFill.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = starFill.png; sourceTree = "<group>"; };
 		92B006F51F0ACA1500B838D4 /* StarRatingControl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StarRatingControl.h; sourceTree = "<group>"; };
 		92B006F61F0ACA1500B838D4 /* StarRatingControl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StarRatingControl.m; sourceTree = "<group>"; };
-		92D1507C1F0F358C00AAC6A4 /* BalanceScreenViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BalanceScreenViewController.swift; sourceTree = "<group>"; };
-		92D1507D1F0F358C00AAC6A4 /* BalanceScreenViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BalanceScreenViewController.xib; sourceTree = "<group>"; };
-		92D1507F1F0F358C00AAC6A4 /* TransctionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TransctionViewController.swift; sourceTree = "<group>"; };
-		92D150801F0F358C00AAC6A4 /* TransctionViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TransctionViewController.xib; sourceTree = "<group>"; };
 		92DEEE751EEE8C8B001B5DCA /* HomeViewControlle.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HomeViewControlle.xib; sourceTree = "<group>"; };
 		92DEEE771EEE8C8B001B5DCA /* RideLaterVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RideLaterVC.swift; sourceTree = "<group>"; };
 		92DEEE7D1EEE9181001B5DCA /* AddressBook.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AddressBook.framework; path = System/Library/Frameworks/AddressBook.framework; sourceTree = SDKROOT; };
@@ -419,6 +439,10 @@
 		5BB10CCE1EEBEAE900F93FBE /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				818EAAF11F1F1A9E0094E220 /* TermsVC */,
+				818EAAE21F1F1A8C0094E220 /* WalletViewController */,
+				8164369D1F1F0BFB00B395E6 /* PickUPRideVC */,
+				816436981F1F0B9E00B395E6 /* Get Free Rides */,
 				81C14EEC1F17F52700FDEFEC /* DriverScreens */,
 				814C6FBC1EF048C300985702 /* UITableViewCell */,
 				81C8E8071F18880300DA5BBC /* ContactUs */,
@@ -433,11 +457,8 @@
 				81F2EC051EF18CC80065D2BD /* LeftMenu */,
 				81E76BD81EEF73E500256FD4 /* ChangePasswordViewController */,
 				81C14F101F17F5EC00FDEFEC /* Settings */,
-				81E76BDE1EEF73E500256FD4 /* WalletViewController */,
-				92034A921EFAF8380064DAFE /* PicupRideVC */,
 				81D179F41EF84A3F00976349 /* BookingviewController */,
 				814C6FB71EF0487900985702 /* MyRides */,
-				81E76BDB1EEF73E500256FD4 /* CustomCellTableViewController */,
 				92DEEE761EEE8C8B001B5DCA /* RideLaterViewController */,
 			);
 			path = Controller;
@@ -486,18 +507,113 @@
 		814C6FBC1EF048C300985702 /* UITableViewCell */ = {
 			isa = PBXGroup;
 			children = (
-				81C14EE31F17F48D00FDEFEC /* MyRideCell */,
+				818EAAF61F1F1BEA0094E220 /* MyRideCell */,
 			);
 			name = UITableViewCell;
 			sourceTree = "<group>";
 		};
-		81C14EE31F17F48D00FDEFEC /* MyRideCell */ = {
+		816436981F1F0B9E00B395E6 /* Get Free Rides */ = {
 			isa = PBXGroup;
 			children = (
-				81C14EE41F17F48D00FDEFEC /* MyRidesTableViewCell.swift */,
-				81C14EE51F17F48D00FDEFEC /* MyRidesTableViewCell.xib */,
+				816436991F1F0B9E00B395E6 /* GetFreeRides.swift */,
+				8164369A1F1F0B9E00B395E6 /* GetFreeRides.xib */,
 			);
-			path = MyRideCell;
+			path = "Get Free Rides";
+			sourceTree = "<group>";
+		};
+		8164369D1F1F0BFB00B395E6 /* PickUPRideVC */ = {
+			isa = PBXGroup;
+			children = (
+				8164369E1F1F0BFB00B395E6 /* PickUPRideVC.swift */,
+				8164369F1F1F0BFB00B395E6 /* PickUPRideVC.xib */,
+			);
+			path = PickUPRideVC;
+			sourceTree = "<group>";
+		};
+		818EAAE21F1F1A8C0094E220 /* WalletViewController */ = {
+			isa = PBXGroup;
+			children = (
+				818EAAFB1F1F1C7F0094E220 /* BalanceScreenViewController */,
+				818EAAFE1F1F1C7F0094E220 /* TransctionViewController */,
+				818EAAE31F1F1A8C0094E220 /* Add Wallet */,
+				818EAAE61F1F1A8C0094E220 /* CustomCellTableViewController */,
+				818EAAE91F1F1A8C0094E220 /* WalletViewController.swift */,
+				818EAAEA1F1F1A8C0094E220 /* WalletViewController.xib */,
+			);
+			path = WalletViewController;
+			sourceTree = "<group>";
+		};
+		818EAAE31F1F1A8C0094E220 /* Add Wallet */ = {
+			isa = PBXGroup;
+			children = (
+				818EAAE41F1F1A8C0094E220 /* AddWallet.swift */,
+				818EAAE51F1F1A8C0094E220 /* AddWallet.xib */,
+			);
+			path = "Add Wallet";
+			sourceTree = "<group>";
+		};
+		818EAAE61F1F1A8C0094E220 /* CustomCellTableViewController */ = {
+			isa = PBXGroup;
+			children = (
+				818EAAE71F1F1A8C0094E220 /* WalletViewControllerCustomCellTableView.swift */,
+				818EAAE81F1F1A8C0094E220 /* WalletViewControllerCustomCellTableView.xib */,
+			);
+			path = CustomCellTableViewController;
+			sourceTree = "<group>";
+		};
+		818EAAF11F1F1A9E0094E220 /* TermsVC */ = {
+			isa = PBXGroup;
+			children = (
+				818EAAF21F1F1A9E0094E220 /* TermsVC.swift */,
+				818EAAF31F1F1A9E0094E220 /* TermsVC.xib */,
+			);
+			path = TermsVC;
+			sourceTree = "<group>";
+		};
+		818EAAF61F1F1BEA0094E220 /* MyRideCell */ = {
+			isa = PBXGroup;
+			children = (
+				818EAAF71F1F1BEA0094E220 /* MyRidesTableViewCell.swift */,
+				818EAAF81F1F1BEA0094E220 /* MyRidesTableViewCell.xib */,
+			);
+			name = MyRideCell;
+			path = DriverScreens/MyRideCell;
+			sourceTree = "<group>";
+		};
+		818EAAFB1F1F1C7F0094E220 /* BalanceScreenViewController */ = {
+			isa = PBXGroup;
+			children = (
+				818EAAFC1F1F1C7F0094E220 /* BalanceScreenViewController.swift */,
+				818EAAFD1F1F1C7F0094E220 /* BalanceScreenViewController.xib */,
+			);
+			path = BalanceScreenViewController;
+			sourceTree = "<group>";
+		};
+		818EAAFE1F1F1C7F0094E220 /* TransctionViewController */ = {
+			isa = PBXGroup;
+			children = (
+				818EAAFF1F1F1C7F0094E220 /* TransctionViewController.swift */,
+				818EAB001F1F1C7F0094E220 /* TransctionViewController.xib */,
+			);
+			path = TransctionViewController;
+			sourceTree = "<group>";
+		};
+		818EAB051F1F1D900094E220 /* ScheduleView */ = {
+			isa = PBXGroup;
+			children = (
+				818EAB061F1F1DC70094E220 /* scheduleView.xib */,
+				818EAB081F1F1DE60094E220 /* scheduleView.swift */,
+			);
+			name = ScheduleView;
+			sourceTree = "<group>";
+		};
+		818EAB0A1F1F26870094E220 /* AddMoney */ = {
+			isa = PBXGroup;
+			children = (
+				818EAB0B1F1F26AC0094E220 /* addMoney.xib */,
+				818EAB0D1F1F26C40094E220 /* addMoney.swift */,
+			);
+			name = AddMoney;
 			sourceTree = "<group>";
 		};
 		81C14EE81F17F4E900FDEFEC /* DLRadioButton */ = {
@@ -660,28 +776,6 @@
 			path = ../ChangePasswordViewController;
 			sourceTree = "<group>";
 		};
-		81E76BDB1EEF73E500256FD4 /* CustomCellTableViewController */ = {
-			isa = PBXGroup;
-			children = (
-				81E76BDC1EEF73E500256FD4 /* WalletViewControllerCustomCellTableView.swift */,
-				81E76BDD1EEF73E500256FD4 /* WalletViewControllerCustomCellTableView.xib */,
-			);
-			name = CustomCellTableViewController;
-			path = ../CustomCellTableViewController;
-			sourceTree = "<group>";
-		};
-		81E76BDE1EEF73E500256FD4 /* WalletViewController */ = {
-			isa = PBXGroup;
-			children = (
-				81E76BDF1EEF73E500256FD4 /* WalletViewController.swift */,
-				81E76BE01EEF73E500256FD4 /* WalletViewController.xib */,
-				92D1507B1F0F358C00AAC6A4 /* BalanceScreenViewController */,
-				92D1507E1F0F358C00AAC6A4 /* TransctionViewController */,
-			);
-			name = WalletViewController;
-			path = ../WalletViewController;
-			sourceTree = "<group>";
-		};
 		81F2EBED1EF18AA60065D2BD /* SliderMenuViewController */ = {
 			isa = PBXGroup;
 			children = (
@@ -740,15 +834,6 @@
 				81F2EC161EF19B070065D2BD /* rightMenuCell.xib */,
 			);
 			name = cell;
-			sourceTree = "<group>";
-		};
-		92034A921EFAF8380064DAFE /* PicupRideVC */ = {
-			isa = PBXGroup;
-			children = (
-				92034A931EFAF8790064DAFE /* PickUPRideVC.swift */,
-				92034A941EFAF8790064DAFE /* PickUPRideVC.xib */,
-			);
-			name = PicupRideVC;
 			sourceTree = "<group>";
 		};
 		921516271F0D4A1800E7E173 /* Sounds */ = {
@@ -813,26 +898,6 @@
 			path = StarRating;
 			sourceTree = "<group>";
 		};
-		92D1507B1F0F358C00AAC6A4 /* BalanceScreenViewController */ = {
-			isa = PBXGroup;
-			children = (
-				92D1507C1F0F358C00AAC6A4 /* BalanceScreenViewController.swift */,
-				92D1507D1F0F358C00AAC6A4 /* BalanceScreenViewController.xib */,
-			);
-			name = BalanceScreenViewController;
-			path = Tawsila/Controller/WalletViewController/BalanceScreenViewController;
-			sourceTree = SOURCE_ROOT;
-		};
-		92D1507E1F0F358C00AAC6A4 /* TransctionViewController */ = {
-			isa = PBXGroup;
-			children = (
-				92D1507F1F0F358C00AAC6A4 /* TransctionViewController.swift */,
-				92D150801F0F358C00AAC6A4 /* TransctionViewController.xib */,
-			);
-			name = TransctionViewController;
-			path = Tawsila/Controller/WalletViewController/TransctionViewController;
-			sourceTree = SOURCE_ROOT;
-		};
 		92DEEE731EEE8C8B001B5DCA /* HomeViewController */ = {
 			isa = PBXGroup;
 			children = (
@@ -846,6 +911,8 @@
 		92DEEE761EEE8C8B001B5DCA /* RideLaterViewController */ = {
 			isa = PBXGroup;
 			children = (
+				818EAB0A1F1F26870094E220 /* AddMoney */,
+				818EAB051F1F1D900094E220 /* ScheduleView */,
 				92DEEE771EEE8C8B001B5DCA /* RideLaterVC.swift */,
 				970B2DAC1EF281AC0027F0C3 /* RideLaterVC.xib */,
 			);
@@ -991,47 +1058,49 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				818EAAEE1F1F1A8C0094E220 /* WalletViewControllerCustomCellTableView.xib in Resources */,
 				81F2EBFD1EF18AA60065D2BD /* menu-button.png in Resources */,
 				81F2EC0E1EF190BE0065D2BD /* leftMenuCell.xib in Resources */,
-				81E76BE41EEF73E500256FD4 /* WalletViewControllerCustomCellTableView.xib in Resources */,
-				81E76BE61EEF73E500256FD4 /* WalletViewController.xib in Resources */,
 				5BB10CD31EEBEB4E00F93FBE /* SignInOrCreateNewAccount.xib in Resources */,
-				92D150821F0F358C00AAC6A4 /* BalanceScreenViewController.xib in Resources */,
 				81C14F191F17F5EC00FDEFEC /* SettingViewController.xib in Resources */,
 				929D98F41EEEB26100A8E598 /* Roboto-Bold.ttf in Resources */,
 				81D179F31EF84A3200976349 /* forgotPassword.xib in Resources */,
 				929D98FB1EEEB26100A8E598 /* Roboto-Regular.ttf in Resources */,
 				81C8E80E1F18880300DA5BBC /* ContactUSController.xib in Resources */,
-				81C14EE71F17F48D00FDEFEC /* MyRidesTableViewCell.xib in Resources */,
 				970B2DAD1EF281AC0027F0C3 /* RideLaterVC.xib in Resources */,
 				92B006F71F0ACA1500B838D4 /* star.png in Resources */,
+				818EAB071F1F1DC70094E220 /* scheduleView.xib in Resources */,
+				818EAB021F1F1C7F0094E220 /* BalanceScreenViewController.xib in Resources */,
 				81C14F091F17F52700FDEFEC /* CancelView.xib in Resources */,
 				92564FC01EEF09F300C59A4E /* ViewDetailCar.xib in Resources */,
 				045CF7021EEC7AB80052DBC6 /* Info.plist in Resources */,
 				92B006F81F0ACA1500B838D4 /* starFill.png in Resources */,
+				818EAAF01F1F1A8C0094E220 /* WalletViewController.xib in Resources */,
 				81F2EC181EF19B070065D2BD /* rightMenuCell.xib in Resources */,
+				818EAAFA1F1F1BEA0094E220 /* MyRidesTableViewCell.xib in Resources */,
 				929D98F71EEEB26100A8E598 /* Roboto-Light.ttf in Resources */,
 				81D17A021EF84C3200976349 /* ConfirmationScreen.xib in Resources */,
 				929D98F21EEEB26100A8E598 /* Roboto-Black.ttf in Resources */,
 				9215162A1F0D4A1800E7E173 /* driver_arrived_sound.mp3 in Resources */,
 				929D98F91EEEB26100A8E598 /* Roboto-Medium.ttf in Resources */,
 				81D70CBE1F184DDC0015C3D7 /* Assets.xcassets in Resources */,
-				92D150841F0F358C00AAC6A4 /* TransctionViewController.xib in Resources */,
 				929D98F61EEEB26100A8E598 /* Roboto-Italic.ttf in Resources */,
 				045CF6FF1EEC7A9F0052DBC6 /* LaunchScreen.storyboard in Resources */,
 				81E76BE21EEF73E500256FD4 /* ChangePasswordViewController.xib in Resources */,
 				81C8E8101F18880300DA5BBC /* ShareAppViewController.xib in Resources */,
+				818EAAEC1F1F1A8C0094E220 /* AddWallet.xib in Resources */,
 				929D98F31EEEB26100A8E598 /* Roboto-BlackItalic.ttf in Resources */,
 				921516261F0D435600E7E173 /* GoogleService-Info.plist in Resources */,
 				81C14F0B1F17F52700FDEFEC /* DriverHomeScreen.xib in Resources */,
+				818EAAF51F1F1A9E0094E220 /* TermsVC.xib in Resources */,
 				9215162B1F0D4A1800E7E173 /* notify_ride.mp3 in Resources */,
 				929D98F81EEEB26100A8E598 /* Roboto-LightItalic.ttf in Resources */,
 				81A366D11F09822600A08544 /* bookingViewController.xib in Resources */,
+				818EAB0C1F1F26AC0094E220 /* addMoney.xib in Resources */,
 				81F2EC131EF19AC70065D2BD /* rightMenuViewController.xib in Resources */,
 				929D98FD1EEEB26100A8E598 /* Roboto-ThinItalic.ttf in Resources */,
 				929D98FC1EEEB26100A8E598 /* Roboto-Thin.ttf in Resources */,
 				81CB2E731EED1BD700D400FC /* CreateNewAccount.xib in Resources */,
-				92034A961EFAF8790064DAFE /* PickUPRideVC.xib in Resources */,
 				5BB10CE51EEBFA1700F93FBE /* SignInViewController.xib in Resources */,
 				81C14F0D1F17F52700FDEFEC /* PayBillDetails.xib in Resources */,
 				929D98F11EEEB26100A8E598 /* LICENSE.txt in Resources */,
@@ -1041,6 +1110,9 @@
 				81F2EC091EF18D0D0065D2BD /* LeftMenuViewController.xib in Resources */,
 				81C14F071F17F52700FDEFEC /* AllRideCell.xib in Resources */,
 				814C6FBB1EF048A600985702 /* MyRidesVC.xib in Resources */,
+				8164369C1F1F0B9E00B395E6 /* GetFreeRides.xib in Resources */,
+				818EAB041F1F1C7F0094E220 /* TransctionViewController.xib in Resources */,
+				816436A11F1F0BFB00B395E6 /* PickUPRideVC.xib in Resources */,
 				929D98FA1EEEB26100A8E598 /* Roboto-MediumItalic.ttf in Resources */,
 				92DEEE7A1EEE8C8B001B5DCA /* HomeViewControlle.xib in Resources */,
 				81F2EBFE1EF18AA60065D2BD /* menu-button@2x.png in Resources */,
@@ -1222,10 +1294,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				92EFD5AB1EFE6ECD00F06494 /* HomeViewControlle.swift in Sources */,
+				818EAAF91F1F1BEA0094E220 /* MyRidesTableViewCell.swift in Sources */,
 				0439CA7C1EEC50B1008E4F78 /* TPKeyboardAvoidingScrollView.m in Sources */,
 				92DEEE7B1EEE8C8B001B5DCA /* RideLaterVC.swift in Sources */,
-				92D150811F0F358C00AAC6A4 /* BalanceScreenViewController.swift in Sources */,
-				81E76BE31EEF73E500256FD4 /* WalletViewControllerCustomCellTableView.swift in Sources */,
 				81C14F041F17F52700FDEFEC /* AllRides.swift in Sources */,
 				81F2EC041EF18AA60065D2BD /* SlideNavigationController.m in Sources */,
 				81C14F0E1F17F52700FDEFEC /* PickUpPassenger.swift in Sources */,
@@ -1234,25 +1305,31 @@
 				81E76BE11EEF73E500256FD4 /* ChangePasswordViewController.swift in Sources */,
 				81F2EC171EF19B070065D2BD /* rightMenuCell.swift in Sources */,
 				81C8E80D1F18880300DA5BBC /* ContactUSController.swift in Sources */,
+				8164369B1F1F0B9E00B395E6 /* GetFreeRides.swift in Sources */,
 				81C14F081F17F52700FDEFEC /* CancelView.swift in Sources */,
 				0439CA7E1EEC50B1008E4F78 /* Utility.swift in Sources */,
 				81F2EC031EF18AA60065D2BD /* SlideNavigationContorllerAnimatorSlideAndFade.m in Sources */,
 				81F2EC011EF18AA60065D2BD /* SlideNavigationContorllerAnimatorScaleAndFade.m in Sources */,
+				818EAB031F1F1C7F0094E220 /* TransctionViewController.swift in Sources */,
 				92B006F91F0ACA1500B838D4 /* StarRatingControl.m in Sources */,
 				81C14F0C1F17F52700FDEFEC /* PayBillDetails.swift in Sources */,
 				814C6FBA1EF048A600985702 /* MyRidesVC.swift in Sources */,
 				045CF6FA1EEC7A010052DBC6 /* AppDelegate.swift in Sources */,
 				81A366D01F09822600A08544 /* bookingViewController.swift in Sources */,
-				81E76BE51EEF73E500256FD4 /* WalletViewController.swift in Sources */,
 				81F2EC001EF18AA60065D2BD /* SlideNavigationContorllerAnimatorScale.m in Sources */,
 				5BB10CD21EEBEB4E00F93FBE /* SignInOrCreateNewAccount.swift in Sources */,
+				818EAB011F1F1C7F0094E220 /* BalanceScreenViewController.swift in Sources */,
 				81F2EBFF1EF18AA60065D2BD /* SlideNavigationContorllerAnimatorFade.m in Sources */,
+				818EAAEB1F1F1A8C0094E220 /* AddWallet.swift in Sources */,
 				81CB2E721EED1BD700D400FC /* CreateNewAccount.swift in Sources */,
-				92D150831F0F358C00AAC6A4 /* TransctionViewController.swift in Sources */,
 				81F2EC081EF18D0D0065D2BD /* LeftMenuViewController.swift in Sources */,
 				92564FC21EEF0AE300C59A4E /* ViewDetailCar.swift in Sources */,
+				818EAAF41F1F1A9E0094E220 /* TermsVC.swift in Sources */,
+				818EAB0E1F1F26C40094E220 /* addMoney.swift in Sources */,
 				81C14F021F17F52700FDEFEC /* AcceptAndDeclineView.swift in Sources */,
 				81C14F061F17F52700FDEFEC /* AllRideCell.swift in Sources */,
+				818EAAED1F1F1A8C0094E220 /* WalletViewControllerCustomCellTableView.swift in Sources */,
+				818EAB091F1F1DE60094E220 /* scheduleView.swift in Sources */,
 				81F2EC0D1EF190BE0065D2BD /* leftMenuCell.swift in Sources */,
 				81C14F181F17F5EC00FDEFEC /* SettingViewController.swift in Sources */,
 				5BB10CE41EEBFA1700F93FBE /* SignInViewController.swift in Sources */,
@@ -1260,14 +1337,14 @@
 				81C14F0A1F17F52700FDEFEC /* DriverHomeScreen.swift in Sources */,
 				0439CA7D1EEC50B1008E4F78 /* UIScrollView+TPKeyboardAvoidingAdditions.m in Sources */,
 				811951611EFCC27200C0720B /* ACFloatingTextfield.swift in Sources */,
-				92034A951EFAF8790064DAFE /* PickUPRideVC.swift in Sources */,
+				816436A01F1F0BFB00B395E6 /* PickUPRideVC.swift in Sources */,
 				04FA4CE01EF538C300CF7618 /* Reachability.swift in Sources */,
 				81C8E80F1F18880300DA5BBC /* ShareAppViewController.swift in Sources */,
 				5BB10CA51EEBEA8600F93FBE /* Tawsila.xcdatamodeld in Sources */,
 				81D17A011EF84C3200976349 /* ConfirmationScreen.swift in Sources */,
 				81C14EEB1F17F4E900FDEFEC /* DLRadioButton.m in Sources */,
+				818EAAEF1F1F1A8C0094E220 /* WalletViewController.swift in Sources */,
 				81D179F21EF84A3200976349 /* forgotPassword.swift in Sources */,
-				81C14EE61F17F48D00FDEFEC /* MyRidesTableViewCell.swift in Sources */,
 				0439CA7B1EEC50B1008E4F78 /* Constant.swift in Sources */,
 				81F2EC021EF18AA60065D2BD /* SlideNavigationContorllerAnimatorSlide.m in Sources */,
 			);

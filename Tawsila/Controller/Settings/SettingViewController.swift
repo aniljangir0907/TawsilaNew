@@ -205,9 +205,5 @@ class SettingViewController: UIViewController {
                     Utility.sharedInstance.showAlert(kAPPName, msg: msg as String, controller: self)
                 }
             }
-            
-            
         }
-    
-    
 }

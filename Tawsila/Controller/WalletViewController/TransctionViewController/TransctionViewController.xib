@@ -22,6 +22,8 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="TransctionViewController" customModule="Tawsila" customModuleProvider="target">
             <connections>
+                <outlet property="img_successAndFail" destination="CN8-8x-QcQ" id="NeS-Ki-WBN"/>
+                <outlet property="img_successAndFailAr" destination="JoV-62-sqy" id="5DJ-Ip-rJt"/>
                 <outlet property="lblAmount" destination="5lq-vV-HO3" id="T1q-AA-F5F"/>
                 <outlet property="lblAmountAr" destination="LAr-Ag-X7d" id="Q46-sj-zCf"/>
                 <outlet property="lblPaymentID" destination="93d-AV-z8F" id="j7t-g3-lAy"/>
@@ -302,7 +304,7 @@
                                 <constraint firstAttribute="trailing" secondItem="dfT-wu-P7a" secondAttribute="trailing" id="vui-ud-o2k"/>
                             </constraints>
                         </view>
-                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="selectdCheck" translatesAutoresizingMaskIntoConstraints="NO" id="JoV-62-sqy">
+                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="successAdd" translatesAutoresizingMaskIntoConstraints="NO" id="JoV-62-sqy">
                             <rect key="frame" x="138" y="114" width="100" height="100"/>
                             <constraints>
                                 <constraint firstAttribute="width" constant="100" id="Eyq-z0-gMj"/>
@@ -509,5 +511,6 @@
         <image name="backImge" width="35" height="35"/>
         <image name="rightImage" width="22" height="22"/>
         <image name="selectdCheck" width="32" height="32"/>
+        <image name="successAdd" width="64" height="64"/>
     </resources>
 </document>

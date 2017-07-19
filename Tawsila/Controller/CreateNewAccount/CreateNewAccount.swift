@@ -60,8 +60,16 @@ class CreateNewAccount: UIViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    
+    
+    @IBAction func checkValidation(_ sender: Any) {
+        
+        self.chechValidation();
+    }
+    
+    
     //MARK: - Check Validation on textfields
-    func chechValidation(){
+     func chechValidation(){
         if  AppDelegateVariable.appDelegate.strLanguage == "en" {
             if (Utility.sharedInstance.trim(self.txtUserFullName.text!)).characters.count == 0 {
                 Utility.sharedInstance.showAlert("Alert", msg: "Please enter your Full Name.", controller: self)
@@ -96,6 +104,18 @@ class CreateNewAccount: UIViewController {
                // Utility.sharedInstance.showAlert("Alert", msg: "Please enter 10 digit mobile number.", controller: self)
                // return
             }
+            if ( ((txtMobile.text!).characters.count) < 4 || ((txtMobile.text!).characters.count) > 16)
+            {
+                 Utility.sharedInstance.showAlert("Alert", msg: "Please enter valid mobile number.", controller: self)
+                 return
+            }
+            
+            if isSelect == false {
+              
+                Utility.sharedInstance.showAlert("Alert", msg: "Please accept Terms and Conditions.", controller: self)
+                return
+            }
+            
         }
         else{
             if (Utility.sharedInstance.trim(self.txtUserNameAr.text!)).characters.count == 0 {
@@ -132,9 +152,11 @@ class CreateNewAccount: UIViewController {
                 //return
             }
         }
+        
+        self.actionSignUp();
     }
     //MARK:- UIButtons Actions
-    @IBAction func actionSignUp(_ sender: Any) {
+    func actionSignUp() {
         
         if  Reachability.isConnectedToNetwork() == false
         {
@@ -142,21 +164,9 @@ class CreateNewAccount: UIViewController {
             return
         }
     
-        chechValidation() /// vikram singh
+        // chechValidation() /// vikram singh
         
         RappleActivityIndicatorView.startAnimatingWithLabel("Processing...", attributes: RappleAppleAttributes)
-        
-//<<<<<<< HEAD
-//        let parameter s = [
-//             "username" :  self.txtUserFullName.text! as String,
-//            "email" :  self.txtemail.text! as String,
-//            "password":   self.txtpassword.text! as String,
-//            "phone":   self.txtpassword.text! as String,
-//            "country_mobile_code" : "91",
-//            "terms_and_condition" : "",
-//            "device_id" : "123456789"
-//            
-//        ]
         
         let parameterString : String!
         if  AppDelegateVariable.appDelegate.strLanguage == "en" {
@@ -166,20 +176,7 @@ class CreateNewAccount: UIViewController {
                   parameterString = String(format : "register&username=%@&email=%@&password=%@&mobile=%@&country_mobile_code=%@&terms_and_condition=%@&device_id=%@",self.txtUserNameAr.text! as String,self.txtEmailAr.text! as String,self.txtPassAr.text! as String,self.txtMobileAr.text! as String,"91","","1234567890")
         }
      
-//=======
-        //        let parameters = [
-        //             "username" :  self.txtUserFullName.text! as String,
-        //            "email" :  self.txtemail.text! as String,
-        //            "password":   self.txtpassword.text! as String,
-        //            "phone":   self.txtpassword.text! as String,
-        //            "country_mobile_code" : "91",
-        //            "terms_and_condition" : "",
-        //            "device_id" : "123456789"
-        //
-        //        ]
-       // let parameterString = String(format : "register&username=%@&email=%@&password=%@&mobile=%@&country_mobile_code=%@&terms_and_condition=%@&device_id=%@",self.txtUserFullName.text! as String,self.txtemail.text! as String,self.txtpassword.text! as String,self.txtMobile.text! as String,"91","","1234567890")//>>>>>>> e0d25e47d49dd5473c751927147f180b243f0428
-   
-        
+
         
         Utility.sharedInstance.postDataInDataForm(header: parameterString,  inVC: self) { (dataDictionary, msg, status) in
             
@@ -188,7 +185,7 @@ class CreateNewAccount: UIViewController {
                 var userDict = ((dataDictionary.object(forKey: "result") as! NSArray).object(at: 0) as! NSDictionary).mutableCopy() as! NSMutableDictionary
                 userDict = AppDelegateVariable.appDelegate.convertAllDictionaryValueToNil(userDict)
                 
-                let user_id : String = userDict .object(forKey: "id") as! String
+                 // let user_id : String = userDict .object(forKey: "id") as! String
 
 //                USER_DEFAULT.set("1", forKey: "isLogin")
 //                USER_DEFAULT.set(userDict, forKey: "userData")
@@ -208,6 +205,8 @@ class CreateNewAccount: UIViewController {
                 
                 let obej: ConfirmationScreen = ConfirmationScreen(nibName: "ConfirmationScreen", bundle: nil)
                 ///self.navigationController?.pushViewController(obej, animated: true)
+                
+                obej.vcode = ( ((dataDictionary.object(forKey: "result") as! NSArray ) .object(at: 0) ) as! NSDictionary ) .value(forKey: "verification_code") as! String
                 self.setPushViewTransition(obej)
             }
             else {
@@ -245,4 +244,10 @@ class CreateNewAccount: UIViewController {
             actionBackButton(sender)
     }
     
+    @IBAction func tapTandC(_ sender: Any) {
+        
+        let obej: TermsVC = TermsVC(nibName: "TermsVC", bundle: nil)
+        ///self.navigationController?.pushViewController(obej, animated: true)
+        self.setPushViewTransition(obej)
+    }
 }

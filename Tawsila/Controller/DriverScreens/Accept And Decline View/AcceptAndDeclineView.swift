@@ -25,10 +25,24 @@ class AcceptAndDeclineView: UIView {
     @IBOutlet weak var lblLabelAr: UILabel!
     @IBOutlet weak var lblTimeRequestAr: UILabel!
     
-    
+    var timer = Timer()
+    var value = Int()
     override func draw(_ rect: CGRect) {
         
+        
         addBehavior()
+        value = 30;
+       // timer(timeInterval: 1, target: self, selector: self.update, userInfo: nil, repeats: false)
+    timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(update), userInfo: nil, repeats: true)
+
+    }
+    
+    
+    func update()  {
+        
+        value = value-1
+        lblLabel.text = String(format: "00:%d",value) as String
+        
     }
     
     func addBehavior() {

@@ -1,4 +1,4 @@
-//
+ //
 //  HomeViewControlle.swift
 //  Tawsila
 //
@@ -82,6 +82,18 @@ class HomeViewControlle: UIViewController ,GMSMapViewDelegate ,SlideNavigationCo
     var standredRate = String()
     var icon = UIImage()
     
+    var is_accepted = Bool()
+    var is_location = Bool()
+    
+    var payMedia = String()
+    
+    var estFare = Int()
+    
+    @IBOutlet var lblpayMedia: UILabel!
+    
+    @IBOutlet var icon_pay_media: UIImageView!
+    
+    @IBOutlet var viewSeletPayMethod: UIView!
     
     
     override func viewDidLoad()
@@ -92,6 +104,7 @@ class HomeViewControlle: UIViewController ,GMSMapViewDelegate ,SlideNavigationCo
         tagBookNow = 0
         tagCarType = 0
         is_LoadCars = true
+        is_location = false
         AppDelegateVariable.appDelegate.is_loadCar = 0
         dictMarker = NSMutableDictionary()
         
@@ -119,16 +132,11 @@ class HomeViewControlle: UIViewController ,GMSMapViewDelegate ,SlideNavigationCo
         }
         
         RappleActivityIndicatorView.startAnimatingWithLabel("Processing...", attributes: RappleAppleAttributes)
-        self.getCarsAPI()
+        //self.getCarsAPI()
         
         //self.gotoNextView()
         
-        let center = UNUserNotificationCenter.current()
-        center.delegate = self
-        center.requestAuthorization(options:[.badge, .alert, .sound]) { (granted, error) in
-        
-        // Enable or disable features based on authorization.
-        }
+      
     }
     
     
@@ -149,6 +157,12 @@ class HomeViewControlle: UIViewController ,GMSMapViewDelegate ,SlideNavigationCo
             viewEstimate.layer.borderWidth = 0.5
             viewEstimate.layer.cornerRadius = 3
             viewEstimate.isHidden = true
+            
+            viewSeletPayMethod.layer.borderColor = #colorLiteral(red: 0.8039215803, green: 0.8039215803, blue: 0.8039215803, alpha: 1).cgColor
+            viewSeletPayMethod.layer.borderWidth = 0.5
+            viewSeletPayMethod.layer.cornerRadius = 3
+            viewSeletPayMethod.isHidden = true
+            
         }
         else{
             
@@ -168,20 +182,42 @@ class HomeViewControlle: UIViewController ,GMSMapViewDelegate ,SlideNavigationCo
             viewEstimateAr.isHidden = true
         }
     }
-
+    
     override func viewWillAppear(_ animated: Bool) {
         
-        setShowAndHideViews(viewEnglish, vArb: viewArabic)
-        
-        if AppDelegateVariable.appDelegate.id_booking == "false" {
-            AppDelegateVariable.appDelegate.id_booking = "NO";
-            self.tapCacelBooking("");
+        let center = UNUserNotificationCenter.current()
+        center.delegate = self
+        center.requestAuthorization(options:[.badge, .alert, .sound]) { (granted, error) in
+            
+            // Enable or disable features based on authorization.
         }
         
+        is_accepted = false
+        
         AppDelegateVariable.appDelegate.is_loadCar = 0
-        self.getCarsAPI()
-    }
 
+        setShowAndHideViews(viewEnglish, vArb: viewArabic)
+        
+        if AppDelegateVariable.appDelegate.id_booking == "false"
+        {
+            AppDelegateVariable.appDelegate.id_booking = "NO";
+            self.tapCacelBooking("");
+            self.getCarsAPI()
+        }
+        if AppDelegateVariable.appDelegate.id_booking == "cancel"
+        {
+            Utility.sharedInstance.showAlert(kAPPName, msg: "Ride cancelled by Driver", controller: self)
+
+            AppDelegateVariable.appDelegate.id_booking = "NO";
+            self.tapCacelBooking("");
+            self.getCarsAPI()
+        }
+        
+        
+        Utility.sharedInstance.getUserWallet(vc : self)
+        
+    }
+    
     override func viewDidDisappear(_ animated: Bool)
     {
         super .viewWillDisappear(true)
@@ -193,15 +229,33 @@ class HomeViewControlle: UIViewController ,GMSMapViewDelegate ,SlideNavigationCo
     
     func getCarsAPI()
     {
-        Utility.sharedInstance.postDataInDataForm(header: "get_cars", inVC: self) { (dataDictionary, msg, status) in
+        var parameterString = String(format : "get_cars")
+        
+        let dic = NSMutableDictionary()
+        
+        dic.setValue(String (format: "%f", (locationManager.location!.coordinate.latitude)), forKey: "lat")
+        dic.setValue(String (format: "%f", (locationManager.location!.coordinate.longitude)), forKey: "long")
+        
+        for (key, value) in dic
+        {
+            parameterString = String (format: "%@&%@=%@", parameterString,key as! CVarArg,value as! CVarArg)
+        }
+        
+        // print(parameterString)
+        
+        Utility.sharedInstance.postDataInDataForm(header: parameterString, inVC: self) { (dataDictionary, msg, status) in
             
-            if(self.onetime == 0)
+            if status == true
             {
-                let array : NSArray = (dataDictionary.object(forKey:"result") as! NSArray)
-                self.arrCars = array
-                self.onetime = 1
-                self.loadCars(arrayCars:array)
-                self.perform( #selector(self.getCarsLocations), with: 1, afterDelay: 0)
+                
+                if(self.onetime == 0)
+                {
+                    let array : NSArray = (dataDictionary.object(forKey:"result") as! NSArray)
+                    self.arrCars = array
+                    self.onetime = 1
+                    self.loadCars(arrayCars:array)
+                    self.perform( #selector(self.getCarsLocations), with: 1, afterDelay: 0)
+                }
             }
         }
     }
@@ -234,28 +288,44 @@ class HomeViewControlle: UIViewController ,GMSMapViewDelegate ,SlideNavigationCo
             {
                 var icon = UIImage()
                 
-                if self.tagCarType == 0
+                
+                let car : String = ((self.arrCars.object(at: self.tagCarType) as! NSDictionary ) .object(forKey: "car_type") as! String).uppercased()
+
+                
+                if (car == "Luxury".uppercased())
                 {
-                    icon = #imageLiteral(resourceName: "car_luxury")
+                    icon =  #imageLiteral(resourceName: "car_luxury")
                 }
-                else if self.tagCarType == 1
+                else  if (car == "Outstation".uppercased())
                 {
                     icon = #imageLiteral(resourceName: "car_texy")
                 }
-                else if self.tagCarType == 3
+                else  if (car == "SUV")
                 {
-                    icon =  #imageLiteral(resourceName: "car_mini_icon")
+                    icon = #imageLiteral(resourceName: "car_other")
+                }
+                else  if (car == "MINI")
+                {
+                    icon = #imageLiteral(resourceName: "car_mini_icon")
+                }
+                else  if (car == "SEDAN")
+                {
+                    icon =  #imageLiteral(resourceName: "car_texy")
                 }
                 else
                 {
                     icon = #imageLiteral(resourceName: "car_other")
                 }
+
+                
+            
+                    
                 if self.tagCarType != self.tempTag
                 {
                     self.mapView.clear()
                     self.tempTag = self.tagCarType
                 }
-
+                
                 let dataArray:NSArray = (dataDictionary as NSDictionary).object(forKey: "result") as! NSArray
                 self.initialRate = ((dataArray.object(at: 0) as! NSDictionary) .object(forKey: "intailrate") as! String)
                 self.standredRate = ((dataArray.object(at: 0) as! NSDictionary) .object(forKey: "standardrate") as! String)
@@ -321,11 +391,39 @@ class HomeViewControlle: UIViewController ,GMSMapViewDelegate ,SlideNavigationCo
             
             let dict : NSDictionary = self.arrCars .object(at: i) as! NSDictionary
             
+            let arrVehcles : NSArray = dict .value(forKey: "car_nearst_data") as! NSArray
+            
             let lblTime = UILabel(frame: CGRect(x: i * wd, y: 0, width: wd, height: 20))
             lblTime.textAlignment = .center
             lblTime.text = "10 min"
             lblTime.textColor = #colorLiteral(red: 0.2745098174, green: 0.4862745106, blue: 0.1411764771, alpha: 1)
             lblTime.font = UIFont .systemFont(ofSize: 12)
+            
+            if arrVehcles.count > 0 {
+                
+                let dicTemp : NSDictionary = arrVehcles .object(at: 0) as! NSDictionary
+                
+                let distance = dicTemp .object(forKey: "distance") as! String
+                
+                let dis : Float = (distance as NSString).floatValue * Float32(2)
+                
+                let estTime = NSString (format: "%d", Int32(dis))
+                
+                lblTime.text = (estTime as String) + "min"
+                
+                if estTime == "0"
+                {
+                    lblTime.text = "1 min"
+                }
+
+                // float speedIs1KmMinute = (float) 0.49;
+
+            }
+            else
+            {
+                lblTime.text = "0 min"
+            }
+            
             
             if i < (self.arrCars.count - 1)
             {
@@ -354,7 +452,7 @@ class HomeViewControlle: UIViewController ,GMSMapViewDelegate ,SlideNavigationCo
                 viewForImage.layer.borderWidth = 0.8
                 viewForImage.backgroundColor = UIColor.white
             }
-            
+
             
             let imgUrl = dict.object(forKey: "car_image") as? String
             let car_icon = UIImageView(frame: CGRect(x: 5 , y: 5, width: 40, height: 40))
@@ -369,7 +467,7 @@ class HomeViewControlle: UIViewController ,GMSMapViewDelegate ,SlideNavigationCo
             lblCarName.text = dict.object(forKey: "car_type") as? String
             lblCarName.textColor = #colorLiteral(red: 0.2549019754, green: 0.2745098174, blue: 0.3019607961, alpha: 1)
             lblCarName.font = UIFont .systemFont(ofSize: 12)
-            
+
             
             let btnTapCar = UIButton(frame: CGRect(x: i * wd, y: 0, width: wd, height: 90))
             
@@ -389,16 +487,16 @@ class HomeViewControlle: UIViewController ,GMSMapViewDelegate ,SlideNavigationCo
             
             btnTapCar .addTarget(self, action: #selector(tapCarBottom), for: UIControlEvents.touchUpInside)
             btnTapCar.tag = i
-            
+
         }
         
         if  AppDelegateVariable.appDelegate.strLanguage == "en" {
             scrollViewCars.showsHorizontalScrollIndicator = false
-            scrollViewCars .contentSize = CGSize(width: 6*wd, height: 90)
+            scrollViewCars .contentSize = CGSize(width: self.arrCars.count*wd, height: 90)
             viewBottom.isHidden = false
         }else{
             scrollViewCarsAr.showsHorizontalScrollIndicator = false
-            scrollViewCarsAr .contentSize = CGSize(width: 6*wd, height: 90)
+            scrollViewCarsAr .contentSize = CGSize(width: self.arrCars.count*wd, height: 90)
             viewBottomAr.isHidden = false
         }
         
@@ -485,6 +583,7 @@ class HomeViewControlle: UIViewController ,GMSMapViewDelegate ,SlideNavigationCo
         
         self.tagBookNow = 0;
         viewEstimate.isHidden = true
+        viewSeletPayMethod.isHidden = true
         lblDestinationAddress.text = "Select Destination"
         
         if AppDelegateVariable.appDelegate.strLanguage == "en" {
@@ -563,6 +662,9 @@ class HomeViewControlle: UIViewController ,GMSMapViewDelegate ,SlideNavigationCo
         }else{
             viewForMapAr.addSubview(mapView)
         }
+        is_location = true
+        
+        self .perform( #selector(self.getCarsAPI), with: 1, afterDelay: 1)
     }
     
     func mapView(_ mapView: GMSMapView, didChange position: GMSCameraPosition) {
@@ -650,8 +752,8 @@ class HomeViewControlle: UIViewController ,GMSMapViewDelegate ,SlideNavigationCo
             
             dic.setValue(USER_NAME, forKey: "username")
             dic.setValue("PTPT", forKey: "purpose")
-            dic.setValue("2/07/2017", forKey: "pickup_date")
-            dic.setValue("05:05:77 am", forKey: "pickup_time")
+            dic.setValue(DLRadioButton.getCurrentDateOnly(), forKey: "pickup_date")
+            dic.setValue(DLRadioButton.getCurrentTime(), forKey: "pickup_time")
             dic.setValue((self.arrCars.object(at: tagCarType) as! NSDictionary ) .object(forKey: "car_type") as! String, forKey: "taxi_type")
             dic.setValue("05:05:77 am", forKey: "departure_time")
             dic.setValue("28/07/2017", forKey: "departure_date")
@@ -750,6 +852,8 @@ class HomeViewControlle: UIViewController ,GMSMapViewDelegate ,SlideNavigationCo
         
         let url = URL(string: "http://maps.googleapis.com/maps/api/directions/json?origin=\(source.latitude),\(source.longitude)&destination=\(destination.latitude),\(destination.longitude)&sensor=false&mode=driving")!
         
+        //    https://maps.googleapis.com/maps/api/elevation/json?locations=39.7391536,-104.9847034&key=YOUR_API_KEY
+        
         Alamofire.request(url.absoluteString, method: .get, parameters: nil, encoding: JSONEncoding.default, headers: nil).responseJSON { (response:DataResponse<Any>) in
             
             // print(response);
@@ -762,7 +866,6 @@ class HomeViewControlle: UIViewController ,GMSMapViewDelegate ,SlideNavigationCo
                     
                     if (routes?.count)! > 0
                     {
-                        
                         let overview_polyline : NSDictionary = (routes?[0] as? NSDictionary)!
                         
                         let dic : NSDictionary = overview_polyline as Any as! NSDictionary
@@ -781,13 +884,36 @@ class HomeViewControlle: UIViewController ,GMSMapViewDelegate ,SlideNavigationCo
                         
                         let doubleValue : Double = NSString(string: estDistance).doubleValue // 3.1
                         
-                        self.lblEstimatedFare.text =  String (format: "%.1f SAR", (self.initialRate as NSString).floatValue + (self.standredRate as NSString).floatValue * Float32(doubleValue) )
-                        self.lblEstimatedTime.text = estTime
                         
+                        
+                        self.estFare = Int(Int((self.standredRate as NSString).floatValue + (self.initialRate as NSString).floatValue * Float32(doubleValue)))
+
+                        
+                        self.lblEstimatedFare.text =  String (format: "%d SAR", self.estFare )
+                        self.lblEstimatedTime.text = estTime
+                    
                     }
                     else
                     {
-                        Utility.sharedInstance.showAlert(kAPPName, msg: "Route Not Found" as String, controller: self)
+                        self.tagBookNow = 2
+
+                        self.lblEstimatedFare.text = "500"
+                        self.lblEstimatedTime.text = "45 min"
+                        self.estFare = 500
+                        // Utility.sharedInstance.showAlert(kAPPName, msg: "Route Not Found" as String, controller: self)
+                    }
+                    
+                    if (Int(AppDelegateVariable.appDelegate.wallet_amount)! > self.estFare)
+                    {
+                        self.lblpayMedia.text = "Wallet("+AppDelegateVariable.appDelegate.wallet_amount+")"
+                        self.payMedia = "Wallet";
+                        self.icon_pay_media.image = #imageLiteral(resourceName: "wallet_Icon")
+                    }
+                    else
+                    {
+                        self.payMedia = "Cash";
+                        self.lblpayMedia.text = "Cash"
+                        self.icon_pay_media.image = #imageLiteral(resourceName: "cash_icon")
                     }
                 }
             }
@@ -822,7 +948,8 @@ class HomeViewControlle: UIViewController ,GMSMapViewDelegate ,SlideNavigationCo
         
         mapView.animate(with: GMSCameraUpdate.fit(bounds, withPadding: 100))
         self.tagBookNow = 2
-
+        
+        
     }
     
     override func didReceiveMemoryWarning() {
@@ -835,10 +962,10 @@ class HomeViewControlle: UIViewController ,GMSMapViewDelegate ,SlideNavigationCo
     @IBAction func tapSearch(_ sender: Any) {
         
         
-            acController = GMSAutocompleteViewController()
-            acController.delegate = self
-            present(acController, animated: true, completion: nil)
-
+        acController = GMSAutocompleteViewController()
+        acController.delegate = self
+        present(acController, animated: true, completion: nil)
+        
     }
     
     // MARK:
@@ -860,6 +987,7 @@ class HomeViewControlle: UIViewController ,GMSMapViewDelegate ,SlideNavigationCo
             lblDestinationAddress.text = place.formattedAddress
             destinationCordinate = place.coordinate
             
+            viewSeletPayMethod.isHidden = false
             self.viewEstimate.isHidden = false
             self.imgMidPin.isHidden = true
             
@@ -926,7 +1054,12 @@ class HomeViewControlle: UIViewController ,GMSMapViewDelegate ,SlideNavigationCo
         self .perform(#selector(hideView), with: "", afterDelay: 30)
     }
     
-    func hideView() {
+    func hideView()
+    {
+        if is_accepted == false {
+            
+            self.deadBookingStatusApi()
+        }
         viewWaiting.removeFromSuperview()
     }
     
@@ -975,16 +1108,24 @@ class HomeViewControlle: UIViewController ,GMSMapViewDelegate ,SlideNavigationCo
         
         let application = UIApplication.shared
         
-        // self.delegate?.gotNotification(title: notification.request.content.title);
-        
+        //  self.delegate?.gotNotification(title: notification.request.content.title);
         let title : String = notification.request.content.title
+        //  let title1 : String = notification.request.content as! String
+        //  print(title1)
         
         if title == "accept_booking"
         {
+            
+            self.viewWaiting.removeFromSuperview()
+            
+            is_accepted = true
             let obj : PickUPRideVC = PickUPRideVC(nibName: "PickUPRideVC", bundle: nil)
             self.getTopViewController()?.present(obj, animated: true, completion: nil)
+            obj.car_type = (self.arrCars.object(at: tagCarType) as! NSDictionary ) .object(forKey: "car_type") as! String
+
+            self.tapCacelBooking("")
             
-            // self.getTopViewController()?.navigationController?.pushViewController(obj, animated: true)
+            self.getTopViewController()?.navigationController?.pushViewController(obj, animated: true)
             // self.performSelector(onMainThread: #selector(self.gotoNextView), with: "", waitUntilDone:true)
             // self.gotoNextView()
         }
@@ -1006,7 +1147,7 @@ class HomeViewControlle: UIViewController ,GMSMapViewDelegate ,SlideNavigationCo
     
     
     public func getTopViewController() -> UIViewController?{
-     
+        
         if var topController = UIApplication.shared.keyWindow?.rootViewController
         {
             while (topController.presentedViewController != nil)
@@ -1018,13 +1159,95 @@ class HomeViewControlle: UIViewController ,GMSMapViewDelegate ,SlideNavigationCo
         return nil
     }
     
-    @IBAction func actionShareApp(_ sender:UIButton) {
-        let moveApp: ShareAppViewController = ShareAppViewController(nibName: "ShareAppViewController", bundle: nil)
-        moveApp.view.backgroundColor = UIColor.black.withAlphaComponent(0.5)
-        moveApp.viewBackGround.backgroundColor = UIColor.clear
-        moveApp.modalPresentationStyle = UIModalPresentationStyle.overCurrentContext
+    
+    func deadBookingStatusApi()  {
         
-        self.present(moveApp, animated: true, completion: nil)
+        let urlStr : String = String (format: "mark_dead_booking&booking_id=%@",AppDelegateVariable.appDelegate.id_booking)
+        
+        
+        Utility.sharedInstance.postDataInDataForm(header: urlStr, inVC: self) { (dataDictionary, msg, status) in
+            
+            RappleActivityIndicatorView.stopAnimation()
+            
+            
+            if status == true
+            {
+                Utility.sharedInstance.showAlert(kAPPName, msg: "Your Ride has beed dead because no driver accepted" , controller: self)
+
+            }
+            else
+            {
+                //  self.deadBookingStatusApi()
+                
+                //  Utility.sharedInstance.showAlert(kAPPName, msg: msg as String, controller: self)
+            }
+        }
+    }
+    
+    @IBAction func actionShareApp(_ sender: Any) {
+        
+    }
+    
+    @IBAction func tapPaymentMethod(_ sender: Any) {
+        
+        let actionSheetController: UIAlertController = UIAlertController(title: "Choose payment method", message: "", preferredStyle: .actionSheet)
+        
+        let action0: UIAlertAction = UIAlertAction(title: "Wallet", style: .default) { action -> Void in
+            
+            self.lblpayMedia.text = "Wallet("+AppDelegateVariable.appDelegate.wallet_amount+")"
+            self.payMedia = "Wallet";
+            self.icon_pay_media.image = #imageLiteral(resourceName: "wallet_Icon")
+            
+            if ( Int((AppDelegateVariable.appDelegate.wallet_amount as NSString ).integerValue) < Int(self.estFare))
+            {
+                self.lblpayMedia.text = "Wallet("+AppDelegateVariable.appDelegate.wallet_amount+")"
+                self.payMedia = "Wallet";
+                self.icon_pay_media.image = #imageLiteral(resourceName: "wallet_Icon")
+                
+                let actionController: UIAlertController = UIAlertController(title: "Add money", message: "", preferredStyle: .alert)
+                
+
+                let action1: UIAlertAction = UIAlertAction(title: "ok", style: .default) { action -> Void in
+                    
+                    let obj : WalletViewController = WalletViewController(nibName: "WalletViewController", bundle: nil)
+                    obj.hometag = true
+                    self.present(obj, animated: true, completion: nil)
+                    
+                }
+                
+                let cancelAction: UIAlertAction = UIAlertAction(title: "Cancel", style: .cancel) { action -> Void in
+                    
+                    //Just dismiss the action sheet
+                    
+                }
+                
+                actionController.addAction(action1)
+                actionController.addAction(cancelAction)
+                self.present(actionController, animated: true, completion: nil)
+            }           
+        }
+        
+        let action1: UIAlertAction = UIAlertAction(title: "Cash", style: .default) { action -> Void in
+            
+            self.payMedia = "Cash";
+            self.lblpayMedia.text = "Cash"
+            self.icon_pay_media.image = #imageLiteral(resourceName: "cash_icon")
+
+        }
+        
+        
+        let cancelAction: UIAlertAction = UIAlertAction(title: "Cancel", style: .cancel) { action -> Void in
+            
+            //Just dismiss the action sheet
+            
+        }
+        
+        actionSheetController.addAction(action0)
+        actionSheetController.addAction(action1)
+       
+        actionSheetController.addAction(cancelAction)
+        self.present(actionSheetController, animated: true, completion: nil)
+
     }
 }
 

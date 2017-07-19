@@ -389,6 +389,37 @@ class Utility
     
     
     
+    func getUserWallet(vc : UIViewController)  {
+        
+        let urlStr : String = String (format: "get_user_wallet&username=%@",USER_NAME)
+        
+        
+        Utility.sharedInstance.postDataInDataForm(header: urlStr, inVC: vc) { (dataDictionary, msg, status) in
+            
+            RappleActivityIndicatorView.stopAnimation()
+            
+            let reslt : NSString = NSString (format: "%@", dataDictionary .value(forKey: "result") as! CVarArg)
+            if status == true
+            {
+                if reslt == "<null>"
+                {
+                    AppDelegateVariable.appDelegate.wallet_amount = "0"
+                }
+                else
+                {
+                    AppDelegateVariable.appDelegate.wallet_amount = NSString (format: "%@", (((((dataDictionary .object(forKey: "result")) as! NSArray ) .object(at: 0)) as! NSDictionary) .object(forKey: "amount") ) as! String) as String
+                }
+            }
+            else
+            {
+                //  self.deadBookingStatusApi()
+                //  Utility.sharedInstance.showAlert(kAPPName, msg: msg as String, controller: self)
+            }
+        }
+    }
+
+    
+    
 }
 
 extension UILabel
