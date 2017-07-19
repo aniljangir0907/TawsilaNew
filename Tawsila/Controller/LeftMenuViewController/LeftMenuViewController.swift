@@ -233,7 +233,7 @@ class LeftMenuViewController: UIViewController, UITableViewDelegate, UITableView
         
         
         Utility.sharedInstance.postDataInJson(header: parameterString,  withParameter:dic ,inVC: self) { (dataDictionary, msg, status) in
-        
+            
             if  strStatus == "online" {
                 USER_DEFAULT.set("No", forKey: "driverstatus")
             }else{

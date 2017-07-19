@@ -16,9 +16,10 @@ class rightMenuViewController: UIViewController, UITableViewDelegate, UITableVie
     @IBOutlet var lblUserDetail: UILabel!
     
     var arrLeftMenu =  [["image" : "home", "key" : "منزل"], ["image" : "myride", "key" : "بلدي ركوب الخيل"], ["image" : "wallet", "key" : "محفظة نقود"], ["image" : "Share_icon", "key" : "مشاركة التطبيق"], ["image" : "settings", "key" : "إعدادات"], ["image" : "contactUs", "key" : "اتصل بنا"],  ["image" : "help", "key" : "مساعدة"]]
-    
-    var arrLeftMenuDriver = [["image" : "myride", "key" : "جميع ركوب الخيل"], ["image" : "signout", "key" : "خروج"], ["image" : "settings", "key" : "إعدادات"]] //30-June-2017 vikram singh
-    
+        
+    var arrLeftMenuDriver = [["image" : "home", "key" : "منزل"],["image" : "myride", "key" : "جميع ركوب الخيل"], ["image" : "signout", "key" : "خروج"], ["image" : "settings", "key" : "إعدادات"]] //30-June-2017 vikram singh
+//    var arrLeftMenuDriver = [["image" : "home", "key" : "Home"] ,["image" : "myride", "key" : "My Rides"], ["image" : "signout", "key" : "Signout"], ["image" : "settings", "key" : "Settings"]]//30-June-2017 vikram singh 13671983#12-
+
     override func viewDidLoad() {
         
         print(USER_DEFAULT.object(forKey: "userData") as! NSDictionary)
@@ -69,7 +70,7 @@ class rightMenuViewController: UIViewController, UITableViewDelegate, UITableVie
         
         if userType == "driver" {//30-June-2017 vikram singh
             
-            if  indexPath.row == 3 {
+            if  indexPath.row == 4 {
                 cell.imgIcon.isHidden = true
                 cell.lblTitle.isHidden = true
                 let driverStatus = USER_DEFAULT.object(forKey: "driverstatus") as! String
@@ -90,7 +91,7 @@ class rightMenuViewController: UIViewController, UITableViewDelegate, UITableVie
                 if driverStatus == "No" {
                     switchOnLineOffline.setOn(true, animated: true)
                     if AppDelegateVariable.appDelegate.strLanguage == "ar" {
-                        lblGoOnlineAndOffline.text = "عبر الانترنت  "
+                        lblGoOnlineAndOffline.text = "الانتقال إلى وضع عدم الاتصال"
                     }else{
                     lblGoOnlineAndOffline.text = "Go Online"
                     }
@@ -98,11 +99,10 @@ class rightMenuViewController: UIViewController, UITableViewDelegate, UITableVie
                 else{
                     switchOnLineOffline.setOn(false, animated: true)
                     if AppDelegateVariable.appDelegate.strLanguage == "ar" {
-                        lblGoOnlineAndOffline.text = "الانتقال إلى وضع عدم الاتصال"
+                        lblGoOnlineAndOffline.text = "عبر الانترنت"
                     }else{
                         lblGoOnlineAndOffline.text = "Go Offline"
                     }
-
                 }
                 cell.addSubview(switchOnLineOffline)
             }else{
@@ -143,12 +143,10 @@ class rightMenuViewController: UIViewController, UITableViewDelegate, UITableVie
                 let moveViewController : ShareAppViewController = ShareAppViewController(nibName: "ShareAppViewController", bundle: nil)
                 SlideNavigationController.sharedInstance().isPopViewController = true
                 SlideNavigationController.sharedInstance().popToRootAndSwitch(to: moveViewController, withCompletion: nil)
-                
-                //                SlideNavigationController.sharedInstance().popToRootAndSwitch(to: moveViewController, withSlideOutAnimation: nil, andCompletion: nil)
                 print("GetFreeRides")
                 break
             case 4:
-                let obj : SettingViewController = SettingViewController(nibName: "SettingViewController", bundle: nil) as SettingViewController
+                let obj : SettingViewController = SettingViewController(nibName: "SettingViewController", bundle: nil)
                 SlideNavigationController.sharedInstance().popToRootAndSwitch(to: obj, withCompletion: nil)
             case 5:
                 let moveViewController : ContactUSController = ContactUSController(nibName: "ContactUSController", bundle: nil)
@@ -169,14 +167,19 @@ class rightMenuViewController: UIViewController, UITableViewDelegate, UITableVie
         else{
             switch indexPath.row {
             case 0:
-                let obje: AllRides = AllRides(nibName: "AllRides", bundle: nil) as! AllRides
+                let obje: DriverHomeScreen = DriverHomeScreen(nibName: "DriverHomeScreen", bundle: nil) as DriverHomeScreen
                 SlideNavigationController.sharedInstance().popToRootAndSwitch(to: obje, withCompletion: nil)
-            case 1:
-                USER_DEFAULT.set("0", forKey: "isLogin")
-                AppDelegateVariable.appDelegate.sliderMenuControllser()
                 
+            case 1:
+                let obje: AllRides = AllRides(nibName: "AllRides", bundle: nil) as AllRides
+                SlideNavigationController.sharedInstance().popToRootAndSwitch(to: obje, withCompletion: nil)
             case 2:
-                print("Tawsila")
+                //                USER_DEFAULT.set("0", forKey: "isLogin")
+                //                AppDelegateVariable.appDelegate.sliderMenuControllser()
+                self.FireAPI()
+            case 3:
+                let obje : SettingViewController = SettingViewController(nibName: "SettingViewController", bundle: nil) as SettingViewController
+                SlideNavigationController.sharedInstance().popToRootAndSwitch(to: obje, withCompletion: nil)
             default:
                 print("ViewController not Found.")
             }
@@ -184,9 +187,10 @@ class rightMenuViewController: UIViewController, UITableViewDelegate, UITableVie
     }
     
     @IBAction func switchOnlineAndOffline(_ sender:UISwitch) {
-        if sender.isOn {
+        if !sender.isOn {
             if AppDelegateVariable.appDelegate.strLanguage == "ar" {
                 lblGoOnlineAndOffline.text = "عبر الانترنت  "
+                self.changeDriveStatus("online")
             }else{
                 lblGoOnlineAndOffline.text = "Go Online"
             }
@@ -194,9 +198,76 @@ class rightMenuViewController: UIViewController, UITableViewDelegate, UITableVie
         else{
             if AppDelegateVariable.appDelegate.strLanguage == "ar" {
                 lblGoOnlineAndOffline.text = "الانتقال إلى وضع عدم الاتصال"
+                self.changeDriveStatus("offline")
             }else{
                 lblGoOnlineAndOffline.text = "Go Offline"
             }
         }
     }
+    // SignOut user from driver side
+    func FireAPI()
+    {
+        let dic = NSMutableDictionary()
+        dic.setValue(USER_ID, forKey: "id")
+        if userType == "driver" {
+            dic.setValue("driver", forKey: "usertype")
+        }else{
+            dic.setValue("user", forKey: "usertype")
+        }
+        // RappleActivityIndicatorView.startAnimatingWithLabel("Processing...", attributes: RappleAppleAttributes)
+        
+        var parameterString = String(format : "logout")
+        
+        for (key, value) in dic
+        {
+            parameterString = String (format: "%@&%@=%@", parameterString,key as! CVarArg,value as! CVarArg)
+        }
+        
+        
+        Utility.sharedInstance.postDataInJson(header: parameterString,  withParameter:dic ,inVC: self) { (dataDictionary, msg, status) in
+            
+            if status == true
+            {
+                USER_DEFAULT.set("0", forKey: "isLogin")
+                AppDelegateVariable.appDelegate.sliderMenuControllser()
+                
+            }
+            else
+            {
+                Utility.sharedInstance.showAlert(kAPPName, msg: msg as String, controller: self)
+            }
+        }
+    }
+    // apply drive is offline and online status on switch switch status change
+    func  changeDriveStatus(_ strStatus:String) {
+        let dic = NSMutableDictionary()
+        dic.setValue(USER_ID, forKey: "user_id")
+        dic.setValue("driver", forKey: "usertype")
+        /////http://taxiappsourcecode.com/api/index.php?option=set_driver_offline
+        dic.setValue(strStatus, forKey: "status")
+        
+        var parameterString = String(format : "set_driver_offline")
+        for (key, value) in dic
+        {
+            parameterString = String (format: "%@&%@=%@", parameterString,key as! CVarArg,value as! CVarArg)
+        }
+        
+        
+        Utility.sharedInstance.postDataInJson(header: parameterString,  withParameter:dic ,inVC: self) { (dataDictionary, msg, status) in
+            
+            if  strStatus == "online" {
+                USER_DEFAULT.set("No", forKey: "driverstatus")
+            }else{
+                USER_DEFAULT.set("Yes", forKey: "driverstatus")
+            }
+            if status == true
+            {
+            }
+            else
+            {
+                Utility.sharedInstance.showAlert(kAPPName, msg: msg as String, controller: self)
+            }
+        }
+    }
+
 }
