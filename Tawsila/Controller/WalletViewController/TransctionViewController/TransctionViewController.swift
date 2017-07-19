@@ -26,6 +26,7 @@ class TransctionViewController: UIViewController {
     var payId = String()
     //var payAmount = String()
     
+    @IBOutlet var imgSccessFail: UIImageView!
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
