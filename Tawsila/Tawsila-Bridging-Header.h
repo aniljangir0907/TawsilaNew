@@ -15,6 +15,8 @@
 #import "DLRadioButton.h"
 #import "PayPalMobile.h"
 #import "StarRatingControl.h"
+#import "iToast.h"
+
 
 #endif /* BLUBUMP_Bridging_Header_h */
 

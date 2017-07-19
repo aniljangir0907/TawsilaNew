@@ -108,6 +108,7 @@
 		92564FC21EEF0AE300C59A4E /* ViewDetailCar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92564FC11EEF0AE300C59A4E /* ViewDetailCar.swift */; };
 		9282F2561F1F5C9900071E49 /* AddwalletView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9282F2551F1F5C9900071E49 /* AddwalletView.xib */; };
 		9282F2581F1F5D0F00071E49 /* AddwalletView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9282F2571F1F5D0F00071E49 /* AddwalletView.swift */; };
+		9282F25C1F1F749200071E49 /* iToast.m in Sources */ = {isa = PBXBuildFile; fileRef = 9282F25B1F1F749200071E49 /* iToast.m */; };
 		929D98F11EEEB26100A8E598 /* LICENSE.txt in Resources */ = {isa = PBXBuildFile; fileRef = 929D98E31EEEB26100A8E598 /* LICENSE.txt */; };
 		929D98F21EEEB26100A8E598 /* Roboto-Black.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 929D98E41EEEB26100A8E598 /* Roboto-Black.ttf */; };
 		929D98F31EEEB26100A8E598 /* Roboto-BlackItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 929D98E51EEEB26100A8E598 /* Roboto-BlackItalic.ttf */; };
@@ -270,6 +271,8 @@
 		92564FC11EEF0AE300C59A4E /* ViewDetailCar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ViewDetailCar.swift; path = "Tawsila/Custom View/ViewDetailCar.swift"; sourceTree = SOURCE_ROOT; };
 		9282F2551F1F5C9900071E49 /* AddwalletView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AddwalletView.xib; sourceTree = "<group>"; };
 		9282F2571F1F5D0F00071E49 /* AddwalletView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddwalletView.swift; sourceTree = "<group>"; };
+		9282F25A1F1F749200071E49 /* iToast.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = iToast.h; sourceTree = "<group>"; };
+		9282F25B1F1F749200071E49 /* iToast.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = iToast.m; sourceTree = "<group>"; };
 		929D98E31EEEB26100A8E598 /* LICENSE.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE.txt; sourceTree = "<group>"; };
 		929D98E41EEEB26100A8E598 /* Roboto-Black.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Black.ttf"; sourceTree = "<group>"; };
 		929D98E51EEEB26100A8E598 /* Roboto-BlackItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-BlackItalic.ttf"; sourceTree = "<group>"; };
@@ -851,9 +854,19 @@
 			path = Sounds;
 			sourceTree = "<group>";
 		};
+		9282F2591F1F749200071E49 /* iToast */ = {
+			isa = PBXGroup;
+			children = (
+				9282F25A1F1F749200071E49 /* iToast.h */,
+				9282F25B1F1F749200071E49 /* iToast.m */,
+			);
+			path = iToast;
+			sourceTree = "<group>";
+		};
 		929D98E11EEEB26100A8E598 /* Sources */ = {
 			isa = PBXGroup;
 			children = (
+				9282F2591F1F749200071E49 /* iToast */,
 				81C14EE81F17F4E900FDEFEC /* DLRadioButton */,
 				921516271F0D4A1800E7E173 /* Sounds */,
 				92B006F21F0ACA1500B838D4 /* StarRating */,
@@ -1323,6 +1336,7 @@
 				814C6FBA1EF048A600985702 /* MyRidesVC.swift in Sources */,
 				9282F2581F1F5D0F00071E49 /* AddwalletView.swift in Sources */,
 				045CF6FA1EEC7A010052DBC6 /* AppDelegate.swift in Sources */,
+				9282F25C1F1F749200071E49 /* iToast.m in Sources */,
 				81A366D01F09822600A08544 /* bookingViewController.swift in Sources */,
 				81F2EC001EF18AA60065D2BD /* SlideNavigationContorllerAnimatorScale.m in Sources */,
 				5BB10CD21EEBEB4E00F93FBE /* SignInOrCreateNewAccount.swift in Sources */,

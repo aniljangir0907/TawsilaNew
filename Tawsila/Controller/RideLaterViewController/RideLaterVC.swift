@@ -50,6 +50,9 @@ class RideLaterVC: UIViewController ,GMSMapViewDelegate , GMSAutocompleteViewCon
     var estFare = Int()
     var estTime = String()
     
+    var initialRate = String()
+    var standredRate = String()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -67,6 +70,7 @@ class RideLaterVC: UIViewController ,GMSMapViewDelegate , GMSAutocompleteViewCon
         viewEstimateFare.layer.borderColor = UIColor.lightGray.cgColor
         viewEstimateFare.layer.borderWidth = 0.5
         
+        // self.getCabData()
     }
     
     override func didReceiveMemoryWarning() {
@@ -313,6 +317,7 @@ class RideLaterVC: UIViewController ,GMSMapViewDelegate , GMSAutocompleteViewCon
     {
         viewEstimateFare.isHidden = true
         self.popUpSchedule.removeFromSuperview()
+        Utility.sharedInstance.showAlert("Thank you", msg: "Your Ride Successfully Schedule ", controller: self)
     }
     
     func viewController(_ viewController: GMSAutocompleteViewController, didAutocompleteWith place: GMSPlace)
@@ -417,6 +422,39 @@ class RideLaterVC: UIViewController ,GMSMapViewDelegate , GMSAutocompleteViewCon
         }
     }
 
+    
+    func getCabData()
+    {
+        let dic = NSMutableDictionary()
+        
+        dic.setValue(car_type, forKey: "cartype")
+        
+        RappleActivityIndicatorView.startAnimatingWithLabel("Processing...", attributes: RappleAppleAttributes)
+        var parameterString = String(format : "get_cab_data")
+        
+        for (key, value) in dic
+        {
+            parameterString = String (format: "%@&%@=%@", parameterString,key as! CVarArg,value as! CVarArg)
+        }
+        
+        Utility.sharedInstance.postDataInDataForm(header: parameterString, inVC: self) { (dataDictionary, msg, status) in
+            
+            if status == true
+            {
+                let dicResult : NSDictionary =  ((dataDictionary.object(forKey: "result") as! NSArray) .object(at: 0) as! NSDictionary )
+                
+                self.rateInitial = NSString (format:"%@",dicResult .value(forKey: "intailrate") as! CVarArg ) as String
+                self.rateStandred = NSString (format:"%@",dicResult .value(forKey: "standardrate") as! CVarArg ) as String
+                
+                //  ":"49","":"145
+                //   self.text_type =
+            }
+            else
+            {
+                Utility.sharedInstance.showAlert(kAPPName, msg: msg as String, controller: self)
+            }
+        }
+    }
 
 }
 
