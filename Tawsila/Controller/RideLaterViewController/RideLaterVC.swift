@@ -70,7 +70,7 @@ class RideLaterVC: UIViewController ,GMSMapViewDelegate , GMSAutocompleteViewCon
         viewEstimateFare.layer.borderColor = UIColor.lightGray.cgColor
         viewEstimateFare.layer.borderWidth = 0.5
         
-        // self.getCabData()
+        self.getCabData()
     }
     
     override func didReceiveMemoryWarning() {
@@ -451,7 +451,7 @@ class RideLaterVC: UIViewController ,GMSMapViewDelegate , GMSAutocompleteViewCon
             }
             else
             {
-                Utility.sharedInstance.showAlert(kAPPName, msg: msg as String, controller: self)
+                //Utility.sharedInstance.showAlert(kAPPName, msg: msg as String, controller: self)
             }
         }
     }

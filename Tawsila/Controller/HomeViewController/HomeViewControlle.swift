@@ -95,6 +95,7 @@
     
     @IBOutlet var viewSeletPayMethod: UIView!
     
+    var isSellectCarType = Bool()
     
     override func viewDidLoad()
     {
@@ -107,7 +108,7 @@
         is_location = false
         AppDelegateVariable.appDelegate.is_loadCar = 0
         dictMarker = NSMutableDictionary()
-        
+        isSellectCarType = false
         setBorderWidth()
         
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
@@ -395,10 +396,6 @@
 
             let arrVehcles : NSArray = dict .value(forKey: "car_nearst_data") as! NSArray
             
-            
-            
-            
-            
             let lblTime = UILabel(frame: CGRect(x: xxx * wd, y: 0, width: wd, height: 20))
             lblTime.textAlignment = .center
             lblTime.text = "10 min"
@@ -406,6 +403,13 @@
             lblTime.font = UIFont .systemFont(ofSize: 12)
             
             if arrVehcles.count > 0 {
+                
+               if isSellectCarType == false
+               {
+                    isSellectCarType = true
+                tagCarType = i;
+               }
+                
                 
                 let dicTemp : NSDictionary = arrVehcles .object(at: 0) as! NSDictionary
                 
@@ -449,7 +453,7 @@
             viewForImage.layer.cornerRadius = 25
             viewForImage.tag = i+1000
             
-            if tagCarType == xxx
+            if tagCarType == i
             {
                 tempView = viewForImage
                 viewForImage.backgroundColor = NavigationBackgraoungColor
