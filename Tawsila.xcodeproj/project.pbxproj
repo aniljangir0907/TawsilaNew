@@ -106,6 +106,8 @@
 		9215162B1F0D4A1800E7E173 /* notify_ride.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 921516291F0D4A1800E7E173 /* notify_ride.mp3 */; };
 		92564FC01EEF09F300C59A4E /* ViewDetailCar.xib in Resources */ = {isa = PBXBuildFile; fileRef = 92564FBF1EEF09F300C59A4E /* ViewDetailCar.xib */; };
 		92564FC21EEF0AE300C59A4E /* ViewDetailCar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92564FC11EEF0AE300C59A4E /* ViewDetailCar.swift */; };
+		9282F2561F1F5C9900071E49 /* AddwalletView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9282F2551F1F5C9900071E49 /* AddwalletView.xib */; };
+		9282F2581F1F5D0F00071E49 /* AddwalletView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9282F2571F1F5D0F00071E49 /* AddwalletView.swift */; };
 		929D98F11EEEB26100A8E598 /* LICENSE.txt in Resources */ = {isa = PBXBuildFile; fileRef = 929D98E31EEEB26100A8E598 /* LICENSE.txt */; };
 		929D98F21EEEB26100A8E598 /* Roboto-Black.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 929D98E41EEEB26100A8E598 /* Roboto-Black.ttf */; };
 		929D98F31EEEB26100A8E598 /* Roboto-BlackItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 929D98E51EEEB26100A8E598 /* Roboto-BlackItalic.ttf */; };
@@ -266,6 +268,8 @@
 		92487E6A1F023B6000B22743 /* Tawsila.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Tawsila.entitlements; sourceTree = "<group>"; };
 		92564FBF1EEF09F300C59A4E /* ViewDetailCar.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = ViewDetailCar.xib; path = "Tawsila/Custom View/ViewDetailCar.xib"; sourceTree = SOURCE_ROOT; };
 		92564FC11EEF0AE300C59A4E /* ViewDetailCar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ViewDetailCar.swift; path = "Tawsila/Custom View/ViewDetailCar.swift"; sourceTree = SOURCE_ROOT; };
+		9282F2551F1F5C9900071E49 /* AddwalletView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AddwalletView.xib; sourceTree = "<group>"; };
+		9282F2571F1F5D0F00071E49 /* AddwalletView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddwalletView.swift; sourceTree = "<group>"; };
 		929D98E31EEEB26100A8E598 /* LICENSE.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE.txt; sourceTree = "<group>"; };
 		929D98E41EEEB26100A8E598 /* Roboto-Black.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Black.ttf"; sourceTree = "<group>"; };
 		929D98E51EEEB26100A8E598 /* Roboto-BlackItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-BlackItalic.ttf"; sourceTree = "<group>"; };
@@ -548,6 +552,8 @@
 			children = (
 				818EAAE41F1F1A8C0094E220 /* AddWallet.swift */,
 				818EAAE51F1F1A8C0094E220 /* AddWallet.xib */,
+				9282F2551F1F5C9900071E49 /* AddwalletView.xib */,
+				9282F2571F1F5D0F00071E49 /* AddwalletView.swift */,
 			);
 			path = "Add Wallet";
 			sourceTree = "<group>";
@@ -1075,6 +1081,7 @@
 				92564FC01EEF09F300C59A4E /* ViewDetailCar.xib in Resources */,
 				045CF7021EEC7AB80052DBC6 /* Info.plist in Resources */,
 				92B006F81F0ACA1500B838D4 /* starFill.png in Resources */,
+				9282F2561F1F5C9900071E49 /* AddwalletView.xib in Resources */,
 				818EAAF01F1F1A8C0094E220 /* WalletViewController.xib in Resources */,
 				81F2EC181EF19B070065D2BD /* rightMenuCell.xib in Resources */,
 				818EAAFA1F1F1BEA0094E220 /* MyRidesTableViewCell.xib in Resources */,
@@ -1314,6 +1321,7 @@
 				92B006F91F0ACA1500B838D4 /* StarRatingControl.m in Sources */,
 				81C14F0C1F17F52700FDEFEC /* PayBillDetails.swift in Sources */,
 				814C6FBA1EF048A600985702 /* MyRidesVC.swift in Sources */,
+				9282F2581F1F5D0F00071E49 /* AddwalletView.swift in Sources */,
 				045CF6FA1EEC7A010052DBC6 /* AppDelegate.swift in Sources */,
 				81A366D01F09822600A08544 /* bookingViewController.swift in Sources */,
 				81F2EC001EF18AA60065D2BD /* SlideNavigationContorllerAnimatorScale.m in Sources */,

@@ -638,10 +638,11 @@ class HomeViewControlle: UIViewController ,GMSMapViewDelegate ,SlideNavigationCo
         obj.pickUpAddress = lblPickAddress.text!
         obj.pickUpCordinate = pickUpCordinate
         obj.car_type = (self.arrCars.object(at: tagCarType) as! NSDictionary ) .object(forKey: "car_type") as! String
+        obj.rateInitial = self.initialRate;
+        obj.rateStandred = self.standredRate;
         navigationController?.pushViewController(obj, animated: true)
-        
+
     }
-    
     
     // MARK:
     // MARK: - MapView Delegate

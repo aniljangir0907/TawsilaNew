@@ -22,13 +22,14 @@ class scheduleView: UIView {
     @IBOutlet weak var lblPickUpTimeAr: UILabel!
     @IBOutlet weak var lblEstimateFairAr: UILabel!
     
-    /*
-    // Only override draw() if you perform custom drawing.
-    // An empty implementation adversely affects performance during animation.
+    
+    @IBOutlet var btnConfirm: btnCustomeClass!
+    @IBOutlet var btnComfirmAr: btnCustomeClass!
+    
     override func draw(_ rect: CGRect) {
-        // Drawing code
+
     }
-    */
+  
     @IBAction func actionConfirm(_ sender: Any) {
     }
 

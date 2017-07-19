@@ -15,10 +15,12 @@ class AddWallet: UIViewController {
     @IBOutlet weak var lblAmountAdd: UILabel!
     override func viewDidLoad() {
         super.viewDidLoad()
+      
         txtAmount.leftViewMode = UITextFieldViewMode.always
         let img =  UIImageView.init(frame: CGRect(x: 0, y: 10, width: 20, height: txtAmount.frame.size.height-20))
         img.image = UIImage(named: "doller_icon")
         txtAmount.leftView = img
+        
     }
 
     override func didReceiveMemoryWarning() {
@@ -43,6 +45,9 @@ class AddWallet: UIViewController {
     }
     
     @IBAction func actionAmount(_ sender: UIButton) {
+        
+        txtAmount.text = sender.titleLabel?.text
+        
         if  sender.tag == 0 {
             
         }

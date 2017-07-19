@@ -26,6 +26,7 @@
                 <outlet property="imgDest" destination="4do-c6-R9M" id="d6e-9l-CAr"/>
                 <outlet property="imgLocation" destination="wYU-dz-Zxo" id="Kz7-Os-eCK"/>
                 <outlet property="lblDestination" destination="VmP-Ae-El2" id="Nyw-ZM-QaG"/>
+                <outlet property="lblEstimateFare" destination="uaZ-uS-bVr" id="a0K-CB-0TS"/>
                 <outlet property="lblLocatoin" destination="Is2-IH-Ymr" id="xCr-KM-h4A"/>
                 <outlet property="pickDate" destination="tbV-Dl-qFl" id="6BC-mS-OGQ"/>
                 <outlet property="pickTime" destination="H5r-Pa-i6H" id="BKT-ZZ-zWo"/>

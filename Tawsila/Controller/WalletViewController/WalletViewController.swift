@@ -28,6 +28,9 @@ class WalletViewController: UIViewController,UITableViewDelegate, UITableViewDat
     
     @IBOutlet var btnDone: UIButton!
     @IBOutlet var tblWallet: UITableView!
+    
+    var popUpAddMoney = AddwalletView()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -145,8 +148,9 @@ class WalletViewController: UIViewController,UITableViewDelegate, UITableViewDat
         
         if indexPath.row == 1
         {
-            let addwallet: AddWallet = AddWallet(nibName: "AddWallet", bundle: nil)
-            setPushViewTransition(addwallet)
+              self.addMoney()
+//            let addwallet: AddWallet = AddWallet(nibName: "AddWallet", bundle: nil)
+//            setPushViewTransition(addwallet)
         }
     }
     
@@ -161,36 +165,24 @@ class WalletViewController: UIViewController,UITableViewDelegate, UITableViewDat
     func addMoney()
     {
         
-        let alertController = UIAlertController(title: "Add Wallet Money", message: "(Its quick safe and secure)", preferredStyle: .alert)
+        popUpAddMoney = Bundle.main.loadNibNamed("AddwalletView", owner: self, options: nil)![0] as? UIView as! AddwalletView
+        popUpAddMoney.frame = self.view.frame
+        self.view.addSubview(popUpAddMoney)
+    
+        popUpAddMoney.btnAddNow.addTarget(self, action: #selector(tapAddNow), for: .touchUpInside)
         
-        alertController.addTextField { (textField : UITextField!) -> Void in
-            textField.placeholder = "Enter Amount"
-            textField.keyboardType = UIKeyboardType.decimalPad
-        }
-        
-        
-        let saveAction = UIAlertAction(title: "OK", style: .default, handler: {
-            alert -> Void in
+    }
+    
+    func tapAddNow()
+    {
+        if ((popUpAddMoney.txtAmount.text)?.characters.count)! > 0 {
             
-            let firstTextField = alertController.textFields![0] as UITextField
-            
-            self.amount = firstTextField.text!;
-            
+            amount = popUpAddMoney.txtAmount.text!
             self.pay()
-        })
-        
-        let cancelAction = UIAlertAction(title: "Cancel", style: .default, handler: {
-            (action : UIAlertAction!) -> Void in
-            
-        })
-        
-        
-        
-        
-        alertController.addAction(saveAction)
-        alertController.addAction(cancelAction)
-        
-        self.present(alertController, animated: true, completion: nil)
+            popUpAddMoney.removeFromSuperview()
+
+        }
+
     }
     
     
@@ -198,7 +190,6 @@ class WalletViewController: UIViewController,UITableViewDelegate, UITableViewDat
     
     func pay()
     {
-        
         let item1 = PayPalItem(name: "Title", withQuantity: 1, withPrice: NSDecimalNumber(string:amount), withCurrency: "USD", withSku: "Hip-0037")
         let items = [item1]
         let subtotal = PayPalItem.totalPrice(forItems: items)

@@ -25,23 +25,30 @@ class RideLaterVC: UIViewController ,GMSMapViewDelegate , GMSAutocompleteViewCon
     var temp : Int!
     var tempLoc : Int!
 
-    
+    @IBOutlet var viewEstimateFare: UIView!
+
+    @IBOutlet var lblEstimateFare: UILabel!
     @IBOutlet var imgLocation: UIImageView!
     @IBOutlet var imgDest: UIImageView!
     @IBOutlet var btnSchduleRide: UIButton!
     
     var pickUpAddress = String ()
     var car_type = String()
-
+    var rateInitial = String()
+    var rateStandred = String()
+    
+    
     @IBOutlet var lblDestination: UILabel!
     @IBOutlet var lblLocatoin: UILabel!
     
     var pickUpCordinate : CLLocationCoordinate2D!
     var destinationCordinate : CLLocationCoordinate2D!
+
     
+    var popUpSchedule = scheduleView()
     
-    @IBOutlet var viewEstimateFare: UIView!
-    
+    var estFare = Int()
+    var estTime = String()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -57,6 +64,8 @@ class RideLaterVC: UIViewController ,GMSMapViewDelegate , GMSAutocompleteViewCon
         lblLocatoin.text = pickUpAddress
         
         viewEstimateFare.isHidden = true
+        viewEstimateFare.layer.borderColor = UIColor.lightGray.cgColor
+        viewEstimateFare.layer.borderWidth = 0.5
         
     }
     
@@ -117,9 +126,7 @@ class RideLaterVC: UIViewController ,GMSMapViewDelegate , GMSAutocompleteViewCon
             
             temp = 1;
         }
-        
     }
-    
     
     func datePickerValueChanged(sender:UIDatePicker)
     {
@@ -139,6 +146,7 @@ class RideLaterVC: UIViewController ,GMSMapViewDelegate , GMSAutocompleteViewCon
         // dateTextField.text = dateFormatter.string(from: sender.date)
     }
     
+    
     func donePicker()
     {
         pickDate.resignFirstResponder()
@@ -151,10 +159,7 @@ class RideLaterVC: UIViewController ,GMSMapViewDelegate , GMSAutocompleteViewCon
             
             self.viewDatePicker.frame = CGRect(x: 0, y: Constant.ScreenSize.SCREEN_HEIGHT, width: Constant.ScreenSize.SCREEN_WIDTH, height: 200)
         }
-        
     }
-    
-    
     
     @IBAction func tapPickTime(_ sender: Any) {
     }
@@ -173,7 +178,6 @@ class RideLaterVC: UIViewController ,GMSMapViewDelegate , GMSAutocompleteViewCon
         present(acController, animated: true, completion: nil)
         acController.delegate = self
         tempLoc = 2
-        
     }
     
     @IBAction func tapScheduleRide(_ sender: Any)
@@ -264,29 +268,51 @@ class RideLaterVC: UIViewController ,GMSMapViewDelegate , GMSAutocompleteViewCon
             
             if msg == "Booking scheduled"
             {
-                self.pickTime.text = "Pick Time"
-                self.pickDate.text = "Pick Date"
-                self.lblLocatoin.text = "Pickup Location"
-                self.lblDestination.text = "Select Destination"
+               self.confirmPopup()
             }
             
             if status == true
             {
                 var userDict = (dataDictionary.object(forKey: "result") as! NSDictionary).mutableCopy() as! NSMutableDictionary
                 userDict = AppDelegateVariable.appDelegate.convertAllDictionaryValueToNil(userDict)
-                
-                self.pickTime.text = "Pick Time"
-                self.pickDate.text = "Pick Date"
-                self.lblLocatoin.text = "Pickup Location"
-                self.lblDestination.text = "Select Destination"
             }
             else
             {
-                Utility.sharedInstance.showAlert(kAPPName, msg: msg as String, controller: self)
+             //   Utility.sharedInstance.showAlert(kAPPName, msg: msg as String, controller: self)
             }
         }
+    }
+    
+    func confirmPopup()  {
         
-
+        popUpSchedule = Bundle.main.loadNibNamed("scheduleView", owner: self, options: nil)![0] as? UIView as! scheduleView
+        popUpSchedule.frame = self.view.frame
+        self.view.addSubview(popUpSchedule)
+        
+        popUpSchedule.lblPickUPDate.text = self.pickDate.text
+        popUpSchedule.lblPickUpTime.text = self.pickTime.text
+        popUpSchedule.lblDropLocation.text = self.lblDestination.text
+        
+        popUpSchedule.lblPickUPDateAr.text = self.pickDate.text
+        popUpSchedule.lblPickUpTimeAr.text = self.pickTime.text
+        popUpSchedule.lblDropLocationAr.text = self.lblDestination.text
+        
+        popUpSchedule.lblEstimateFair.text = self.lblEstimateFare.text
+        
+        
+        popUpSchedule.btnConfirm.addTarget(self, action: #selector(self.tapConfirm), for: .touchUpInside)
+        popUpSchedule.btnComfirmAr.addTarget(self, action: #selector(self.tapConfirm), for: .touchUpInside)
+        
+        self.pickTime.text = "Pick Time"
+        self.pickDate.text = "Pick Date"
+        self.lblLocatoin.text = "Pickup Location"
+        self.lblDestination.text = "Select Destination"
+    }
+    
+    func tapConfirm()
+    {
+        viewEstimateFare.isHidden = true
+        self.popUpSchedule.removeFromSuperview()
     }
     
     func viewController(_ viewController: GMSAutocompleteViewController, didAutocompleteWith place: GMSPlace)
@@ -297,13 +323,22 @@ class RideLaterVC: UIViewController ,GMSMapViewDelegate , GMSAutocompleteViewCon
         // print("Place attributions: \(place.attributions)")
         dismiss(animated: true, completion: nil)
         
-        if tempLoc == 1 {
+        if tempLoc == 1
+        {
             pickUpCordinate = place.coordinate
             lblLocatoin.text = place.formattedAddress
+            
+            if (destinationCordinate.latitude > 1.0) {
+                
+                self.getPolylineRoute(from: pickUpCordinate, to: destinationCordinate)
+            }
         }
-        else{
+        else
+        {
             destinationCordinate = place.coordinate
             lblDestination.text = place.formattedAddress
+            self.getPolylineRoute(from: pickUpCordinate, to: destinationCordinate)
+
         }
     }
     
@@ -325,6 +360,63 @@ class RideLaterVC: UIViewController ,GMSMapViewDelegate , GMSAutocompleteViewCon
     func didUpdateAutocompletePredictions(_ viewController: GMSAutocompleteViewController) {
         UIApplication.shared.isNetworkActivityIndicatorVisible = false
     }
+    
+    
+    func getPolylineRoute(from source: CLLocationCoordinate2D, to destination: CLLocationCoordinate2D){
+        
+        
+        let url = URL(string: "http://maps.googleapis.com/maps/api/directions/json?origin=\(source.latitude),\(source.longitude)&destination=\(destination.latitude),\(destination.longitude)&sensor=false&mode=driving")!
+    
+        
+        Alamofire.request(url.absoluteString, method: .get, parameters: nil, encoding: JSONEncoding.default, headers: nil).responseJSON { (response:DataResponse<Any>) in
+            
+            // print(response);
+            
+            do {
+                
+                if (response.result.value != nil)
+                {
+                    let routes = (response.result.value as AnyObject).object(forKey: "routes")  as? [Any]
+                    
+                    if (routes?.count)! > 0
+                    {
+                        let overview_polyline : NSDictionary = (routes?[0] as? NSDictionary)!
+                        
+                        let dic : NSDictionary = overview_polyline as Any as! NSDictionary
+                        
+                         // let value : NSDictionary = dic.object(forKey: "overview_polyline") as! NSDictionary
+                        
+                        self.estTime =  ((((((dic.object(forKey: "legs") as! NSArray) .object(at: 0) ) as AnyObject)
+                            .object(forKey: "duration") ) as! NSDictionary) .object(forKey: "text") as? String)!
+                        
+                        let estDistance : String =  ((((((dic.object(forKey: "legs") as! NSArray) .object(at: 0) ) as AnyObject)
+                            .object(forKey: "distance") ) as! NSDictionary) .object(forKey: "text") as? String)!
+                        
+                        let doubleValue : Double = NSString(string: estDistance).doubleValue // 3.1
+                        
+                        self.estFare = Int(Int((self.rateStandred as NSString).floatValue + (self.rateInitial as NSString).floatValue * Float32(doubleValue)))
+                        
+                        self.lblEstimateFare.text =  String (format: "%d SAR", self.estFare )
+                       // self.lblEstimatedTime.text = estTime
+                        self.viewEstimateFare.isHidden = false
+                        
+                    }
+                    else
+                    {
+//                        self.tagBookNow = 2
+//                        self.lblEstimatedFare.text = "500"
+//                        self.lblEstimatedTime.text = "45 min"
+                        // self.estFare = 500
+                    }
+                }
+            }
+            catch
+            {
+                print("error in JSONSerialization")
+            }
+        }
+    }
+
 
 }
 
