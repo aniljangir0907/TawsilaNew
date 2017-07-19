@@ -15,6 +15,13 @@ class scheduleView: UIView {
     @IBOutlet weak var lblPickUPDate: UILabel!
     @IBOutlet weak var lblPickUpTime: UILabel!
     @IBOutlet weak var lblEstimateFair: UILabel!
+    
+    @IBOutlet weak var viewArabic: UIView!
+    @IBOutlet weak var lblDropLocationAr: UILabel!
+    @IBOutlet weak var lblPickUPDateAr: UILabel!
+    @IBOutlet weak var lblPickUpTimeAr: UILabel!
+    @IBOutlet weak var lblEstimateFairAr: UILabel!
+    
     /*
     // Only override draw() if you perform custom drawing.
     // An empty implementation adversely affects performance during animation.
