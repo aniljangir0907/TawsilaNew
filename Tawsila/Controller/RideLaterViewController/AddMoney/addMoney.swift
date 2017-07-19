@@ -10,6 +10,11 @@ import UIKit
 
 class addMoney: UIView {
 
+    @IBOutlet weak var viewEnglish: UIView!
+    @IBOutlet weak var viewBackGround: UIView!
+    
+    // ViewArabic
+    @IBOutlet weak var viewArabicc: UIView!
     /*
     // Only override draw() if you perform custom drawing.
     // An empty implementation adversely affects performance during animation.
@@ -17,5 +22,7 @@ class addMoney: UIView {
         // Drawing code
     }
     */
+    @IBAction func actionAddMoney(_ sender: Any) {
+    }
 
 }

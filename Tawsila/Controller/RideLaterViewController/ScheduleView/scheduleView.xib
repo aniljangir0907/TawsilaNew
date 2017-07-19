@@ -192,9 +192,174 @@
                                 <constraint firstItem="q2I-yP-2jU" firstAttribute="top" secondItem="DMW-z6-MIk" secondAttribute="bottom" constant="15" id="wlM-UE-QvQ"/>
                             </constraints>
                         </view>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="MPh-8w-Itp">
+                            <rect key="frame" x="10" y="132" width="394" height="471"/>
+                            <subviews>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ركوب المجدولة" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LCH-44-ewE">
+                                    <rect key="frame" x="107" y="10" width="180" height="26"/>
+                                    <constraints>
+                                        <constraint firstAttribute="width" constant="180" id="H7A-sy-21B"/>
+                                        <constraint firstAttribute="height" constant="26" id="pwJ-eF-ABV"/>
+                                    </constraints>
+                                    <fontDescription key="fontDescription" name="Roboto-Medium" family="Roboto" pointSize="22"/>
+                                    <nil key="textColor"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="scheduled_icon-1" translatesAutoresizingMaskIntoConstraints="NO" id="SOw-dR-Giv">
+                                    <rect key="frame" x="147" y="41" width="100" height="100"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" constant="100" id="JFe-W3-fYP"/>
+                                        <constraint firstAttribute="width" constant="100" id="ne2-iC-eCy"/>
+                                    </constraints>
+                                </imageView>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="دروب الموقع:" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UVT-qD-TDv">
+                                    <rect key="frame" x="265" y="156" width="121" height="25"/>
+                                    <constraints>
+                                        <constraint firstAttribute="width" constant="121" id="NnP-dO-n2D"/>
+                                        <constraint firstAttribute="height" constant="25" id="saW-Le-x52"/>
+                                    </constraints>
+                                    <fontDescription key="fontDescription" name="Roboto-Bold" family="Roboto" pointSize="17"/>
+                                    <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="اختر تاريخا :" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iJv-zi-UtJ">
+                                    <rect key="frame" x="265" y="222" width="121" height="25"/>
+                                    <fontDescription key="fontDescription" name="Roboto-Bold" family="Roboto" pointSize="17"/>
+                                    <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="اختار المعاد :" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7PL-zd-3GH">
+                                    <rect key="frame" x="265" y="257" width="121" height="25"/>
+                                    <fontDescription key="fontDescription" name="Roboto-Bold" family="Roboto" pointSize="17"/>
+                                    <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="القيمة المقدرة :" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wuO-tU-WQV">
+                                    <rect key="frame" x="265" y="310" width="121" height="25"/>
+                                    <fontDescription key="fontDescription" name="Roboto-Bold" family="Roboto" pointSize="17"/>
+                                    <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sindhi camp, jaipur rajasthan Sindhi camp, jaipur rajasthan " textAlignment="right" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="e27-XK-tWD">
+                                    <rect key="frame" x="7" y="156" width="255" height="57"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" constant="57" id="ofi-Y5-SZV"/>
+                                    </constraints>
+                                    <fontDescription key="fontDescription" name="Roboto-Medium" family="Roboto" pointSize="16"/>
+                                    <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Pickup Date :" textAlignment="right" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7fo-zI-0js">
+                                    <rect key="frame" x="7" y="222" width="255" height="25"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" constant="25" id="oYG-aP-ybS"/>
+                                    </constraints>
+                                    <fontDescription key="fontDescription" name="Roboto-Medium" family="Roboto" pointSize="16"/>
+                                    <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="3:40 PM 15:40:00" textAlignment="right" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UoU-1h-4Rk">
+                                    <rect key="frame" x="7" y="262" width="255" height="40"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" constant="40" id="80G-Q1-jSS"/>
+                                    </constraints>
+                                    <fontDescription key="fontDescription" name="Roboto-Medium" family="Roboto" pointSize="16"/>
+                                    <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="82 SAR" textAlignment="right" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5VC-Bs-phg">
+                                    <rect key="frame" x="7" y="310" width="255" height="25"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" constant="25" id="gLM-bv-xW8"/>
+                                    </constraints>
+                                    <fontDescription key="fontDescription" name="Roboto-Medium" family="Roboto" pointSize="16"/>
+                                    <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="التقدير الفعلي المقرر تقديمه قبل الاستلام. قد تختلف الأجرة بسبب حركة المرور والطقس وعوامل أخرى." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jZi-se-Lqi">
+                                    <rect key="frame" x="10" y="345.66666666666663" width="374" height="59.999999999999943"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" constant="60" id="MW6-Uy-rf3"/>
+                                    </constraints>
+                                    <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="15"/>
+                                    <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KqR-Uq-cg5">
+                                    <rect key="frame" x="10" y="410.66666666666663" width="374" height="1"/>
+                                    <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" constant="1" id="acU-bk-52T"/>
+                                    </constraints>
+                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                    <nil key="textColor"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="M1Q-E2-YMZ" customClass="btnCustomeClass" customModule="Tawsila" customModuleProvider="target">
+                                    <rect key="frame" x="10" y="419.66666666666663" width="374" height="40"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" constant="40" id="rg7-q4-10P"/>
+                                    </constraints>
+                                    <fontDescription key="fontDescription" name="Roboto-Medium" family="Roboto" pointSize="20"/>
+                                    <state key="normal" title="تؤكد">
+                                        <color key="titleColor" red="0.71372549019999998" green="0.60392156860000001" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                    </state>
+                                    <connections>
+                                        <action selector="actionConfirm:" destination="iN0-l3-epB" eventType="touchUpInside" id="QYh-Jx-Gcv"/>
+                                    </connections>
+                                </button>
+                            </subviews>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <constraints>
+                                <constraint firstItem="jZi-se-Lqi" firstAttribute="top" secondItem="5VC-Bs-phg" secondAttribute="bottom" constant="10" id="5wk-D5-RFl"/>
+                                <constraint firstItem="M1Q-E2-YMZ" firstAttribute="leading" secondItem="MPh-8w-Itp" secondAttribute="leading" constant="10" id="7WC-Ts-Hjt"/>
+                                <constraint firstItem="iJv-zi-UtJ" firstAttribute="top" secondItem="UVT-qD-TDv" secondAttribute="bottom" constant="41" id="7su-3J-iXS"/>
+                                <constraint firstItem="KqR-Uq-cg5" firstAttribute="leading" secondItem="jZi-se-Lqi" secondAttribute="leading" id="9AL-iT-9b5"/>
+                                <constraint firstItem="M1Q-E2-YMZ" firstAttribute="top" secondItem="KqR-Uq-cg5" secondAttribute="bottom" constant="8" id="9XO-Hm-vgu"/>
+                                <constraint firstItem="7fo-zI-0js" firstAttribute="trailing" secondItem="e27-XK-tWD" secondAttribute="trailing" id="DvK-Ei-Pih"/>
+                                <constraint firstItem="wuO-tU-WQV" firstAttribute="height" secondItem="UVT-qD-TDv" secondAttribute="height" id="EAH-YR-dRL"/>
+                                <constraint firstItem="jZi-se-Lqi" firstAttribute="leading" secondItem="MPh-8w-Itp" secondAttribute="leading" constant="10" id="GXU-Ng-9OG"/>
+                                <constraint firstItem="UVT-qD-TDv" firstAttribute="leading" secondItem="e27-XK-tWD" secondAttribute="trailing" constant="3" id="GcV-KK-pxQ"/>
+                                <constraint firstItem="7fo-zI-0js" firstAttribute="top" secondItem="e27-XK-tWD" secondAttribute="bottom" constant="9" id="HbS-3b-VGj"/>
+                                <constraint firstItem="e27-XK-tWD" firstAttribute="leading" secondItem="MPh-8w-Itp" secondAttribute="leading" constant="7" id="IFZ-2I-zJm"/>
+                                <constraint firstItem="UVT-qD-TDv" firstAttribute="top" secondItem="e27-XK-tWD" secondAttribute="top" id="KXa-jq-MGy"/>
+                                <constraint firstItem="LCH-44-ewE" firstAttribute="centerX" secondItem="MPh-8w-Itp" secondAttribute="centerX" id="LcQ-fh-RpC"/>
+                                <constraint firstItem="7PL-zd-3GH" firstAttribute="leading" secondItem="iJv-zi-UtJ" secondAttribute="leading" id="MGg-YU-BA3"/>
+                                <constraint firstItem="wuO-tU-WQV" firstAttribute="top" secondItem="7PL-zd-3GH" secondAttribute="bottom" constant="28" id="VOX-Uz-dHw"/>
+                                <constraint firstItem="7PL-zd-3GH" firstAttribute="trailing" secondItem="iJv-zi-UtJ" secondAttribute="trailing" id="WCp-wa-piT"/>
+                                <constraint firstItem="7fo-zI-0js" firstAttribute="leading" secondItem="e27-XK-tWD" secondAttribute="leading" id="Xk1-NN-1Zp"/>
+                                <constraint firstItem="UoU-1h-4Rk" firstAttribute="top" secondItem="7fo-zI-0js" secondAttribute="bottom" constant="14.5" id="ZtI-fv-Qh8"/>
+                                <constraint firstAttribute="trailing" secondItem="M1Q-E2-YMZ" secondAttribute="trailing" constant="10" id="bTr-d0-ngz"/>
+                                <constraint firstItem="5VC-Bs-phg" firstAttribute="trailing" secondItem="UoU-1h-4Rk" secondAttribute="trailing" id="crd-L2-Hwe"/>
+                                <constraint firstItem="7PL-zd-3GH" firstAttribute="top" secondItem="iJv-zi-UtJ" secondAttribute="bottom" constant="10" id="dHA-bT-k79"/>
+                                <constraint firstItem="UoU-1h-4Rk" firstAttribute="trailing" secondItem="7fo-zI-0js" secondAttribute="trailing" id="e9I-wU-jgh"/>
+                                <constraint firstItem="wuO-tU-WQV" firstAttribute="trailing" secondItem="7PL-zd-3GH" secondAttribute="trailing" id="eft-s7-9HC"/>
+                                <constraint firstItem="KqR-Uq-cg5" firstAttribute="trailing" secondItem="jZi-se-Lqi" secondAttribute="trailing" id="ezM-hd-Gng"/>
+                                <constraint firstItem="iJv-zi-UtJ" firstAttribute="trailing" secondItem="UVT-qD-TDv" secondAttribute="trailing" id="gp6-5D-YcG"/>
+                                <constraint firstItem="7PL-zd-3GH" firstAttribute="height" secondItem="UVT-qD-TDv" secondAttribute="height" id="hMI-TG-QbY"/>
+                                <constraint firstItem="SOw-dR-Giv" firstAttribute="centerX" secondItem="MPh-8w-Itp" secondAttribute="centerX" id="hXK-iy-DNT"/>
+                                <constraint firstAttribute="height" constant="471.5" id="jzW-dg-5eW"/>
+                                <constraint firstAttribute="trailing" secondItem="UVT-qD-TDv" secondAttribute="trailing" constant="8" id="k2k-P4-dsI"/>
+                                <constraint firstItem="KqR-Uq-cg5" firstAttribute="top" secondItem="jZi-se-Lqi" secondAttribute="bottom" constant="5" id="kEJ-4x-UL2"/>
+                                <constraint firstItem="wuO-tU-WQV" firstAttribute="leading" secondItem="7PL-zd-3GH" secondAttribute="leading" id="nAS-OM-a9U"/>
+                                <constraint firstItem="iJv-zi-UtJ" firstAttribute="height" secondItem="UVT-qD-TDv" secondAttribute="height" id="neh-nE-Y1w"/>
+                                <constraint firstItem="SOw-dR-Giv" firstAttribute="top" secondItem="LCH-44-ewE" secondAttribute="bottom" constant="5" id="nzt-W0-cq4"/>
+                                <constraint firstItem="UoU-1h-4Rk" firstAttribute="leading" secondItem="7fo-zI-0js" secondAttribute="leading" id="okH-nf-TFf"/>
+                                <constraint firstItem="UVT-qD-TDv" firstAttribute="top" secondItem="SOw-dR-Giv" secondAttribute="bottom" constant="15" id="pGj-aS-fDq"/>
+                                <constraint firstItem="iJv-zi-UtJ" firstAttribute="leading" secondItem="UVT-qD-TDv" secondAttribute="leading" id="szt-ya-7iX"/>
+                                <constraint firstItem="5VC-Bs-phg" firstAttribute="top" secondItem="UoU-1h-4Rk" secondAttribute="bottom" constant="8.5" id="tuw-Yr-NqJ"/>
+                                <constraint firstAttribute="trailing" secondItem="jZi-se-Lqi" secondAttribute="trailing" constant="10" id="wAL-6n-Zea"/>
+                                <constraint firstItem="LCH-44-ewE" firstAttribute="top" secondItem="MPh-8w-Itp" secondAttribute="top" constant="10" id="y22-vg-As3"/>
+                                <constraint firstItem="5VC-Bs-phg" firstAttribute="leading" secondItem="UoU-1h-4Rk" secondAttribute="leading" id="yWV-oy-l0x"/>
+                            </constraints>
+                        </view>
                     </subviews>
                     <color key="backgroundColor" red="0.0" green="0.0" blue="0.066898148150000003" alpha="0.5" colorSpace="calibratedRGB"/>
                     <constraints>
+                        <constraint firstItem="MPh-8w-Itp" firstAttribute="centerX" secondItem="nxW-zu-0cU" secondAttribute="centerX" id="02l-Mn-bKf"/>
+                        <constraint firstItem="MPh-8w-Itp" firstAttribute="leading" secondItem="nxW-zu-0cU" secondAttribute="leading" constant="10" id="4Xy-bw-3Gg"/>
+                        <constraint firstAttribute="trailing" secondItem="MPh-8w-Itp" secondAttribute="trailing" constant="10" id="BVP-z6-24B"/>
+                        <constraint firstItem="MPh-8w-Itp" firstAttribute="centerY" secondItem="nxW-zu-0cU" secondAttribute="centerY" id="I1R-kA-Jdl"/>
                         <constraint firstItem="yLK-kn-91o" firstAttribute="centerX" secondItem="nxW-zu-0cU" secondAttribute="centerX" id="Z8c-tD-D54"/>
                         <constraint firstAttribute="trailing" secondItem="yLK-kn-91o" secondAttribute="trailing" constant="10" id="fQg-iF-wkL"/>
                         <constraint firstItem="yLK-kn-91o" firstAttribute="leading" secondItem="nxW-zu-0cU" secondAttribute="leading" constant="10" id="iVG-Eo-tjC"/>
@@ -211,12 +376,17 @@
             </constraints>
             <connections>
                 <outlet property="lblDropLocation" destination="H7J-GW-lTe" id="I57-ny-cYh"/>
+                <outlet property="lblDropLocationAr" destination="e27-XK-tWD" id="NTT-FS-s9c"/>
                 <outlet property="lblEstimateFair" destination="Vgv-3Y-JOk" id="Wtu-fP-R6z"/>
+                <outlet property="lblEstimateFairAr" destination="5VC-Bs-phg" id="NeM-8m-VYj"/>
                 <outlet property="lblPickUPDate" destination="2cD-BF-haP" id="hMc-7T-ws9"/>
+                <outlet property="lblPickUPDateAr" destination="7fo-zI-0js" id="qgJ-S4-y4C"/>
                 <outlet property="lblPickUpTime" destination="1hJ-4k-MfJ" id="InK-p8-IPi"/>
+                <outlet property="lblPickUpTimeAr" destination="UoU-1h-4Rk" id="VOE-B8-vHT"/>
+                <outlet property="viewArabic" destination="MPh-8w-Itp" id="1cu-Ar-rVR"/>
                 <outlet property="viewEnglish" destination="yLK-kn-91o" id="cms-IQ-VGM"/>
             </connections>
-            <point key="canvasLocation" x="32.5" y="52.5"/>
+            <point key="canvasLocation" x="32" y="52"/>
         </view>
     </objects>
     <resources>

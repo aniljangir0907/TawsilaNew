@@ -26,11 +26,11 @@
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ysg-Pk-nGR">
                     <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
                     <subviews>
-                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JJB-3z-HX5">
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JJB-3z-HX5" userLabel="ViewEnglish">
                             <rect key="frame" x="10" y="74" width="300" height="332"/>
                             <subviews>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="HOW WOULD YOU LIKE TO PAY?" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zmM-g1-jbX">
-                                    <rect key="frame" x="-8" y="10" width="317" height="26"/>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="HOW WOULD YOU LIKE TO PAY?" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="zmM-g1-jbX">
+                                    <rect key="frame" x="8" y="10" width="284" height="26"/>
                                     <constraints>
                                         <constraint firstAttribute="height" constant="26" id="qgi-19-FRl"/>
                                     </constraints>
@@ -73,6 +73,9 @@
                                     <state key="normal" title="ADD MONEY">
                                         <color key="titleColor" red="0.71372549019999998" green="0.60392156860000001" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                     </state>
+                                    <connections>
+                                        <action selector="actionAddMoney:" destination="iN0-l3-epB" eventType="touchUpInside" id="nTB-Mw-lf8"/>
+                                    </connections>
                                 </button>
                             </subviews>
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -82,23 +85,101 @@
                                 <constraint firstItem="zmM-g1-jbX" firstAttribute="centerX" secondItem="JJB-3z-HX5" secondAttribute="centerX" id="Fkb-5t-lZ6"/>
                                 <constraint firstAttribute="trailing" secondItem="k34-d5-YPC" secondAttribute="trailing" constant="11" id="HXi-uD-Mnv"/>
                                 <constraint firstItem="UEW-Ay-Dp3" firstAttribute="leading" secondItem="JJB-3z-HX5" secondAttribute="leading" constant="9" id="MfH-hG-XUo"/>
+                                <constraint firstItem="zmM-g1-jbX" firstAttribute="leading" secondItem="JJB-3z-HX5" secondAttribute="leading" constant="8" id="Nmy-uZ-7sW"/>
                                 <constraint firstAttribute="height" constant="332" id="Tjf-AF-ZuM"/>
                                 <constraint firstItem="Xzk-8m-X74" firstAttribute="top" secondItem="UEW-Ay-Dp3" secondAttribute="bottom" constant="5" id="V4w-Cv-cog"/>
                                 <constraint firstItem="Xzk-8m-X74" firstAttribute="leading" secondItem="UEW-Ay-Dp3" secondAttribute="leading" id="VeV-dU-8aP"/>
                                 <constraint firstItem="L1d-ga-pdS" firstAttribute="top" secondItem="zmM-g1-jbX" secondAttribute="bottom" constant="5" id="ahT-XM-Y76"/>
                                 <constraint firstItem="L1d-ga-pdS" firstAttribute="centerX" secondItem="JJB-3z-HX5" secondAttribute="centerX" id="bA5-yb-KEc"/>
                                 <constraint firstItem="UEW-Ay-Dp3" firstAttribute="top" secondItem="L1d-ga-pdS" secondAttribute="bottom" constant="15" id="hi9-f3-lDv"/>
+                                <constraint firstAttribute="trailing" secondItem="zmM-g1-jbX" secondAttribute="trailing" constant="8" id="jn9-jz-v7O"/>
                                 <constraint firstItem="k34-d5-YPC" firstAttribute="top" secondItem="Xzk-8m-X74" secondAttribute="bottom" constant="8" id="qsM-qn-eVF"/>
                                 <constraint firstAttribute="trailing" secondItem="UEW-Ay-Dp3" secondAttribute="trailing" constant="11" id="rCf-PQ-VNN"/>
                                 <constraint firstItem="Xzk-8m-X74" firstAttribute="trailing" secondItem="UEW-Ay-Dp3" secondAttribute="trailing" id="u0r-gb-9DS"/>
+                            </constraints>
+                        </view>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aAY-ah-Bsz" userLabel="viewArabic">
+                            <rect key="frame" x="10" y="74" width="300" height="332"/>
+                            <subviews>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="كيف تريد أن تدفع؟" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="tlE-Xv-dAO">
+                                    <rect key="frame" x="8" y="10" width="284" height="26"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" constant="26" id="myL-3e-c5W"/>
+                                    </constraints>
+                                    <fontDescription key="fontDescription" name="Roboto-Medium" family="Roboto" pointSize="22"/>
+                                    <nil key="textColor"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="add_money_icon" translatesAutoresizingMaskIntoConstraints="NO" id="RmG-5V-g1p">
+                                    <rect key="frame" x="75" y="41" width="150" height="150"/>
+                                    <constraints>
+                                        <constraint firstAttribute="width" constant="150" id="Rvl-Cx-iwj"/>
+                                        <constraint firstAttribute="height" constant="150" id="vak-CX-VoO"/>
+                                    </constraints>
+                                </imageView>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="إضافة الأموال إلى محفظتك، كما لديك توازن منخفض. للحصول على أفضل تجربة غير النقدية في فئتها." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="hbT-Gq-UgD">
+                                    <rect key="frame" x="9" y="206" width="280" height="60"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" constant="60" id="YhI-pL-G1w"/>
+                                    </constraints>
+                                    <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="18"/>
+                                    <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wT1-ai-jPg">
+                                    <rect key="frame" x="9" y="271" width="280" height="1"/>
+                                    <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" constant="1" id="waH-Zb-6RH"/>
+                                    </constraints>
+                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                    <nil key="textColor"/>
+                                    <color key="highlightedColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                </label>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ACa-zE-vRJ" customClass="btnCustomeClass" customModule="Tawsila" customModuleProvider="target">
+                                    <rect key="frame" x="9" y="280" width="280" height="40"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" constant="40" id="lRr-73-6BR"/>
+                                    </constraints>
+                                    <fontDescription key="fontDescription" name="Roboto-Medium" family="Roboto" pointSize="18"/>
+                                    <state key="normal" title="إضافة المال">
+                                        <color key="titleColor" red="0.71372549019999998" green="0.60392156860000001" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                    </state>
+                                    <connections>
+                                        <action selector="actionAddMoney:" destination="iN0-l3-epB" eventType="touchUpInside" id="59O-3d-VYJ"/>
+                                    </connections>
+                                </button>
+                            </subviews>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <constraints>
+                                <constraint firstItem="tlE-Xv-dAO" firstAttribute="leading" secondItem="aAY-ah-Bsz" secondAttribute="leading" constant="8" id="0kR-iI-EFS"/>
+                                <constraint firstItem="wT1-ai-jPg" firstAttribute="leading" secondItem="hbT-Gq-UgD" secondAttribute="leading" id="8mi-5r-B8T"/>
+                                <constraint firstAttribute="trailing" secondItem="tlE-Xv-dAO" secondAttribute="trailing" constant="8" id="Fki-Fb-tKo"/>
+                                <constraint firstItem="hbT-Gq-UgD" firstAttribute="leading" secondItem="aAY-ah-Bsz" secondAttribute="leading" constant="9" id="Ggf-kp-eJ8"/>
+                                <constraint firstAttribute="height" constant="332" id="Hpn-f1-INf"/>
+                                <constraint firstAttribute="trailing" secondItem="ACa-zE-vRJ" secondAttribute="trailing" constant="11" id="MD3-nA-KIh"/>
+                                <constraint firstItem="tlE-Xv-dAO" firstAttribute="centerX" secondItem="aAY-ah-Bsz" secondAttribute="centerX" id="Xa7-R0-xYR"/>
+                                <constraint firstItem="RmG-5V-g1p" firstAttribute="centerX" secondItem="aAY-ah-Bsz" secondAttribute="centerX" id="XbA-fn-42P"/>
+                                <constraint firstItem="hbT-Gq-UgD" firstAttribute="top" secondItem="RmG-5V-g1p" secondAttribute="bottom" constant="15" id="gLR-jS-O29"/>
+                                <constraint firstAttribute="trailing" secondItem="hbT-Gq-UgD" secondAttribute="trailing" constant="11" id="jzT-h5-86n"/>
+                                <constraint firstItem="wT1-ai-jPg" firstAttribute="top" secondItem="hbT-Gq-UgD" secondAttribute="bottom" constant="5" id="mhS-iq-iHP"/>
+                                <constraint firstItem="RmG-5V-g1p" firstAttribute="top" secondItem="tlE-Xv-dAO" secondAttribute="bottom" constant="5" id="oZS-JT-rMv"/>
+                                <constraint firstItem="tlE-Xv-dAO" firstAttribute="top" secondItem="aAY-ah-Bsz" secondAttribute="top" constant="10" id="ojF-ON-9uN"/>
+                                <constraint firstItem="wT1-ai-jPg" firstAttribute="trailing" secondItem="hbT-Gq-UgD" secondAttribute="trailing" id="p1U-qX-Nk6"/>
+                                <constraint firstItem="ACa-zE-vRJ" firstAttribute="leading" secondItem="aAY-ah-Bsz" secondAttribute="leading" constant="9" id="umr-1a-AKw"/>
+                                <constraint firstItem="ACa-zE-vRJ" firstAttribute="top" secondItem="wT1-ai-jPg" secondAttribute="bottom" constant="8" id="zDD-y8-dsU"/>
                             </constraints>
                         </view>
                     </subviews>
                     <color key="backgroundColor" red="0.0" green="0.0" blue="0.066898148150000003" alpha="0.5" colorSpace="calibratedRGB"/>
                     <constraints>
                         <constraint firstItem="JJB-3z-HX5" firstAttribute="centerY" secondItem="ysg-Pk-nGR" secondAttribute="centerY" id="0Tn-XU-ykp"/>
+                        <constraint firstItem="aAY-ah-Bsz" firstAttribute="centerY" secondItem="ysg-Pk-nGR" secondAttribute="centerY" id="2pD-Om-vH0"/>
                         <constraint firstItem="JJB-3z-HX5" firstAttribute="leading" secondItem="ysg-Pk-nGR" secondAttribute="leading" constant="10" id="BWx-zS-aWh"/>
+                        <constraint firstAttribute="trailing" secondItem="aAY-ah-Bsz" secondAttribute="trailing" constant="10" id="RQK-Cm-pe8"/>
                         <constraint firstItem="JJB-3z-HX5" firstAttribute="centerX" secondItem="ysg-Pk-nGR" secondAttribute="centerX" id="aD0-y0-GFr"/>
+                        <constraint firstItem="aAY-ah-Bsz" firstAttribute="centerX" secondItem="ysg-Pk-nGR" secondAttribute="centerX" id="nd2-Gj-BBk"/>
+                        <constraint firstItem="aAY-ah-Bsz" firstAttribute="leading" secondItem="ysg-Pk-nGR" secondAttribute="leading" constant="10" id="pXN-Kb-kSY"/>
                         <constraint firstAttribute="trailing" secondItem="JJB-3z-HX5" secondAttribute="trailing" constant="10" id="yi1-vj-qlM"/>
                     </constraints>
                 </view>
@@ -110,6 +191,11 @@
                 <constraint firstItem="ysg-Pk-nGR" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="lNm-AH-6eG"/>
                 <constraint firstItem="ysg-Pk-nGR" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="mrh-qF-ibT"/>
             </constraints>
+            <connections>
+                <outlet property="viewArabicc" destination="aAY-ah-Bsz" id="dXM-lo-wAT"/>
+                <outlet property="viewBackGround" destination="ysg-Pk-nGR" id="3dI-do-QNK"/>
+                <outlet property="viewEnglish" destination="JJB-3z-HX5" id="q15-E8-fqo"/>
+            </connections>
         </view>
     </objects>
     <resources>
