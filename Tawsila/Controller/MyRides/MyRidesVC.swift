@@ -16,7 +16,7 @@ class MyRidesVC: UIViewController , UITableViewDelegate, UITableViewDataSource {
     @IBOutlet var tblMyRidesAr: UITableView!
     @IBOutlet var viewEnglish: UIView!
     @IBOutlet weak var lblNotFound: UILabel!
-    
+    @IBOutlet weak var img_notFound: UIImageView!
     var arrayRideData : NSMutableArray = []
     var arrayCurrentData : NSMutableArray = []
     var arrayCompletedData : NSMutableArray = []
@@ -35,7 +35,7 @@ class MyRidesVC: UIViewController , UITableViewDelegate, UITableViewDataSource {
     override func viewWillAppear(_ animated: Bool)
     {
         status = "current"
-        lblNotFound.isHidden = true
+        img_notFound.isHidden = true
         self.tblMyRides.tableFooterView = UIView()
         self.tblMyRidesAr.tableFooterView = UIView()
         self.getAllMyRide()
@@ -114,7 +114,7 @@ class MyRidesVC: UIViewController , UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
        
-        lblNotFound.isHidden = true
+        img_notFound.isHidden = true
         tableView.register(UINib(nibName: "MyRidesTableViewCell", bundle: nil), forCellReuseIdentifier: "cellMyRides")
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "cellMyRides", for: indexPath) as! MyRidesTableViewCell
@@ -161,7 +161,7 @@ class MyRidesVC: UIViewController , UITableViewDelegate, UITableViewDataSource {
         if AppDelegateVariable.appDelegate.strLanguage == "en" {
             if arrayCurrentData.count == 0  {
                 tblMyRides.isHidden = true
-                 lblNotFound.isHidden = false
+                 img_notFound.isHidden = false
             }
             else{
                 tblMyRides.isHidden = false
@@ -171,7 +171,7 @@ class MyRidesVC: UIViewController , UITableViewDelegate, UITableViewDataSource {
         else{
             if arrayCurrentData.count == 0  {
                 tblMyRidesAr.isHidden = true
-                 lblNotFound.isHidden = false
+                 img_notFound.isHidden = false
             }
             else{
                 tblMyRidesAr.isHidden = false
@@ -185,7 +185,7 @@ class MyRidesVC: UIViewController , UITableViewDelegate, UITableViewDataSource {
         if AppDelegateVariable.appDelegate.strLanguage == "en" {
             if arrayCompletedData.count == 0  {
                 tblMyRides.isHidden = true
-                 lblNotFound.isHidden = false
+                 img_notFound.isHidden = false
             }
             else{
                 tblMyRides.isHidden = false
@@ -195,7 +195,7 @@ class MyRidesVC: UIViewController , UITableViewDelegate, UITableViewDataSource {
         else{
             if arrayCompletedData.count == 0  {
                 tblMyRidesAr.isHidden = true
-                 lblNotFound.isHidden = false
+                 img_notFound.isHidden = false
             }
             else{
                 tblMyRidesAr.isHidden = false
@@ -209,7 +209,7 @@ class MyRidesVC: UIViewController , UITableViewDelegate, UITableViewDataSource {
         if AppDelegateVariable.appDelegate.strLanguage == "en" {
             if arrayScheduledData.count == 0  {
                 tblMyRides.isHidden = true
-                lblNotFound.isHidden = false
+                img_notFound.isHidden = false
             }
             else{
                 tblMyRides.isHidden = false
@@ -219,7 +219,7 @@ class MyRidesVC: UIViewController , UITableViewDelegate, UITableViewDataSource {
         else{
             if arrayScheduledData.count == 0  {
                 tblMyRidesAr.isHidden = true
-                lblNotFound.isHidden = false
+                img_notFound.isHidden = false
             }
             else{
                 tblMyRidesAr.isHidden = false

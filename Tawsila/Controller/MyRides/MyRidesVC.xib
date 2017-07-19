@@ -22,6 +22,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="MyRidesVC" customModule="Tawsila" customModuleProvider="target">
             <connections>
+                <outlet property="img_notFound" destination="VhL-32-LDS" id="1cT-Qg-4Ua"/>
                 <outlet property="lblNotFound" destination="pnK-Qt-Rzn" id="gCU-ZH-xXR"/>
                 <outlet property="tblMyRides" destination="QoB-N9-ye0" id="MYa-nJ-97m"/>
                 <outlet property="tblMyRidesAr" destination="2nn-WZ-8fc" id="Eif-Zf-KdG"/>
@@ -38,7 +39,7 @@
                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="appBgImage" translatesAutoresizingMaskIntoConstraints="NO" id="IZW-RP-Pf8">
                     <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                 </imageView>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="No Data Found" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pnK-Qt-Rzn">
+                <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="No Data Found" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pnK-Qt-Rzn">
                     <rect key="frame" x="20" y="313" width="335" height="40"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="40" id="sNJ-SV-w7v"/>
@@ -47,6 +48,13 @@
                     <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                     <nil key="highlightedColor"/>
                 </label>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="nodatafound_image" translatesAutoresizingMaskIntoConstraints="NO" id="VhL-32-LDS">
+                    <rect key="frame" x="127" y="258" width="120" height="150"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="150" id="RyX-5v-d4u"/>
+                        <constraint firstAttribute="width" constant="120" id="k4A-eL-CZE"/>
+                    </constraints>
+                </imageView>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gss-wX-rbw" userLabel="ViewArabic">
                     <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                     <subviews>
@@ -274,6 +282,7 @@
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
+                <constraint firstItem="VhL-32-LDS" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="0KP-Vl-sRw"/>
                 <constraint firstAttribute="trailing" secondItem="nou-Jd-Edf" secondAttribute="trailing" id="1j2-8g-9Dm"/>
                 <constraint firstAttribute="bottom" secondItem="nou-Jd-Edf" secondAttribute="bottom" id="60e-4i-6qh"/>
                 <constraint firstItem="gss-wX-rbw" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="62M-SU-UM2"/>
@@ -289,6 +298,7 @@
                 <constraint firstAttribute="bottom" secondItem="IZW-RP-Pf8" secondAttribute="bottom" id="hpC-Su-hlX"/>
                 <constraint firstItem="IZW-RP-Pf8" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="qwk-ud-to9"/>
                 <constraint firstItem="pnK-Qt-Rzn" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="20" id="xBg-UG-Sdf"/>
+                <constraint firstItem="VhL-32-LDS" firstAttribute="centerY" secondItem="i5M-Pr-FkT" secondAttribute="centerY" id="xUS-o4-HrO"/>
                 <constraint firstAttribute="trailing" secondItem="pnK-Qt-Rzn" secondAttribute="trailing" constant="20" id="yqv-EO-hAK"/>
             </constraints>
             <point key="canvasLocation" x="-178.5" y="22.5"/>
@@ -297,5 +307,6 @@
     <resources>
         <image name="appBgImage" width="1200" height="2015"/>
         <image name="menu" width="26" height="14"/>
+        <image name="nodatafound_image" width="218" height="322"/>
     </resources>
 </document>
