@@ -132,7 +132,7 @@ class LeftMenuViewController: UIViewController, UITableViewDelegate, UITableView
                 print("GetFreeRides")
                 break
             case 4:
-                let obj : SettingViewController = SettingViewController(nibName: "SettingViewController", bundle: nil) as SettingViewController
+                let obj : SettingViewController = SettingViewController(nibName: "SettingViewController", bundle: nil)
                 SlideNavigationController.sharedInstance().popToRootAndSwitch(to: obj, withCompletion: nil)
             case 5:
                 let moveViewController : ContactUSController = ContactUSController(nibName: "ContactUSController", bundle: nil)
@@ -217,7 +217,6 @@ class LeftMenuViewController: UIViewController, UITableViewDelegate, UITableView
             }
         }
     }
-    
     // apply drive is offline and online status on switch switch status change
     func  changeDriveStatus(_ strStatus:String) {
         let dic = NSMutableDictionary()

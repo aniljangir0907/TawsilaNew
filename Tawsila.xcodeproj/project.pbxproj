@@ -34,6 +34,8 @@
 		8164369C1F1F0B9E00B395E6 /* GetFreeRides.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8164369A1F1F0B9E00B395E6 /* GetFreeRides.xib */; };
 		816436A01F1F0BFB00B395E6 /* PickUPRideVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8164369E1F1F0BFB00B395E6 /* PickUPRideVC.swift */; };
 		816436A11F1F0BFB00B395E6 /* PickUPRideVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8164369F1F1F0BFB00B395E6 /* PickUPRideVC.xib */; };
+		817D9AE51F1F7F9100DE76A4 /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 817D9AE31F1F7F9100DE76A4 /* SettingViewController.swift */; };
+		817D9AE61F1F7F9100DE76A4 /* SettingViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 817D9AE41F1F7F9100DE76A4 /* SettingViewController.xib */; };
 		818EAAEB1F1F1A8C0094E220 /* AddWallet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 818EAAE41F1F1A8C0094E220 /* AddWallet.swift */; };
 		818EAAEC1F1F1A8C0094E220 /* AddWallet.xib in Resources */ = {isa = PBXBuildFile; fileRef = 818EAAE51F1F1A8C0094E220 /* AddWallet.xib */; };
 		818EAAED1F1F1A8C0094E220 /* WalletViewControllerCustomCellTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 818EAAE71F1F1A8C0094E220 /* WalletViewControllerCustomCellTableView.swift */; };
@@ -85,8 +87,6 @@
 		81E76BEF1EEF841800256FD4 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81E76BEE1EEF841800256FD4 /* Main.storyboard */; };
 		81EBC1E01F1F7B40006F1AD7 /* rightMenuCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81F2EC151EF19B070065D2BD /* rightMenuCell.swift */; };
 		81EBC1E11F1F7B40006F1AD7 /* rightMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81F2EC101EF19AC70065D2BD /* rightMenuViewController.swift */; };
-		81EBC1E21F1F7B4D006F1AD7 /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81C14F141F17F5EC00FDEFEC /* SettingViewController.swift */; };
-		81EBC1E31F1F7B5C006F1AD7 /* SettingViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 81C14F151F17F5EC00FDEFEC /* SettingViewController.xib */; };
 		81F2EBFD1EF18AA60065D2BD /* menu-button.png in Resources */ = {isa = PBXBuildFile; fileRef = 81F2EBEE1EF18AA60065D2BD /* menu-button.png */; };
 		81F2EBFE1EF18AA60065D2BD /* menu-button@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 81F2EBEF1EF18AA60065D2BD /* menu-button@2x.png */; };
 		81F2EBFF1EF18AA60065D2BD /* SlideNavigationContorllerAnimatorFade.m in Sources */ = {isa = PBXBuildFile; fileRef = 81F2EBF21EF18AA60065D2BD /* SlideNavigationContorllerAnimatorFade.m */; };
@@ -187,6 +187,8 @@
 		8164369A1F1F0B9E00B395E6 /* GetFreeRides.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GetFreeRides.xib; sourceTree = "<group>"; };
 		8164369E1F1F0BFB00B395E6 /* PickUPRideVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PickUPRideVC.swift; sourceTree = "<group>"; };
 		8164369F1F1F0BFB00B395E6 /* PickUPRideVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PickUPRideVC.xib; sourceTree = "<group>"; };
+		817D9AE31F1F7F9100DE76A4 /* SettingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingViewController.swift; sourceTree = "<group>"; };
+		817D9AE41F1F7F9100DE76A4 /* SettingViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SettingViewController.xib; sourceTree = "<group>"; };
 		818EAAE41F1F1A8C0094E220 /* AddWallet.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddWallet.swift; sourceTree = "<group>"; };
 		818EAAE51F1F1A8C0094E220 /* AddWallet.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AddWallet.xib; sourceTree = "<group>"; };
 		818EAAE71F1F1A8C0094E220 /* WalletViewControllerCustomCellTableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WalletViewControllerCustomCellTableView.swift; sourceTree = "<group>"; };
@@ -223,8 +225,6 @@
 		81C14EFE1F17F52700FDEFEC /* PayBillDetails.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PayBillDetails.xib; sourceTree = "<group>"; };
 		81C14F001F17F52700FDEFEC /* PickUpPassenger.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PickUpPassenger.swift; sourceTree = "<group>"; };
 		81C14F011F17F52700FDEFEC /* PickUpPassenger.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PickUpPassenger.xib; sourceTree = "<group>"; };
-		81C14F141F17F5EC00FDEFEC /* SettingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingViewController.swift; sourceTree = "<group>"; };
-		81C14F151F17F5EC00FDEFEC /* SettingViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SettingViewController.xib; sourceTree = "<group>"; };
 		81C8E8081F18880300DA5BBC /* ContactUSController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContactUSController.swift; sourceTree = "<group>"; };
 		81C8E8091F18880300DA5BBC /* ContactUSController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ContactUSController.xib; sourceTree = "<group>"; };
 		81C8E80B1F18880300DA5BBC /* ShareAppViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShareAppViewController.swift; sourceTree = "<group>"; };
@@ -463,6 +463,7 @@
 				81F2EC0F1EF19A8D0065D2BD /* RightMenu */,
 				81F2EC051EF18CC80065D2BD /* LeftMenu */,
 				81E76BD81EEF73E500256FD4 /* ChangePasswordViewController */,
+				817D9AE21F1F7F9100DE76A4 /* Settings */,
 				81C14F101F17F5EC00FDEFEC /* Settings */,
 				81D179F41EF84A3F00976349 /* BookingviewController */,
 				814C6FB71EF0487900985702 /* MyRides */,
@@ -535,6 +536,15 @@
 				8164369F1F1F0BFB00B395E6 /* PickUPRideVC.xib */,
 			);
 			path = PickUPRideVC;
+			sourceTree = "<group>";
+		};
+		817D9AE21F1F7F9100DE76A4 /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				817D9AE31F1F7F9100DE76A4 /* SettingViewController.swift */,
+				817D9AE41F1F7F9100DE76A4 /* SettingViewController.xib */,
+			);
+			path = Settings;
 			sourceTree = "<group>";
 		};
 		818EAAE21F1F1A8C0094E220 /* WalletViewController */ = {
@@ -714,8 +724,6 @@
 		81C14F101F17F5EC00FDEFEC /* Settings */ = {
 			isa = PBXGroup;
 			children = (
-				81C14F141F17F5EC00FDEFEC /* SettingViewController.swift */,
-				81C14F151F17F5EC00FDEFEC /* SettingViewController.xib */,
 			);
 			path = Settings;
 			sourceTree = "<group>";
@@ -1077,13 +1085,13 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				81EBC1E31F1F7B5C006F1AD7 /* SettingViewController.xib in Resources */,
 				818EAAEE1F1F1A8C0094E220 /* WalletViewControllerCustomCellTableView.xib in Resources */,
 				81F2EBFD1EF18AA60065D2BD /* menu-button.png in Resources */,
 				81F2EC0E1EF190BE0065D2BD /* leftMenuCell.xib in Resources */,
 				5BB10CD31EEBEB4E00F93FBE /* SignInOrCreateNewAccount.xib in Resources */,
 				929D98F41EEEB26100A8E598 /* Roboto-Bold.ttf in Resources */,
 				81D179F31EF84A3200976349 /* forgotPassword.xib in Resources */,
+				817D9AE61F1F7F9100DE76A4 /* SettingViewController.xib in Resources */,
 				929D98FB1EEEB26100A8E598 /* Roboto-Regular.ttf in Resources */,
 				81C8E80E1F18880300DA5BBC /* ContactUSController.xib in Resources */,
 				970B2DAD1EF281AC0027F0C3 /* RideLaterVC.xib in Resources */,
@@ -1313,7 +1321,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				81EBC1E21F1F7B4D006F1AD7 /* SettingViewController.swift in Sources */,
 				81EBC1E01F1F7B40006F1AD7 /* rightMenuCell.swift in Sources */,
 				81EBC1E11F1F7B40006F1AD7 /* rightMenuViewController.swift in Sources */,
 				92EFD5AB1EFE6ECD00F06494 /* HomeViewControlle.swift in Sources */,
@@ -1333,6 +1340,7 @@
 				81F2EC011EF18AA60065D2BD /* SlideNavigationContorllerAnimatorScaleAndFade.m in Sources */,
 				818EAB031F1F1C7F0094E220 /* TransctionViewController.swift in Sources */,
 				92B006F91F0ACA1500B838D4 /* StarRatingControl.m in Sources */,
+				817D9AE51F1F7F9100DE76A4 /* SettingViewController.swift in Sources */,
 				81C14F0C1F17F52700FDEFEC /* PayBillDetails.swift in Sources */,
 				814C6FBA1EF048A600985702 /* MyRidesVC.swift in Sources */,
 				9282F2581F1F5D0F00071E49 /* AddwalletView.swift in Sources */,
