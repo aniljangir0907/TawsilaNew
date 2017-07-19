@@ -48,7 +48,7 @@
                                         <action selector="actionLeftMenu:" destination="-1" eventType="touchUpInside" id="vIs-n5-Qrb"/>
                                     </connections>
                                 </button>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Chauffeur" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qEZ-cb-tPh">
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Home" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qEZ-cb-tPh">
                                     <rect key="frame" x="132" y="20" width="110" height="44"/>
                                     <constraints>
                                         <constraint firstAttribute="height" constant="44" id="ZKf-Ax-63P"/>
@@ -101,7 +101,7 @@
                                         <action selector="actionRightMenu:" destination="-1" eventType="touchUpInside" id="eZ1-Cj-O3i"/>
                                     </connections>
                                 </button>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text=" سائق" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="otI-F8-2nf">
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="منزل" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="otI-F8-2nf">
                                     <rect key="frame" x="137.5" y="20" width="100" height="44"/>
                                     <constraints>
                                         <constraint firstAttribute="width" constant="100" id="6OA-fZ-Xrh"/>

@@ -224,10 +224,8 @@ class LeftMenuViewController: UIViewController, UITableViewDelegate, UITableView
         dic.setValue("driver", forKey: "usertype")
         /////http://taxiappsourcecode.com/api/index.php?option=set_driver_offline
         dic.setValue(strStatus, forKey: "status")
-        // RappleActivityIndicatorView.startAnimatingWithLabel("Processing...", attributes: RappleAppleAttributes)
         
         var parameterString = String(format : "set_driver_offline")
-        
         for (key, value) in dic
         {
             parameterString = String (format: "%@&%@=%@", parameterString,key as! CVarArg,value as! CVarArg)
@@ -235,7 +233,12 @@ class LeftMenuViewController: UIViewController, UITableViewDelegate, UITableView
         
         
         Utility.sharedInstance.postDataInJson(header: parameterString,  withParameter:dic ,inVC: self) { (dataDictionary, msg, status) in
-            
+        
+            if  strStatus == "online" {
+                USER_DEFAULT.set("No", forKey: "driverstatus")
+            }else{
+                USER_DEFAULT.set("Yes", forKey: "driverstatus")
+            }
             if status == true
             {
             }
