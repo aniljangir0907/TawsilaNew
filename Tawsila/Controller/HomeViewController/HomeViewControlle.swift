@@ -201,17 +201,19 @@
         {
             AppDelegateVariable.appDelegate.id_booking = "NO";
             self.tapCacelBooking("");
-            self.getCarsAPI()
+           // self.getCarsAPI()
         }
+        
         if AppDelegateVariable.appDelegate.id_booking == "cancel"
         {
             Utility.sharedInstance.showAlert(kAPPName, msg: "Ride cancelled by Driver", controller: self)
             
             AppDelegateVariable.appDelegate.id_booking = "NO";
             self.tapCacelBooking("");
-            self.getCarsAPI()
         }
         
+        self.getCarsAPI()
+
         
         Utility.sharedInstance.getUserWallet(vc : self)
         
@@ -394,17 +396,7 @@
             let arrVehcles : NSArray = dict .value(forKey: "car_nearst_data") as! NSArray
             
             
-            if arrVehcles.count > 0
-            {
-                if i == 0
-                {
-                    wd = 80
-                }
-                else
-                {
-                    xxx = xxx + 1;
-                }
-            }
+            
             
             
             let lblTime = UILabel(frame: CGRect(x: xxx * wd, y: 0, width: wd, height: 20))
@@ -432,6 +424,8 @@
                 
                 // float speedIs1KmMinute = (float) 0.49;
                 
+
+                
             }
             else
             {
@@ -453,7 +447,7 @@
             
             let viewForImage: UIView = UIView(frame: CGRect(x: wd/2 - 25 + xxx * wd, y: 20, width: 50, height: 50))
             viewForImage.layer.cornerRadius = 25
-            viewForImage.tag = xxx+1000
+            viewForImage.tag = i+1000
             
             if tagCarType == xxx
             {
@@ -500,7 +494,20 @@
             }
             
             btnTapCar .addTarget(self, action: #selector(tapCarBottom), for: UIControlEvents.touchUpInside)
-            btnTapCar.tag = xxx
+            btnTapCar.tag = i
+            
+            
+            if arrVehcles.count > 0
+            {
+                xxx = xxx + 1;
+            }
+            else
+            {
+                btnTapCar.isHidden = true
+                lblCarName.isHidden = true
+                viewForImage.isHidden = true
+                lblTime.isHidden = true
+            }
             
         }
         
@@ -534,7 +541,6 @@
         tempView = scrollViewCars.viewWithTag(sender.tag+1000)!
         tempView.backgroundColor = NavigationBackgraoungColor
         tempView.layer.borderColor = NavigationBackgraoungColor.cgColor
-        
         
     }
     
