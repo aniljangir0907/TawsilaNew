@@ -85,7 +85,7 @@
                                     <rect key="frame" x="8" y="69" width="343" height="179"/>
                                     <subviews>
                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1Ga-XZ-1Io">
-                                            <rect key="frame" x="0.0" y="0.0" width="114" height="90"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="114.5" height="89.5"/>
                                             <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                             <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="20"/>
                                             <state key="normal" title="  50">
@@ -96,7 +96,7 @@
                                             </connections>
                                         </button>
                                         <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mzZ-h2-aPh">
-                                            <rect key="frame" x="229" y="0.0" width="114" height="90"/>
+                                            <rect key="frame" x="228.5" y="0.0" width="114.5" height="89.5"/>
                                             <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                             <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="20"/>
                                             <state key="normal" title="  150">
@@ -107,7 +107,7 @@
                                             </connections>
                                         </button>
                                         <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hSa-A5-n9z">
-                                            <rect key="frame" x="114" y="0.0" width="115" height="90"/>
+                                            <rect key="frame" x="114.5" y="0.0" width="114" height="89.5"/>
                                             <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                             <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="20"/>
                                             <state key="normal" title="  100">
@@ -118,7 +118,7 @@
                                             </connections>
                                         </button>
                                         <button opaque="NO" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dOa-hF-PHV">
-                                            <rect key="frame" x="0.0" y="90" width="114" height="89"/>
+                                            <rect key="frame" x="0.0" y="89.5" width="114.5" height="89.5"/>
                                             <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                             <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="20"/>
                                             <state key="normal" title="  250">
@@ -129,7 +129,7 @@
                                             </connections>
                                         </button>
                                         <button opaque="NO" tag="5" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lwZ-RW-LoO">
-                                            <rect key="frame" x="229" y="90" width="114" height="89"/>
+                                            <rect key="frame" x="228.5" y="89.5" width="114.5" height="89.5"/>
                                             <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                             <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="20"/>
                                             <state key="normal" title="  1000">
@@ -140,7 +140,7 @@
                                             </connections>
                                         </button>
                                         <button opaque="NO" tag="4" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eo2-aj-BkB">
-                                            <rect key="frame" x="114" y="90" width="115" height="89"/>
+                                            <rect key="frame" x="114.5" y="89.5" width="114" height="89.5"/>
                                             <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                             <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="20"/>
                                             <state key="normal" title="  500">
@@ -206,17 +206,20 @@
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <constraints>
                                 <constraint firstItem="feg-3p-y3c" firstAttribute="centerX" secondItem="RtG-6r-tx9" secondAttribute="centerX" id="4pE-kn-3wQ"/>
-                                <constraint firstAttribute="width" secondItem="RtG-6r-tx9" secondAttribute="height" multiplier="304:317" id="5Zu-JF-bGg"/>
                                 <constraint firstItem="v1R-0m-6BZ" firstAttribute="trailing" secondItem="rdc-fE-RTN" secondAttribute="trailing" id="8Ra-ID-yNA"/>
                                 <constraint firstItem="v1R-0m-6BZ" firstAttribute="top" secondItem="feg-3p-y3c" secondAttribute="bottom" constant="11" id="A7p-qL-Ce8"/>
                                 <constraint firstItem="fdW-2J-pQV" firstAttribute="leading" secondItem="a5z-BS-YRH" secondAttribute="leading" id="MjE-h8-SC2"/>
+                                <constraint firstItem="a5z-BS-YRH" firstAttribute="centerX" secondItem="RtG-6r-tx9" secondAttribute="centerX" id="NmS-vl-kvr"/>
                                 <constraint firstAttribute="trailing" secondItem="fdW-2J-pQV" secondAttribute="trailing" id="XT5-bP-YvU"/>
                                 <constraint firstItem="fdW-2J-pQV" firstAttribute="leading" secondItem="RtG-6r-tx9" secondAttribute="leading" id="aih-Kz-xpM"/>
                                 <constraint firstItem="a5z-BS-YRH" firstAttribute="top" secondItem="RtG-6r-tx9" secondAttribute="top" id="dII-WZ-XjI"/>
+                                <constraint firstItem="rdc-fE-RTN" firstAttribute="centerX" secondItem="a5z-BS-YRH" secondAttribute="centerX" id="eyE-ND-o5g"/>
                                 <constraint firstItem="rdc-fE-RTN" firstAttribute="leading" secondItem="RtG-6r-tx9" secondAttribute="leading" constant="8" id="f6d-UZ-oC9"/>
                                 <constraint firstItem="a5z-BS-YRH" firstAttribute="leading" secondItem="RtG-6r-tx9" secondAttribute="leading" id="mlZ-Y4-FlP"/>
                                 <constraint firstAttribute="trailing" secondItem="a5z-BS-YRH" secondAttribute="trailing" id="ovx-B8-EEy"/>
                                 <constraint firstItem="fdW-2J-pQV" firstAttribute="trailing" secondItem="a5z-BS-YRH" secondAttribute="trailing" id="pHU-o7-Akx"/>
+                                <constraint firstAttribute="height" constant="375" id="pdj-eJ-3F4"/>
+                                <constraint firstItem="fdW-2J-pQV" firstAttribute="centerX" secondItem="a5z-BS-YRH" secondAttribute="centerX" id="qUk-l2-7DQ"/>
                                 <constraint firstItem="fdW-2J-pQV" firstAttribute="top" secondItem="a5z-BS-YRH" secondAttribute="bottom" id="sEb-Pa-Uaa"/>
                                 <constraint firstItem="v1R-0m-6BZ" firstAttribute="leading" secondItem="rdc-fE-RTN" secondAttribute="leading" id="tQ7-kP-wzz"/>
                                 <constraint firstItem="rdc-fE-RTN" firstAttribute="top" secondItem="fdW-2J-pQV" secondAttribute="bottom" constant="8" id="tg0-4l-RXa"/>
@@ -234,6 +237,9 @@
                                         <constraint firstAttribute="width" constant="50" id="p6h-cj-Xt6"/>
                                     </constraints>
                                     <state key="normal" image="backImge"/>
+                                    <connections>
+                                        <action selector="tapBack:" destination="iN0-l3-epB" eventType="touchUpInside" id="B43-do-2gD"/>
+                                    </connections>
                                 </button>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Add Money" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1Q8-kS-eGJ">
                                     <rect key="frame" x="128" y="20" width="120" height="44"/>

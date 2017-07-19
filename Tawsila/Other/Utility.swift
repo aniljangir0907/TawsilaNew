@@ -76,7 +76,9 @@ class Utility
                     
                     let sucess = responce.object(forKey: "type") as! String
                     
-                    let message = responce.object(forKey: "msg") as! String
+                    
+                    let message = NSString (format: "%@", responce.object(forKey: "msg") as! CVarArg ) as String
+                    
                     if  sucess == "error"
                     {
                         completion(responce,message , false )

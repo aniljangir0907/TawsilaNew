@@ -11,7 +11,7 @@ import UIKit
 class scheduleView: UIView {
 
     @IBOutlet weak var viewEnglish: UIView!
-    @IBOutlet weak var lblDropLocation: UILabel!
+    @IBOutlet weak var lblDropLocation: UITextView!
     @IBOutlet weak var lblPickUPDate: UILabel!
     @IBOutlet weak var lblPickUpTime: UILabel!
     @IBOutlet weak var lblEstimateFair: UILabel!

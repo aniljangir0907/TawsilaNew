@@ -1,20 +1,20 @@
  //
-//  HomeViewControlle.swift
-//  Tawsila
-//
-//  Created by Sanjay on 11/06/17.
-//  Copyright © 2017 scientificweb. All rights reserved.
-//
-
-import UIKit
-import GoogleMaps
-import GooglePlaces
-import RappleProgressHUD
-import Alamofire
-import SDWebImage
-import UserNotifications
-
-class HomeViewControlle: UIViewController ,GMSMapViewDelegate ,SlideNavigationControllerDelegate ,GMSAutocompleteViewControllerDelegate ,notificationDelegate , UNUserNotificationCenterDelegate {
+ //  HomeViewControlle.swift
+ //  Tawsila
+ //
+ //  Created by Sanjay on 11/06/17.
+ //  Copyright © 2017 scientificweb. All rights reserved.
+ //
+ 
+ import UIKit
+ import GoogleMaps
+ import GooglePlaces
+ import RappleProgressHUD
+ import Alamofire
+ import SDWebImage
+ import UserNotifications
+ 
+ class HomeViewControlle: UIViewController ,GMSMapViewDelegate ,SlideNavigationControllerDelegate ,GMSAutocompleteViewControllerDelegate ,notificationDelegate , UNUserNotificationCenterDelegate {
     
     var mapView: GMSMapView!
     
@@ -136,7 +136,6 @@ class HomeViewControlle: UIViewController ,GMSMapViewDelegate ,SlideNavigationCo
         
         //self.gotoNextView()
         
-      
     }
     
     
@@ -195,7 +194,7 @@ class HomeViewControlle: UIViewController ,GMSMapViewDelegate ,SlideNavigationCo
         is_accepted = false
         
         AppDelegateVariable.appDelegate.is_loadCar = 0
-
+        
         setShowAndHideViews(viewEnglish, vArb: viewArabic)
         
         if AppDelegateVariable.appDelegate.id_booking == "false"
@@ -207,7 +206,7 @@ class HomeViewControlle: UIViewController ,GMSMapViewDelegate ,SlideNavigationCo
         if AppDelegateVariable.appDelegate.id_booking == "cancel"
         {
             Utility.sharedInstance.showAlert(kAPPName, msg: "Ride cancelled by Driver", controller: self)
-
+            
             AppDelegateVariable.appDelegate.id_booking = "NO";
             self.tapCacelBooking("");
             self.getCarsAPI()
@@ -290,7 +289,7 @@ class HomeViewControlle: UIViewController ,GMSMapViewDelegate ,SlideNavigationCo
                 
                 
                 let car : String = ((self.arrCars.object(at: self.tagCarType) as! NSDictionary ) .object(forKey: "car_type") as! String).uppercased()
-
+                
                 
                 if (car == "Luxury".uppercased())
                 {
@@ -316,10 +315,10 @@ class HomeViewControlle: UIViewController ,GMSMapViewDelegate ,SlideNavigationCo
                 {
                     icon = #imageLiteral(resourceName: "car_other")
                 }
-
                 
-            
-                    
+                
+                
+                
                 if self.tagCarType != self.tempTag
                 {
                     self.mapView.clear()
@@ -385,15 +384,30 @@ class HomeViewControlle: UIViewController ,GMSMapViewDelegate ,SlideNavigationCo
     
     func loadCars(arrayCars: Any)
     {
-        let wd = 80
+        var wd = 80
+        var xxx : Int = 0
         
         for i in 0 ... (self.arrCars.count - 1) {
             
             let dict : NSDictionary = self.arrCars .object(at: i) as! NSDictionary
-            
+
             let arrVehcles : NSArray = dict .value(forKey: "car_nearst_data") as! NSArray
             
-            let lblTime = UILabel(frame: CGRect(x: i * wd, y: 0, width: wd, height: 20))
+            
+            if arrVehcles.count > 0
+            {
+                if i == 0
+                {
+                    wd = 80
+                }
+                else
+                {
+                    xxx = xxx + 1;
+                }
+            }
+            
+            
+            let lblTime = UILabel(frame: CGRect(x: xxx * wd, y: 0, width: wd, height: 20))
             lblTime.textAlignment = .center
             lblTime.text = "10 min"
             lblTime.textColor = #colorLiteral(red: 0.2745098174, green: 0.4862745106, blue: 0.1411764771, alpha: 1)
@@ -415,9 +429,9 @@ class HomeViewControlle: UIViewController ,GMSMapViewDelegate ,SlideNavigationCo
                 {
                     lblTime.text = "1 min"
                 }
-
+                
                 // float speedIs1KmMinute = (float) 0.49;
-
+                
             }
             else
             {
@@ -427,7 +441,7 @@ class HomeViewControlle: UIViewController ,GMSMapViewDelegate ,SlideNavigationCo
             
             if i < (self.arrCars.count - 1)
             {
-                let lbl_line = UILabel(frame: CGRect(x: wd + i * wd, y: 20, width: 1, height: 60))
+                let lbl_line = UILabel(frame: CGRect(x: wd + xxx * wd, y: 20, width: 1, height: 60))
                 lbl_line.backgroundColor = #colorLiteral(red: 0.8039215803, green: 0.8039215803, blue: 0.8039215803, alpha: 1)
                 if  AppDelegateVariable.appDelegate.strLanguage == "en" {
                     self.scrollViewCars.addSubview(lbl_line)
@@ -437,11 +451,11 @@ class HomeViewControlle: UIViewController ,GMSMapViewDelegate ,SlideNavigationCo
                 ///self.scrollViewCars.addSubview(lbl_line)
             }
             
-            let viewForImage: UIView = UIView(frame: CGRect(x: wd/2 - 25 + i * wd, y: 20, width: 50, height: 50))
+            let viewForImage: UIView = UIView(frame: CGRect(x: wd/2 - 25 + xxx * wd, y: 20, width: 50, height: 50))
             viewForImage.layer.cornerRadius = 25
-            viewForImage.tag = i+1000
+            viewForImage.tag = xxx+1000
             
-            if tagCarType == i
+            if tagCarType == xxx
             {
                 tempView = viewForImage
                 viewForImage.backgroundColor = NavigationBackgraoungColor
@@ -452,7 +466,7 @@ class HomeViewControlle: UIViewController ,GMSMapViewDelegate ,SlideNavigationCo
                 viewForImage.layer.borderWidth = 0.8
                 viewForImage.backgroundColor = UIColor.white
             }
-
+            
             
             let imgUrl = dict.object(forKey: "car_image") as? String
             let car_icon = UIImageView(frame: CGRect(x: 5 , y: 5, width: 40, height: 40))
@@ -462,14 +476,14 @@ class HomeViewControlle: UIViewController ,GMSMapViewDelegate ,SlideNavigationCo
             car_icon.contentMode = UIViewContentMode.scaleAspectFit
             viewForImage.addSubview(car_icon)
             
-            let lblCarName = UILabel(frame: CGRect(x: i * wd, y:70, width: wd, height: 21))
+            let lblCarName = UILabel(frame: CGRect(x: xxx * wd, y:70, width: wd, height: 21))
             lblCarName.textAlignment = .center
             lblCarName.text = dict.object(forKey: "car_type") as? String
             lblCarName.textColor = #colorLiteral(red: 0.2549019754, green: 0.2745098174, blue: 0.3019607961, alpha: 1)
             lblCarName.font = UIFont .systemFont(ofSize: 12)
-
             
-            let btnTapCar = UIButton(frame: CGRect(x: i * wd, y: 0, width: wd, height: 90))
+            
+            let btnTapCar = UIButton(frame: CGRect(x: xxx * wd, y: 0, width: wd, height: 90))
             
             if  AppDelegateVariable.appDelegate.strLanguage == "en" {
                 
@@ -486,8 +500,8 @@ class HomeViewControlle: UIViewController ,GMSMapViewDelegate ,SlideNavigationCo
             }
             
             btnTapCar .addTarget(self, action: #selector(tapCarBottom), for: UIControlEvents.touchUpInside)
-            btnTapCar.tag = i
-
+            btnTapCar.tag = xxx
+            
         }
         
         if  AppDelegateVariable.appDelegate.strLanguage == "en" {
@@ -641,7 +655,7 @@ class HomeViewControlle: UIViewController ,GMSMapViewDelegate ,SlideNavigationCo
         obj.rateInitial = self.initialRate;
         obj.rateStandred = self.standredRate;
         navigationController?.pushViewController(obj, animated: true)
-
+        
     }
     
     // MARK:
@@ -888,16 +902,16 @@ class HomeViewControlle: UIViewController ,GMSMapViewDelegate ,SlideNavigationCo
                         
                         
                         self.estFare = Int(Int((self.standredRate as NSString).floatValue + (self.initialRate as NSString).floatValue * Float32(doubleValue)))
-
+                        
                         
                         self.lblEstimatedFare.text =  String (format: "%d SAR", self.estFare )
                         self.lblEstimatedTime.text = estTime
-                    
+                        
                     }
                     else
                     {
                         self.tagBookNow = 2
-
+                        
                         self.lblEstimatedFare.text = "500"
                         self.lblEstimatedTime.text = "45 min"
                         self.estFare = 500
@@ -1123,7 +1137,7 @@ class HomeViewControlle: UIViewController ,GMSMapViewDelegate ,SlideNavigationCo
             let obj : PickUPRideVC = PickUPRideVC(nibName: "PickUPRideVC", bundle: nil)
             self.getTopViewController()?.present(obj, animated: true, completion: nil)
             obj.car_type = (self.arrCars.object(at: tagCarType) as! NSDictionary ) .object(forKey: "car_type") as! String
-
+            
             self.tapCacelBooking("")
             
             self.getTopViewController()?.navigationController?.pushViewController(obj, animated: true)
@@ -1174,7 +1188,7 @@ class HomeViewControlle: UIViewController ,GMSMapViewDelegate ,SlideNavigationCo
             if status == true
             {
                 Utility.sharedInstance.showAlert(kAPPName, msg: "Your Ride has beed dead because no driver accepted" , controller: self)
-
+                
             }
             else
             {
@@ -1207,7 +1221,7 @@ class HomeViewControlle: UIViewController ,GMSMapViewDelegate ,SlideNavigationCo
                 
                 let actionController: UIAlertController = UIAlertController(title: "Add money", message: "", preferredStyle: .alert)
                 
-
+                
                 let action1: UIAlertAction = UIAlertAction(title: "ok", style: .default) { action -> Void in
                     
                     let obj : WalletViewController = WalletViewController(nibName: "WalletViewController", bundle: nil)
@@ -1225,7 +1239,7 @@ class HomeViewControlle: UIViewController ,GMSMapViewDelegate ,SlideNavigationCo
                 actionController.addAction(action1)
                 actionController.addAction(cancelAction)
                 self.present(actionController, animated: true, completion: nil)
-            }           
+            }
         }
         
         let action1: UIAlertAction = UIAlertAction(title: "Cash", style: .default) { action -> Void in
@@ -1233,7 +1247,7 @@ class HomeViewControlle: UIViewController ,GMSMapViewDelegate ,SlideNavigationCo
             self.payMedia = "Cash";
             self.lblpayMedia.text = "Cash"
             self.icon_pay_media.image = #imageLiteral(resourceName: "cash_icon")
-
+            
         }
         
         
@@ -1245,18 +1259,18 @@ class HomeViewControlle: UIViewController ,GMSMapViewDelegate ,SlideNavigationCo
         
         actionSheetController.addAction(action0)
         actionSheetController.addAction(action1)
-       
+        
         actionSheetController.addAction(cancelAction)
         self.present(actionSheetController, animated: true, completion: nil)
-
+        
     }
-}
-
-extension Int
-{
+ }
+ 
+ extension Int
+ {
     var degreesToRadians: Double { return Double(self) * .pi / 180 }
-}
-extension FloatingPoint {
+ }
+ extension FloatingPoint {
     var degreesToRadians: Self { return self * .pi / 180 }
     var radiansToDegrees: Self { return self * 180 / .pi }
-}
+ }

@@ -31,6 +31,7 @@ class WalletViewController: UIViewController,UITableViewDelegate, UITableViewDat
     
     var popUpAddMoney = AddwalletView()
     
+   
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -180,9 +181,7 @@ class WalletViewController: UIViewController,UITableViewDelegate, UITableViewDat
             amount = popUpAddMoney.txtAmount.text!
             self.pay()
             popUpAddMoney.removeFromSuperview()
-
         }
-
     }
     
     
@@ -312,5 +311,7 @@ class WalletViewController: UIViewController,UITableViewDelegate, UITableViewDat
             }
         }
     }
+    
+   
 
 }

@@ -21,13 +21,21 @@ class AddwalletView: UIView {
         img.image = UIImage(named: "doller_icon")
         txtAmount.leftView = img
         
-        txtAmount.text = AppDelegateVariable.appDelegate.wallet_amount+" SAR"
+        lblAmountAdd.text = AppDelegateVariable.appDelegate.wallet_amount+" SAR"
+        
+        
 
     }
 
     @IBAction func actionAmount(_ sender: UIButton) {
         
         txtAmount.text = sender.titleLabel?.text        
+    }
+    
+    
+    @IBAction func tapBack(_ sender: Any) {
+        
+        self.removeFromSuperview()
     }
 
 }
