@@ -7,10 +7,11 @@
 //
 
 import UIKit
+import RappleProgressHUD
 
 class AllRides: UIViewController, UITableViewDelegate, UITableViewDataSource {
-
-    var arrAllRide : NSArray!
+    
+    var arrayRideData : NSMutableArray = []
     @IBOutlet weak var btnTitle: UILabel!
     @IBOutlet weak var btnRightMenu: UIButton!
     @IBOutlet weak var btnLeftMenu: UIButton!
@@ -25,16 +26,16 @@ class AllRides: UIViewController, UITableViewDelegate, UITableViewDataSource {
         setViewAccordingLanguage()
         tblAllRide.delegate = self
         tblAllRide.dataSource = self
-        
+        self.getAllMyRide()
     }
     func setViewAccordingLanguage() {
         if AppDelegateVariable.appDelegate.strLanguage == "ar" {
-            btnTitle.text = "جميع ركوب الخيل"
+            btnTitle.text = "بلدي ركوب الخيل"
             btnLeftMenu.isHidden = true
             btnRightMenu.isHidden = false
         }
         else{
-            btnTitle.text = "All Rides"
+            btnTitle.text = "My Rides"
             btnLeftMenu.isHidden = false
             btnRightMenu.isHidden = true
         }
@@ -51,13 +52,13 @@ class AllRides: UIViewController, UITableViewDelegate, UITableViewDataSource {
     }
     
     //MARK:- UITableView Delegate and DataSource
-
+    
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 10
+        return arrayRideData.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -68,8 +69,44 @@ class AllRides: UIViewController, UITableViewDelegate, UITableViewDataSource {
             cell = tableView.dequeueReusableCell(withIdentifier: "AllRideCell", for: indexPath) as! AllRideCell
         }
         setShowAndHideViews(cell.viewEnglish, vArb: cell.viewAraic)
-      //  cell.setDataOnCell(<#T##dic: NSDictionary##NSDictionary#>)
+        let dic  = arrayRideData[indexPath.row] as! NSDictionary
+        cell.setDataOnCell(dic)
         return cell
     }
     
+    // get Driver all rides
+    func getAllMyRide()
+    {
+        if  Reachability.isConnectedToNetwork() == false
+        {
+            Utility.sharedInstance.showAlert("Alert", msg: "Internet Connection not Availabel!", controller: self)
+            return
+        }
+        RappleActivityIndicatorView.startAnimatingWithLabel("Processing...", attributes: RappleAppleAttributes)
+        
+        let parameterString = String(format : "get_driver_booking&user_id=%@",USER_ID)
+        
+        Utility.sharedInstance.postDataInDataForm(header: parameterString, inVC: self) { (dataDictionary, msg, status) in
+            
+            if status == true
+            {
+                let userDict = dataDictionary.object(forKey: "result") as! NSArray
+                
+                print(userDict.count)
+                print(userDict)
+                if msg == "No record found"
+                {
+                    Utility.sharedInstance.showAlert(kAPPName, msg: msg as String, controller: self)
+                }
+                else
+                {
+                    self.arrayRideData = userDict.mutableCopy()  as! NSMutableArray
+                    self.tblAllRide.reloadData()
+                }
+            }
+            else {
+                Utility.sharedInstance.showAlert(kAPPName, msg: msg as String, controller: self)
+            }
+        }
+    }
 }

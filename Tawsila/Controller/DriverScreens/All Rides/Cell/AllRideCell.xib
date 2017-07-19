@@ -23,11 +23,11 @@
             <rect key="frame" x="0.0" y="0.0" width="320" height="190"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
-                <rect key="frame" x="0.0" y="0.0" width="320" height="190"/>
+                <rect key="frame" x="0.0" y="0.0" width="320" height="189.5"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="FP1-I9-cZg" userLabel="ViewEnglish">
-                        <rect key="frame" x="350" y="0.0" width="320" height="184.5"/>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FP1-I9-cZg" userLabel="ViewEnglish">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="184.5"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="100 SAR" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kHw-Ia-6I5">
                                 <rect key="frame" x="252" y="10" width="63" height="25"/>
@@ -57,7 +57,7 @@
                                 <color key="textColor" cocoaTouchSystemColor="scrollViewTexturedBackgroundColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="userProfile" translatesAutoresizingMaskIntoConstraints="NO" id="ONm-fO-fVa">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="DriverDummy" translatesAutoresizingMaskIntoConstraints="NO" id="ONm-fO-fVa">
                                 <rect key="frame" x="285" y="40" width="30" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="Ji2-fI-uSM"/>
@@ -92,7 +92,7 @@
                                 </constraints>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="06/04/2012 02:38:29 P" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.60000002384185791" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="B6a-SG-7h8">
-                                <rect key="frame" x="59" y="10" width="163.5" height="25"/>
+                                <rect key="frame" x="59" y="10" width="165" height="25"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="25" id="VSR-pB-OHs"/>
                                 </constraints>
@@ -172,7 +172,7 @@
                                 <color key="textColor" cocoaTouchSystemColor="scrollViewTexturedBackgroundColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="userProfile" translatesAutoresizingMaskIntoConstraints="NO" id="sai-0p-XpL">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="DriverDummy" translatesAutoresizingMaskIntoConstraints="NO" id="sai-0p-XpL">
                                 <rect key="frame" x="5" y="40" width="30" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="4Rd-hD-kaX"/>
@@ -207,7 +207,7 @@
                                 </constraints>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="06/04/2012 02:38:29 P" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.60000002384185791" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Szu-n0-5C4">
-                                <rect key="frame" x="90.5" y="10" width="163.5" height="25"/>
+                                <rect key="frame" x="89" y="10" width="165" height="25"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="25" id="hhM-ri-9gh"/>
                                 </constraints>
@@ -289,9 +289,9 @@
         </tableViewCell>
     </objects>
     <resources>
+        <image name="DriverDummy" width="256" height="256"/>
         <image name="car_mini" width="64" height="38"/>
         <image name="dotGreen" width="25" height="24"/>
         <image name="redDot" width="25" height="24"/>
-        <image name="userProfile" width="64" height="64"/>
     </resources>
 </document>

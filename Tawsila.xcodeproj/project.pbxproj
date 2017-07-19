@@ -69,8 +69,6 @@
 		81C14F0D1F17F52700FDEFEC /* PayBillDetails.xib in Resources */ = {isa = PBXBuildFile; fileRef = 81C14EFE1F17F52700FDEFEC /* PayBillDetails.xib */; };
 		81C14F0E1F17F52700FDEFEC /* PickUpPassenger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81C14F001F17F52700FDEFEC /* PickUpPassenger.swift */; };
 		81C14F0F1F17F52700FDEFEC /* PickUpPassenger.xib in Resources */ = {isa = PBXBuildFile; fileRef = 81C14F011F17F52700FDEFEC /* PickUpPassenger.xib */; };
-		81C14F181F17F5EC00FDEFEC /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81C14F141F17F5EC00FDEFEC /* SettingViewController.swift */; };
-		81C14F191F17F5EC00FDEFEC /* SettingViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 81C14F151F17F5EC00FDEFEC /* SettingViewController.xib */; };
 		81C8E80D1F18880300DA5BBC /* ContactUSController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81C8E8081F18880300DA5BBC /* ContactUSController.swift */; };
 		81C8E80E1F18880300DA5BBC /* ContactUSController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 81C8E8091F18880300DA5BBC /* ContactUSController.xib */; };
 		81C8E80F1F18880300DA5BBC /* ShareAppViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81C8E80B1F18880300DA5BBC /* ShareAppViewController.swift */; };
@@ -85,6 +83,10 @@
 		81E76BE11EEF73E500256FD4 /* ChangePasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81E76BD91EEF73E500256FD4 /* ChangePasswordViewController.swift */; };
 		81E76BE21EEF73E500256FD4 /* ChangePasswordViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 81E76BDA1EEF73E500256FD4 /* ChangePasswordViewController.xib */; };
 		81E76BEF1EEF841800256FD4 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81E76BEE1EEF841800256FD4 /* Main.storyboard */; };
+		81EBC1E01F1F7B40006F1AD7 /* rightMenuCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81F2EC151EF19B070065D2BD /* rightMenuCell.swift */; };
+		81EBC1E11F1F7B40006F1AD7 /* rightMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81F2EC101EF19AC70065D2BD /* rightMenuViewController.swift */; };
+		81EBC1E21F1F7B4D006F1AD7 /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81C14F141F17F5EC00FDEFEC /* SettingViewController.swift */; };
+		81EBC1E31F1F7B5C006F1AD7 /* SettingViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 81C14F151F17F5EC00FDEFEC /* SettingViewController.xib */; };
 		81F2EBFD1EF18AA60065D2BD /* menu-button.png in Resources */ = {isa = PBXBuildFile; fileRef = 81F2EBEE1EF18AA60065D2BD /* menu-button.png */; };
 		81F2EBFE1EF18AA60065D2BD /* menu-button@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 81F2EBEF1EF18AA60065D2BD /* menu-button@2x.png */; };
 		81F2EBFF1EF18AA60065D2BD /* SlideNavigationContorllerAnimatorFade.m in Sources */ = {isa = PBXBuildFile; fileRef = 81F2EBF21EF18AA60065D2BD /* SlideNavigationContorllerAnimatorFade.m */; };
@@ -97,9 +99,7 @@
 		81F2EC091EF18D0D0065D2BD /* LeftMenuViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 81F2EC071EF18D0D0065D2BD /* LeftMenuViewController.xib */; };
 		81F2EC0D1EF190BE0065D2BD /* leftMenuCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81F2EC0B1EF190BE0065D2BD /* leftMenuCell.swift */; };
 		81F2EC0E1EF190BE0065D2BD /* leftMenuCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 81F2EC0C1EF190BE0065D2BD /* leftMenuCell.xib */; };
-		81F2EC121EF19AC70065D2BD /* rightMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81F2EC101EF19AC70065D2BD /* rightMenuViewController.swift */; };
 		81F2EC131EF19AC70065D2BD /* rightMenuViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 81F2EC111EF19AC70065D2BD /* rightMenuViewController.xib */; };
-		81F2EC171EF19B070065D2BD /* rightMenuCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81F2EC151EF19B070065D2BD /* rightMenuCell.swift */; };
 		81F2EC181EF19B070065D2BD /* rightMenuCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 81F2EC161EF19B070065D2BD /* rightMenuCell.xib */; };
 		921516261F0D435600E7E173 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 921516251F0D435600E7E173 /* GoogleService-Info.plist */; };
 		9215162A1F0D4A1800E7E173 /* driver_arrived_sound.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 921516281F0D4A1800E7E173 /* driver_arrived_sound.mp3 */; };
@@ -1077,11 +1077,11 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				81EBC1E31F1F7B5C006F1AD7 /* SettingViewController.xib in Resources */,
 				818EAAEE1F1F1A8C0094E220 /* WalletViewControllerCustomCellTableView.xib in Resources */,
 				81F2EBFD1EF18AA60065D2BD /* menu-button.png in Resources */,
 				81F2EC0E1EF190BE0065D2BD /* leftMenuCell.xib in Resources */,
 				5BB10CD31EEBEB4E00F93FBE /* SignInOrCreateNewAccount.xib in Resources */,
-				81C14F191F17F5EC00FDEFEC /* SettingViewController.xib in Resources */,
 				929D98F41EEEB26100A8E598 /* Roboto-Bold.ttf in Resources */,
 				81D179F31EF84A3200976349 /* forgotPassword.xib in Resources */,
 				929D98FB1EEEB26100A8E598 /* Roboto-Regular.ttf in Resources */,
@@ -1313,6 +1313,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				81EBC1E21F1F7B4D006F1AD7 /* SettingViewController.swift in Sources */,
+				81EBC1E01F1F7B40006F1AD7 /* rightMenuCell.swift in Sources */,
+				81EBC1E11F1F7B40006F1AD7 /* rightMenuViewController.swift in Sources */,
 				92EFD5AB1EFE6ECD00F06494 /* HomeViewControlle.swift in Sources */,
 				818EAAF91F1F1BEA0094E220 /* MyRidesTableViewCell.swift in Sources */,
 				0439CA7C1EEC50B1008E4F78 /* TPKeyboardAvoidingScrollView.m in Sources */,
@@ -1320,10 +1323,8 @@
 				81C14F041F17F52700FDEFEC /* AllRides.swift in Sources */,
 				81F2EC041EF18AA60065D2BD /* SlideNavigationController.m in Sources */,
 				81C14F0E1F17F52700FDEFEC /* PickUpPassenger.swift in Sources */,
-				81F2EC121EF19AC70065D2BD /* rightMenuViewController.swift in Sources */,
 				5BB10C9F1EEBEA8500F93FBE /* ViewController.swift in Sources */,
 				81E76BE11EEF73E500256FD4 /* ChangePasswordViewController.swift in Sources */,
-				81F2EC171EF19B070065D2BD /* rightMenuCell.swift in Sources */,
 				81C8E80D1F18880300DA5BBC /* ContactUSController.swift in Sources */,
 				8164369B1F1F0B9E00B395E6 /* GetFreeRides.swift in Sources */,
 				81C14F081F17F52700FDEFEC /* CancelView.swift in Sources */,
@@ -1353,7 +1354,6 @@
 				818EAAED1F1F1A8C0094E220 /* WalletViewControllerCustomCellTableView.swift in Sources */,
 				818EAB091F1F1DE60094E220 /* scheduleView.swift in Sources */,
 				81F2EC0D1EF190BE0065D2BD /* leftMenuCell.swift in Sources */,
-				81C14F181F17F5EC00FDEFEC /* SettingViewController.swift in Sources */,
 				5BB10CE41EEBFA1700F93FBE /* SignInViewController.swift in Sources */,
 				04FA4CDC1EF5260900CF7618 /* SSKeychain.m in Sources */,
 				81C14F0A1F17F52700FDEFEC /* DriverHomeScreen.swift in Sources */,

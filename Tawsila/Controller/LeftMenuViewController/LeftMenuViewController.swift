@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import RappleProgressHUD
 
 class LeftMenuViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     var userType: String! //30-June-2017 vikram singh
@@ -16,7 +17,7 @@ class LeftMenuViewController: UIViewController, UITableViewDelegate, UITableView
     @IBOutlet var lblUserDetail: UILabel!
     var arrLeftMenu =  [["image" : "home", "key" : "Home"], ["image" : "myride", "key" : "My rides"], ["image" : "wallet", "key" : "Wallet"], ["image" : "Share_icon", "key" : "Share app"], ["image" : "settings", "key" : "Settings"], ["image" : "contactUs", "key" : "Contact us"],  ["image" : "help", "key" : "Help"]]
     
-    var arrLeftMenuDriver = [["image" : "home", "key" : "Home"] ,["image" : "myride", "key" : "My Rides"], ["image" : "signout", "key" : "Signout"], ["image" : "settings", "key" : "Settings"]]//30-June-2017 vikram singh
+    var arrLeftMenuDriver = [["image" : "home", "key" : "Home"] ,["image" : "myride", "key" : "My Rides"], ["image" : "signout", "key" : "Signout"], ["image" : "settings", "key" : "Settings"]]//30-June-2017 vikram singh 13671983#12-
     
     
     override func viewDidLoad() {
@@ -37,10 +38,10 @@ class LeftMenuViewController: UIViewController, UITableViewDelegate, UITableView
         }
         self.tblView.tableFooterView = UIView()
     }
-  
+    
     override func viewWillDisappear(_ animated: Bool) {
-           let moveViewController : ShareAppViewController = ShareAppViewController(nibName: "ShareAppViewController", bundle: nil)
-            moveViewController.dismiss(animated: true, completion: nil)
+        let moveViewController : ShareAppViewController = ShareAppViewController(nibName: "ShareAppViewController", bundle: nil)
+        moveViewController.dismiss(animated: true, completion: nil)
     }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -84,11 +85,11 @@ class LeftMenuViewController: UIViewController, UITableViewDelegate, UITableView
                 switchOnLineOffline.addTarget(self, action: #selector(switchOnlineAndOffline(_:)), for: .valueChanged)
                 if driverStatus == "No" {
                     switchOnLineOffline.setOn(true, animated: true)
-                    lblGoOnlineAndOffline.text = "Go Online"
+                    lblGoOnlineAndOffline.text = "Go Offline "
                 }
                 else{
                     switchOnLineOffline.setOn(false, animated: true)
-                    lblGoOnlineAndOffline.text = "Go Offline"
+                    lblGoOnlineAndOffline.text = "Go Online"
                 }
                 cell.addSubview(switchOnLineOffline)
             }else{
@@ -128,12 +129,10 @@ class LeftMenuViewController: UIViewController, UITableViewDelegate, UITableView
                 let moveViewController : ShareAppViewController = ShareAppViewController(nibName: "ShareAppViewController", bundle: nil)
                 SlideNavigationController.sharedInstance().isPopViewController = true
                 SlideNavigationController.sharedInstance().popToRootAndSwitch(to: moveViewController, withCompletion: nil)
-                
-//                SlideNavigationController.sharedInstance().popToRootAndSwitch(to: moveViewController, withSlideOutAnimation: nil, andCompletion: nil)
                 print("GetFreeRides")
                 break
             case 4:
-                let obj : SettingViewController = SettingViewController(nibName: "SettingViewController", bundle: nil)
+                let obj : SettingViewController = SettingViewController(nibName: "SettingViewController", bundle: nil) as SettingViewController
                 SlideNavigationController.sharedInstance().popToRootAndSwitch(to: obj, withCompletion: nil)
             case 5:
                 let moveViewController : ContactUSController = ContactUSController(nibName: "ContactUSController", bundle: nil)
@@ -161,11 +160,12 @@ class LeftMenuViewController: UIViewController, UITableViewDelegate, UITableView
                 let obje: AllRides = AllRides(nibName: "AllRides", bundle: nil) as AllRides
                 SlideNavigationController.sharedInstance().popToRootAndSwitch(to: obje, withCompletion: nil)
             case 2:
-                USER_DEFAULT.set("0", forKey: "isLogin")
-                AppDelegateVariable.appDelegate.sliderMenuControllser()
-                
+                //                USER_DEFAULT.set("0", forKey: "isLogin")
+                //                AppDelegateVariable.appDelegate.sliderMenuControllser()
+                self.FireAPI()
             case 3:
-                print("Tawsila")
+                let obje : SettingViewController = SettingViewController(nibName: "SettingViewController", bundle: nil) as SettingViewController
+                SlideNavigationController.sharedInstance().popToRootAndSwitch(to: obje, withCompletion: nil)
             default:
                 print("ViewController not Found.")
             }
@@ -174,10 +174,76 @@ class LeftMenuViewController: UIViewController, UITableViewDelegate, UITableView
     
     @IBAction func switchOnlineAndOffline(_ sender:UISwitch) {
         if sender.isOn {
-            lblGoOnlineAndOffline.text = "Go Online"
+            lblGoOnlineAndOffline.text = "Go Offline "
+            self.changeDriveStatus("online")
         }
         else{
-            lblGoOnlineAndOffline.text = "Go Offline"
+            lblGoOnlineAndOffline.text = "Go Online"
+            self.changeDriveStatus("offline")
+        }
+    }
+    
+    // SignOut user from driver side
+    func FireAPI()
+    {
+        let dic = NSMutableDictionary()
+        dic.setValue(USER_ID, forKey: "id")
+        if userType == "driver" {
+            dic.setValue("driver", forKey: "usertype")
+        }else{
+            dic.setValue("user", forKey: "usertype")
+        }
+        // RappleActivityIndicatorView.startAnimatingWithLabel("Processing...", attributes: RappleAppleAttributes)
+        
+        var parameterString = String(format : "logout")
+        
+        for (key, value) in dic
+        {
+            parameterString = String (format: "%@&%@=%@", parameterString,key as! CVarArg,value as! CVarArg)
+        }
+        
+        
+        Utility.sharedInstance.postDataInJson(header: parameterString,  withParameter:dic ,inVC: self) { (dataDictionary, msg, status) in
+            
+            if status == true
+            {
+                USER_DEFAULT.set("0", forKey: "isLogin")
+                AppDelegateVariable.appDelegate.sliderMenuControllser()
+                
+            }
+            else
+            {
+                Utility.sharedInstance.showAlert(kAPPName, msg: msg as String, controller: self)
+            }
+        }
+    }
+    
+    // apply drive is offline and online status on switch switch status change
+    func  changeDriveStatus(_ strStatus:String) {
+        let dic = NSMutableDictionary()
+        dic.setValue(USER_ID, forKey: "user_id")
+        dic.setValue("driver", forKey: "usertype")
+        /////http://taxiappsourcecode.com/api/index.php?option=set_driver_offline
+        dic.setValue(strStatus, forKey: "status")
+        // RappleActivityIndicatorView.startAnimatingWithLabel("Processing...", attributes: RappleAppleAttributes)
+        
+        var parameterString = String(format : "set_driver_offline")
+        
+        for (key, value) in dic
+        {
+            parameterString = String (format: "%@&%@=%@", parameterString,key as! CVarArg,value as! CVarArg)
+        }
+        
+        
+        Utility.sharedInstance.postDataInJson(header: parameterString,  withParameter:dic ,inVC: self) { (dataDictionary, msg, status) in
+            
+            if status == true
+            {
+            }
+            else
+            {
+                Utility.sharedInstance.showAlert(kAPPName, msg: msg as String, controller: self)
+            }
         }
     }
 }

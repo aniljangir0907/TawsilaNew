@@ -148,7 +148,7 @@ class rightMenuViewController: UIViewController, UITableViewDelegate, UITableVie
                 print("GetFreeRides")
                 break
             case 4:
-                let obj : SettingViewController = SettingViewController(nibName: "SettingViewController", bundle: nil)
+                let obj : SettingViewController = SettingViewController(nibName: "SettingViewController", bundle: nil) as SettingViewController
                 SlideNavigationController.sharedInstance().popToRootAndSwitch(to: obj, withCompletion: nil)
             case 5:
                 let moveViewController : ContactUSController = ContactUSController(nibName: "ContactUSController", bundle: nil)
