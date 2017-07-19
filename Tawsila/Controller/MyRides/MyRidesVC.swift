@@ -72,7 +72,7 @@ class MyRidesVC: UIViewController , UITableViewDelegate, UITableViewDataSource {
                     for  dic in self.arrayRideData {
                         let dict = dic as! NSDictionary
                    //        Completed,Cancelled ,Booking,Processing
-                        if (((dict.value(forKey: "status") as! String) == "Processing") || ((dict.value(forKey: "status") as! String) == "Booking")){
+                        if (((dict.value(forKey: "status") as! String) == "Processing")){
                             self.arrayCurrentData.add(dict)
                         }else if (((dict.value(forKey: "status") as! String) == "Cancelled") || ((dict.value(forKey: "status") as! String) == "Completed")) {
                             self.arrayCompletedData.add(dict)

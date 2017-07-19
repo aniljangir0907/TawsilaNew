@@ -11,7 +11,9 @@ import UIKit
 import Alamofire
 import RappleProgressHUD
 import CoreLocation
-//import GooglePlaces
+
+//// import GooglePlaces
+
 class Utility
 {
     
@@ -56,7 +58,7 @@ class Utility
     
     func postDataInDataForm(header: String,  inVC vc: UIViewController,  completion: @escaping (_ responce : NSDictionary,_ message : String, _ status : Bool) -> ()) {
         
-        //RappleActivityIndicatorView.startAnimatingWithLabel("Processing...", attributes: RappleAppleAttributes)
+        // RappleActivityIndicatorView.startAnimatingWithLabel("Processing...", attributes: RappleAppleAttributes)
         
         let urlString = NSString(format: "%@%@",BSE_URL,header)
         
@@ -90,16 +92,13 @@ class Utility
                     
                     RappleActivityIndicatorView.stopAnimation()
                 }
-                
-                
+
                 break
-            case .failure(let error):
+            case.failure(let error):
                 print(error)
                 Utility.sharedInstance.showAlert(kAPPName, msg:error.localizedDescription , controller: vc)
                 RappleActivityIndicatorView.stopAnimation()
                 break
-                
-                
             }
         }
         

@@ -53,12 +53,14 @@ class AllRideCell: UITableViewCell {
     }
     
     func setDataOnCell(_ dic: NSDictionary){
+      
         if AppDelegateVariable.appDelegate.strLanguage == "en" {
             lblPrcie.text = "\(dic.value(forKey: "amount") as! String) SAR"
             lblDateTime.text = "\(dic.value(forKey: "pickup_date") as! String)  \(dic.value(forKey: "pickup_time") as! String)"
             lblCarModel.text = "\(dic.value(forKey: "car_type") as! String)"
             lblInitialAddress.text = "\(dic.value(forKey: "pickup_area") as! String)"
             lblDestinationAddress.text = "\(dic.value(forKey: "drop_area") as! String)"
+            
         }else{
             lblPrcieAr.text = "\(dic.value(forKey: "amount") as! String) SAR"
             lblDateTimeAr.text = "\(dic.value(forKey: "pickup_date") as! String)  \(dic.value(forKey: "pickup_time") as! String)"

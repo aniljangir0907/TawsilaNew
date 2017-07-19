@@ -31,6 +31,8 @@ class DriverHomeScreen: UIViewController, GMSMapViewDelegate, SlideNavigationCon
     @IBOutlet var viewMapAr: UIView!
     @IBOutlet var viewEnglish: UIView!
     
+    var dicIds = NSMutableDictionary()
+    
     var booking_id = String()
     var rider_id = String()
     var rider_username = String()
@@ -57,12 +59,18 @@ class DriverHomeScreen: UIViewController, GMSMapViewDelegate, SlideNavigationCon
         locationManager.requestAlwaysAuthorization()
         locationManager.startUpdatingLocation()
         locationManager.desiredAccuracy = kCLLocationAccuracyBest
+        
+        
+        
         self .perform( #selector(self.updateLocation), with: 1, afterDelay: 0)
         
 //        let popUp = Bundle.main.loadNibNamed("PayBillDetails", owner: self, options: nil)![0] as? UIView as! PayBillDetails
 //        popUp.frame = self.view.frame
 //        self.view.addSubview(popUp)
         RappleActivityIndicatorView.startAnimatingWithLabel("Processing...", attributes: RappleAppleAttributes)
+        
+        
+        self.dicIds = DLRadioButton.getDictionary() as! NSMutableDictionary
 
     }
     
@@ -80,6 +88,7 @@ class DriverHomeScreen: UIViewController, GMSMapViewDelegate, SlideNavigationCon
     override func viewWillAppear(_ animated: Bool) {
         setShowAndHideViews(viewEnglish, vArb: viewArabic)
         
+        self .perform( #selector(self.updateLocation), with: 1, afterDelay: 0)
 
         if AppDelegateVariable.appDelegate.id_booking == "cancel"
         {
@@ -170,21 +179,33 @@ class DriverHomeScreen: UIViewController, GMSMapViewDelegate, SlideNavigationCon
                             
                             self.booking_id = (self.array_Booking_List.object(at: 0) as! NSDictionary ).value(forKey: "booking_id") as! String
                             
-                            self.rider_id = (self.array_Booking_List.object(at: 0) as! NSDictionary ).value(forKey: "rider_id") as! String
-                            
+                            self.rider_id =  (self.array_Booking_List.object(at: 0) as! NSDictionary ).value(forKey: "rider_id") as! String
+
                             if (self.booking_id == "517")
                             {
                                 if self.array_Booking_List.count > 1
                                 {
-                                    self.booking_id = (self.array_Booking_List.object(at: 1) as! NSDictionary ).value(forKey: "booking_id") as! String
                                     
-                                    self.rider_id = (self.array_Booking_List.object(at: 1) as! NSDictionary ).value(forKey: "rider_id") as! String
-                                    self.ridePopUp()
+                                    
+
+                                    if (DLRadioButton.isExist( self.booking_id ) == false)
+                                    {
+                                        self.ridePopUp()
+                                        self.dicIds .setValue(self.booking_id, forKey: self.booking_id)
+                                        
+                                        DLRadioButton.saveMutableDictionay(self.dicIds as! [AnyHashable : Any])
+                                    }
+
                                 }
                             }
                             else
                             {
-                                self.ridePopUp()
+                                if (DLRadioButton.isExist(self.booking_id) == false)
+                                {
+                                    self.ridePopUp()
+                                    // self.dicIds.setValue("hello", forKey: self.booking_id as String)
+                                    //DLRadioButton.saveMutableDictionay(self.dicIds as! [AnyHashable : Any])
+                                }
                             }
                         }
                     }

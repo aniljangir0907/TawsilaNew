@@ -135,21 +135,21 @@ class PickUPRideVC: UIViewController , GMSMapViewDelegate , UNUserNotificationCe
         
         lbl_carType.text = car_type
         
-        payPalConfig.acceptCreditCards = true
-        payPalConfig.merchantName = "Tawsila"
-        payPalConfig.merchantPrivacyPolicyURL = URL(string: "https://www.paypal.com/webapps/mpp/ua/privacy-full")
-        payPalConfig.merchantUserAgreementURL = URL(string: "https://www.paypal.com/webapps/mpp/ua/useragreement-full")
-        payPalConfig.languageOrLocale = Locale.preferredLanguages[0]
-        payPalConfig.payPalShippingAddressOption = .payPal;
-        
-        //  self.environment = PayPalEnvironmentSandbox
-        
-        //  apper
-        
-        PayPalMobile.preconnect(withEnvironment: environment)
-        
-        //self.total_amout = "20"
-        //self.perform(#selector(pay), with: "", afterDelay: 0)
+//        payPalConfig.acceptCreditCards = true
+//        payPalConfig.merchantName = "Tawsila"
+//        payPalConfig.merchantPrivacyPolicyURL = URL(string: "https://www.paypal.com/webapps/mpp/ua/privacy-full")
+//        payPalConfig.merchantUserAgreementURL = URL(string: "https://www.paypal.com/webapps/mpp/ua/useragreement-full")
+//        payPalConfig.languageOrLocale = Locale.preferredLanguages[0]
+//        payPalConfig.payPalShippingAddressOption = .payPal;
+//        
+//        //  self.environment = PayPalEnvironmentSandbox
+//        
+//        //  apper
+//        
+//        PayPalMobile.preconnect(withEnvironment: environment)
+//        
+//        //self.total_amout = "20"
+//        //self.perform(#selector(pay), with: "", afterDelay: 0)
         
         if AppDelegateVariable.appDelegate.strLanguage == "ar"
         {
@@ -901,20 +901,21 @@ class PickUPRideVC: UIViewController , GMSMapViewDelegate , UNUserNotificationCe
             if status == true
             {
                 //iToast.makeText(" Review Completed ").show()
+                RappleActivityIndicatorView.stopAnimation()
+
+//                let array : NSArray = dataDictionary .object(forKey: "result") as! NSArray
+//                
+//                var value : Int = 0
+//                 for i in 0 ... (array.count - 1) {
+//                    
+//   // value = value + Int(((array.object(at: i) as! NSDictionary) .object(forKey: "rating") as! NSString ).integerValue);
+//                
+//                    
+//                    // let rate : NSString = userDict.object(forKey: "rating") as! NSString
+//                    
+//                }
                 
-                let array : NSArray = dataDictionary .object(forKey: "result") as! NSArray
-                
-                var value : Int = 0
-                 for i in 0 ... (array.count - 1) {
-                    
-                    value = value + Int(((array.object(at: i) as! NSDictionary) .object(forKey: "rating") as! NSString ).integerValue);
-                
-                    
-                    // let rate : NSString = userDict.object(forKey: "rating") as! NSString
-                    
-                }
-                
-                self.driverRating.rating = UInt(value/array.count)
+                self.driverRating.rating = 5
                 
             }
             else

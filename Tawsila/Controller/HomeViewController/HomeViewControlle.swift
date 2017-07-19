@@ -1145,12 +1145,14 @@
             
             is_accepted = true
             let obj : PickUPRideVC = PickUPRideVC(nibName: "PickUPRideVC", bundle: nil)
+           
+            obj.car_type = (self.arrCars.object(at: self.tagCarType) as! NSDictionary ) .object(forKey: "car_type") as! String
             self.getTopViewController()?.present(obj, animated: true, completion: nil)
-            obj.car_type = (self.arrCars.object(at: tagCarType) as! NSDictionary ) .object(forKey: "car_type") as! String
             
             self.tapCacelBooking("")
             
-            self.getTopViewController()?.navigationController?.pushViewController(obj, animated: true)
+            // self.getTopViewController()?.navigationController?.pushViewController(obj, animated: true)
+          
             // self.performSelector(onMainThread: #selector(self.gotoNextView), with: "", waitUntilDone:true)
             // self.gotoNextView()
         }

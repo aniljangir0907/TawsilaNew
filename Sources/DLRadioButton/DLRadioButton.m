@@ -283,5 +283,30 @@ static BOOL _groupModifing = NO;
     return [dateFormatter stringFromDate:[NSDate date]];
 }
 
++(void)saveMutableDictionay:(NSDictionary *)dic
+{
+    [[NSUserDefaults standardUserDefaults]setObject:dic forKey:@"dicid"];
+}
++(NSDictionary *)getDictionary
+{
+    return [[NSUserDefaults standardUserDefaults]objectForKey:@"dicid"];
+}
+
++(BOOL)isExist:(NSString *)str
+{
+    NSDictionary *dic =[[NSUserDefaults standardUserDefaults]objectForKey:@"dicid"];
+    
+    if ([dic objectForKey:str])
+    {
+        return YES;
+    }
+    
+    NSMutableDictionary *dicm = [NSMutableDictionary dictionaryWithDictionary:dic];
+
+    [dicm setValue:str forKey:str];
+    [[NSUserDefaults standardUserDefaults]setObject:dicm forKey:@"dicid"];
+
+    return NO;
+}
 
 @end

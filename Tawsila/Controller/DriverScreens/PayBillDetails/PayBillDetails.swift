@@ -10,6 +10,7 @@ import UIKit
 
 class PayBillDetails: UIView {
 
+    @IBOutlet var bntGoMyRide: UIButton!
     @IBOutlet weak var lblAmount: UILabel!
     @IBOutlet weak var viewPayBill: UIView!
     @IBOutlet weak var lblAddress: UILabel!
@@ -54,8 +55,8 @@ class PayBillDetails: UIView {
     
     @IBAction func actionGotoRideScreen(_ sender: Any) {
 
-        let obje: AllRides = AllRides(nibName: "AllRides", bundle: nil) as AllRides
-        SlideNavigationController.sharedInstance().popToRootAndSwitch(to: obje, withCompletion: nil)
+//        let obje: AllRides = AllRides(nibName: "AllRides", bundle: nil) as AllRides
+//        SlideNavigationController.sharedInstance().popToRootAndSwitch(to: obje, withCompletion: nil)
         
 //        let obj: AllRides = AllRides(nibName: "AllRides", bundle: nil)
 //   self.selfBack.navigationController?.pushViewController(obj, animated: true)

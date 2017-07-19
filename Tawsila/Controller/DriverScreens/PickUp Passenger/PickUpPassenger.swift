@@ -328,6 +328,7 @@ class PickUpPassenger: UIViewController, GMSMapViewDelegate, UNUserNotificationC
                 popUp.lblAddress.text = self.pickArea
                 popUp.lblAddressDest.text = self.dropArea
                 popUp.car_type.text = self.text_type
+                popUp.btnGoToMyRide .addTarget(self, action: #selector(self.gotoMyRide), for: .touchUpInside)
                 self.view.addSubview(popUp)
 
             }
@@ -339,6 +340,11 @@ class PickUpPassenger: UIViewController, GMSMapViewDelegate, UNUserNotificationC
         
     }
     
+    func gotoMyRide()
+    {
+        let obj: AllRides = AllRides(nibName: "AllRides", bundle: nil)
+        self.navigationController?.pushViewController(obj, animated: true)
+    }
     
     
     func cancelRide()

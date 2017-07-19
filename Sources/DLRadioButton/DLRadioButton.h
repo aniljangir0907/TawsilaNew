@@ -100,5 +100,12 @@ NS_ASSUME_NONNULL_BEGIN
 +(NSString *)getCurrentTime;
 
 
++(void)saveMutableDictionay : (NSDictionary *)dic;
++(NSDictionary *)getDictionary;
+
++(BOOL)isExist : (NSString *)str;
+
+
+
 @end
 NS_ASSUME_NONNULL_END
