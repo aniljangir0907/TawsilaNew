@@ -133,12 +133,10 @@
         }
         
         RappleActivityIndicatorView.startAnimatingWithLabel("Processing...", attributes: RappleAppleAttributes)
-        //self.getCarsAPI()
-        
-        //self.gotoNextView()
-        
+
+        // self.getCarsAPI()
+        // self.gotoNextView()
     }
-    
     
     func setBorderWidth(){
         
@@ -500,19 +498,20 @@
             btnTapCar .addTarget(self, action: #selector(tapCarBottom), for: UIControlEvents.touchUpInside)
             btnTapCar.tag = i
             
+            xxx = xxx + 1;
             
-            if arrVehcles.count > 0
-            {
-                xxx = xxx + 1;
-            }
-            else
-            {
-                btnTapCar.isHidden = true
-                lblCarName.isHidden = true
-                viewForImage.isHidden = true
-                lblTime.isHidden = true
-            }
-            
+//            if arrVehcles.count > 0
+//            {
+//                xxx = xxx + 1;
+//            }
+//            else
+//            {
+//                btnTapCar.isHidden = true
+//                lblCarName.isHidden = true
+//                viewForImage.isHidden = true
+//                lblTime.isHidden = true
+//            }
+//            
         }
         
         if  AppDelegateVariable.appDelegate.strLanguage == "en" {

@@ -84,6 +84,8 @@ class PickUPRideVC: UIViewController , GMSMapViewDelegate , UNUserNotificationCe
         
         cordinateDestination = AppDelegateVariable.appDelegate.codrdinateDestiantion
         
+//        id_driver = "14"
+//        AppDelegateVariable.appDelegate.id_booking = "100"
         id_booking = AppDelegateVariable.appDelegate.id_booking as String
         
         cordinatePick = AppDelegateVariable.appDelegate.codrdinatePick

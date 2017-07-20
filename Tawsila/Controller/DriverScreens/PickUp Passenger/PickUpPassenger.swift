@@ -301,7 +301,7 @@ class PickUpPassenger: UIViewController, GMSMapViewDelegate, UNUserNotificationC
         // http://taxiappsourcecode.com/api/index.php?option=reach_at_pickup_location
         // booking_id=, driver_id=, amount, km, distance, pickup_area, drop_area
         
-        dic.setValue(USER_ID, forKey: "booking_id")
+        dic.setValue(booking_id, forKey: "booking_id")
         dic.setValue(USER_ID, forKey: "driver_id")
         dic.setValue(pickArea, forKey: "pickup_area")
         dic.setValue(dropArea, forKey: "drop_area")

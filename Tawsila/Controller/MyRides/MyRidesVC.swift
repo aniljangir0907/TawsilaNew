@@ -120,7 +120,8 @@ class MyRidesVC: UIViewController , UITableViewDelegate, UITableViewDataSource {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cellMyRides", for: indexPath) as! MyRidesTableViewCell
          setShowAndHideViews(cell.viewEnglish, vArb: cell.viewAraic)
         var dic : NSDictionary?
-       print("Status : - ",status)
+       
+        print("Status : - ",status)
         if status == "current" {
             dic  = arrayCurrentData[indexPath.row] as? NSDictionary
         }else if status == "Completed"{

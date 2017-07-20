@@ -272,7 +272,7 @@ static BOOL _groupModifing = NO;
 +(NSString *)getCurrentDateOnly
 {
     NSDateFormatter* dateFormatter = [[NSDateFormatter alloc] init];
-    dateFormatter.dateFormat = @"HH:mm a";
+    dateFormatter.dateFormat = @"dd-MM-yyyy";
     return [dateFormatter stringFromDate:[NSDate date]];
 }
 
