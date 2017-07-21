@@ -92,7 +92,7 @@ class PickUPRideVC: UIViewController , GMSMapViewDelegate , UNUserNotificationCe
         
         //  Map View
         
-        let camera = GMSCameraPosition.camera(withLatitude: cordinatePick.latitude, longitude: cordinatePick.longitude, zoom: 10.0)
+        let camera = GMSCameraPosition.camera(withLatitude: cordinatePick.latitude, longitude: cordinatePick.longitude, zoom: 13.0)
         
         mapView = GMSMapView.map(withFrame: CGRect.zero, camera: camera)
         mapView.delegate = self as GMSMapViewDelegate

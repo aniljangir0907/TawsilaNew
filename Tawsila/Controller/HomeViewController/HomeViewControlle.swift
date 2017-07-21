@@ -103,7 +103,7 @@
         
         tempTag = 0
         tagBookNow = 0
-        tagCarType = 0
+        tagCarType = 100
         is_LoadCars = true
         is_location = false
         AppDelegateVariable.appDelegate.is_loadCar = 0
@@ -385,7 +385,7 @@
     
     func loadCars(arrayCars: Any)
     {
-        var wd = 80
+        let wd = 80
         var xxx : Int = 0
         
         for i in 0 ... (self.arrCars.count - 1) {
@@ -405,7 +405,7 @@
                if isSellectCarType == false
                {
                     isSellectCarType = true
-                tagCarType = i;
+                    tagCarType = i;
                }
                 
                 
@@ -431,7 +431,7 @@
             }
             else
             {
-                lblTime.text = "0 min"
+                lblTime.text = "offline"
             }
             
             
@@ -675,7 +675,7 @@
         let lat = locationManager.location?.coordinate.latitude
         let lon = locationManager.location?.coordinate.longitude
         
-        let camera = GMSCameraPosition.camera(withLatitude: lat!, longitude: lon!, zoom: 14.0)
+        let camera = GMSCameraPosition.camera(withLatitude: lat!, longitude: lon!, zoom: 13.0)
         mapView = GMSMapView.map(withFrame: CGRect.zero, camera: camera)
         mapView.delegate = self as GMSMapViewDelegate
         mapView.isMyLocationEnabled = true

@@ -122,7 +122,7 @@ class DriverHomeScreen: UIViewController, GMSMapViewDelegate, SlideNavigationCon
         let lat = locationManager.location?.coordinate.latitude
         let lon = locationManager.location?.coordinate.longitude
         
-        let camera = GMSCameraPosition.camera(withLatitude: lat!, longitude: lon!, zoom: 14.0)
+        let camera = GMSCameraPosition.camera(withLatitude: lat!, longitude: lon!, zoom: 13.0)
         mapView = GMSMapView.map(withFrame: CGRect.zero, camera: camera)
         mapView.delegate = self as GMSMapViewDelegate
         mapView.isMyLocationEnabled = true
