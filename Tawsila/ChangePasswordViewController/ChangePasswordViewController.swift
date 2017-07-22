@@ -89,8 +89,6 @@ class ChangePasswordViewController: UIViewController, UITextFieldDelegate
     
     func changePassword()
     {
-        
-        
         if  Reachability.isConnectedToNetwork() == false
         {
             Utility.sharedInstance.showAlert("Alert", msg: "Internet Connection not Availabel!", controller: self)
@@ -133,19 +131,15 @@ class ChangePasswordViewController: UIViewController, UITextFieldDelegate
             {
                 Utility.sharedInstance.showAlert(kAPPName, msg: msg as String, controller: self)
             }
-            
         }
-        
-        
     }
     
     // MARK: - UITextFieldDelegate implement
-    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool  {
         return textField.resignFirstResponder()
     }
     
-    func textFieldShouldEndEditing(_ textField: UITextField) -> Bool {
-        
+    func textFieldShouldEndEditing(_ textField: UITextField) -> Bool  {
         return true
     }
     

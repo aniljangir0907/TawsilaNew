@@ -34,7 +34,7 @@ class ShareAppViewController: UIViewController {
     }
     
     @IBAction func actionInviteFriends(_ sender: Any) {
-        let strText : String = "Let me recommend you this application\n\n\n http://chauffeur-taxi.com/tawadmin/ "
+        let strText : String = "Let me recommend you this application check out my app at https://play.google.com/store/apps/details?id=com.chauffeur.in"
         
         let activityViewController = UIActivityViewController(activityItems: [strText], applicationActivities: nil)
         activityViewController.popoverPresentationController?.sourceView = self.view // so that iPads won't crash

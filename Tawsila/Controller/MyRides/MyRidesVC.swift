@@ -44,6 +44,11 @@ class MyRidesVC: UIViewController , UITableViewDelegate, UITableViewDataSource {
     
     func getAllMyRide()
     {
+        self.arrayCurrentData.removeAllObjects()
+        self.arrayRideData.removeAllObjects()
+        self.arrayCompletedData.removeAllObjects()
+        self.arrayScheduledData.removeAllObjects()
+        
         if  Reachability.isConnectedToNetwork() == false
         {
             Utility.sharedInstance.showAlert("Alert", msg: "Internet Connection not Availabel!", controller: self)
@@ -54,13 +59,10 @@ class MyRidesVC: UIViewController , UITableViewDelegate, UITableViewDataSource {
         let parameterString = String(format : "get_user_booking&username=%@",((USER_DEFAULT.object(forKey: "userData") as! NSDictionary).object(forKey: "username") as? String)!)
         
         Utility.sharedInstance.postDataInDataForm(header: parameterString, inVC: self) { (dataDictionary, msg, status) in
-            
+            RappleActivityIndicatorView.startAnimatingWithLabel("Processing...", attributes: RappleAppleAttributes)
             if status == true
             {
                 let userDict = dataDictionary.object(forKey: "result") as! NSArray
-                
-                print(userDict.count)
-                print(userDict)
                 if msg == "No record found"
                 {
                     Utility.sharedInstance.showAlert(kAPPName, msg: msg as String, controller: self)
@@ -88,8 +90,10 @@ class MyRidesVC: UIViewController , UITableViewDelegate, UITableViewDataSource {
                         self.tblMyRidesAr.reloadData()
                     }
                 }
+                RappleActivityIndicatorView.stopAnimation()
             }
             else {
+                RappleActivityIndicatorView.stopAnimation()
                 Utility.sharedInstance.showAlert(kAPPName, msg: msg as String, controller: self)
             }
         }
