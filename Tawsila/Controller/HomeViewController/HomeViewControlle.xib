@@ -290,6 +290,22 @@
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxX="YES" heightSizable="YES"/>
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         </view>
+                        <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Kev-z0-xMG">
+                            <rect key="frame" x="2" y="466" width="55" height="67"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                            <state key="normal" image="share_home"/>
+                            <connections>
+                                <action selector="actionShareApp:" destination="-1" eventType="touchUpInside" id="AbP-kR-6Ce"/>
+                            </connections>
+                        </button>
+                        <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IKp-83-brM">
+                            <rect key="frame" x="322" y="466" width="53" height="67"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <state key="normal" image="current_loc"/>
+                            <connections>
+                                <action selector="tapCurrentLocation:" destination="-1" eventType="touchUpInside" id="Ufm-zq-ow2"/>
+                            </connections>
+                        </button>
                         <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Lxi-MI-2EQ" userLabel="ViewHeader">
                             <rect key="frame" x="0.0" y="0.0" width="375" height="64"/>
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
@@ -519,14 +535,6 @@
                             </subviews>
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         </view>
-                        <button hidden="YES" opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Kev-z0-xMG">
-                            <rect key="frame" x="8" y="438" width="45" height="67"/>
-                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
-                            <state key="normal" image="share_home"/>
-                            <connections>
-                                <action selector="actionShareApp:" destination="-1" eventType="touchUpInside" id="AbP-kR-6Ce"/>
-                            </connections>
-                        </button>
                     </subviews>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                 </view>
@@ -537,6 +545,7 @@
     </objects>
     <resources>
         <image name="Search" width="25" height="25"/>
+        <image name="current_loc" width="50" height="50"/>
         <image name="dotGreen" width="25" height="24"/>
         <image name="markerStable" width="50" height="100"/>
         <image name="menu" width="26" height="14"/>
