@@ -136,6 +136,8 @@
 
         // self.getCarsAPI()
         // self.gotoNextView()
+        
+        
     }
     
     func setBorderWidth(){
@@ -756,6 +758,16 @@
             }
         }
     }
+    
+    @IBAction func tapCurrentLocation(_ sender: Any)
+    {
+        let lat = locationManager.location?.coordinate.latitude
+        let lon = locationManager.location?.coordinate.longitude
+        
+        let camera = GMSCameraPosition.camera(withLatitude: lat!, longitude: lon!, zoom: 13.0)
+        mapView.animate(to: camera)
+    }
+    
     
     // MARK: - Confirm Booiking Method
     // MARK:

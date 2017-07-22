@@ -46,7 +46,7 @@ class PickUPRideVC: UIViewController , GMSMapViewDelegate , UNUserNotificationCe
     var bounds = GMSCoordinateBounds()
     
     var addressDrop : String!
-    
+    var dvrPhone = String()
     var is_fill = Bool()
     var is_path = Bool()
     var is_Ride_Start = Bool()
@@ -189,7 +189,7 @@ class PickUPRideVC: UIViewController , GMSMapViewDelegate , UNUserNotificationCe
     
     @IBAction func tapCall(_ sender: Any) {
         
-        let number = URL(string: "tel://1234" )
+        let number = URL(string:  "tel://"+dvrPhone )
         UIApplication.shared.open(number!)
         
     }
@@ -441,8 +441,10 @@ class PickUPRideVC: UIViewController , GMSMapViewDelegate , UNUserNotificationCe
                     self.lblCarType_bill.text = userDict.object(forKey: "car_type") as? String
                     self.lbl_driverName.text = userDict.object(forKey: "user_name") as? String
                     self.lbl_car_number.text = userDict.object(forKey: "car_no") as? String
-                    
+                    self.dvrPhone = (userDict.object(forKey: "phone") as? String)!
+
                     self.lbl_carType.text =  userDict.object(forKey: "car_type") as? String
+                    // phone
                     
                 }
                 
