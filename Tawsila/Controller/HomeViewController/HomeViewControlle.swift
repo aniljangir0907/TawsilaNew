@@ -1210,9 +1210,28 @@
         }
     }
     
-    @IBAction func actionShareApp(_ sender: Any) {
-        
-    }
+    @IBAction func actionShareApp(_ sender: Any)
+        {
+            let strText : String = "Let me recommend you this application check out my app at https://play.google.com/store/apps/details?id=com.chauffeur.in"
+            
+            let activityViewController = UIActivityViewController(activityItems: [strText], applicationActivities: nil)
+            activityViewController.popoverPresentationController?.sourceView = self.view // so that iPads won't crash
+            
+            // exclude some activity types from the list (optional)
+            activityViewController.excludedActivityTypes = [ UIActivityType.postToFacebook,
+                                                             UIActivityType.postToTwitter,
+                                                             UIActivityType.postToWeibo,
+                                                             UIActivityType.message,
+                                                             UIActivityType.mail,
+                                                             UIActivityType.postToFlickr,
+                                                             UIActivityType.postToVimeo,
+                                                             UIActivityType.postToTencentWeibo,
+                                                             UIActivityType.airDrop,
+                                                             UIActivityType.openInIBooks]
+            
+            // present the view controller
+            self.present(activityViewController, animated: true, completion: nil)
+        }
     
     @IBAction func tapPaymentMethod(_ sender: Any) {
         
