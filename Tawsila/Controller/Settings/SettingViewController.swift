@@ -128,7 +128,15 @@ class SettingViewController: UIViewController {
     }
     
     @IBAction func actionRateAndReview(_ sender: Any) {
+        if let url = URL(string: "itms-apps://itunes.apple.com/app/id1261446199"), UIApplication.shared.canOpenURL(url) {
+            if #available(iOS 10, *) {
+                UIApplication.shared.open(url)
+            } else {
+                UIApplication.shared.openURL(url)
+            }
+        }
     }
+    
     @IBAction func actionFeedback(_ sender: Any) {
     }
     
