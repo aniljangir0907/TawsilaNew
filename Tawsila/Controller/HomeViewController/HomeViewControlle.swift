@@ -197,8 +197,8 @@
         AppDelegateVariable.appDelegate.is_loadCar = 0
         setShowAndHideViews(viewEnglish, vArb: viewArabic)
        
-        let ratone = USER_DEFAULT.object(forKey: "rateOne") as? String
-        
+        var ratone = USER_DEFAULT.object(forKey: "rateOne") as? String
+        ratone = "1";
         if (ratone != nil )
         {
             if ratone == "1"

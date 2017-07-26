@@ -51,7 +51,7 @@ class PickUPRideVC: UIViewController , GMSMapViewDelegate , UNUserNotificationCe
     var is_path = Bool()
     var is_Ride_Start = Bool()
     var is_complete = Bool()
-    
+    var is_pathed = Bool()
     var reason = String()
     
     var polyline = GMSPolyline()
@@ -83,6 +83,7 @@ class PickUPRideVC: UIViewController , GMSMapViewDelegate , UNUserNotificationCe
         is_fill = false
         is_Ride_Start = false
         is_complete = false
+        is_pathed = false
         
         cordinateDestination = AppDelegateVariable.appDelegate.codrdinateDestiantion
         
@@ -203,7 +204,6 @@ class PickUPRideVC: UIViewController , GMSMapViewDelegate , UNUserNotificationCe
         }
         
         let noAction: UIAlertAction = UIAlertAction(title: "No", style: .default) { action -> Void in
-            
             
             
         }
@@ -490,10 +490,13 @@ class PickUPRideVC: UIViewController , GMSMapViewDelegate , UNUserNotificationCe
                 
                 self.mapView.animate(with: GMSCameraUpdate.fit(self.bounds, withPadding: 100))
                 
-                for index in 1...Int((self.path.count()))
-                    
+                
+                if (self.is_pathed == true)
                 {
-                    self.bounds = self.bounds.includingCoordinate((self.path.coordinate(at: UInt(index))))
+                    for index in 1...Int((self.path.count()))
+                    {
+                        self.bounds = self.bounds.includingCoordinate((self.path.coordinate(at: UInt(index))))
+                    }
                 }
                 self.bounds = self.bounds.includingCoordinate(self.cordinatePick)
                 self.bounds = self.bounds.includingCoordinate(cordinate)
@@ -586,7 +589,6 @@ class PickUPRideVC: UIViewController , GMSMapViewDelegate , UNUserNotificationCe
                             
                             if (self.is_path == true)
                             {
-                                
                                 let value : NSDictionary = dic.object(forKey: "overview_polyline") as! NSDictionary
                                 let polyString : String = value.object(forKey: "points") as! String
                                 self.is_path = false
@@ -644,6 +646,7 @@ class PickUPRideVC: UIViewController , GMSMapViewDelegate , UNUserNotificationCe
         
         mapView.animate(with: GMSCameraUpdate.fit(bounds, withPadding: 100))
         
+        self.is_pathed = true
         
         
         //        let marker_pick = GMSMarker()
