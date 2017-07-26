@@ -26,7 +26,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Tawsila/Controller/BookingviewController/bookingViewController.swift"
-            timestampString = "522766488.135535"
+            timestampString = "522770020.905307"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "64"
@@ -42,11 +42,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Tawsila/Controller/BookingviewController/bookingViewController.swift"
-            timestampString = "522766544.834712"
+            timestampString = "522770419.43286"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "149"
-            endingLineNumber = "149"
+            startingLineNumber = "189"
+            endingLineNumber = "189"
             landmarkName = "getBookingDetails()"
             landmarkType = "7">
          </BreakpointContent>
@@ -58,11 +58,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Tawsila/Controller/BookingviewController/bookingViewController.swift"
-            timestampString = "522766548.200538"
+            timestampString = "522770419.43286"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "147"
-            endingLineNumber = "147"
+            startingLineNumber = "187"
+            endingLineNumber = "187"
             landmarkName = "getBookingDetails()"
             landmarkType = "7">
             <Locations>
@@ -74,11 +74,11 @@
                   moduleName = "Tawsila"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/vikramsinghcharan/Documents/GitHub/TawsilaNew/Tawsila/Controller/BookingviewController/bookingViewController.swift"
-                  timestampString = "522767628.349836"
+                  timestampString = "522770421.063187"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "147"
-                  endingLineNumber = "147"
+                  startingLineNumber = "187"
+                  endingLineNumber = "187"
                   offsetFromSymbolStart = "2880">
                </Location>
                <Location
@@ -89,14 +89,30 @@
                   moduleName = "Tawsila"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/vikramsinghcharan/Documents/GitHub/TawsilaNew/Tawsila/Controller/BookingviewController/bookingViewController.swift"
-                  timestampString = "522767628.351688"
+                  timestampString = "522770421.066531"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "149"
-                  endingLineNumber = "149"
+                  startingLineNumber = "189"
+                  endingLineNumber = "189"
                   offsetFromSymbolStart = "40">
                </Location>
             </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Tawsila/Controller/BookingviewController/bookingViewController.swift"
+            timestampString = "522770394.924435"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "123"
+            endingLineNumber = "123"
+            landmarkName = "setDataOnViewController(_:)"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>
