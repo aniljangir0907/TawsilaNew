@@ -38,7 +38,7 @@
                             <nil key="highlightedColor"/>
                         </label>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="فاتورة الأجرة" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Zsi-Ez-rhj">
-                            <rect key="frame" x="89.5" y="10" width="100" height="21"/>
+                            <rect key="frame" x="90" y="10" width="100" height="21"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="21" id="2wn-qJ-eSo"/>
                                 <constraint firstAttribute="width" constant="100" id="agx-82-mE5"/>
@@ -162,7 +162,7 @@
                             <nil key="highlightedColor"/>
                         </label>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="PAY BILL" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CVq-j5-glq">
-                            <rect key="frame" x="89.5" y="10" width="100" height="21"/>
+                            <rect key="frame" x="90" y="10" width="100" height="21"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="21" id="9xv-GI-iDm"/>
                                 <constraint firstAttribute="width" constant="100" id="sbZ-yc-hKr"/>
@@ -293,7 +293,7 @@
                 <constraint firstAttribute="trailing" secondItem="hmv-zR-d5c" secondAttribute="trailing" constant="20" id="vMA-rV-2Ou"/>
             </constraints>
             <connections>
-                <outlet property="bntGoMyRide" destination="PYt-F7-Sdc" id="EkA-qv-rXu"/>
+                <outlet property="btnGoToMyRide" destination="PYt-F7-Sdc" id="V0r-a3-kxt"/>
                 <outlet property="btnGoToMyRideAr" destination="4FX-Za-G6W" id="EmD-RO-dvh"/>
                 <outlet property="car_type" destination="yH5-MR-VFT" id="hyR-UJ-Bgp"/>
                 <outlet property="lblAddress" destination="Nid-S7-JEv" id="kPi-A4-t5L"/>

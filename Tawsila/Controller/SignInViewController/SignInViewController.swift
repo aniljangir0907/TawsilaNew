@@ -79,8 +79,6 @@ class SignInViewController: UIViewController {
             return
         }
         
-        
-        
         if  AppDelegateVariable.appDelegate.strLanguage == "en" {
             if (Utility.sharedInstance.trim(txtEmail.text!)).characters.count == 0 {
                 Utility.sharedInstance.showAlert("Alert", msg: "Please enter your email.", controller: self)

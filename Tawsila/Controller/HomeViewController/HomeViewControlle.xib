@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12121" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12121" systemVersion="16D30" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -21,6 +21,7 @@
             <connections>
                 <outlet property="btnCancel" destination="7Up-yb-izc" id="DL7-El-erE"/>
                 <outlet property="btnCancelAr" destination="Se3-m4-rSS" id="QIu-h7-UEF"/>
+                <outlet property="btnCurrentLoc" destination="IKp-83-brM" id="fb0-6L-OTK"/>
                 <outlet property="buttonConfirmBooking" destination="E8c-pP-Jbc" id="JPw-r2-D60"/>
                 <outlet property="buttonConfirmBookingAr" destination="Msc-mJ-6bo" id="jiy-VU-5Fl"/>
                 <outlet property="icon_pay_media" destination="3Hc-Ni-08q" id="PXT-ox-pbJ"/>
@@ -291,16 +292,16 @@
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         </view>
                         <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Kev-z0-xMG">
-                            <rect key="frame" x="2" y="466" width="55" height="67"/>
+                            <rect key="frame" x="2" y="471" width="55" height="67"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                             <state key="normal" image="share_home"/>
                             <connections>
                                 <action selector="actionShareApp:" destination="-1" eventType="touchUpInside" id="AbP-kR-6Ce"/>
                             </connections>
                         </button>
-                        <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IKp-83-brM">
+                        <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IKp-83-brM">
                             <rect key="frame" x="322" y="466" width="53" height="67"/>
-                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMinY="YES"/>
                             <state key="normal" image="current_loc"/>
                             <connections>
                                 <action selector="tapCurrentLocation:" destination="-1" eventType="touchUpInside" id="Ufm-zq-ow2"/>

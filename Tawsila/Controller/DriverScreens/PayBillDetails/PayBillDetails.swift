@@ -10,7 +10,6 @@ import UIKit
 
 class PayBillDetails: UIView {
 
-    @IBOutlet var bntGoMyRide: UIButton!
     @IBOutlet weak var lblAmount: UILabel!
     @IBOutlet weak var viewPayBill: UIView!
     @IBOutlet weak var lblAddress: UILabel!

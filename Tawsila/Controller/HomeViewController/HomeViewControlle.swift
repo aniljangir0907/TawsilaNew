@@ -14,7 +14,7 @@
  import SDWebImage
  import UserNotifications
  
- class HomeViewControlle: UIViewController ,GMSMapViewDelegate ,SlideNavigationControllerDelegate ,GMSAutocompleteViewControllerDelegate ,notificationDelegate , UNUserNotificationCenterDelegate {
+ class HomeViewControlle: UIViewController ,GMSMapViewDelegate ,SlideNavigationControllerDelegate ,GMSAutocompleteViewControllerDelegate, UNUserNotificationCenterDelegate {
     
     var mapView: GMSMapView!
     
@@ -97,6 +97,8 @@
     
     var isSellectCarType = Bool()
     
+    @IBOutlet var btnCurrentLoc: UIButton!
+    
     override func viewDidLoad()
     {
         super.viewDidLoad()
@@ -110,10 +112,6 @@
         dictMarker = NSMutableDictionary()
         isSellectCarType = false
         setBorderWidth()
-        
-        let appDelegate = UIApplication.shared.delegate as! AppDelegate
-        //let aVariable = appDelegate.delegate
-        appDelegate.delegate = self
         
         // -- Locaton Manager
         
@@ -666,7 +664,6 @@
         obj.rateInitial = self.initialRate;
         obj.rateStandred = self.standredRate;
         navigationController?.pushViewController(obj, animated: true)
-        
     }
     
     // MARK:
@@ -674,6 +671,7 @@
     
     func updateLocation()
     {
+        btnCurrentLoc.isEnabled = true
         let lat = locationManager.location?.coordinate.latitude
         let lon = locationManager.location?.coordinate.longitude
         
@@ -761,6 +759,7 @@
     
     @IBAction func tapCurrentLocation(_ sender: Any)
     {
+        
         let lat = locationManager.location?.coordinate.latitude
         let lon = locationManager.location?.coordinate.longitude
         
@@ -791,12 +790,13 @@
             dic.setValue(DLRadioButton.getCurrentDateOnly(), forKey: "pickup_date")
             dic.setValue(DLRadioButton.getCurrentTime(), forKey: "pickup_time")
             dic.setValue((self.arrCars.object(at: tagCarType) as! NSDictionary ) .object(forKey: "car_type") as! String, forKey: "taxi_type")
+            
             dic.setValue("05:05:77 am", forKey: "departure_time")
             dic.setValue("28/07/2017", forKey: "departure_date")
             dic.setValue("15", forKey: "distance")
             dic.setValue("100", forKey: "amount")
             dic.setValue("jaipur", forKey: "address")
-            dic.setValue("Cash", forKey: "payment_media")
+            dic.setValue(payMedia, forKey: "payment_media")
             dic.setValue("15", forKey: "km")
             
             dic.setValue(String (format: "%f", (mapView.myLocation?.coordinate.latitude)!), forKey: "lat")
@@ -1123,20 +1123,7 @@
         CATransaction.commit()
     }
     
-    
     // MARK: - Notification Delegate
-    
-    func gotNotification(title:String) {
-        
-        print("hello")
-        
-        if title == "accept_booking" {
-            
-            self.performSelector(onMainThread: #selector(self.gotoNextView), with: "", waitUntilDone:true)
-            self.gotoNextView()
-        }
-        
-    }
     
     func userNotificationCenter(_ center: UNUserNotificationCenter, willPresent notification: UNNotification, withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void)
     {
@@ -1151,7 +1138,6 @@
         
         if title == "accept_booking"
         {
-            
             self.viewWaiting.removeFromSuperview()
             
             is_accepted = true
@@ -1162,10 +1148,6 @@
             
             self.tapCacelBooking("")
             
-            // self.getTopViewController()?.navigationController?.pushViewController(obj, animated: true)
-          
-            // self.performSelector(onMainThread: #selector(self.gotoNextView), with: "", waitUntilDone:true)
-            // self.gotoNextView()
         }
         
         if(application.applicationState == .active) {
@@ -1289,14 +1271,11 @@
             self.payMedia = "Cash";
             self.lblpayMedia.text = "Cash"
             self.icon_pay_media.image = #imageLiteral(resourceName: "cash_icon")
-            
         }
-        
         
         let cancelAction: UIAlertAction = UIAlertAction(title: "Cancel", style: .cancel) { action -> Void in
             
             //Just dismiss the action sheet
-            
         }
         
         actionSheetController.addAction(action0)
@@ -1304,7 +1283,6 @@
         
         actionSheetController.addAction(cancelAction)
         self.present(actionSheetController, animated: true, completion: nil)
-        
     }
  }
  

@@ -41,7 +41,7 @@ class DriverHomeScreen: UIViewController, GMSMapViewDelegate, SlideNavigationCon
     
     var array_Booking_List = NSArray()
     
-    var  is_accepted = Bool()
+    var  mode = Bool()
     
     var  is_popup = Bool()
     
@@ -53,7 +53,7 @@ class DriverHomeScreen: UIViewController, GMSMapViewDelegate, SlideNavigationCon
         super.viewDidLoad()
         // -- Locaton Manager
         
-        is_accepted = false
+        mode = false
         is_location = false
         locationManager.requestWhenInUseAuthorization()
         locationManager.requestAlwaysAuthorization()
@@ -82,16 +82,25 @@ class DriverHomeScreen: UIViewController, GMSMapViewDelegate, SlideNavigationCon
     override func viewDidAppear(_ animated: Bool) {
         
         super .viewDidAppear(true)
+    }
+    
+    override func viewDidDisappear(_ animated: Bool) {
         
+        super .viewDidDisappear(true)
+
+        self.mode = true
+
     }
     
     override func viewWillAppear(_ animated: Bool) {
         setShowAndHideViews(viewEnglish, vArb: viewArabic)
-        
+        self.mode = false
+        self.is_popup = false
         self .perform( #selector(self.updateLocation), with: 1, afterDelay: 0)
 
         if AppDelegateVariable.appDelegate.id_booking == "cancel"
         {
+            self.mode = false
             Utility.sharedInstance.showAlert(kAPPName, msg: "Ride cancelled by Rider", controller: self)
             AppDelegateVariable.appDelegate.id_booking = "NO";
 
@@ -158,14 +167,14 @@ class DriverHomeScreen: UIViewController, GMSMapViewDelegate, SlideNavigationCon
         
         Utility.sharedInstance.postDataInDataForm(header: parameterString, inVC: self) { (dataDictionary, msg, status) in
             
-            if self.is_accepted == false
+            if self.mode == false
             {
                 self.perform( #selector(self.perform_update_location), with: 1, afterDelay: 1)
             }
             
             if status == true
             {
-                if self.is_accepted == false && self.is_popup == false
+                if self.mode == false && self.is_popup == false
                 {
                     
                     self.array_Booking_List = dataDictionary.value(forKey: "result") as! NSArray
@@ -241,7 +250,7 @@ class DriverHomeScreen: UIViewController, GMSMapViewDelegate, SlideNavigationCon
     {
         if value == true
         {
-            is_accepted = true
+            mode = true
             self.getRiderDetail()
         }
         else
@@ -315,13 +324,13 @@ class DriverHomeScreen: UIViewController, GMSMapViewDelegate, SlideNavigationCon
                 obj.booking_id = self.booking_id
                 obj.rider_id = self.rider_id
                 obj.rider_username = self.rider_username
-                self.present(obj, animated: true, completion: nil)
+                self.navigationController?.pushViewController(obj, animated: true)
                 
             }
             else
             {
                 self.is_popup = false
-                self.is_accepted = false
+                self.mode = false
                 self.perform( #selector(self.perform_update_location), with: 1, afterDelay: 1)
                 
                 Utility.sharedInstance.showAlert(kAPPName, msg: msg as String, controller: self)
