@@ -91,8 +91,8 @@ class bookingViewController: UIViewController {
        
         let numberFormatter = NumberFormatter()
         let number = numberFormatter.number(from: dic.value(forKey: "amount") as! String)
-       
         let fareRide =  (number?.floatValue)! - 10.0
+    
         if AppDelegateVariable.appDelegate.strLanguage == "en" {
             lblAmout.text = "\(dic.value(forKey: "amount")  as! String ) SAR"
             lblHours.text = "\(dic.value(forKey: "km")  as! String)"
@@ -111,7 +111,7 @@ class bookingViewController: UIViewController {
             lblDestinationLocationAr.text =  "\(dic.value(forKey: "drop_area")   as! String)"
             lblRideFareAr.text = "\(fareRide) SAR"
             lblTotalBillAr.text = "\(dic.value(forKey: "amount")   as! String) SAR"
-            lblPaymentMediaAr.text = "\( dic.value(forKey: "payment_media")  as! String) Payment"
+            lblPaymentMediaAr.text = "Paid via \( dic.value(forKey: "payment_media")  as! String)"
         
         }
         

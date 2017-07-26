@@ -78,7 +78,6 @@ class LeftMenuViewController: UIViewController, UITableViewDelegate, UITableView
                 cell.lblTitle.isHidden = true
                 let driverStatus = USER_DEFAULT.object(forKey: "driverstatus") as! String
                 lblGoOnlineAndOffline = UILabel.init(frame: CGRect(x: 20, y: 10, width: cell.frame.size.width-100, height: 38))
-                
                 cell.addSubview(lblGoOnlineAndOffline)
                 switchOnLineOffline = UISwitch.init(frame: CGRect(x: cell.frame.size.width-80, y: 10, width: 60, height: 38))
                 switchOnLineOffline.onTintColor = UIColor.init(red: 255.0/255.0, green: 0/255.0, blue: 141.0/255.0, alpha: 1.0)
@@ -230,7 +229,6 @@ class LeftMenuViewController: UIViewController, UITableViewDelegate, UITableView
         {
             parameterString = String (format: "%@&%@=%@", parameterString,key as! CVarArg,value as! CVarArg)
         }
-        
         
         Utility.sharedInstance.postDataInJson(header: parameterString,  withParameter:dic ,inVC: self) { (dataDictionary, msg, status) in
             

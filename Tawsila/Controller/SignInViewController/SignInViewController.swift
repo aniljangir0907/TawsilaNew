@@ -144,18 +144,21 @@ class SignInViewController: UIViewController {
                 
                 let user_id : String = userDict .object(forKey: "id") as! String
                 var user_name : String!
+                USER_DEFAULT.set(user_id, forKey: "user_id")
                 
                 if (self.userType == "driver")
                 {
+                    RappleActivityIndicatorView.startAnimatingWithLabel("Processing...", attributes: RappleAppleAttributes)
                     user_name  = userDict .object(forKey: "user_name") as! String
                     USER_DEFAULT.set(userDict.object(forKey: "is_offline"), forKey: "driverstatus")
+                    self.changeDriveStatus("online")
                 }
                 else
                 {
                     user_name  = userDict .object(forKey: "username") as! String
                 }
 
-                USER_DEFAULT.set(user_id, forKey: "user_id")
+          
                 USER_DEFAULT.set(user_name, forKey: "user_name")
                 USER_DEFAULT.set("1", forKey: "isLogin")
                 USER_DEFAULT.set(userDict, forKey: "userData")
@@ -175,8 +178,38 @@ class SignInViewController: UIViewController {
             }
         }
     }
-//        let obj : HomeViewControlle = HomeViewControlle(nibName: "HomeViewControlle", bundle: nil)
-//        navigationController?.pushViewController(obj, animated: true)
-   // }
+
+    
+    func  changeDriveStatus(_ strStatus:String) {
+        
+        let dic = NSMutableDictionary()
+        dic.setValue(USER_ID, forKey: "user_id")
+        dic.setValue("driver", forKey: "usertype")
+        /////http://taxiappsourcecode.com/api/index.php?option=set_driver_offline
+        dic.setValue(strStatus, forKey: "status")
+        
+        var parameterString = String(format : "set_driver_offline")
+        for (key, value) in dic
+        {
+            parameterString = String (format: "%@&%@=%@", parameterString,key as! CVarArg,value as! CVarArg)
+        }
+        print(dic)
+        Utility.sharedInstance.postDataInJson(header: parameterString,  withParameter:dic ,inVC: self) { (dataDictionary, msg, status) in
+            
+            if  strStatus == "online" {
+                USER_DEFAULT.set("No", forKey: "driverstatus")
+            }else{
+                USER_DEFAULT.set("Yes", forKey: "driverstatus")
+            }
+            if status == true
+            {
+            }
+            else
+            {
+                Utility.sharedInstance.showAlert(kAPPName, msg: msg as String, controller: self)
+            }
+        }
+    }
+
 
 }
