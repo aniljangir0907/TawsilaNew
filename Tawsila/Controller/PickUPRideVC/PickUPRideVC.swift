@@ -151,32 +151,35 @@ class PickUPRideVC: UIViewController , GMSMapViewDelegate , UNUserNotificationCe
             tapButtonOK .setTitle("حسنا", for: .normal);
         }
         
-        RappleActivityIndicatorView.startAnimatingWithLabel("Processing...", attributes: RappleAppleAttributes)
-        self.perform(#selector(getBockingDetail), with: "", afterDelay: 0)
-        // self.getDriverRating()
-        
-    }
+           }
     
     override func viewWillAppear(_ animated: Bool) {
-        
-        USER_DEFAULT .set("0", forKey: "rateOne")
-        
+                
         
         if AppDelegateVariable.appDelegate.strLanguage == "ar"
         {
             lbltitle.text = "فاتورتك";
         }
         
-        if (USER_DEFAULT .object(forKey: "rateOne") as! String) == "1"
+        
+        let ratone = USER_DEFAULT.object(forKey: "rateOne") as? String
+        // ratone = "1";
+        if ratone == "1"
         {
             
             self.is_complete = true
+            self.is_Ride_Start = false
+            lbltitle.text = "Your Bill"
+            RappleActivityIndicatorView.startAnimatingWithLabel("Processing...", attributes: RappleAppleAttributes)
+            self.is_complete = true
             self.getBockingDetail()
-            UIView.animate(withDuration: 0.2, animations: {
-                
-                self.viewBIll.frame = CGRect(x: 0, y: 64, width: Constant.ScreenSize.SCREEN_WIDTH, height: Constant.ScreenSize.SCREEN_HEIGHT-64)
-                
-            })
+            
+        }        
+        else
+        {
+            RappleActivityIndicatorView.startAnimatingWithLabel("Processing...", attributes: RappleAppleAttributes)
+            self.perform(#selector(getBockingDetail), with: "", afterDelay: 0)
+            // self.getDriverRating()
         }
     }
     
@@ -736,7 +739,10 @@ class PickUPRideVC: UIViewController , GMSMapViewDelegate , UNUserNotificationCe
         
         // self.delegate?.gotNotification(title: notification.request.content.title);
         
-        let title : String = notification.request.content.title
+        
+        //let title : String = notification.request.content.title
+        
+        let title : String =  (notification.request.content.userInfo as NSDictionary ) .object(forKey: "gcm.notification.title1") as! String
         
         if (title == "cancel_by_driver")
         {

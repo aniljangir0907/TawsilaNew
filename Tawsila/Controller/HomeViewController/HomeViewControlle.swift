@@ -197,18 +197,18 @@
         AppDelegateVariable.appDelegate.is_loadCar = 0
         setShowAndHideViews(viewEnglish, vArb: viewArabic)
        
-        var ratone = USER_DEFAULT.object(forKey: "rateOne") as? String
-        ratone = "1";
+        let ratone = USER_DEFAULT.object(forKey: "rateOne") as? String
         if (ratone != nil )
         {
             if ratone == "1"
             {
                 let dic : NSDictionary = USER_DEFAULT .object(forKey: "ratedata") as! NSDictionary
-                
+
+                AppDelegateVariable.appDelegate.id_booking = dic.object(forKey: "booking_id") as! String                
                 let obj : PickUPRideVC = PickUPRideVC(nibName: "PickUPRideVC", bundle: nil)
                 obj.id_driver = dic .object(forKey: "driver_id") as! String
                 obj.id_booking = dic .object(forKey: "booking_id") as! String
-                
+
                 self.present(obj, animated: true, completion: nil)
             }
             else
@@ -834,7 +834,7 @@
     {
         if payMedia == "Wallet"
         {
-            if (Int(AppDelegateVariable.appDelegate.wallet_amount)! < self.estFare)
+            if (Int((AppDelegateVariable.appDelegate.wallet_amount as NSString).intValue) > self.estFare)
             {
                 
                 Utility.sharedInstance.showAlert("Alert!", msg: "Please change payment media or Add money in wallet", controller: self)
@@ -1005,7 +1005,7 @@
                         // Utility.sharedInstance.showAlert(kAPPName, msg: "Route Not Found" as String, controller: self)
                     }
                     
-                    if (Int(AppDelegateVariable.appDelegate.wallet_amount)! > self.estFare)
+                    if (Int((AppDelegateVariable.appDelegate.wallet_amount as NSString).intValue) > self.estFare)
                     {
                         self.lblpayMedia.text = "Wallet("+AppDelegateVariable.appDelegate.wallet_amount+")"
                         self.payMedia = "Wallet";
@@ -1198,9 +1198,9 @@
         let application = UIApplication.shared
         
         //  self.delegate?.gotNotification(title: notification.request.content.title);
-        let title : String = notification.request.content.title
-        //  let title1 : String = notification.request.content as! String
-        //  print(title1)
+        //let title : String = notification.request.content.title
+        let title : String = (notification.request.content.userInfo as NSDictionary).object(forKey: "gcm.notification.title1") as! String
+        // print(title1)
         
         if title == "accept_booking"
         {

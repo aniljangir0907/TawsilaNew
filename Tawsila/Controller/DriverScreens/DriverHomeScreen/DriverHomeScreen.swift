@@ -429,18 +429,8 @@ class DriverHomeScreen: UIViewController, GMSMapViewDelegate, SlideNavigationCon
         
         // self.delegate?.gotNotification(title: notification.request.content.title);
         
-        let title : String = notification.request.content.title
-        
-        if title == "accept_booking"
-        {
-            
-            let obj : PickUPRideVC = PickUPRideVC(nibName: "PickUPRideVC", bundle: nil)
-            self.getTopViewController()?.present(obj, animated: true, completion: nil)
-            
-            // self.getTopViewController()?.navigationController?.pushViewController(obj, animated: true)
-            // self.performSelector(onMainThread: #selector(self.gotoNextView), with: "", waitUntilDone:true)
-            // self.gotoNextView()
-        }
+        // let title : String = notification.request.content.title
+        // let title : String =  (notification.request.content.userInfo as NSDictionary ) .object(forKey: "gcm.notification.title1") as! String
         
         if(application.applicationState == .active) {
             
