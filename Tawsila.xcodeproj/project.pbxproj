@@ -464,7 +464,6 @@
 				81F2EC051EF18CC80065D2BD /* LeftMenu */,
 				81E76BD81EEF73E500256FD4 /* ChangePasswordViewController */,
 				817D9AE21F1F7F9100DE76A4 /* Settings */,
-				81C14F101F17F5EC00FDEFEC /* Settings */,
 				81D179F41EF84A3F00976349 /* BookingviewController */,
 				814C6FB71EF0487900985702 /* MyRides */,
 				92DEEE761EEE8C8B001B5DCA /* RideLaterViewController */,
@@ -719,13 +718,6 @@
 				81C14F011F17F52700FDEFEC /* PickUpPassenger.xib */,
 			);
 			path = "PickUp Passenger";
-			sourceTree = "<group>";
-		};
-		81C14F101F17F5EC00FDEFEC /* Settings */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Settings;
 			sourceTree = "<group>";
 		};
 		81C8E8071F18880300DA5BBC /* ContactUs */ = {

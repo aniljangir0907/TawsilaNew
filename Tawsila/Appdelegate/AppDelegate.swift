@@ -51,7 +51,7 @@
         
         // checekApplication selected language (Vikram Singh)//20-jun-2017
         strLanguage = checkAppLanguage()
-        
+
         // Fabric.sharedSDK().debug = true
         //Fabric.with([Crashlytics.self()])
         
@@ -356,7 +356,7 @@
         
         self.navController?.isNavigationBarHidden  = true
         UINavigationBar.appearance().isTranslucent = false
-        
+      //  self.navController?.preferredStatusBarStyle = .lightContent
         let leftVC : LeftMenuViewController = LeftMenuViewController(nibName : "LeftMenuViewController" , bundle : nil)
         SlideNavigationController.sharedInstance().leftMenu=leftVC
         
