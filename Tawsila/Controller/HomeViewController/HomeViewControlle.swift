@@ -183,6 +183,8 @@
     
     override func viewWillAppear(_ animated: Bool) {
         
+        
+        
         let center = UNUserNotificationCenter.current()
         center.delegate = self
         center.requestAuthorization(options:[.badge, .alert, .sound]) { (granted, error) in
@@ -193,29 +195,85 @@
         is_accepted = false
         
         AppDelegateVariable.appDelegate.is_loadCar = 0
-        
         setShowAndHideViews(viewEnglish, vArb: viewArabic)
+       
+        let ratone = USER_DEFAULT.object(forKey: "rateOne") as? String
         
-        if AppDelegateVariable.appDelegate.id_booking == "false"
+        if (ratone != nil )
         {
-            AppDelegateVariable.appDelegate.id_booking = "NO";
-            self.tapCacelBooking("");
-           // self.getCarsAPI()
-        }
-        
-        if AppDelegateVariable.appDelegate.id_booking == "cancel"
-        {
-            Utility.sharedInstance.showAlert(kAPPName, msg: "Ride cancelled by Driver", controller: self)
-            
-            AppDelegateVariable.appDelegate.id_booking = "NO";
-            self.tapCacelBooking("");
-        }
-        
-        self.getCarsAPI()
+            if ratone == "1"
+            {
+                let dic : NSDictionary = USER_DEFAULT .object(forKey: "ratedata") as! NSDictionary
+                
+                let obj : PickUPRideVC = PickUPRideVC(nibName: "PickUPRideVC", bundle: nil)
+                obj.id_driver = dic .object(forKey: "driver_id") as! String
+                obj.id_booking = dic .object(forKey: "booking_id") as! String
+                
+                self.present(obj, animated: true, completion: nil)
+            }
+            else
+            {
+                if AppDelegateVariable.appDelegate.id_booking == "false"
+                {
+                    AppDelegateVariable.appDelegate.id_booking = "NO";
+                    self.tapCacelBooking("");
+                }
+                
+                if AppDelegateVariable.appDelegate.id_booking == "cancel"
+                {
+                    Utility.sharedInstance.showAlert(kAPPName, msg: "Ride cancelled by Driver", controller: self)
+                    
+                    AppDelegateVariable.appDelegate.id_booking = "NO";
+                    self.tapCacelBooking("");
+                }
+                
+                self.getCarsAPI()
+                
+            }
 
+        }
+        else
+        {
+            
+            if AppDelegateVariable.appDelegate.id_booking == "false"
+            {
+                AppDelegateVariable.appDelegate.id_booking = "NO";
+                self.tapCacelBooking("");
+                // self.getCarsAPI()
+            }
+            
+            if AppDelegateVariable.appDelegate.id_booking == "cancel"
+            {
+                Utility.sharedInstance.showAlert(kAPPName, msg: "Ride cancelled by Driver", controller: self)
+                
+                AppDelegateVariable.appDelegate.id_booking = "NO";
+                self.tapCacelBooking("");
+            }
+            
+            self.getCarsAPI()
+            
+        }
         
         Utility.sharedInstance.getUserWallet(vc : self)
         
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+
+        super.viewDidAppear(true)
+        self.lblpayMedia.text = "Wallet("+AppDelegateVariable.appDelegate.wallet_amount+")"
+
+        
+      
+            self .perform( #selector(self.getCarsLocations), with: 1, afterDelay: 2)
+
+
+    }
+
+    func updateWallet()  {
+        
+        self.lblpayMedia.text = "Wallet("+AppDelegateVariable.appDelegate.wallet_amount+")"
+
     }
     
     override func viewDidDisappear(_ animated: Bool)
@@ -765,6 +823,7 @@
         
         let camera = GMSCameraPosition.camera(withLatitude: lat!, longitude: lon!, zoom: 13.0)
         mapView.animate(to: camera)
+        
     }
     
     
@@ -873,11 +932,9 @@
     
     func gotoNextView(){
         
-        // viewWaiting.removeFromSuperview()
+        
         let obj : PickUPRideVC = PickUPRideVC(nibName: "PickUPRideVC", bundle: nil)
-        // obj.id_booking = self.id_booking;
         self.present(obj, animated: true, completion: nil)
-        //        self.navigationController?.pushViewController(obj, animated: true)
     }
     
     // MARK: - Drow Route Method

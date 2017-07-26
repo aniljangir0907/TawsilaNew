@@ -53,7 +53,7 @@ class PickUPRideVC: UIViewController , GMSMapViewDelegate , UNUserNotificationCe
     var is_complete = Bool()
     
     var reason = String()
-
+    
     
     
     @IBOutlet var driverRating: StarRatingControl!
@@ -114,7 +114,7 @@ class PickUPRideVC: UIViewController , GMSMapViewDelegate , UNUserNotificationCe
             img.image = img.image?.withRenderingMode(.alwaysTemplate)
         }
         
-    
+        
         let center = UNUserNotificationCenter.current()
         center.delegate = self
         center.requestAuthorization(options:[.badge, .alert, .sound]) { (granted, error) in
@@ -130,7 +130,7 @@ class PickUPRideVC: UIViewController , GMSMapViewDelegate , UNUserNotificationCe
         imgRed.tintColor = UIColor.red
         imgRed.image = imgRed.image?.withRenderingMode(.alwaysTemplate)
         lbl_carType.text = car_type
-    
+        
         if AppDelegateVariable.appDelegate.strLanguage == "ar"
         {
             
@@ -151,15 +151,30 @@ class PickUPRideVC: UIViewController , GMSMapViewDelegate , UNUserNotificationCe
         
         RappleActivityIndicatorView.startAnimatingWithLabel("Processing...", attributes: RappleAppleAttributes)
         self.perform(#selector(getBockingDetail), with: "", afterDelay: 0)
-        self.getDriverRating()
-    
+        // self.getDriverRating()
+        
     }
-
-    override func viewWillAppear(_ animated: Bool) {
     
+    override func viewWillAppear(_ animated: Bool) {
+        
+        USER_DEFAULT .set("0", forKey: "rateOne")
+        
+        
         if AppDelegateVariable.appDelegate.strLanguage == "ar"
         {
             lbltitle.text = "فاتورتك";
+        }
+        
+        if (USER_DEFAULT .object(forKey: "rateOne") as! String) == "1"
+        {
+            
+            self.is_complete = true
+            self.getBockingDetail()
+            UIView.animate(withDuration: 0.2, animations: {
+                
+                self.viewBIll.frame = CGRect(x: 0, y: 64, width: Constant.ScreenSize.SCREEN_WIDTH, height: Constant.ScreenSize.SCREEN_HEIGHT-64)
+                
+            })
         }
     }
     
@@ -204,27 +219,27 @@ class PickUPRideVC: UIViewController , GMSMapViewDelegate , UNUserNotificationCe
         
         let actionSheetController: UIAlertController = UIAlertController(title: "Choose Cancel Option", message: "", preferredStyle: .actionSheet)
         
-        let action0: UIAlertAction = UIAlertAction(title: "Some urgent work", style: .default) { action -> Void in
+        let action0: UIAlertAction = UIAlertAction(title: "Already booked another taxi", style: .default) { action -> Void in
             
-            self.reason = "Some urgent work";
+            self.reason = "Already booked another taxi";
             self.cancelRide()
         }
         
-        let action1: UIAlertAction = UIAlertAction(title: "Pickup location is too far", style: .default) { action -> Void in
+        let action1: UIAlertAction = UIAlertAction(title: "Driver has low ranking", style: .default) { action -> Void in
             
-            self.reason = "Pickup location is too far";
+            self.reason = "Driver has low ranking";
             self.cancelRide()
             
         }
-        let action2: UIAlertAction = UIAlertAction(title: "I have changed my mind", style: .default) { action -> Void in
+        let action2: UIAlertAction = UIAlertAction(title: "Unable to contact driver", style: .default) { action -> Void in
             
-            self.reason = "I have changed my mind";
+            self.reason = "Unable to contact driver";
             self.cancelRide()
             
         }
-        let action3: UIAlertAction = UIAlertAction(title: "Go another nearby ride", style: .default) { action -> Void in
+        let action3: UIAlertAction = UIAlertAction(title: "Expected a shorter wait time", style: .default) { action -> Void in
             
-            self.reason = "Go another nearby ride";
+            self.reason = "Expected a shorter wait time";
             self.cancelRide()
             
         }
@@ -316,9 +331,9 @@ class PickUPRideVC: UIViewController , GMSMapViewDelegate , UNUserNotificationCe
                     self.total_amout =  (String(format: "%@", (((dataDictionary.object(forKey: "result") as! NSArray) .object(at: 0) as! NSDictionary ) .object(forKey: "amount")) as! CVarArg)) as String
                     
                     UIView.animate(withDuration: 0.2, animations: {
-                      
+                        
                         self.viewBIll.frame = CGRect(x: 0, y: 64, width: Constant.ScreenSize.SCREEN_WIDTH, height: Constant.ScreenSize.SCREEN_HEIGHT-64)
-                    
+                        
                     })
                 }
                 else
@@ -425,7 +440,7 @@ class PickUPRideVC: UIViewController , GMSMapViewDelegate , UNUserNotificationCe
                     self.lbl_driverName.text = userDict.object(forKey: "user_name") as? String
                     self.lbl_car_number.text = userDict.object(forKey: "car_no") as? String
                     self.dvrPhone = (userDict.object(forKey: "phone") as? String)!
-
+                    
                     self.lbl_carType.text =  userDict.object(forKey: "car_type") as? String
                     
                 }
@@ -541,32 +556,34 @@ class PickUPRideVC: UIViewController , GMSMapViewDelegate , UNUserNotificationCe
                 {
                     let routes = (response.result.value as AnyObject).object(forKey: "routes")  as? [Any]
                     
-                    let overview_polyline : NSDictionary = (routes?[0] as? NSDictionary)!
-                    
-                    let dic : NSDictionary = overview_polyline as Any as! NSDictionary
-                    
-                    let value : NSDictionary = dic.object(forKey: "overview_polyline") as! NSDictionary
-                    
-                    
-                    let estTime =  (((((dic.object(forKey: "legs") as! NSArray) .object(at: 0) ) as AnyObject)
-                        .object(forKey: "duration") ) as! NSDictionary) .object(forKey: "text") as? String
-                    self.lblTime.text = estTime;
-                    
-                    
-                    let dropAddress : String =  (((((dic.object(forKey: "legs") as! NSArray) .object(at: 0) ) as AnyObject)
-                        .object(forKey: "start_address")) as? String)!
-                    
-                    self.addressDrop = dropAddress 
-                    
-                    if (self.is_path == true)
+                    if (routes?.count)! > 0
+                        
                     {
-                        let polyString : String = value.object(forKey: "points") as! String
+                        let overview_polyline : NSDictionary = (routes?[0] as? NSDictionary)!
                         
-                        self.is_path = false
-                        self.showPath(polyStr: polyString)
+                        let dic : NSDictionary = overview_polyline as Any as! NSDictionary
                         
-                        
-                        
+                        if (dic.count > 0)
+                        {
+                            let estTime =  (((((dic.object(forKey: "legs") as! NSArray) .object(at: 0) ) as AnyObject)
+                                .object(forKey: "duration") ) as! NSDictionary) .object(forKey: "text") as? String
+                            self.lblTime.text = estTime;
+                            
+                            let dropAddress : String =  (((((dic.object(forKey: "legs") as! NSArray) .object(at: 0) ) as AnyObject)
+                                .object(forKey: "start_address")) as? String)!
+                            
+                            self.addressDrop = dropAddress
+                            
+                            if (self.is_path == true)
+                            {
+                                
+                                let value : NSDictionary = dic.object(forKey: "overview_polyline") as! NSDictionary
+                                let polyString : String = value.object(forKey: "points") as! String
+                                self.is_path = false
+                                self.showPath(polyStr: polyString)
+                                
+                            }
+                        }
                     }
                     
                     if (self.is_Ride_Start == true)
@@ -579,7 +596,6 @@ class PickUPRideVC: UIViewController , GMSMapViewDelegate , UNUserNotificationCe
                         self.driverMaker.map = self.mapView
                         
                     }
-                    
                 }
             }
             catch
@@ -620,15 +636,15 @@ class PickUPRideVC: UIViewController , GMSMapViewDelegate , UNUserNotificationCe
         
         
         
-//        let marker_pick = GMSMarker()
-//        marker_pick.position = self.cordinatePick
-//        marker_pick.title = self.lblPickAddressAr.text
-//        marker_pick.map = self.mapView
-//        marker_pick.icon = #imageLiteral(resourceName: "markerLocation")
+        //        let marker_pick = GMSMarker()
+        //        marker_pick.position = self.cordinatePick
+        //        marker_pick.title = self.lblPickAddressAr.text
+        //        marker_pick.map = self.mapView
+        //        marker_pick.icon = #imageLiteral(resourceName: "markerLocation")
         
         let marker_dest = GMSMarker()
         marker_dest.position = self.cordinateDestination
-  //      marker_dest.title = self.lblPickAddressAr.text
+        //      marker_dest.title = self.lblPickAddressAr.text
         marker_dest.map = self.mapView
         marker_dest.icon = #imageLiteral(resourceName: "markerDesitnation")
         //self.tagBookNow = 2
@@ -718,7 +734,6 @@ class PickUPRideVC: UIViewController , GMSMapViewDelegate , UNUserNotificationCe
         if (title == "arrived_driver")
         {
             self.playAudio()
-
         }
         
         if (title == "start_ride")
@@ -732,7 +747,12 @@ class PickUPRideVC: UIViewController , GMSMapViewDelegate , UNUserNotificationCe
         
         if (title == "end_ride")
         {
-            USER_DEFAULT .set(true, forKey: "rateOne")
+            let dic = NSMutableDictionary()
+            dic .setValue(id_booking, forKey: "booking_id")
+            dic .setValue(id_driver, forKey: "driver_id")
+            
+            USER_DEFAULT .set(dic, forKey: "ratedata")
+            USER_DEFAULT .set("1", forKey: "rateOne")
             self.is_complete = true
             self.is_Ride_Start = false
             self.getBockingDetail()
@@ -754,7 +774,7 @@ class PickUPRideVC: UIViewController , GMSMapViewDelegate , UNUserNotificationCe
         if (rating.rating > 0)
         {
             self.sendFeedBack()
-//          self.perform(#selector(pay), with: "", afterDelay: 0)
+            //          self.perform(#selector(pay), with: "", afterDelay: 0)
         }
         else
         {
@@ -798,19 +818,19 @@ class PickUPRideVC: UIViewController , GMSMapViewDelegate , UNUserNotificationCe
             self.sendFeedBackApi()
             
         }
-
+        
         
         let cancelAction: UIAlertAction = UIAlertAction(title: "Cancel", style: .cancel) { action -> Void in
             
         }
-
+        
         
         actionSheetController.addAction(action0)
         actionSheetController.addAction(action1)
         actionSheetController.addAction(action2)
         actionSheetController.addAction(action3)
         actionSheetController.addAction(action4)
-
+        
         actionSheetController.addAction(cancelAction)
         self.present(actionSheetController, animated: true, completion: nil)
     }
@@ -842,22 +862,22 @@ class PickUPRideVC: UIViewController , GMSMapViewDelegate , UNUserNotificationCe
                 
                 AppDelegateVariable.appDelegate.id_booking = "false";
                 
-                
+                USER_DEFAULT .set("0", forKey: "rateOne")
                 
                 let actionSheetController: UIAlertController = UIAlertController(title: "Thanks for riding with us", message: "", preferredStyle: .actionSheet)
                 
                 let action0: UIAlertAction = UIAlertAction(title: "OK", style: .default) { action -> Void in
-                   
+                    
                     self.dismiss(animated: true, completion: {
                         
                     })
                 }
-
+                
                 
                 actionSheetController.addAction(action0)
                 self.present(actionSheetController, animated: true, completion: nil)
                 
-              
+                
             }
             else
             {
@@ -873,7 +893,7 @@ class PickUPRideVC: UIViewController , GMSMapViewDelegate , UNUserNotificationCe
         
         dic.setValue("driver", forKey: "review_by")
         dic.setValue(id_driver, forKey: "user_id")
-    
+        
         
         RappleActivityIndicatorView.startAnimatingWithLabel("Processing...", attributes: RappleAppleAttributes)
         var parameterString = String(format : "get_reviews")
@@ -889,18 +909,18 @@ class PickUPRideVC: UIViewController , GMSMapViewDelegate , UNUserNotificationCe
             {
                 //iToast.makeText(" Review Completed ").show()
                 RappleActivityIndicatorView.stopAnimation()
-
-//                let array : NSArray = dataDictionary .object(forKey: "result") as! NSArray
-//                
-//                var value : Int = 0
-//                 for i in 0 ... (array.count - 1) {
-//                    
-//   // value = value + Int(((array.object(at: i) as! NSDictionary) .object(forKey: "rating") as! NSString ).integerValue);
-//                
-//                    
-//                    // let rate : NSString = userDict.object(forKey: "rating") as! NSString
-//                    
-//                }
+                
+                //                let array : NSArray = dataDictionary .object(forKey: "result") as! NSArray
+                //
+                //                var value : Int = 0
+                //                 for i in 0 ... (array.count - 1) {
+                //
+                //   // value = value + Int(((array.object(at: i) as! NSDictionary) .object(forKey: "rating") as! NSString ).integerValue);
+                //
+                //
+                //                    // let rate : NSString = userDict.object(forKey: "rating") as! NSString
+                //
+                //                }
                 
                 self.driverRating.rating = 5
                 
@@ -919,29 +939,29 @@ class PickUPRideVC: UIViewController , GMSMapViewDelegate , UNUserNotificationCe
     {
         
         /*let item1 = PayPalItem(name: "Title", withQuantity: 1, withPrice: NSDecimalNumber(string:total_amout), withCurrency: "USD", withSku: "Hip-0037")
-        let items = [item1]
-        let subtotal = PayPalItem.totalPrice(forItems: items)
-        
-        // Optional: include payment details
-        let shipping = NSDecimalNumber(string: "0.00")
-        let tax = NSDecimalNumber(string: "0.00")
-        let paymentDetails = PayPalPaymentDetails(subtotal: subtotal, withShipping: shipping, withTax: tax)
-        
-        let total = subtotal.adding(shipping).adding(tax)
-        
-        let payment = PayPalPayment(amount: total, currencyCode: "USD", shortDescription: "Tawsila", intent: .sale)
-        
-        payment.items = items
-        payment.paymentDetails = paymentDetails
-        
-        if (payment.processable)
-        {
-            let paymentViewController = PayPalPaymentViewController(payment: payment, configuration: payPalConfig, delegate: self)
-            present(paymentViewController!, animated: true, completion: nil)
-        }
-        else {
-            print("Payment not processalbe: \(payment)")
-        }*/
+         let items = [item1]
+         let subtotal = PayPalItem.totalPrice(forItems: items)
+         
+         // Optional: include payment details
+         let shipping = NSDecimalNumber(string: "0.00")
+         let tax = NSDecimalNumber(string: "0.00")
+         let paymentDetails = PayPalPaymentDetails(subtotal: subtotal, withShipping: shipping, withTax: tax)
+         
+         let total = subtotal.adding(shipping).adding(tax)
+         
+         let payment = PayPalPayment(amount: total, currencyCode: "USD", shortDescription: "Tawsila", intent: .sale)
+         
+         payment.items = items
+         payment.paymentDetails = paymentDetails
+         
+         if (payment.processable)
+         {
+         let paymentViewController = PayPalPaymentViewController(payment: payment, configuration: payPalConfig, delegate: self)
+         present(paymentViewController!, animated: true, completion: nil)
+         }
+         else {
+         print("Payment not processalbe: \(payment)")
+         }*/
     }
     
     
@@ -980,7 +1000,7 @@ class PickUPRideVC: UIViewController , GMSMapViewDelegate , UNUserNotificationCe
             //self.subscribeTheItemsPurchase(transIds: (dict_details.value(forKey: "response") as AnyObject).value(forKey: "id") as! String)
         })
     }
- 
+    
     func playAudio()
     {
         let urlAudio = Bundle.main.url(forResource: "driver_arrived_sound", withExtension: "mp3")

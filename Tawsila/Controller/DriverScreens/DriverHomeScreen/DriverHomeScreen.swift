@@ -194,9 +194,6 @@ class DriverHomeScreen: UIViewController, GMSMapViewDelegate, SlideNavigationCon
                             {
                                 if self.array_Booking_List.count > 1
                                 {
-                                    
-                                    
-
                                     if (DLRadioButton.isExist( self.booking_id ) == false)
                                     {
                                         self.ridePopUp()
@@ -204,7 +201,6 @@ class DriverHomeScreen: UIViewController, GMSMapViewDelegate, SlideNavigationCon
                                         
                                         DLRadioButton.saveMutableDictionay(self.dicIds as! [AnyHashable : Any])
                                     }
-
                                 }
                             }
                             else
@@ -238,6 +234,7 @@ class DriverHomeScreen: UIViewController, GMSMapViewDelegate, SlideNavigationCon
     {
         if self.is_popup == false
         {
+            self.playAudio()
             self.is_popup = true
             popUp = Bundle.main.loadNibNamed("AcceptAndDeclineView", owner: self, options: nil)![0] as? UIView as! AcceptAndDeclineView
             popUp.frame = self.view.frame
