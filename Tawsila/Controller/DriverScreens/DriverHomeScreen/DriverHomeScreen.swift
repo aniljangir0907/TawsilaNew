@@ -209,7 +209,7 @@ class DriverHomeScreen: UIViewController, GMSMapViewDelegate, SlideNavigationCon
                                 {
                                     self.ridePopUp()
                                     // self.dicIds.setValue("hello", forKey: self.booking_id as String)
-                                    //DLRadioButton.saveMutableDictionay(self.dicIds as! [AnyHashable : Any])
+                                    // DLRadioButton.saveMutableDictionay(self.dicIds as! [AnyHashable : Any])
                                 }
                             }
                         }
@@ -252,8 +252,16 @@ class DriverHomeScreen: UIViewController, GMSMapViewDelegate, SlideNavigationCon
         }
         else
         {
-            self.is_popup = true
-            self.tapDecline_Ride(is_time_out: false)
+            let actionSheetController: UIAlertController = UIAlertController(title: "Decline Ride", message: "Are you sure want to decline this Ride", preferredStyle: .alert)
+            
+            let action0: UIAlertAction = UIAlertAction(title: "OK", style: .default) { action -> Void in
+                
+                self.is_popup = true
+                self.tapDecline_Ride(is_time_out: false)
+            }
+            
+            actionSheetController.addAction(action0)
+            self.present(actionSheetController, animated: true, completion: nil)
         }
     }
     
@@ -421,18 +429,8 @@ class DriverHomeScreen: UIViewController, GMSMapViewDelegate, SlideNavigationCon
         
         // self.delegate?.gotNotification(title: notification.request.content.title);
         
-        let title : String = notification.request.content.title
-        
-        if title == "accept_booking"
-        {
-            
-            let obj : PickUPRideVC = PickUPRideVC(nibName: "PickUPRideVC", bundle: nil)
-            self.getTopViewController()?.present(obj, animated: true, completion: nil)
-            
-            // self.getTopViewController()?.navigationController?.pushViewController(obj, animated: true)
-            // self.performSelector(onMainThread: #selector(self.gotoNextView), with: "", waitUntilDone:true)
-            // self.gotoNextView()
-        }
+        // let title : String = notification.request.content.title
+        // let title : String =  (notification.request.content.userInfo as NSDictionary ) .object(forKey: "gcm.notification.title1") as! String
         
         if(application.applicationState == .active) {
             

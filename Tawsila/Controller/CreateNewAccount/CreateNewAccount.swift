@@ -34,6 +34,9 @@ class CreateNewAccount: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        isSelect = false
+
        
     }
     override func viewWillAppear(_ animated: Bool) {
@@ -53,7 +56,6 @@ class CreateNewAccount: UIViewController {
             textF.leftView = img
         }
        
-        isSelect = false
     }
     
     override func didReceiveMemoryWarning() {

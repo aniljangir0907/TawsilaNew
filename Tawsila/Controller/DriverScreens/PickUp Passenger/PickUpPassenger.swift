@@ -537,8 +537,10 @@ class PickUpPassenger: UIViewController, GMSMapViewDelegate, UNUserNotificationC
         
         // self.delegate?.gotNotification(title: notification.request.content.title);
         
-        let title : String = notification.request.content.title
+        // let title : String = notification.request.content.title
         
+        let title : String =  (notification.request.content.userInfo as NSDictionary ) .object(forKey: "gcm.notification.title1") as! String
+
         if title == "cancel_by_rider"
         {
             AppDelegateVariable.appDelegate.id_booking = "cancel";

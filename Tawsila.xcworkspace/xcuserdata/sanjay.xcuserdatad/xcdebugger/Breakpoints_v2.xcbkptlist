@@ -154,7 +154,7 @@
                   moduleName = "Tawsila"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/sanjay/Desktop/Taw/TawsilaNew/Tawsila/Controller/WalletViewController/WalletViewController.swift"
-                  timestampString = "522747046.708608"
+                  timestampString = "522768023.307595"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "299"
@@ -169,7 +169,7 @@
                   moduleName = "Tawsila"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/sanjay/Desktop/Taw/TawsilaNew/Tawsila/Controller/WalletViewController/WalletViewController.swift"
-                  timestampString = "522747046.710694"
+                  timestampString = "522768023.310516"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "301"
@@ -218,11 +218,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Tawsila/Controller/PickUPRideVC/PickUPRideVC.swift"
-            timestampString = "522746247.864095"
+            timestampString = "522768106.303107"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "910"
-            endingLineNumber = "910"
+            startingLineNumber = "915"
+            endingLineNumber = "915"
             landmarkName = "getDriverRating()"
             landmarkType = "7">
          </BreakpointContent>
@@ -234,23 +234,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Tawsila/Controller/PickUPRideVC/PickUPRideVC.swift"
-            timestampString = "522746247.864095"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "920"
-            endingLineNumber = "920"
-            landmarkName = "getDriverRating()"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Tawsila/Controller/PickUPRideVC/PickUPRideVC.swift"
-            timestampString = "522746247.864095"
+            timestampString = "522768106.303107"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "925"
@@ -266,13 +250,29 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Tawsila/Controller/PickUPRideVC/PickUPRideVC.swift"
-            timestampString = "522746247.864095"
+            timestampString = "522768106.303107"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "937"
-            endingLineNumber = "937"
-            landmarkName = "PickUPRideVC"
-            landmarkType = "3">
+            startingLineNumber = "930"
+            endingLineNumber = "930"
+            landmarkName = "getDriverRating()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Tawsila/Controller/PickUPRideVC/PickUPRideVC.swift"
+            timestampString = "522768106.303107"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "942"
+            endingLineNumber = "942"
+            landmarkName = "getDriverRating()"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -321,38 +321,6 @@
             endingLineNumber = "320"
             landmarkName = "completeRide()"
             landmarkType = "7">
-            <Locations>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "Tawsila.PickUpPassenger.completeRide () -&gt; ()"
-                  moduleName = "Tawsila"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/sanjay/Desktop/Taw/TawsilaNew/Tawsila/Controller/DriverScreens/PickUp%20Passenger/PickUpPassenger.swift"
-                  timestampString = "522747046.751172"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "320"
-                  endingLineNumber = "320"
-                  offsetFromSymbolStart = "2372">
-               </Location>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "Tawsila.PickUpPassenger.(completeRide () -&gt; ()).(closure #1)"
-                  moduleName = "Tawsila"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/sanjay/Desktop/Taw/TawsilaNew/Tawsila/Controller/DriverScreens/PickUp%20Passenger/PickUpPassenger.swift"
-                  timestampString = "522747046.75406"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "322"
-                  endingLineNumber = "322"
-                  offsetFromSymbolStart = "44">
-               </Location>
-            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -390,47 +358,15 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Tawsila/Controller/DriverScreens/DriverHomeScreen/DriverHomeScreen.swift"
-            timestampString = "522698890.225322"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "170"
-            endingLineNumber = "170"
-            landmarkName = "perform_update_location()"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Tawsila/Controller/DriverScreens/DriverHomeScreen/DriverHomeScreen.swift"
-            timestampString = "522698890.225322"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "177"
-            endingLineNumber = "177"
-            landmarkName = "perform_update_location()"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Tawsila/Controller/PickUPRideVC/PickUPRideVC.swift"
-            timestampString = "522745058.861059"
+            timestampString = "522765714.128662"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "168"
-            endingLineNumber = "168"
+            startingLineNumber = "164"
+            endingLineNumber = "164"
             landmarkName = "viewWillAppear(_:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -496,6 +432,326 @@
             startingLineNumber = "140"
             endingLineNumber = "140"
             landmarkName = "actionSignIn(_:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Tawsila/Controller/Settings/SettingViewController.swift"
+            timestampString = "522755087.624813"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "221"
+            endingLineNumber = "221"
+            landmarkName = "FireAPI()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Tawsila/Controller/Settings/SettingViewController.swift"
+            timestampString = "522755313.999682"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "223"
+            endingLineNumber = "223"
+            landmarkName = "FireAPI()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Tawsila/Controller/LeftMenuViewController/LeftMenuViewController.swift"
+            timestampString = "522755448.414361"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "235"
+            endingLineNumber = "235"
+            landmarkName = "changeDriveStatus(_:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Tawsila.LeftMenuViewController.changeDriveStatus (Swift.String) -&gt; ()"
+                  moduleName = "Tawsila"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/sanjay/Desktop/Taw/TawsilaNew/Tawsila/Controller/LeftMenuViewController/LeftMenuViewController.swift"
+                  timestampString = "522768023.374081"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "235"
+                  endingLineNumber = "235"
+                  offsetFromSymbolStart = "1484">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Tawsila.LeftMenuViewController.(changeDriveStatus (Swift.String) -&gt; ()).(closure #1)"
+                  moduleName = "Tawsila"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/sanjay/Desktop/Taw/TawsilaNew/Tawsila/Controller/LeftMenuViewController/LeftMenuViewController.swift"
+                  timestampString = "522768023.376123"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "237"
+                  endingLineNumber = "237"
+                  offsetFromSymbolStart = "60">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Tawsila/Controller/LeftMenuViewController/LeftMenuViewController.swift"
+            timestampString = "522755461.895977"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "206"
+            endingLineNumber = "206"
+            landmarkName = "FireAPI()"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Tawsila.LeftMenuViewController.FireAPI () -&gt; ()"
+                  moduleName = "Tawsila"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/sanjay/Desktop/Taw/TawsilaNew/Tawsila/Controller/LeftMenuViewController/LeftMenuViewController.swift"
+                  timestampString = "522768023.380564"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "206"
+                  endingLineNumber = "206"
+                  offsetFromSymbolStart = "1716">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Tawsila.LeftMenuViewController.(FireAPI () -&gt; ()).(closure #1)"
+                  moduleName = "Tawsila"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/sanjay/Desktop/Taw/TawsilaNew/Tawsila/Controller/LeftMenuViewController/LeftMenuViewController.swift"
+                  timestampString = "522768023.382665"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "208"
+                  endingLineNumber = "208"
+                  offsetFromSymbolStart = "40">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Tawsila/Controller/LeftMenuViewController/LeftMenuViewController.swift"
+            timestampString = "522755488.825719"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "208"
+            endingLineNumber = "208"
+            landmarkName = "FireAPI()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Tawsila/Controller/PickUPRideVC/PickUPRideVC.swift"
+            timestampString = "522768106.303107"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "493"
+            endingLineNumber = "493"
+            landmarkName = "getDriverDetail()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Tawsila/Controller/PickUPRideVC/PickUPRideVC.swift"
+            timestampString = "522768106.303107"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "739"
+            endingLineNumber = "739"
+            landmarkName = "userNotificationCenter(_:willPresent:withCompletionHandler:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Tawsila/Controller/PickUPRideVC/PickUPRideVC.swift"
+            timestampString = "522768106.303107"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "314"
+            endingLineNumber = "314"
+            landmarkName = "getBockingDetail()"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Tawsila.PickUPRideVC.getBockingDetail () -&gt; ()"
+                  moduleName = "Tawsila"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/sanjay/Desktop/Taw/TawsilaNew/Tawsila/Controller/PickUPRideVC/PickUPRideVC.swift"
+                  timestampString = "522768023.394601"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "315"
+                  endingLineNumber = "315"
+                  offsetFromSymbolStart = "1336">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Tawsila.PickUPRideVC.(getBockingDetail () -&gt; ()).(closure #1)"
+                  moduleName = "Tawsila"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/sanjay/Desktop/Taw/TawsilaNew/Tawsila/Controller/PickUPRideVC/PickUPRideVC.swift"
+                  timestampString = "522768023.397014"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "317"
+                  endingLineNumber = "317"
+                  offsetFromSymbolStart = "44">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Tawsila/Controller/HomeViewController/HomeViewControlle.swift"
+            timestampString = "522768021.58079"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "835"
+            endingLineNumber = "835"
+            landmarkName = "tapConfirmBooking(_:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Tawsila/Controller/HomeViewController/HomeViewControlle.swift"
+            timestampString = "522768021.58079"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "1205"
+            endingLineNumber = "1205"
+            landmarkName = "userNotificationCenter(_:willPresent:withCompletionHandler:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Tawsila/Controller/DriverScreens/DriverHomeScreen/DriverHomeScreen.swift"
+            timestampString = "522765979.613293"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "189"
+            endingLineNumber = "189"
+            landmarkName = "perform_update_location()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Tawsila/Controller/HomeViewController/HomeViewControlle.swift"
+            timestampString = "522768021.58079"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "1202"
+            endingLineNumber = "1202"
+            landmarkName = "userNotificationCenter(_:willPresent:withCompletionHandler:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Tawsila/Controller/PickUPRideVC/PickUPRideVC.swift"
+            timestampString = "522767770.472058"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "165"
+            endingLineNumber = "165"
+            landmarkName = "viewWillAppear(_:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Tawsila/Controller/HomeViewController/HomeViewControlle.swift"
+            timestampString = "522768005.626095"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "208"
+            endingLineNumber = "208"
+            landmarkName = "viewWillAppear(_:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

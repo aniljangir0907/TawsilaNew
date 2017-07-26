@@ -51,10 +51,11 @@ class PickUPRideVC: UIViewController , GMSMapViewDelegate , UNUserNotificationCe
     var is_path = Bool()
     var is_Ride_Start = Bool()
     var is_complete = Bool()
-    
+    var is_pathed = Bool()
     var reason = String()
     
-    
+    var polyline = GMSPolyline()
+    var path = GMSPath()
     
     @IBOutlet var driverRating: StarRatingControl!
     
@@ -82,6 +83,7 @@ class PickUPRideVC: UIViewController , GMSMapViewDelegate , UNUserNotificationCe
         is_fill = false
         is_Ride_Start = false
         is_complete = false
+        is_pathed = false
         
         cordinateDestination = AppDelegateVariable.appDelegate.codrdinateDestiantion
         
@@ -149,32 +151,35 @@ class PickUPRideVC: UIViewController , GMSMapViewDelegate , UNUserNotificationCe
             tapButtonOK .setTitle("حسنا", for: .normal);
         }
         
-        RappleActivityIndicatorView.startAnimatingWithLabel("Processing...", attributes: RappleAppleAttributes)
-        self.perform(#selector(getBockingDetail), with: "", afterDelay: 0)
-        // self.getDriverRating()
-        
-    }
+           }
     
     override func viewWillAppear(_ animated: Bool) {
-        
-        USER_DEFAULT .set("0", forKey: "rateOne")
-        
+                
         
         if AppDelegateVariable.appDelegate.strLanguage == "ar"
         {
             lbltitle.text = "فاتورتك";
         }
         
-        if (USER_DEFAULT .object(forKey: "rateOne") as! String) == "1"
+        
+        let ratone = USER_DEFAULT.object(forKey: "rateOne") as? String
+        // ratone = "1";
+        if ratone == "1"
         {
             
             self.is_complete = true
+            self.is_Ride_Start = false
+            lbltitle.text = "Your Bill"
+            RappleActivityIndicatorView.startAnimatingWithLabel("Processing...", attributes: RappleAppleAttributes)
+            self.is_complete = true
             self.getBockingDetail()
-            UIView.animate(withDuration: 0.2, animations: {
-                
-                self.viewBIll.frame = CGRect(x: 0, y: 64, width: Constant.ScreenSize.SCREEN_WIDTH, height: Constant.ScreenSize.SCREEN_HEIGHT-64)
-                
-            })
+            
+        }        
+        else
+        {
+            RappleActivityIndicatorView.startAnimatingWithLabel("Processing...", attributes: RappleAppleAttributes)
+            self.perform(#selector(getBockingDetail), with: "", afterDelay: 0)
+            // self.getDriverRating()
         }
     }
     
@@ -202,7 +207,6 @@ class PickUPRideVC: UIViewController , GMSMapViewDelegate , UNUserNotificationCe
         }
         
         let noAction: UIAlertAction = UIAlertAction(title: "No", style: .default) { action -> Void in
-            
             
             
         }
@@ -490,6 +494,18 @@ class PickUPRideVC: UIViewController , GMSMapViewDelegate , UNUserNotificationCe
                 self.mapView.animate(with: GMSCameraUpdate.fit(self.bounds, withPadding: 100))
                 
                 
+                if (self.is_pathed == true)
+                {
+                    for index in 1...Int((self.path.count()))
+                    {
+                        self.bounds = self.bounds.includingCoordinate((self.path.coordinate(at: UInt(index))))
+                    }
+                }
+                self.bounds = self.bounds.includingCoordinate(self.cordinatePick)
+                self.bounds = self.bounds.includingCoordinate(cordinate)
+                
+                self.mapView.animate(with: GMSCameraUpdate.fit(self.bounds, withPadding: 100))
+                
             }
             else
             {
@@ -576,7 +592,6 @@ class PickUPRideVC: UIViewController , GMSMapViewDelegate , UNUserNotificationCe
                             
                             if (self.is_path == true)
                             {
-                                
                                 let value : NSDictionary = dic.object(forKey: "overview_polyline") as! NSDictionary
                                 let polyString : String = value.object(forKey: "points") as! String
                                 self.is_path = false
@@ -615,8 +630,8 @@ class PickUPRideVC: UIViewController , GMSMapViewDelegate , UNUserNotificationCe
     
     func showPath(polyStr :String)
     {
-        let path = GMSPath(fromEncodedPath: polyStr)
-        let polyline = GMSPolyline(path: path)
+        path = GMSPath(fromEncodedPath: polyStr)!
+        polyline = GMSPolyline(path: path)
         polyline.strokeWidth = 5.0
         polyline.strokeColor = #colorLiteral(red: 0.7661251426, green: 0.6599388719, blue: 0, alpha: 1)
         
@@ -624,16 +639,17 @@ class PickUPRideVC: UIViewController , GMSMapViewDelegate , UNUserNotificationCe
         
         var bounds = GMSCoordinateBounds()
         
-        for index in 1...Int((path?.count())!)
+        for index in 1...Int((path.count()))
             
         {
-            bounds = bounds.includingCoordinate((path?.coordinate(at: UInt(index)))!)
+            bounds = bounds.includingCoordinate((path.coordinate(at: UInt(index))))
         }
         bounds = bounds.includingCoordinate(cordinatePick)
         bounds = bounds.includingCoordinate(cordinateDestination)
         
         mapView.animate(with: GMSCameraUpdate.fit(bounds, withPadding: 100))
         
+        self.is_pathed = true
         
         
         //        let marker_pick = GMSMarker()
@@ -723,7 +739,10 @@ class PickUPRideVC: UIViewController , GMSMapViewDelegate , UNUserNotificationCe
         
         // self.delegate?.gotNotification(title: notification.request.content.title);
         
-        let title : String = notification.request.content.title
+        
+        //let title : String = notification.request.content.title
+        
+        let title : String =  (notification.request.content.userInfo as NSDictionary ) .object(forKey: "gcm.notification.title1") as! String
         
         if (title == "cancel_by_driver")
         {

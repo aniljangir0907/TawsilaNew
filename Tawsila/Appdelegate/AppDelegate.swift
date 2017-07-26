@@ -58,10 +58,11 @@
         FirebaseApp.configure()
         Messaging.messaging().delegate = self
         
-        //        let token = Messaging.messaging().fcmToken
-        //        print("FCM token: \(token ?? "")")
-        //        deviceTokenStr = token!
-        //        USER_DEFAULT.set(token, forKey: "FCM_TOKEN")
+//        let token = Messaging.messaging().fcmToken
+//        print("FCM token: \(token ?? "")")
+       
+        //   deviceTokenStr = token!
+        //   USER_DEFAULT.set(token, forKey: "FCM_TOKEN")
         
         GMSServices.provideAPIKey("AIzaSyAHgc0o2XkUDVwnw7F0ru8b7JpWlPL5aOc")
         GMSPlacesClient.provideAPIKey("AIzaSyAHgc0o2XkUDVwnw7F0ru8b7JpWlPL5aOc")
