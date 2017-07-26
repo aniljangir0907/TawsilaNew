@@ -23,9 +23,9 @@ class ChangePasswordViewController: UIViewController, UITextFieldDelegate
     }
     @IBAction func actionSaveNewPassword(_ sender: Any) {
         
-        if chekcValidation() == true {
+     //   if chekcValidation() == true {
             self.changePassword()
-        }
+     //   }
         
     }
     
@@ -71,11 +71,9 @@ class ChangePasswordViewController: UIViewController, UITextFieldDelegate
             return false;
         }
         
-        
         if  txtConfrPassword.text != txtNewPassword.text
         {
             Utility.sharedInstance.showAlert("Alert", msg: "Password doesn't match.", controller: self)
-            
             return false;
         }
         
@@ -83,10 +81,11 @@ class ChangePasswordViewController: UIViewController, UITextFieldDelegate
         
     }
     
-    
-    
+    // Function for change user password api call 
     func changePassword()
     {
+        
+       let userType = USER_DEFAULT.object(forKey: "userType") as? String
         if  Reachability.isConnectedToNetwork() == false
         {
             Utility.sharedInstance.showAlert("Alert", msg: "Internet Connection not Availabel!", controller: self)
@@ -96,9 +95,9 @@ class ChangePasswordViewController: UIViewController, UITextFieldDelegate
         
         var parameterString : String!
         if AppDelegateVariable.appDelegate.strLanguage == "en" {
-            parameterString = String(format : "reset_forgot_password&id=%@&password=%@&confirmpassword=%@",USER_ID,self.txtNewPassword.text!,self.txtConfrPassword.text!)
+            parameterString = String(format : "reset_forgot_password&id=%@&password=%@&confirmpassword=%@&usertype=%@",USER_ID,self.txtNewPassword.text!,self.txtConfrPassword.text!,userType!)
         }else{
-            parameterString = String(format : "reset_forgot_password&id=%@&password=%@&confirmpassword=%@",USER_ID,self.txtNewPasswordAr.text!,self.txtConfrPasswordAr.text!)
+            parameterString = String(format : "reset_forgot_password&id=%@&password=%@&confirmpassword=%@&usertype=%@",USER_ID,self.txtNewPasswordAr.text!,self.txtConfrPasswordAr.text!,userType!)
         }
         
         Utility.sharedInstance.postDataInDataForm(header: parameterString, inVC: self) { (dataDictionary, msg, status) in
@@ -111,23 +110,9 @@ class ChangePasswordViewController: UIViewController, UITextFieldDelegate
                 self.txtCurrentPassword.text = ""
                 self.txtConfrPassword.text = ""
                 
-                //                let userDict = dataDictionary.object(forKey: "result") as! NSArray
-                //
-                //                print(userDict.count)
-                //                print(userDict)
-                //                if msg == "No record found"
-                //                {
                 Utility.sharedInstance.showAlert(kAPPName, msg: msg as String, controller: self)
-                //                }
-                //                else
-                //                {
-                ////                    self.arrayRideData = userDict.mutableCopy()  as! NSMutableArray
-                ////                    self.tblMyRides.reloadData()
-                //                }
-                
             }
             else
-                
             {
                 Utility.sharedInstance.showAlert(kAPPName, msg: msg as String, controller: self)
             }
@@ -138,10 +123,5 @@ class ChangePasswordViewController: UIViewController, UITextFieldDelegate
     func textFieldShouldReturn(_ textField: UITextField) -> Bool  {
         return textField.resignFirstResponder()
     }
-    
-    func textFieldShouldEndEditing(_ textField: UITextField) -> Bool  {
-        return true
-    }
-    
     
 }
