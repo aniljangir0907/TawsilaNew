@@ -27,7 +27,7 @@ class bookingViewController: UIViewController {
     @IBOutlet var lblRideFare: UILabel!
      @IBOutlet var lblTaxes: UILabel!
      @IBOutlet var lblTotalBill: UILabel!
-    
+    @IBOutlet var viewRating: UIView!
     // view Arabic
     @IBOutlet var viewArabic: UIView!
     @IBOutlet var lblUserNameAr: UILabel!
@@ -46,6 +46,8 @@ class bookingViewController: UIViewController {
     @IBOutlet var lblTotalBillAr: UILabel!
      @IBOutlet weak var lblPaymentMediaAr: UILabel!
     @IBOutlet weak var lblPaymentMedia: UILabel!
+    @IBOutlet var viewRatingAr: UIView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
