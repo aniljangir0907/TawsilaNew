@@ -125,7 +125,6 @@ class PickUpPassenger: UIViewController, GMSMapViewDelegate, UNUserNotificationC
         }
     }
     
-    
     func updateLocation()
     {
         let lat = locationManager.location?.coordinate.latitude
@@ -207,6 +206,14 @@ class PickUpPassenger: UIViewController, GMSMapViewDelegate, UNUserNotificationC
     
     
     @IBAction func actionCallToUser(_ sender: Any) {
+        var number: URL!
+        if AppDelegateVariable.appDelegate.strLanguage == "en" {
+             number = URL(string:  "tel://"+lblMobileNumber.text! )
+        }
+        else{
+             number = URL(string:  "tel://"+lblMobileNumberAr.text! )
+        }
+        UIApplication.shared.open(number!)
     }
     @IBAction func actionArrived(_ sender: Any) {
         

@@ -76,6 +76,7 @@ class MyRidesVC: UIViewController , UITableViewDelegate, UITableViewDataSource {
                    //        Completed,Cancelled ,Booking,Processing
                         if (((dict.value(forKey: "status") as! String) == "Processing")){
                             self.arrayCurrentData.add(dict)
+                            self.actionCurrent("")
                         }else if (((dict.value(forKey: "status") as! String) == "Cancelled") || ((dict.value(forKey: "status") as! String) == "Completed")) {
                             self.arrayCompletedData.add(dict)
                         }
