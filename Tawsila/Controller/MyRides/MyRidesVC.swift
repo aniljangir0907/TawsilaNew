@@ -25,7 +25,7 @@ class MyRidesVC: UIViewController , UITableViewDelegate, UITableViewDataSource {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        self.getAllMyRide()
     }
 
     override func didReceiveMemoryWarning() {
@@ -38,7 +38,7 @@ class MyRidesVC: UIViewController , UITableViewDelegate, UITableViewDataSource {
         img_notFound.isHidden = true
         self.tblMyRides.tableFooterView = UIView()
         self.tblMyRidesAr.tableFooterView = UIView()
-        self.getAllMyRide()
+
         setShowAndHideViews(viewEnglish, vArb: viewArabic)
     }
     
@@ -76,12 +76,7 @@ class MyRidesVC: UIViewController , UITableViewDelegate, UITableViewDataSource {
                    //        Completed,Cancelled ,Booking,Processing
                         if (((dict.value(forKey: "status") as! String) == "Processing")){
                             self.arrayCurrentData.add(dict)
-                            if self.arrayCurrentData.count>0{
-                                
-                            }else{
-                               self.tblMyRides.isHidden = true
-                                self.img_notFound.isHidden = false
-                            }
+                            
                         }else if (((dict.value(forKey: "status") as! String) == "Cancelled") || ((dict.value(forKey: "status") as! String) == "Completed")) {
                             self.arrayCompletedData.add(dict)
                         }
@@ -89,6 +84,12 @@ class MyRidesVC: UIViewController , UITableViewDelegate, UITableViewDataSource {
                             self.arrayScheduledData.add(dict)
                             
                         }
+                    }
+                    if self.arrayCurrentData.count>0{
+                        
+                    }else{
+                        self.tblMyRides.isHidden = true
+                        self.img_notFound.isHidden = false
                     }
                     if AppDelegateVariable.appDelegate.strLanguage == "en"{
                         self.tblMyRides.reloadData()

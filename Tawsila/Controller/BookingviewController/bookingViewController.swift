@@ -91,8 +91,8 @@ class bookingViewController: UIViewController {
        
         let numberFormatter = NumberFormatter()
         let number = numberFormatter.number(from: dic.value(forKey: "amount") as! String)
-       
         let fareRide =  (number?.floatValue)! - 10.0
+    
         if AppDelegateVariable.appDelegate.strLanguage == "en" {
             lblAmout.text = "\(dic.value(forKey: "amount")  as! String ) SAR"
             lblHours.text = "\(dic.value(forKey: "km")  as! String)"
@@ -111,7 +111,7 @@ class bookingViewController: UIViewController {
             lblDestinationLocationAr.text =  "\(dic.value(forKey: "drop_area")   as! String)"
             lblRideFareAr.text = "\(fareRide) SAR"
             lblTotalBillAr.text = "\(dic.value(forKey: "amount")   as! String) SAR"
-            lblPaymentMediaAr.text = "\( dic.value(forKey: "payment_media")  as! String) Payment"
+            lblPaymentMediaAr.text = "Paid via \( dic.value(forKey: "payment_media")  as! String)"
         
         }
         
@@ -157,7 +157,15 @@ class bookingViewController: UIViewController {
                 }
                 else
                 {
-                   self.setDataOnViewController(userDict)
+                    if AppDelegateVariable.appDelegate.strLanguage == "en"{
+                        self.lblUserName.text = userDict.value(forKey: "user_name") as? String
+                        self.lblCarModel.text = userDict.value(forKey: "car_type") as? String
+                        self.lblCarNumber.text = userDict.value(forKey: "car_no") as? String
+                    }else{
+                        self.lblUserNameAr.text = userDict.value(forKey: "user_name") as? String
+                        self.lblCarModelAr.text = userDict.value(forKey: "car_type") as? String
+                        self.lblCarNumberAr.text = userDict.value(forKey: "car_no") as? String
+                    }
                }
             }
             else {
