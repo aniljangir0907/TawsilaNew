@@ -384,7 +384,7 @@ class PickUpPassenger: UIViewController, GMSMapViewDelegate, UNUserNotificationC
             
             if status == true
             {
-                self.dismiss(animated: true, completion: nil)
+                self.navigationController?.popViewController(animated: true)
             }
             else
             {

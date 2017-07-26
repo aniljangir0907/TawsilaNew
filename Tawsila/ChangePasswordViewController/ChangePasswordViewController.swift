@@ -43,9 +43,7 @@ class ChangePasswordViewController: UIViewController, UITextFieldDelegate
         
        if  (Utility.sharedInstance.trim(txtCurrentPassword.text!)).characters.count == 0 || (Utility.sharedInstance.trim(txtNewPassword.text!)).characters.count == 0 || (Utility.sharedInstance.trim(txtConfrPassword.text!)).characters.count == 0
        {
-        
             Utility.sharedInstance.showAlert("Alert", msg: "Required All Fields.", controller: self)
-
        }
         
         
@@ -106,6 +104,8 @@ class ChangePasswordViewController: UIViewController, UITextFieldDelegate
             
             if status == true
             {
+                
+                USER_DEFAULT.set(self.txtNewPassword.text, forKey: "password")
                 self.txtNewPassword.text = ""
                 self.txtCurrentPassword.text = ""
                 self.txtConfrPassword.text = ""

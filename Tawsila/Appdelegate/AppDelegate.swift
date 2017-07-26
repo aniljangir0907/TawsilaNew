@@ -129,6 +129,8 @@
         //            print("Font Names = [\(names)]")
         //        }
         
+        
+        
         self.sliderMenuControllser()
         
         return true
@@ -336,6 +338,9 @@
         
         let userId  = USER_DEFAULT.object(forKey: "isLogin") as? String
         let userType = USER_DEFAULT.object(forKey: "userType") as? String //30-June-2017 vikram singh
+        
+        
+        
         
         if userId == "0" || userId == nil
         {
