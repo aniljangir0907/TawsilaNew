@@ -21,6 +21,7 @@
             <connections>
                 <outlet property="btnCancel" destination="7Up-yb-izc" id="DL7-El-erE"/>
                 <outlet property="btnCancelAr" destination="Se3-m4-rSS" id="QIu-h7-UEF"/>
+                <outlet property="btnCurrentLoc" destination="IKp-83-brM" id="fb0-6L-OTK"/>
                 <outlet property="buttonConfirmBooking" destination="E8c-pP-Jbc" id="JPw-r2-D60"/>
                 <outlet property="buttonConfirmBookingAr" destination="Msc-mJ-6bo" id="jiy-VU-5Fl"/>
                 <outlet property="icon_pay_media" destination="3Hc-Ni-08q" id="PXT-ox-pbJ"/>
@@ -298,9 +299,9 @@
                                 <action selector="actionShareApp:" destination="-1" eventType="touchUpInside" id="AbP-kR-6Ce"/>
                             </connections>
                         </button>
-                        <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IKp-83-brM">
+                        <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IKp-83-brM">
                             <rect key="frame" x="322" y="466" width="53" height="67"/>
-                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMinY="YES"/>
                             <state key="normal" image="current_loc"/>
                             <connections>
                                 <action selector="tapCurrentLocation:" destination="-1" eventType="touchUpInside" id="Ufm-zq-ow2"/>

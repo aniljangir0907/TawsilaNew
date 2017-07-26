@@ -81,11 +81,10 @@ class PickUPRideVC: UIViewController , GMSMapViewDelegate , UNUserNotificationCe
         is_path = false
         is_fill = false
         is_Ride_Start = false
+        is_complete = false
         
         cordinateDestination = AppDelegateVariable.appDelegate.codrdinateDestiantion
         
-//        id_driver = "14"
-//        AppDelegateVariable.appDelegate.id_booking = "100"
         id_booking = AppDelegateVariable.appDelegate.id_booking as String
         
         cordinatePick = AppDelegateVariable.appDelegate.codrdinatePick
@@ -115,11 +114,7 @@ class PickUPRideVC: UIViewController , GMSMapViewDelegate , UNUserNotificationCe
             img.image = img.image?.withRenderingMode(.alwaysTemplate)
         }
         
-        
-        RappleActivityIndicatorView.startAnimatingWithLabel("Processing...", attributes: RappleAppleAttributes)
-        self.perform(#selector(getBockingDetail), with: "", afterDelay: 0)
-        
-        
+    
         let center = UNUserNotificationCenter.current()
         center.delegate = self
         center.requestAuthorization(options:[.badge, .alert, .sound]) { (granted, error) in
@@ -134,25 +129,8 @@ class PickUPRideVC: UIViewController , GMSMapViewDelegate , UNUserNotificationCe
         
         imgRed.tintColor = UIColor.red
         imgRed.image = imgRed.image?.withRenderingMode(.alwaysTemplate)
-        
         lbl_carType.text = car_type
-        
-//        payPalConfig.acceptCreditCards = true
-//        payPalConfig.merchantName = "Tawsila"
-//        payPalConfig.merchantPrivacyPolicyURL = URL(string: "https://www.paypal.com/webapps/mpp/ua/privacy-full")
-//        payPalConfig.merchantUserAgreementURL = URL(string: "https://www.paypal.com/webapps/mpp/ua/useragreement-full")
-//        payPalConfig.languageOrLocale = Locale.preferredLanguages[0]
-//        payPalConfig.payPalShippingAddressOption = .payPal;
-//        
-//        //  self.environment = PayPalEnvironmentSandbox
-//        
-//        //  apper
-//        
-//        PayPalMobile.preconnect(withEnvironment: environment)
-//        
-//        //self.total_amout = "20"
-//        //self.perform(#selector(pay), with: "", afterDelay: 0)
-        
+    
         if AppDelegateVariable.appDelegate.strLanguage == "ar"
         {
             
@@ -170,16 +148,20 @@ class PickUPRideVC: UIViewController , GMSMapViewDelegate , UNUserNotificationCe
             
             tapButtonOK .setTitle("حسنا", for: .normal);
         }
+        
+        RappleActivityIndicatorView.startAnimatingWithLabel("Processing...", attributes: RappleAppleAttributes)
+        self.perform(#selector(getBockingDetail), with: "", afterDelay: 0)
         self.getDriverRating()
-        
-    }
     
+    }
+
     override func viewWillAppear(_ animated: Bool) {
-        
-        PayPalMobile.preconnect(withEnvironment: environment)
-        
-    }
     
+        if AppDelegateVariable.appDelegate.strLanguage == "ar"
+        {
+            lbltitle.text = "فاتورتك";
+        }
+    }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -193,6 +175,7 @@ class PickUPRideVC: UIViewController , GMSMapViewDelegate , UNUserNotificationCe
         UIApplication.shared.open(number!)
         
     }
+    
     
     @IBAction func tapCancelRide(_ sender: Any){
         
@@ -256,7 +239,6 @@ class PickUPRideVC: UIViewController , GMSMapViewDelegate , UNUserNotificationCe
         let cancelAction: UIAlertAction = UIAlertAction(title: "Cancel", style: .cancel) { action -> Void in
             
             //Just dismiss the action sheet
-            
         }
         
         actionSheetController.addAction(action0)
@@ -267,11 +249,10 @@ class PickUPRideVC: UIViewController , GMSMapViewDelegate , UNUserNotificationCe
         actionSheetController.addAction(cancelAction)
         self.present(actionSheetController, animated: true, completion: nil)
     }
-
     
     @IBAction func tapShare(_ sender: Any) {
         
-        let text = "This is some text that I want to share."
+        let text = "Driver Name : "+lbl_driverName.text! + "\nCar No."+lbl_car_number.text!
         
         // set up activity view controller
         let textToShare = [ text ]
@@ -335,7 +316,9 @@ class PickUPRideVC: UIViewController , GMSMapViewDelegate , UNUserNotificationCe
                     self.total_amout =  (String(format: "%@", (((dataDictionary.object(forKey: "result") as! NSArray) .object(at: 0) as! NSDictionary ) .object(forKey: "amount")) as! CVarArg)) as String
                     
                     UIView.animate(withDuration: 0.2, animations: {
+                      
                         self.viewBIll.frame = CGRect(x: 0, y: 64, width: Constant.ScreenSize.SCREEN_WIDTH, height: Constant.ScreenSize.SCREEN_HEIGHT-64)
+                    
                     })
                 }
                 else
@@ -444,7 +427,6 @@ class PickUPRideVC: UIViewController , GMSMapViewDelegate , UNUserNotificationCe
                     self.dvrPhone = (userDict.object(forKey: "phone") as? String)!
 
                     self.lbl_carType.text =  userDict.object(forKey: "car_type") as? String
-                    // phone
                     
                 }
                 
@@ -750,6 +732,7 @@ class PickUPRideVC: UIViewController , GMSMapViewDelegate , UNUserNotificationCe
         
         if (title == "end_ride")
         {
+            USER_DEFAULT .set(true, forKey: "rateOne")
             self.is_complete = true
             self.is_Ride_Start = false
             self.getBockingDetail()
@@ -840,7 +823,7 @@ class PickUPRideVC: UIViewController , GMSMapViewDelegate , UNUserNotificationCe
         dic.setValue("rider", forKey: "review_by")
         dic.setValue(id_driver, forKey: "driver_id")
         dic.setValue(USER_NAME, forKey: "rider_id")
-        dic.setValue(rating.rating, forKey: "rating")
+        dic.setValue(String (format: "%d",rating.rating), forKey: "rating")
         dic.setValue( self.reason, forKey: "review_text")
         
         RappleActivityIndicatorView.startAnimatingWithLabel("Processing...", attributes: RappleAppleAttributes)
@@ -935,7 +918,7 @@ class PickUPRideVC: UIViewController , GMSMapViewDelegate , UNUserNotificationCe
     func pay()
     {
         
-        let item1 = PayPalItem(name: "Title", withQuantity: 1, withPrice: NSDecimalNumber(string:total_amout), withCurrency: "USD", withSku: "Hip-0037")
+        /*let item1 = PayPalItem(name: "Title", withQuantity: 1, withPrice: NSDecimalNumber(string:total_amout), withCurrency: "USD", withSku: "Hip-0037")
         let items = [item1]
         let subtotal = PayPalItem.totalPrice(forItems: items)
         
@@ -958,7 +941,7 @@ class PickUPRideVC: UIViewController , GMSMapViewDelegate , UNUserNotificationCe
         }
         else {
             print("Payment not processalbe: \(payment)")
-        }
+        }*/
     }
     
     
