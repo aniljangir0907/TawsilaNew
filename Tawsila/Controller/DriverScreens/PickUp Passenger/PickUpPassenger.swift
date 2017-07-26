@@ -164,9 +164,9 @@ class PickUpPassenger: UIViewController, GMSMapViewDelegate, UNUserNotificationC
        
         let actionSheetController: UIAlertController = UIAlertController(title: "Choose Cancel Option", message: "", preferredStyle: .actionSheet)
         
-        let action0: UIAlertAction = UIAlertAction(title: "Some urgent work", style: .default) { action -> Void in
+        let action0: UIAlertAction = UIAlertAction(title: "Due to some urgent work", style: .default) { action -> Void in
             
-            self.reason = "Some urgent work";
+            self.reason = "Due to some urgent work";
             self.cancelRide()
         }
         
@@ -176,20 +176,24 @@ class PickUpPassenger: UIViewController, GMSMapViewDelegate, UNUserNotificationC
             self.cancelRide()
             
         }
-        let action2: UIAlertAction = UIAlertAction(title: "I have changed my mind", style: .default) { action -> Void in
+        let action2: UIAlertAction = UIAlertAction(title: "Cannot reach in time", style: .default) { action -> Void in
             
-            self.reason = "I have changed my mind";
+            self.reason = "Cannot reach in time";
             self.cancelRide()
-            
         }
-        let action3: UIAlertAction = UIAlertAction(title: "Go another nearby ride", style: .default) { action -> Void in
+        
+        let action3: UIAlertAction = UIAlertAction(title: "Unable to contact rider", style: .default) { action -> Void in
             
-            self.reason = "Go another nearby ride";
+            self.reason = "Unable to contact rider";
             self.cancelRide()
             
         }
         
-        
+        let action4: UIAlertAction = UIAlertAction(title: "My reason is not listed", style: .default) { action -> Void in
+            
+            self.reason = "My reason is not listed";
+            self.cancelRide()
+        }
         let cancelAction: UIAlertAction = UIAlertAction(title: "Cancel", style: .cancel) { action -> Void in
             
             //Just dismiss the action sheet
@@ -200,6 +204,7 @@ class PickUpPassenger: UIViewController, GMSMapViewDelegate, UNUserNotificationC
         actionSheetController.addAction(action1)
         actionSheetController.addAction(action2)
         actionSheetController.addAction(action3)
+        actionSheetController.addAction(action4)
         actionSheetController.addAction(cancelAction)
         self.present(actionSheetController, animated: true, completion: nil)
     }

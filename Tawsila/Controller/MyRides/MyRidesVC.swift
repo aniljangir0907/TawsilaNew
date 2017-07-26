@@ -148,7 +148,12 @@ class MyRidesVC: UIViewController , UITableViewDelegate, UITableViewDataSource {
         
         if status == "Completed" || status == "Scheduled" {
             let obje: bookingViewController = bookingViewController(nibName: "bookingViewController", bundle: nil)
-            obje.dataDictionary = arrayCompletedData[indexPath.row] as! NSDictionary
+            if status == "Completed" {
+                     obje.dataDictionary = arrayCompletedData[indexPath.row] as! NSDictionary
+            }
+            else{
+                 obje.dataDictionary = arrayScheduledData[indexPath.row] as! NSDictionary
+            }
             setPushViewTransition(obje)
         }
     }

@@ -197,18 +197,15 @@ class SettingViewController: UIViewController {
     
         func FireAPI()
         {
-            
-           //  http://taxiappsourcecode.com/api/index.php?option=logout&id=7&usertype=driver
-            
-            
             let dic = NSMutableDictionary()
-            
             dic.setValue(USER_ID, forKey: "id")
+       
             if userType == "driver" {
                  dic.setValue("driver", forKey: "usertype")
             }else{
                 dic.setValue("user", forKey: "usertype")
             }
+            
             RappleActivityIndicatorView.startAnimatingWithLabel("Processing...", attributes: RappleAppleAttributes)
             
             var parameterString = String(format : "logout")
