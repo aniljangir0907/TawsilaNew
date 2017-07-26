@@ -850,11 +850,11 @@
             dic.setValue(DLRadioButton.getCurrentTime(), forKey: "pickup_time")
             dic.setValue((self.arrCars.object(at: tagCarType) as! NSDictionary ) .object(forKey: "car_type") as! String, forKey: "taxi_type")
             
-            dic.setValue("05:05:77 am", forKey: "departure_time")
-            dic.setValue("28/07/2017", forKey: "departure_date")
-            dic.setValue("15", forKey: "distance")
-            dic.setValue("100", forKey: "amount")
-            dic.setValue("jaipur", forKey: "address")
+//            dic.setValue("05:05:77 am", forKey: "departure_time")
+//            dic.setValue("28/07/2017", forKey: "departure_date")
+//            dic.setValue("15", forKey: "distance")
+//            dic.setValue("100", forKey: "amount")
+//            dic.setValue("jaipur", forKey: "address")
             dic.setValue(payMedia, forKey: "payment_media")
             dic.setValue("15", forKey: "km")
             

@@ -209,7 +209,7 @@ class DriverHomeScreen: UIViewController, GMSMapViewDelegate, SlideNavigationCon
                                 {
                                     self.ridePopUp()
                                     // self.dicIds.setValue("hello", forKey: self.booking_id as String)
-                                    //DLRadioButton.saveMutableDictionay(self.dicIds as! [AnyHashable : Any])
+                                    // DLRadioButton.saveMutableDictionay(self.dicIds as! [AnyHashable : Any])
                                 }
                             }
                         }
@@ -252,8 +252,16 @@ class DriverHomeScreen: UIViewController, GMSMapViewDelegate, SlideNavigationCon
         }
         else
         {
-            self.is_popup = true
-            self.tapDecline_Ride(is_time_out: false)
+            let actionSheetController: UIAlertController = UIAlertController(title: "Decline Ride", message: "Are you sure want to decline this Ride", preferredStyle: .alert)
+            
+            let action0: UIAlertAction = UIAlertAction(title: "OK", style: .default) { action -> Void in
+                
+                self.is_popup = true
+                self.tapDecline_Ride(is_time_out: false)
+            }
+            
+            actionSheetController.addAction(action0)
+            self.present(actionSheetController, animated: true, completion: nil)
         }
     }
     

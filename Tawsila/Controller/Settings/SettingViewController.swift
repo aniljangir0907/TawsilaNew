@@ -218,7 +218,6 @@ class SettingViewController: UIViewController {
                 parameterString = String (format: "%@&%@=%@", parameterString,key as! CVarArg,value as! CVarArg)
             }
             
-            
             Utility.sharedInstance.postDataInJson(header: parameterString,  withParameter:dic ,inVC: self) { (dataDictionary, msg, status) in
                 
                 if status == true

@@ -54,7 +54,8 @@ class PickUPRideVC: UIViewController , GMSMapViewDelegate , UNUserNotificationCe
     
     var reason = String()
     
-    
+    var polyline = GMSPolyline()
+    var path = GMSPath()
     
     @IBOutlet var driverRating: StarRatingControl!
     
@@ -489,6 +490,15 @@ class PickUPRideVC: UIViewController , GMSMapViewDelegate , UNUserNotificationCe
                 
                 self.mapView.animate(with: GMSCameraUpdate.fit(self.bounds, withPadding: 100))
                 
+                for index in 1...Int((self.path.count()))
+                    
+                {
+                    self.bounds = self.bounds.includingCoordinate((self.path.coordinate(at: UInt(index))))
+                }
+                self.bounds = self.bounds.includingCoordinate(self.cordinatePick)
+                self.bounds = self.bounds.includingCoordinate(cordinate)
+                
+                self.mapView.animate(with: GMSCameraUpdate.fit(self.bounds, withPadding: 100))
                 
             }
             else
@@ -615,8 +625,8 @@ class PickUPRideVC: UIViewController , GMSMapViewDelegate , UNUserNotificationCe
     
     func showPath(polyStr :String)
     {
-        let path = GMSPath(fromEncodedPath: polyStr)
-        let polyline = GMSPolyline(path: path)
+        path = GMSPath(fromEncodedPath: polyStr)!
+        polyline = GMSPolyline(path: path)
         polyline.strokeWidth = 5.0
         polyline.strokeColor = #colorLiteral(red: 0.7661251426, green: 0.6599388719, blue: 0, alpha: 1)
         
@@ -624,10 +634,10 @@ class PickUPRideVC: UIViewController , GMSMapViewDelegate , UNUserNotificationCe
         
         var bounds = GMSCoordinateBounds()
         
-        for index in 1...Int((path?.count())!)
+        for index in 1...Int((path.count()))
             
         {
-            bounds = bounds.includingCoordinate((path?.coordinate(at: UInt(index)))!)
+            bounds = bounds.includingCoordinate((path.coordinate(at: UInt(index))))
         }
         bounds = bounds.includingCoordinate(cordinatePick)
         bounds = bounds.includingCoordinate(cordinateDestination)
