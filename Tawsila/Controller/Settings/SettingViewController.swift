@@ -192,7 +192,6 @@ class SettingViewController: UIViewController {
         }, completion:{ _ in
             self.viewbackground.isHidden = true
         })
-        
     }
     
         func FireAPI()

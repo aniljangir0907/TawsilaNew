@@ -76,7 +76,12 @@ class MyRidesVC: UIViewController , UITableViewDelegate, UITableViewDataSource {
                    //        Completed,Cancelled ,Booking,Processing
                         if (((dict.value(forKey: "status") as! String) == "Processing")){
                             self.arrayCurrentData.add(dict)
-                            self.actionCurrent("")
+                            if self.arrayCurrentData.count>0{
+                                
+                            }else{
+                               self.tblMyRides.isHidden = true
+                                self.img_notFound.isHidden = false
+                            }
                         }else if (((dict.value(forKey: "status") as! String) == "Cancelled") || ((dict.value(forKey: "status") as! String) == "Completed")) {
                             self.arrayCompletedData.add(dict)
                         }

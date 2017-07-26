@@ -1137,7 +1137,7 @@
         
         let rotationAnimation = CABasicAnimation(keyPath: "transform.rotation.z")
         rotationAnimation.fromValue = 0.0
-        rotationAnimation.toValue = 360 * CGFloat(M_PI/180)
+        rotationAnimation.toValue = 360 * CGFloat(Double.pi/180)
         let innerAnimationDuration : CGFloat = 1.5
         rotationAnimation.duration = Double(innerAnimationDuration)
         rotationAnimation.repeatCount = 30

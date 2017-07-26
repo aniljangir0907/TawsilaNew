@@ -157,24 +157,7 @@ class bookingViewController: UIViewController {
                 }
                 else
                 {
-
-//                    self.arrayRideData = userDict.mutableCopy()  as! NSMutableArray
-//                    // var dic : NSDictionary!
-//                    for  dic in self.arrayRideData {
-//                        let dict = dic as! NSDictionary
-//                        //        Completed,Cancelled ,Booking,Processing
-//                        if (((dict.value(forKey: "status") as! String) == "Processing") || ((dict.value(forKey: "status") as! String) == "Booking")){
-//                            self.arrayCurrentData.add(dict)
-//                        }else if (((dict.value(forKey: "status") as! String) == "Cancelled") || ((dict.value(forKey: "status") as! String) == "Completed")) {
-//                            self.arrayCompletedData.add(dict)
-//                        }
-//                    }
-//                    if AppDelegateVariable.appDelegate.strLanguage == "en"{
-//                        self.tblMyRides.reloadData()
-//                    }else {
-//                        self.tblMyRidesAr.reloadData()
-//                    }
-                    
+                   self.setDataOnViewController(userDict)
                }
             }
             else {
