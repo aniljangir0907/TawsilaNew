@@ -832,6 +832,17 @@
     
     @IBAction func tapConfirmBooking(_ sender: Any)
     {
+        if payMedia == "Wallet"
+        {
+            if (Int(AppDelegateVariable.appDelegate.wallet_amount)! < self.estFare)
+            {
+                
+                Utility.sharedInstance.showAlert("Alert!", msg: "Please change payment media or Add money in wallet", controller: self)
+                return;
+            }
+        }
+        
+        
         is_LoadCars = false
         
         if self.tagBookNow == 2
@@ -850,11 +861,11 @@
             dic.setValue(DLRadioButton.getCurrentTime(), forKey: "pickup_time")
             dic.setValue((self.arrCars.object(at: tagCarType) as! NSDictionary ) .object(forKey: "car_type") as! String, forKey: "taxi_type")
             
-//            dic.setValue("05:05:77 am", forKey: "departure_time")
-//            dic.setValue("28/07/2017", forKey: "departure_date")
-//            dic.setValue("15", forKey: "distance")
-//            dic.setValue("100", forKey: "amount")
-//            dic.setValue("jaipur", forKey: "address")
+            dic.setValue("05:05:77 am", forKey: "departure_time")
+            dic.setValue("28/07/2017", forKey: "departure_date")
+            dic.setValue("15", forKey: "distance")
+            dic.setValue("100", forKey: "amount")
+            dic.setValue("jaipur", forKey: "address")
             dic.setValue(payMedia, forKey: "payment_media")
             dic.setValue("15", forKey: "km")
             
@@ -976,8 +987,6 @@
                             .object(forKey: "distance") ) as! NSDictionary) .object(forKey: "text") as? String)!
                         
                         let doubleValue : Double = NSString(string: estDistance).doubleValue // 3.1
-                        
-                        
                         
                         self.estFare = Int(Int((self.standredRate as NSString).floatValue + (self.initialRate as NSString).floatValue * Float32(doubleValue)))
                         
@@ -1314,7 +1323,6 @@
                 let cancelAction: UIAlertAction = UIAlertAction(title: "Cancel", style: .cancel) { action -> Void in
                     
                     //Just dismiss the action sheet
-                    
                 }
                 
                 actionController.addAction(action1)

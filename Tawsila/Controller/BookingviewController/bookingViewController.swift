@@ -174,7 +174,6 @@ class bookingViewController: UIViewController {
 //                    }else {
 //                        self.tblMyRidesAr.reloadData()
 //                    }
-                    
                }
             }
             else {
