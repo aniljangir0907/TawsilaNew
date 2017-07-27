@@ -105,9 +105,18 @@ class PickUPRideVC: UIViewController , GMSMapViewDelegate , UNUserNotificationCe
         marker_pick = GMSMarker()
         marker_pick.position = cordinatePick
         marker_pick.map = mapView
-        marker_pick.iconView = markerIconView();
-        
+        ///marker_pick.iconView = markerIconView();
+        marker_pick.icon = #imageLiteral(resourceName: "markerLocation")
+
         driverMaker = GMSMarker()
+        self.view .addSubview(markerIconView())
+
+        
+        let marker_dest = GMSMarker()
+        marker_dest.position = self.cordinateDestination
+        //      marker_dest.title = self.lblPickAddressAr.text
+        marker_dest.map = self.mapView
+        marker_dest.icon = #imageLiteral(resourceName: "markerDesitnation")
         
         for i in 100 ... 103
         {
@@ -151,10 +160,10 @@ class PickUPRideVC: UIViewController , GMSMapViewDelegate , UNUserNotificationCe
             tapButtonOK .setTitle("حسنا", for: .normal);
         }
         
-           }
+    }
     
     override func viewWillAppear(_ animated: Bool) {
-                
+        
         
         if AppDelegateVariable.appDelegate.strLanguage == "ar"
         {
@@ -174,12 +183,11 @@ class PickUPRideVC: UIViewController , GMSMapViewDelegate , UNUserNotificationCe
             self.is_complete = true
             self.getBockingDetail()
             
-        }        
+        }
         else
         {
             RappleActivityIndicatorView.startAnimatingWithLabel("Processing...", attributes: RappleAppleAttributes)
             self.perform(#selector(getBockingDetail), with: "", afterDelay: 0)
-            // self.getDriverRating()
         }
     }
     
@@ -271,7 +279,10 @@ class PickUPRideVC: UIViewController , GMSMapViewDelegate , UNUserNotificationCe
     
     @IBAction func tapShare(_ sender: Any) {
         
-        let text = "Driver Name : "+lbl_driverName.text! + "\nCar No."+lbl_car_number.text!
+        
+        let text = USER_NAME + " shared ride status: http://taxiappsourcecode.com/track/785hjtli\n" + "Driver: " + lbl_driverName.text! + "\n" + "Contact no: " + dvrPhone + "\n " + "OTP: " + AppDelegateVariable.appDelegate.id_booking +   "\nTaxi no: " + lbl_car_number.text!;
+        // let text = "Driver Name : "+lbl_driverName.text! + "\nCar No."+lbl_car_number.text!
+        
         
         // set up activity view controller
         let textToShare = [ text ]
@@ -328,7 +339,7 @@ class PickUPRideVC: UIViewController , GMSMapViewDelegate , UNUserNotificationCe
                     
                     self.lbl_pickAddress.text =  (String(format: "%@", (((dataDictionary.object(forKey: "result") as! NSArray) .object(at: 0) as! NSDictionary ) .object(forKey: "pickup_area")) as! CVarArg)) as String
                     
-                    self.lbl_dropAddress.text =  self.addressDrop
+                    self.lbl_dropAddress.text = (String(format: "%@", (((dataDictionary.object(forKey: "result") as! NSArray) .object(at: 0) as! NSDictionary ) .object(forKey: "drop_area")) as! CVarArg)) as String
                     
                     self.lbl_Amount.text = (String(format: "%@ SAR", (((dataDictionary.object(forKey: "result") as! NSArray) .object(at: 0) as! NSDictionary ) .object(forKey: "amount")) as! CVarArg)) as String
                     
@@ -337,12 +348,14 @@ class PickUPRideVC: UIViewController , GMSMapViewDelegate , UNUserNotificationCe
                     UIView.animate(withDuration: 0.2, animations: {
                         
                         self.viewBIll.frame = CGRect(x: 0, y: 64, width: Constant.ScreenSize.SCREEN_WIDTH, height: Constant.ScreenSize.SCREEN_HEIGHT-64)
-                        
                     })
+                    
                 }
                 else
                 {
                     self.perform(#selector(self.getDriverDetail), with: "", afterDelay: 0)
+                    self.getDriverRating()
+                    
                 }
                 
             }
@@ -651,23 +664,8 @@ class PickUPRideVC: UIViewController , GMSMapViewDelegate , UNUserNotificationCe
         
         self.is_pathed = true
         
-        
-        //        let marker_pick = GMSMarker()
-        //        marker_pick.position = self.cordinatePick
-        //        marker_pick.title = self.lblPickAddressAr.text
-        //        marker_pick.map = self.mapView
-        //        marker_pick.icon = #imageLiteral(resourceName: "markerLocation")
-        
-        let marker_dest = GMSMarker()
-        marker_dest.position = self.cordinateDestination
-        //      marker_dest.title = self.lblPickAddressAr.text
-        marker_dest.map = self.mapView
-        marker_dest.icon = #imageLiteral(resourceName: "markerDesitnation")
         //self.tagBookNow = 2
     }
-    
-    
-    
     
     func getTopViewController() -> UIViewController?{
         if var topController = UIApplication.shared.keyWindow?.rootViewController
@@ -681,12 +679,11 @@ class PickUPRideVC: UIViewController , GMSMapViewDelegate , UNUserNotificationCe
         return nil
     }
     
-    
     // MARK: Other Usable Methods
     
     func markerIconView() -> UIView {
         
-        let viewAnot : UIView = UIView(frame: CGRect(x:0, y: 0, width: 80, height: 60))
+        let viewAnot : UIView = UIView(frame: CGRect(x:Constant.ScreenSize.SCREEN_WIDTH/2-40, y: Constant.ScreenSize.SCREEN_HEIGHT/2-60, width: 80, height: 60))
         viewAnot.backgroundColor = UIColor.clear
         
         let img : UIImageView = UIImageView(frame: CGRect(x:0, y: 0, width: 80, height: 60))
@@ -728,19 +725,15 @@ class PickUPRideVC: UIViewController , GMSMapViewDelegate , UNUserNotificationCe
             
             marker.groundAnchor = CGPoint(x: CGFloat(0.5), y: CGFloat(0.5))
             CATransaction.commit()
-            
         }
     }
-    
     
     func userNotificationCenter(_ center: UNUserNotificationCenter, willPresent notification: UNNotification, withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void)
     {
         completionHandler([.alert, .badge, .sound])
         
         // self.delegate?.gotNotification(title: notification.request.content.title);
-        
-        
-        //let title : String = notification.request.content.title
+        // let title : String = notification.request.content.title
         
         let title : String =  (notification.request.content.userInfo as NSDictionary ) .object(forKey: "gcm.notification.title1") as! String
         
@@ -804,17 +797,19 @@ class PickUPRideVC: UIViewController , GMSMapViewDelegate , UNUserNotificationCe
     
     func sendFeedBack() {
         
+        
+        
         let actionSheetController: UIAlertController = UIAlertController(title: "Choose Cancel Option", message: "", preferredStyle: .actionSheet)
         
-        let action0: UIAlertAction = UIAlertAction(title: "Driver is professional", style: .default) { action -> Void in
+        let action0: UIAlertAction = UIAlertAction(title: "Driver's behaviour is not good", style: .default) { action -> Void in
             
-            self.reason = "Driver is professional";
+            self.reason = "Driver's behaviour is not good";
             self.sendFeedBackApi()
         }
         
-        let action1: UIAlertAction = UIAlertAction(title: "Nice ride", style: .default) { action -> Void in
+        let action1: UIAlertAction = UIAlertAction(title: "Driver is late", style: .default) { action -> Void in
             
-            self.reason = "Nice ride";
+            self.reason = "Driver is late";
             self.sendFeedBackApi()
             
         }
@@ -929,19 +924,25 @@ class PickUPRideVC: UIViewController , GMSMapViewDelegate , UNUserNotificationCe
                 //iToast.makeText(" Review Completed ").show()
                 RappleActivityIndicatorView.stopAnimation()
                 
-                //                let array : NSArray = dataDictionary .object(forKey: "result") as! NSArray
-                //
-                //                var value : Int = 0
-                //                 for i in 0 ... (array.count - 1) {
-                //
-                //   // value = value + Int(((array.object(at: i) as! NSDictionary) .object(forKey: "rating") as! NSString ).integerValue);
-                //
-                //
-                //                    // let rate : NSString = userDict.object(forKey: "rating") as! NSString
-                //
-                //                }
+                let array : NSArray = dataDictionary .object(forKey: "result") as! NSArray
                 
-                self.driverRating.rating = 5
+                var value : Int = 0
+                var count : Int = 0
+                
+                for i in 0 ... (array.count - 1) {
+                    
+                    
+                    let str : NSString = NSString (format: "%@", (array .object(at: i) as! NSDictionary).object(forKey: "driver_id") as! String)
+                    
+                    if str as String == self.id_driver
+                    {
+                        value = value + Int(((array.object(at: i) as! NSDictionary) .object(forKey: "rating") as! NSString ).integerValue);
+                        count = count + 1
+                    }
+                    //let rate : NSString = userDict.object(forKey: "rating") as! NSString
+                }
+                
+                self.driverRating.rating = UInt(value/count)
                 
             }
             else
@@ -1000,7 +1001,6 @@ class PickUPRideVC: UIViewController , GMSMapViewDelegate , UNUserNotificationCe
         paymentViewController.dismiss(animated: true, completion: nil)
         
         Utility.sharedInstance.showAlert(kAPPName, msg: "Payment Unsucess", controller: self)
-        
     }
     
     func payPalPaymentViewController(_ paymentViewController: PayPalPaymentViewController, didComplete completedPayment: PayPalPayment) {

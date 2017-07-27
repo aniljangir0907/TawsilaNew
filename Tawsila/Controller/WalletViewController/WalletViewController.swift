@@ -104,7 +104,7 @@ class WalletViewController: UIViewController,UITableViewDelegate, UITableViewDat
         }
 
         setShowAndHideViews(cell.viewEng, vArb: cell.viewArabic)
-        
+
         if  AppDelegateVariable.appDelegate.strLanguage == "en" {
             let dic = headerTitlesPayments[indexPath.row] as! NSDictionary
             cell.lblTitleCash.text = dic.value(forKey: "key") as! String?
@@ -141,7 +141,6 @@ class WalletViewController: UIViewController,UITableViewDelegate, UITableViewDat
             cell.imageIconPaymentLeftAr.tintColor  = UIColor.lightGray
         }
         
-        
         return cell
     }
     
@@ -162,16 +161,12 @@ class WalletViewController: UIViewController,UITableViewDelegate, UITableViewDat
         SlideNavigationController.sharedInstance().toggleLeftMenu()
     }
     
-    
     func addMoney()
     {
-        
         popUpAddMoney = Bundle.main.loadNibNamed("AddwalletView", owner: self, options: nil)![0] as? UIView as! AddwalletView
         popUpAddMoney.frame = self.view.frame
         self.view.addSubview(popUpAddMoney)
-    
         popUpAddMoney.btnAddNow.addTarget(self, action: #selector(tapAddNow), for: .touchUpInside)
-        
     }
     
     func tapAddNow()
@@ -183,8 +178,7 @@ class WalletViewController: UIViewController,UITableViewDelegate, UITableViewDat
             popUpAddMoney.removeFromSuperview()
         }
     }
-    
-    
+
     // MARK: Other Usable Methods
     
     func pay()
@@ -215,7 +209,6 @@ class WalletViewController: UIViewController,UITableViewDelegate, UITableViewDat
         }
     }
     
-    
     var environment:String = PayPalEnvironmentNoNetwork {
         willSet(newEnvironment) {
             if (newEnvironment != environment) {
@@ -223,7 +216,6 @@ class WalletViewController: UIViewController,UITableViewDelegate, UITableViewDat
             }
         }
     }
-    
     
     func payPalPaymentDidCancel(_ paymentViewController: PayPalPaymentViewController) {
         print("PayPal Payment Cancelled")

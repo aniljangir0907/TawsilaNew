@@ -97,6 +97,8 @@
     
     var isSellectCarType = Bool()
     
+    var ispathworking = Bool()
+    
     @IBOutlet var btnCurrentLoc: UIButton!
     
     override func viewDidLoad()
@@ -112,7 +114,7 @@
         dictMarker = NSMutableDictionary()
         isSellectCarType = false
         setBorderWidth()
-        
+        self.ispathworking = false
         // -- Locaton Manager
         
         locationManager.requestWhenInUseAuthorization()
@@ -134,6 +136,7 @@
 
         // self.getCarsAPI()
         // self.gotoNextView()
+        
         
         
     }
@@ -182,16 +185,14 @@
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        
-        
-        
+               
         let center = UNUserNotificationCenter.current()
         center.delegate = self
         center.requestAuthorization(options:[.badge, .alert, .sound]) { (granted, error) in
             
             // Enable or disable features based on authorization.
         }
-        
+
         is_accepted = false
         
         AppDelegateVariable.appDelegate.is_loadCar = 0
@@ -226,15 +227,11 @@
                     AppDelegateVariable.appDelegate.id_booking = "NO";
                     self.tapCacelBooking("");
                 }
-                
                 self.getCarsAPI()
-                
             }
-
         }
         else
         {
-            
             if AppDelegateVariable.appDelegate.id_booking == "false"
             {
                 AppDelegateVariable.appDelegate.id_booking = "NO";
@@ -256,18 +253,12 @@
         
         Utility.sharedInstance.getUserWallet(vc : self)
         
-    }
-    
-    override func viewDidAppear(_ animated: Bool) {
-
-        super.viewDidAppear(true)
-        self.lblpayMedia.text = "Wallet("+AppDelegateVariable.appDelegate.wallet_amount+")"
-
+        if ( self.ispathworking == false)
+        {
+            self.lblpayMedia.text = "Wallet("+AppDelegateVariable.appDelegate.wallet_amount+")"
+            self.perform( #selector(self.updateWallet), with: 1, afterDelay: 1)
+        }
         
-      
-            self .perform( #selector(self.getCarsLocations), with: 1, afterDelay: 2)
-
-
     }
 
     func updateWallet()  {
@@ -834,14 +825,12 @@
     {
         if payMedia == "Wallet"
         {
-            if (Int((AppDelegateVariable.appDelegate.wallet_amount as NSString).intValue) > self.estFare)
+            if (Int((AppDelegateVariable.appDelegate.wallet_amount as NSString).intValue) < self.estFare)
             {
-                
                 Utility.sharedInstance.showAlert("Alert!", msg: "Please change payment media or Add money in wallet", controller: self)
                 return;
             }
         }
-        
         
         is_LoadCars = false
         
@@ -1005,18 +994,10 @@
                         // Utility.sharedInstance.showAlert(kAPPName, msg: "Route Not Found" as String, controller: self)
                     }
                     
-                    if (Int((AppDelegateVariable.appDelegate.wallet_amount as NSString).intValue) > self.estFare)
-                    {
-                        self.lblpayMedia.text = "Wallet("+AppDelegateVariable.appDelegate.wallet_amount+")"
-                        self.payMedia = "Wallet";
-                        self.icon_pay_media.image = #imageLiteral(resourceName: "wallet_Icon")
-                    }
-                    else
-                    {
-                        self.payMedia = "Cash";
-                        self.lblpayMedia.text = "Cash"
-                        self.icon_pay_media.image = #imageLiteral(resourceName: "cash_icon")
-                    }
+                    
+                    self.perform( #selector(self.updateWalletYY), with: 1, afterDelay: 0)
+                    self.ispathworking = false
+
                 }
             }
             catch
@@ -1026,6 +1007,22 @@
         }
     }
     
+    func updateWalletYY()  {
+        
+        if (Int((AppDelegateVariable.appDelegate.wallet_amount as NSString).intValue) > self.estFare)
+        {
+            self.lblpayMedia.text = "Wallet("+AppDelegateVariable.appDelegate.wallet_amount+")"
+            self.payMedia = "Wallet";
+            self.icon_pay_media.image = #imageLiteral(resourceName: "wallet_Icon")
+        }
+        else
+        {
+            self.payMedia = "Cash";
+            self.lblpayMedia.text = "Cash"
+            self.icon_pay_media.image = #imageLiteral(resourceName: "cash_icon")
+        }
+    }
+
     func showPath(polyStr :String)
     {
         let path = GMSPath(fromEncodedPath: polyStr)
@@ -1034,8 +1031,6 @@
         polyline.strokeColor = #colorLiteral(red: 0.7661251426, green: 0.6599388719, blue: 0, alpha: 1)
         
         polyline.map = mapView
-        
-        // Today
         
         var bounds = GMSCoordinateBounds()
         
@@ -1050,8 +1045,6 @@
         
         mapView.animate(with: GMSCameraUpdate.fit(bounds, withPadding: 100))
         self.tagBookNow = 2
-        
-        
     }
     
     override func didReceiveMemoryWarning() {
@@ -1105,7 +1098,8 @@
             marker_dest.map = self.mapView
             marker_dest.icon = #imageLiteral(resourceName: "markerDesitnation")
             self.tagBookNow = 2
-            
+            self.ispathworking = true
+
             getPolylineRoute(from: pickUpCordinate, to: destinationCordinate)
             
         }

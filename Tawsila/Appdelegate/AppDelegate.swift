@@ -40,9 +40,7 @@
     var codrdinateDestiantion = CLLocationCoordinate2D()
     var codrdinatePick = CLLocationCoordinate2D()
     
-    
     // var delegate:notificationDelegate?
-    
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool
     {
@@ -88,20 +86,22 @@
             })
         }
             
-            // iOS 9 support
+        // iOS 9 support
         else if #available(iOS 9, *) {
             UIApplication.shared.registerUserNotificationSettings(UIUserNotificationSettings(types: [.badge, .sound, .alert], categories: nil))
             UIApplication.shared.registerForRemoteNotifications()
         }
-            // iOS 8 support
+        // iOS 8 support
         else if #available(iOS 8, *) {
             UIApplication.shared.registerUserNotificationSettings(UIUserNotificationSettings(types: [.badge, .sound, .alert], categories: nil))
             UIApplication.shared.registerForRemoteNotifications()
         }
-            // iOS 7 support
+        
+        // iOS 7 support
         else {
             application.registerForRemoteNotifications(matching: [.badge, .sound, .alert])
         }
+        
         application.applicationIconBadgeNumber = 0
         Thread.sleep(forTimeInterval: 2)
         locationManager.delegate = self
