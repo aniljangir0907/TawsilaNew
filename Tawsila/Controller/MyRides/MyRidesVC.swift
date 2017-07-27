@@ -25,7 +25,6 @@ class MyRidesVC: UIViewController , UITableViewDelegate, UITableViewDataSource {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.getAllMyRide()
     }
 
     override func didReceiveMemoryWarning() {
@@ -40,6 +39,9 @@ class MyRidesVC: UIViewController , UITableViewDelegate, UITableViewDataSource {
         self.tblMyRidesAr.tableFooterView = UIView()
 
         setShowAndHideViews(viewEnglish, vArb: viewArabic)
+        
+        self.getAllMyRide()
+
     }
     
     func getAllMyRide()

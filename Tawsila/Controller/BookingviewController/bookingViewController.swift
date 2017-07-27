@@ -25,9 +25,8 @@ class bookingViewController: UIViewController {
     @IBOutlet var lblDestinationLocation: UILabel!
     @IBOutlet var viewFare: UIView!
     @IBOutlet var lblRideFare: UILabel!
-     @IBOutlet var lblTaxes: UILabel!
-     @IBOutlet var lblTotalBill: UILabel!
-    @IBOutlet var viewRating: UIView!
+    @IBOutlet var lblTaxes: UILabel!
+    @IBOutlet var lblTotalBill: UILabel!
     // view Arabic
     @IBOutlet var viewArabic: UIView!
     @IBOutlet var lblUserNameAr: UILabel!
@@ -44,14 +43,21 @@ class bookingViewController: UIViewController {
     @IBOutlet var lblRideFareAr: UILabel!
     @IBOutlet var lblTaxesAr: UILabel!
     @IBOutlet var lblTotalBillAr: UILabel!
-     @IBOutlet weak var lblPaymentMediaAr: UILabel!
+    @IBOutlet weak var lblPaymentMediaAr: UILabel!
     @IBOutlet weak var lblPaymentMedia: UILabel!
     @IBOutlet var viewRatingAr: UIView!
+    
+    
+    var id_driver = String()
+    @IBOutlet var dvrRating: StarRatingControl!
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        
+        self.getDriverRating()
+        
     }
     
 
@@ -226,6 +232,63 @@ class bookingViewController: UIViewController {
     @IBAction func actionBack(_ sender: Any) {
         actionBackButton(sender)
     }
+    
+    
+    
+    func getDriverRating() {
+        
+        let dic = NSMutableDictionary()
+        
+        dic.setValue("driver", forKey: "review_by")
+        dic.setValue(dataDictionary.value(forKey: "assigned_for") as! String, forKey: "user_id")
+        
+        RappleActivityIndicatorView.startAnimatingWithLabel("Processing...", attributes: RappleAppleAttributes)
+   
+        var parameterString = String(format : "get_reviews")
+        
+        for (key, value) in dic
+        {
+            parameterString = String (format: "%@&%@=%@", parameterString,key as! CVarArg,value as! CVarArg)
+        }
+        
+        Utility.sharedInstance.postDataInDataForm(header: parameterString, inVC: self) { (dataDictionary, msg, status) in
+            
+            if status == true
+            {
+                //iToast.makeText(" Review Completed ").show()
+                RappleActivityIndicatorView.stopAnimation()
+                
+                let array : NSArray = dataDictionary .object(forKey: "result") as! NSArray
+                
+                var value : Int = 0
+                var count : Int = 0
+                
+                for i in 0 ... (array.count - 1) {
+                    
+                    
+                    let str : NSString = NSString (format: "%@", (array .object(at: i) as! NSDictionary).object(forKey: "driver_id") as! String)
+                    
+                    if str as String == self.id_driver
+                    {
+                        value = value + Int(((array.object(at: i) as! NSDictionary) .object(forKey: "rating") as! NSString ).integerValue);
+                        count = count + 1
+                    }
+                    //let rate : NSString = userDict.object(forKey: "rating") as! NSString
+                }
+                
+                if (count > 0)
+                {
+                    self.dvrRating.rating = UInt(value/count)
+                }
+            }
+            else
+            {
+                Utility.sharedInstance.showAlert(kAPPName, msg: msg as String, controller: self)
+            }
+        }
+    }
 
 
+    
+    
 }

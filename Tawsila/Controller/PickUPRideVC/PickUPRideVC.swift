@@ -942,7 +942,10 @@ class PickUPRideVC: UIViewController , GMSMapViewDelegate , UNUserNotificationCe
                     //let rate : NSString = userDict.object(forKey: "rating") as! NSString
                 }
                 
-                self.driverRating.rating = UInt(value/count)
+                if (count > 0)
+                {
+                    self.driverRating.rating = UInt(value/count)
+                }
                 
             }
             else
