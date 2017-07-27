@@ -355,7 +355,8 @@ class PickUpPassenger: UIViewController, GMSMapViewDelegate, UNUserNotificationC
     func gotoMyRide()
     {
         let obj: AllRides = AllRides(nibName: "AllRides", bundle: nil)
-        SlideNavigationController.sharedInstance().popToRootAndSwitch(to: obj, withCompletion: nil)    }
+        SlideNavigationController.sharedInstance().popToRootAndSwitch(to: obj, withCompletion: nil)
+    }
     
     
     func cancelRide()
