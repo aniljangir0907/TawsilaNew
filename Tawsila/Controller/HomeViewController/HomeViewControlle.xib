@@ -300,7 +300,7 @@
                             </connections>
                         </button>
                         <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IKp-83-brM">
-                            <rect key="frame" x="322" y="466" width="53" height="67"/>
+                            <rect key="frame" x="322" y="471" width="53" height="67"/>
                             <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                             <state key="normal" image="current_loc"/>
                             <connections>
