@@ -27,7 +27,7 @@ class bookingViewController: UIViewController {
     @IBOutlet var lblRideFare: UILabel!
      @IBOutlet var lblTaxes: UILabel!
      @IBOutlet var lblTotalBill: UILabel!
-    
+    @IBOutlet var viewRating: UIView!
     // view Arabic
     @IBOutlet var viewArabic: UIView!
     @IBOutlet var lblUserNameAr: UILabel!
@@ -46,6 +46,8 @@ class bookingViewController: UIViewController {
     @IBOutlet var lblTotalBillAr: UILabel!
      @IBOutlet weak var lblPaymentMediaAr: UILabel!
     @IBOutlet weak var lblPaymentMedia: UILabel!
+    @IBOutlet var viewRatingAr: UIView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -56,64 +58,104 @@ class bookingViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         setShowAndHideViews(viewEng, vArb: viewArabic)
        setDataOnViewController(dataDictionary)
-        getBookingDetails()
+     
     }
     
     func setDataOnViewController(_ dic: NSDictionary){
         print(dic)
         if (dic.value(forKey: "status")  as! String == "Cancelled") {
+            self.getBookingDetails()
             if AppDelegateVariable.appDelegate.strLanguage == "en" {
                 viewFare.isHidden = true
                 imgCancel.isHidden = false
+                 lblMin.text = "0 min"
+                lblAmoutAr.text = "0 SAR"
+                lblHoursAr.text = "\(dic.value(forKey: "km")  as! String)"
+                lblInitialLocationAr.text = "\(dic.value(forKey: "pickup_area")  as! String)"
+                lblDestinationLocationAr.text =  "\(dic.value(forKey: "drop_area")   as! String)"
             }else{
                 viewFareAr.isHidden = true
                 imgCancelAr.isHidden = false
+                 lblMinAr.text = "0 min"
+                lblAmoutAr.text = "0 SAR"
+                lblHoursAr.text = "\(dic.value(forKey: "km")  as! String)"
+                lblInitialLocationAr.text = "\(dic.value(forKey: "pickup_area")  as! String)"
+                lblDestinationLocationAr.text =  "\(dic.value(forKey: "drop_area")   as! String)"
             }
         }
         else  if (dic.value(forKey: "status")  as! String == "Scheduled") {
             if AppDelegateVariable.appDelegate.strLanguage == "en" {
                 viewFare.isHidden = true
                 imgCancel.isHidden = true
+                lblAmout.text = "\(dic.value(forKey: "amount")  as! String ) SAR"
+                lblHours.text = "\(dic.value(forKey: "km")  as! String)"
+                lblInitialLocation.text = "\(dic.value(forKey: "pickup_area")  as! String)"
+                lblDestinationLocation.text =  "\(dic.value(forKey: "drop_area")   as! String)"
             }else{
                 viewFareAr.isHidden = true
                 imgCancelAr.isHidden = true
+                lblAmoutAr.text = "\(dic.value(forKey: "amount")  as! String ) SAR"
+                lblHoursAr.text = "\(dic.value(forKey: "km")  as! String)"
+                lblInitialLocationAr.text = "\(dic.value(forKey: "pickup_area")  as! String)"
+                lblDestinationLocationAr.text =  "\(dic.value(forKey: "drop_area")   as! String)"
             }
         }
         else{
+            self.getBookingDetails()
             if AppDelegateVariable.appDelegate.strLanguage == "en" {
                 viewFare.isHidden = false
                 imgCancel.isHidden = true
+                lblAmout.text = "\(dic.value(forKey: "amount")  as! String ) SAR"
+                lblHours.text = "\(dic.value(forKey: "km")  as! String)"
+                lblMin.text = "\(dic.value(forKey: "km")  as! String)"
+                lblInitialLocation.text = "\(dic.value(forKey: "pickup_area")  as! String)"
+                lblDestinationLocation.text =  "\(dic.value(forKey: "drop_area")   as! String)"
+                lblTotalBill.text = "\(dic.value(forKey: "amount")   as! String) SAR"
+                lblPaymentMedia.text = "\( dic.value(forKey: "payment_media")  as! String) Payment"
             }else{
                 viewFareAr.isHidden = false
                 imgCancelAr.isHidden = true
+                
+                lblAmoutAr.text = "\(dic.value(forKey: "amount")  as! String ) SAR"
+                lblHoursAr.text = "\(dic.value(forKey: "km")  as! String)"
+                lblMinAr.text = "\(dic.value(forKey: "km")  as! String)"
+                lblInitialLocationAr.text = "\(dic.value(forKey: "pickup_area")  as! String)"
+                lblDestinationLocationAr.text =  "\(dic.value(forKey: "drop_area")   as! String)"
+                lblTotalBillAr.text = "\(dic.value(forKey: "amount")   as! String) SAR"
+                if  ( dic.value(forKey: "payment_media")  as! String) == "cash"{
+                    lblPaymentMediaAr.text = "تدفع نقدا"
+                }else{
+                    lblPaymentMediaAr.text = "تدفع عن طريق المحفظة"
+                }
+                
             }
         }
        
-        let numberFormatter = NumberFormatter()
-        let number = numberFormatter.number(from: dic.value(forKey: "amount") as! String)
-        let fareRide =  (number?.floatValue)! - 10.0
-    
-        if AppDelegateVariable.appDelegate.strLanguage == "en" {
-            lblAmout.text = "\(dic.value(forKey: "amount")  as! String ) SAR"
-            lblHours.text = "\(dic.value(forKey: "km")  as! String)"
-            lblMin.text = "\(dic.value(forKey: "km")  as! String)"
-            lblInitialLocation.text = "\(dic.value(forKey: "pickup_area")  as! String)"
-            lblDestinationLocation.text =  "\(dic.value(forKey: "drop_area")   as! String)"
-            lblRideFare.text = "\(fareRide) SAR"
-            lblTotalBill.text = "\(dic.value(forKey: "amount")   as! String) SAR"
-            lblPaymentMedia.text = "\( dic.value(forKey: "payment_media")  as! String) Payment"
-            
-        }else{
-            lblAmoutAr.text = "\(dic.value(forKey: "amount")  as! String ) SAR"
-            lblHoursAr.text = "\(dic.value(forKey: "km")  as! String)"
-            lblMinAr.text = "\(dic.value(forKey: "km")  as! String)"
-            lblInitialLocationAr.text = "\(dic.value(forKey: "pickup_area")  as! String)"
-            lblDestinationLocationAr.text =  "\(dic.value(forKey: "drop_area")   as! String)"
-            lblRideFareAr.text = "\(fareRide) SAR"
-            lblTotalBillAr.text = "\(dic.value(forKey: "amount")   as! String) SAR"
-            lblPaymentMediaAr.text = "Paid via \( dic.value(forKey: "payment_media")  as! String)"
-        
-        }
+//        let numberFormatter = NumberFormatter()
+//        let number = numberFormatter.number(from: dic.value(forKey: "amount") as! String)
+//        let fareRide =  (number?.floatValue)! - 10.0
+//    
+//        if AppDelegateVariable.appDelegate.strLanguage == "en" {
+//            lblAmout.text = "\(dic.value(forKey: "amount")  as! String ) SAR"
+//            lblHours.text = "\(dic.value(forKey: "km")  as! String)"
+//            lblMin.text = "\(dic.value(forKey: "km")  as! String)"
+//            lblInitialLocation.text = "\(dic.value(forKey: "pickup_area")  as! String)"
+//            lblDestinationLocation.text =  "\(dic.value(forKey: "drop_area")   as! String)"
+//            lblRideFare.text = "\(fareRide) SAR"
+//            lblTotalBill.text = "\(dic.value(forKey: "amount")   as! String) SAR"
+//            lblPaymentMedia.text = "\( dic.value(forKey: "payment_media")  as! String) Payment"
+//            
+//        }else{
+//            lblAmoutAr.text = "\(dic.value(forKey: "amount")  as! String ) SAR"
+//            lblHoursAr.text = "\(dic.value(forKey: "km")  as! String)"
+//            lblMinAr.text = "\(dic.value(forKey: "km")  as! String)"
+//            lblInitialLocationAr.text = "\(dic.value(forKey: "pickup_area")  as! String)"
+//            lblDestinationLocationAr.text =  "\(dic.value(forKey: "drop_area")   as! String)"
+//            lblRideFareAr.text = "\(fareRide) SAR"
+//            lblTotalBillAr.text = "\(dic.value(forKey: "amount")   as! String) SAR"
+//            lblPaymentMediaAr.text = "Paid via \( dic.value(forKey: "payment_media")  as! String)"
+//        
+//        }
         
     }
     
